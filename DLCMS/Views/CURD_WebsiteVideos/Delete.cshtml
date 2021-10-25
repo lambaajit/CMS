@@ -1,0 +1,144 @@
+﻿@model DLCMS.Models.Website_Videos
+
+@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Website_Videos</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Department)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Department)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VideoString)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VideoString)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_code)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.emp_code)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MetaTitle)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MetaTitle)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MetaKeyword)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MetaKeyword)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MetaDescription)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MetaDescription)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Heading)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Heading)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.website_filename)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.website_filename)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.content)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.content)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.thumbnailpic)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.thumbnailpic)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DoneBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DoneBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Active)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

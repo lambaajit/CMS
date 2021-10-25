@@ -1,0 +1,194 @@
+﻿@model DLCMS.Models.Updates_MainWebsites
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Updates_MainWebsites</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_old)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_old)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brief)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brief)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contents)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contents)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Update)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Update)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Added)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Added)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Live)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Live)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keywords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keywords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blog_Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blog_Department)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duplicate_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duplicate_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KeywordsToBeUsed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KeywordsToBeUsed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Page_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Page_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DLorNonDL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DLorNonDL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.video)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.video)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

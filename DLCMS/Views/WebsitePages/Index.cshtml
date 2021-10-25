@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+
+@using (@Html.BeginForm("createwebsitepages", "WebsitePages", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create News/Articles Pages</div>
+        <div class="panel-body">
+            @Html.Label("Department")
+            @Html.DropDownList("cbo_WebPagedept", (SelectList)Dictionary["Webpagedeptlist"])
+            <br />
+            <br />
+            <input type="submit" value="Create" />
+        </div>
+    </div>
+}
+

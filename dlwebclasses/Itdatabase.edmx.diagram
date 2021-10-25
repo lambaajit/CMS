@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="221f916cca6c458b9ca36dd0142e0f46" Name="Diagram1" ZoomLevel="53">
+        <EntityTypeShape EntityType="IT_DatabaseModel.Updates_MainWebsites" Width="1.5" PointX="9.25" PointY="0.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.User_Profile" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.Website_Department_Structure" Width="2" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.Website_Pages" Width="2.125" PointX="5.875" PointY="0.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.Website_Pages_SubDepartments" Width="2.125" PointX="5.875" PointY="6.875" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.Website_Structure" Width="1.5" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.Website_Videos" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.website_awards" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.website_Header_Pictures" Width="1.5" PointX="10.375" PointY="7.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.website_Office_Direction" Width="1.5" PointX="10.375" PointY="10.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.User_Profile_FinalDraft" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.Website_Custom_SubDepartments" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.SubDepartmentSwitchboard" Width="1.5" PointX="11.375" PointY="3.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.PhotoSession_StaffAttendance" Width="1.5" PointX="12.375" PointY="6.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.PhotoSession" Width="1.5" PointX="12.375" PointY="9.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.MobileNoFor_ITIssues" Width="1.5" PointX="12.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

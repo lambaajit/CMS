@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DLCMS.Models.PhotoMissingVM>
+@{
+    ViewBag.Title = "CheckPhotos";
+}
+
+
+@*@Html.Raw(ViewBag.names)*@
+<div class="container-fluid" style="padding:20px !important;">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><strong>Staff not having Photos: @Model.Count()</strong></div>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <td>Sno</td>
+                        <td>Name</td>
+                        <td>Dept</td>
+                        <td>Office</td>
+                        <td>email</td>
+                        <td>Joining Date</td>
+                        <td>Director</td>
+                        <td>Booked</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 1; }
+                    @foreach (var item in Model)
+
+                    {
+
+                        <tr>
+                            <td>@(i.ToString())</td>
+                            @{ i++; }
+                            <td>@item.Name</td>
+                            <td>@item.Department</td>
+                            <td>@item.Office</td>
+                            <td>@item.Mail</td>
+                            <td>@item.JoiningDate.Value.ToString("dd-MM-yyyy")</td>
+                            <td>@item.Director</td>
+                            <td>@item.Request_Submitted</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+            @*<div style="text-align:center">@Html.ActionLink("Send Mail","SendMail","", new { @class = "btn btn-info"  })</div>*@
+        </div>
+    </div>
+</div>

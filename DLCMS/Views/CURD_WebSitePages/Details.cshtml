@@ -1,0 +1,138 @@
+﻿@model DLCMS.Models.Website_Pages
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Website_Pages</h4>
+    	<hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Department)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Department)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sub_Department)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sub_Department)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Keywords)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Keywords)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sub_Sub_Department)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sub_Sub_Department)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Filename)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Filename)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RewriteURL)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RewriteURL)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Company)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Company)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sequence)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sequence)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.date_update)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.date_update)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.anchortextnavigation)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.anchortextnavigation)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

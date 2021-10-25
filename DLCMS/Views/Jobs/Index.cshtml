@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+
+@using (@Html.BeginForm("createjobspage", "Jobs", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Jobs Pages</div>
+        Job ID's: <input type="text" name="JobsIDs" />
+        @Html.DropDownList("category")
+        @Html.DropDownList("department")
+        <div class="panel-body">
+            <input type="submit" value="Create Jobs Pages" />
+        </div>
+
+    </div>
+}
+
+@using (@Html.BeginForm("createjobslandingpage", "Jobs", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Jobs Landing Page</div>
+        @Html.DropDownList("category")
+        @Html.DropDownList("department")
+        <div class="panel-body">
+            <input type="submit" value="Create Jobs Landing Pages" />
+        </div>
+    </div>
+}
+
+
+@using (@Html.BeginForm("createconsultnatjobs", "Jobs", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Jobs Landing Page</div>
+        <div class="panel-body">
+            <input type="submit" value="Create Consultants Jobs landing Page" />
+        </div>
+    </div>
+}

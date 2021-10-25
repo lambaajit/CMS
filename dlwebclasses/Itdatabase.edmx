@@ -1,0 +1,1310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IT_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MobileNoFor_ITIssues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Notification_Req" Type="bit" />
+          <Property Name="System_Username" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile_Auth" Type="varchar" MaxLength="50" />
+          <Property Name="Date_Updated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PhotoSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Time" Type="varchar(max)" />
+          <Property Name="Office" Type="varchar(max)" />
+          <Property Name="Publish" Type="bit" />
+        </EntityType>
+        <EntityType Name="PhotoSession_StaffAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="EmpName" Type="varchar(max)" />
+          <Property Name="Attendance" Type="bit" />
+          <Property Name="Notes" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SubDepartmentSwitchboard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="SubDepartment" Type="varchar(max)" />
+          <Property Name="SubDepartmentDisplay" Type="varchar(max)" />
+          <Property Name="email" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Updates_MainWebsites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar(max)" Nullable="false" />
+          <Property Name="Brief" Type="varchar(max)" Nullable="false" />
+          <Property Name="Contents" Type="varchar(max)" Nullable="false" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="Date_Added" Type="datetime" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="Live" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Keywords" Type="varchar(max)" />
+          <Property Name="Blog_Department" Type="varchar(max)" />
+          <Property Name="Total_Comments" Type="int" />
+          <Property Name="Image" Type="bit" />
+          <Property Name="Duplicate_ID" Type="bigint" />
+          <Property Name="KeywordsToBeUsed" Type="varchar(max)" />
+          <Property Name="Page_Title" Type="varchar(max)" />
+          <Property Name="DLorNonDL" Type="varchar(max)" />
+          <Property Name="Staff1" Type="varchar(max)" />
+          <Property Name="Staff2" Type="varchar(max)" />
+          <Property Name="Staff3" Type="varchar(max)" />
+          <Property Name="Staff4" Type="varchar(max)" />
+          <Property Name="Staff5" Type="varchar(max)" />
+          <Property Name="Staff6" Type="varchar(max)" />
+          <Property Name="Staff7" Type="varchar(max)" />
+          <Property Name="Staff8" Type="varchar(max)" />
+          <Property Name="Staff9" Type="varchar(max)" />
+          <Property Name="Staff10" Type="varchar(max)" />
+          <Property Name="category" Type="varchar(max)" />
+          <Property Name="video" Type="bit" Nullable="false" />
+          <Property Name="filename" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IT_Database.dbo.User_Profile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User_Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Emp_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dept" Type="nvarchar" MaxLength="50" />
+          <Property Name="Profile" Type="nvarchar(max)" />
+          <Property Name="Dept2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Profile2" Type="nvarchar(max)" />
+          <Property Name="Dept3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Profile3" Type="nvarchar(max)" />
+          <Property Name="Dept4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Profile4" Type="nvarchar(max)" />
+          <Property Name="Profile_Status" Type="nvarchar(max)" />
+          <Property Name="Education" Type="nvarchar(max)" />
+          <Property Name="Education_Status" Type="nvarchar(max)" />
+          <Property Name="Career" Type="nvarchar(max)" />
+          <Property Name="Career_Status" Type="nvarchar(max)" />
+          <Property Name="Client_Comments" Type="nvarchar(max)" />
+          <Property Name="Client_Comments_Status" Type="nvarchar(max)" />
+          <Property Name="Supreme_Court" Type="nvarchar(max)" />
+          <Property Name="Supreme_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Court_of_Appeal" Type="nvarchar(max)" />
+          <Property Name="Court_of_Appeal_Status" Type="nvarchar(max)" />
+          <Property Name="High_Court" Type="nvarchar(max)" />
+          <Property Name="High_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Criminal_Court" Type="nvarchar(max)" />
+          <Property Name="Criminal_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Civil_Court" Type="nvarchar(max)" />
+          <Property Name="Civil_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Other_Supreme_Court" Type="nvarchar(max)" />
+          <Property Name="Other_Supreme_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Other_Court_of_Appeal" Type="nvarchar(max)" />
+          <Property Name="Other_Court_of_Appeal_Status" Type="nvarchar(max)" />
+          <Property Name="Other_High_Court" Type="nvarchar(max)" />
+          <Property Name="Other_High_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Other_Criminal_Court" Type="nvarchar(max)" />
+          <Property Name="Other_Criminal_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Other_Civil_Court" Type="nvarchar(max)" />
+          <Property Name="Other_Civil_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Dir_RecAndAwards" Type="nvarchar(max)" />
+          <Property Name="Dir_RecAndAwards_Status" Type="nvarchar(max)" />
+          <Property Name="MembershipAndAccreditations" Type="nvarchar(max)" />
+          <Property Name="MembershipAndAccreditations_Status" Type="nvarchar(max)" />
+          <Property Name="Personal_Interests" Type="nvarchar(max)" />
+          <Property Name="Personal_Interests_Status" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Quality_Status" Type="bit" />
+          <Property Name="Html_Status" Type="bit" />
+          <Property Name="Final_Status" Type="bit" />
+          <Property Name="Created_Date" Type="datetime" />
+          <Property Name="Quality_Date" Type="datetime" />
+          <Property Name="Html_Date" Type="datetime" />
+          <Property Name="Final_Date" Type="datetime" />
+          <Property Name="Drafts_status" Type="char" MaxLength="1" />
+          <Property Name="Page_Title" Type="varchar(max)" />
+          <Property Name="Page_Description" Type="varchar(max)" />
+          <Property Name="Page_Keywords" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User_Profile_FinalDraft">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Emp_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dept" Type="nvarchar" MaxLength="50" />
+          <Property Name="Profile" Type="nvarchar(max)" />
+          <Property Name="Dept2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Profile2" Type="nvarchar(max)" />
+          <Property Name="Dept3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Profile3" Type="nvarchar(max)" />
+          <Property Name="Dept4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Profile4" Type="nvarchar(max)" />
+          <Property Name="Profile_Status" Type="nvarchar(max)" />
+          <Property Name="Education" Type="nvarchar(max)" />
+          <Property Name="Education_Status" Type="nvarchar(max)" />
+          <Property Name="Career" Type="nvarchar(max)" />
+          <Property Name="Career_Status" Type="nvarchar(max)" />
+          <Property Name="Client_Comments" Type="nvarchar(max)" />
+          <Property Name="Client_Comments_Status" Type="nvarchar(max)" />
+          <Property Name="Supreme_Court" Type="nvarchar(max)" />
+          <Property Name="Supreme_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Court_of_Appeal" Type="nvarchar(max)" />
+          <Property Name="Court_of_Appeal_Status" Type="nvarchar(max)" />
+          <Property Name="High_Court" Type="nvarchar(max)" />
+          <Property Name="High_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Criminal_Court" Type="nvarchar(max)" />
+          <Property Name="Criminal_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Civil_Court" Type="nvarchar(max)" />
+          <Property Name="Civil_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Other_Supreme_Court" Type="nvarchar(max)" />
+          <Property Name="Other_Supreme_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Other_Court_of_Appeal" Type="nvarchar(max)" />
+          <Property Name="Other_Court_of_Appeal_Status" Type="nvarchar(max)" />
+          <Property Name="Other_High_Court" Type="nvarchar(max)" />
+          <Property Name="Other_High_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Other_Criminal_Court" Type="nvarchar(max)" />
+          <Property Name="Other_Criminal_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Other_Civil_Court" Type="nvarchar(max)" />
+          <Property Name="Other_Civil_Court_Status" Type="nvarchar(max)" />
+          <Property Name="Dir_RecAndAwards" Type="nvarchar(max)" />
+          <Property Name="Dir_RecAndAwards_Status" Type="nvarchar(max)" />
+          <Property Name="MembershipAndAccreditations" Type="nvarchar(max)" />
+          <Property Name="MembershipAndAccreditations_Status" Type="nvarchar(max)" />
+          <Property Name="Personal_Interests" Type="nvarchar(max)" />
+          <Property Name="Personal_Interests_Status" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Quality_Status" Type="bit" />
+          <Property Name="Html_Status" Type="bit" />
+          <Property Name="Final_Status" Type="bit" />
+          <Property Name="Created_Date" Type="datetime" />
+          <Property Name="Quality_Date" Type="datetime" />
+          <Property Name="Html_Date" Type="datetime" />
+          <Property Name="Final_Date" Type="datetime" />
+          <Property Name="Drafts_status" Type="char" MaxLength="1" />
+          <Property Name="Page_Title" Type="varchar(max)" />
+          <Property Name="Page_Description" Type="varchar(max)" />
+          <Property Name="Page_Keywords" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="website_awards">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IndividualCompany" Type="varchar(max)" />
+          <Property Name="StaffName" Type="varchar(max)" />
+          <Property Name="Year" Type="int" />
+          <Property Name="LegalDirectory" Type="varchar(max)" />
+          <Property Name="LegalDirectoryArea" Type="varchar(max)" />
+          <Property Name="LegalDirectoryDepartment" Type="varchar(max)" />
+          <Property Name="DLOffice" Type="varchar(max)" />
+          <Property Name="DLDepartment" Type="varchar(max)" />
+          <Property Name="Blurb" Type="varchar(max)" />
+          <Property Name="LogosToUse" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Website_Custom_SubDepartments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="SubDepartment" Type="varchar(max)" />
+          <Property Name="SubDepartment_Switchboard" Type="varchar(max)" />
+          <Property Name="SubDepartmentTemp" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Website_Department_Structure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Title1" Type="varchar(max)" />
+          <Property Name="Description1" Type="varchar(max)" />
+          <Property Name="Keywords1" Type="varchar(max)" />
+          <Property Name="container1" Type="varchar(max)" />
+          <Property Name="Heading11" Type="varchar(max)" />
+          <Property Name="Heading21" Type="varchar(max)" />
+          <Property Name="Overview1" Type="varchar(max)" />
+          <Property Name="Services1" Type="varchar(max)" />
+          <Property Name="Our_Team1" Type="varchar(max)" />
+          <Property Name="News1" Type="varchar(max)" />
+          <Property Name="left_under_deptmenu1" Type="varchar(max)" />
+          <Property Name="leftimage_under_deptmenu1" Type="varchar(max)" />
+          <Property Name="folder1" Type="varchar(max)" />
+          <Property Name="folderteam1" Type="varchar(max)" />
+          <Property Name="contactstr1" Type="varchar(max)" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="departmenttype" Type="varchar(max)" />
+          <Property Name="NameForNavigation" Type="varchar(max)" />
+          <Property Name="lawlogoimg" Type="varchar(max)" />
+          <Property Name="cssclass" Type="varchar(max)" />
+          <Property Name="BusinessOrPersonal" Type="bit" />
+          <Property Name="Video" Type="varchar(max)" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="NameforHomePage" Type="varchar(max)" />
+          <Property Name="Private" Type="int" />
+          <Property Name="LegalAid" Type="int" />
+          <Property Name="Corporate" Type="int" />
+        </EntityType>
+        <EntityType Name="website_Header_Pictures">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="department" Type="varchar(max)" />
+          <Property Name="Picture_Heading" Type="varchar(max)" />
+          <Property Name="Picture_Blurb" Type="varchar(max)" />
+          <Property Name="imgfilename" Type="varchar(max)" />
+          <Property Name="mobileimgfilename" Type="varchar(max)" />
+          <Property Name="updated" Type="bit" />
+        </EntityType>
+        <EntityType Name="website_Office_Direction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Direction_From_Site" Type="varchar(max)" />
+          <Property Name="Category_Of_Site" Type="varchar(max)" />
+          <Property Name="AddressandDescription_of_Site" Type="varchar(max)" />
+          <Property Name="Map_Of_Site" Type="varchar(max)" />
+          <Property Name="DirectionByWalk" Type="varchar(max)" />
+          <Property Name="DirectionByBus" Type="varchar(max)" />
+          <Property Name="officeid" Type="int" />
+        </EntityType>
+        <EntityType Name="Website_Pages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="Sub_Department" Type="varchar(max)" />
+          <Property Name="Keywords" Type="varchar(max)" />
+          <Property Name="Title" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Text" Type="varchar(max)" />
+          <Property Name="Sub_Sub_Department" Type="varchar(max)" />
+          <Property Name="Filename" Type="varchar(max)" />
+          <Property Name="RewriteURL" Type="varchar(max)" />
+          <Property Name="Company" Type="varchar(max)" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="date_update" Type="datetime" />
+          <Property Name="anchortextnavigation" Type="varchar(max)" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="AltTagIng1" Type="varchar(max)" />
+          <Property Name="AltTagIng2" Type="varchar(max)" />
+          <Property Name="AltTagIng3" Type="varchar(max)" />
+          <Property Name="AltTagIng4" Type="varchar(max)" />
+          <Property Name="AltTagIng5" Type="varchar(max)" />
+          <Property Name="AltTagIng6" Type="varchar(max)" />
+          <Property Name="AltTagIng7" Type="varchar(max)" />
+          <Property Name="CustomSubDepartment" Type="varchar(max)" />
+          <Property Name="SubDepartmentSwitchboard" Type="varchar(max)" />
+          <Property Name="CustomDepartment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Website_Pages_SubDepartments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="department" Type="varchar(max)" />
+          <Property Name="Sub_department" Type="varchar(max)" />
+          <Property Name="sequence1" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="link" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Website_Structure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="underwhichnode" Type="int" />
+          <Property Name="underwhichnode1" Type="int" />
+          <Property Name="underwhichnode2" Type="int" />
+          <Property Name="underwhichnode3" Type="int" />
+          <Property Name="level" Type="varchar(max)" />
+          <Property Name="linkedid" Type="int" />
+          <Property Name="sequence" Type="int" />
+          <Property Name="dept" Type="varchar(max)" />
+          <Property Name="SubDepartment" Type="bit" />
+          <Property Name="email" Type="varchar(max)" />
+          <Property Name="notesForSwitchboard" Type="varchar(max)" />
+          <Property Name="NewNameForSubDepartment" Type="varchar(max)" />
+          <Property Name="SubDepartmentNameForSwitchboard" Type="varchar(max)" />
+          <Property Name="NewNameForDepartment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Website_Videos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="VideoString" Type="varchar(max)" />
+          <Property Name="emp_code" Type="varchar(max)" />
+          <Property Name="MetaTitle" Type="varchar(max)" />
+          <Property Name="MetaKeyword" Type="varchar(max)" />
+          <Property Name="MetaDescription" Type="varchar(max)" />
+          <Property Name="Heading" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="website_filename" Type="varchar(max)" />
+          <Property Name="content" Type="varchar(max)" />
+          <Property Name="thumbnailpic" Type="varchar(max)" />
+          <Property Name="DoneBy" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Reason_removal" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="IT_DatabaseModelStoreContainer">
+          <EntitySet Name="MobileNoFor_ITIssues" EntityType="Self.MobileNoFor_ITIssues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhotoSession" EntityType="Self.PhotoSession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhotoSession_StaffAttendance" EntityType="Self.PhotoSession_StaffAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubDepartmentSwitchboard" EntityType="Self.SubDepartmentSwitchboard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Updates_MainWebsites" EntityType="Self.Updates_MainWebsites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="website_awards" EntityType="Self.website_awards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Website_Custom_SubDepartments" EntityType="Self.Website_Custom_SubDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Website_Department_Structure" EntityType="Self.Website_Department_Structure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="website_Header_Pictures" EntityType="Self.website_Header_Pictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="website_Office_Direction" EntityType="Self.website_Office_Direction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Website_Pages" EntityType="Self.Website_Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Website_Pages_SubDepartments" EntityType="Self.Website_Pages_SubDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Website_Structure" EntityType="Self.Website_Structure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Website_Videos" EntityType="Self.Website_Videos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Profile" EntityType="Self.User_Profile" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [User_Profile].[Id] AS [Id], 
+    [User_Profile].[Emp_code] AS [Emp_code], 
+    [User_Profile].[Emp_Name] AS [Emp_Name], 
+    [User_Profile].[Dept] AS [Dept], 
+    [User_Profile].[Profile] AS [Profile], 
+    [User_Profile].[Dept2] AS [Dept2], 
+    [User_Profile].[Profile2] AS [Profile2], 
+    [User_Profile].[Dept3] AS [Dept3], 
+    [User_Profile].[Profile3] AS [Profile3], 
+    [User_Profile].[Dept4] AS [Dept4], 
+    [User_Profile].[Profile4] AS [Profile4], 
+    [User_Profile].[Profile_Status] AS [Profile_Status], 
+    [User_Profile].[Education] AS [Education], 
+    [User_Profile].[Education_Status] AS [Education_Status], 
+    [User_Profile].[Career] AS [Career], 
+    [User_Profile].[Career_Status] AS [Career_Status], 
+    [User_Profile].[Client_Comments] AS [Client_Comments], 
+    [User_Profile].[Client_Comments_Status] AS [Client_Comments_Status], 
+    [User_Profile].[Supreme_Court] AS [Supreme_Court], 
+    [User_Profile].[Supreme_Court_Status] AS [Supreme_Court_Status], 
+    [User_Profile].[Court_of_Appeal] AS [Court_of_Appeal], 
+    [User_Profile].[Court_of_Appeal_Status] AS [Court_of_Appeal_Status], 
+    [User_Profile].[High_Court] AS [High_Court], 
+    [User_Profile].[High_Court_Status] AS [High_Court_Status], 
+    [User_Profile].[Criminal_Court] AS [Criminal_Court], 
+    [User_Profile].[Criminal_Court_Status] AS [Criminal_Court_Status], 
+    [User_Profile].[Civil_Court] AS [Civil_Court], 
+    [User_Profile].[Civil_Court_Status] AS [Civil_Court_Status], 
+    [User_Profile].[Other_Supreme_Court] AS [Other_Supreme_Court], 
+    [User_Profile].[Other_Supreme_Court_Status] AS [Other_Supreme_Court_Status], 
+    [User_Profile].[Other_Court_of_Appeal] AS [Other_Court_of_Appeal], 
+    [User_Profile].[Other_Court_of_Appeal_Status] AS [Other_Court_of_Appeal_Status], 
+    [User_Profile].[Other_High_Court] AS [Other_High_Court], 
+    [User_Profile].[Other_High_Court_Status] AS [Other_High_Court_Status], 
+    [User_Profile].[Other_Criminal_Court] AS [Other_Criminal_Court], 
+    [User_Profile].[Other_Criminal_Court_Status] AS [Other_Criminal_Court_Status], 
+    [User_Profile].[Other_Civil_Court] AS [Other_Civil_Court], 
+    [User_Profile].[Other_Civil_Court_Status] AS [Other_Civil_Court_Status], 
+    [User_Profile].[Dir_RecAndAwards] AS [Dir_RecAndAwards], 
+    [User_Profile].[Dir_RecAndAwards_Status] AS [Dir_RecAndAwards_Status], 
+    [User_Profile].[MembershipAndAccreditations] AS [MembershipAndAccreditations], 
+    [User_Profile].[MembershipAndAccreditations_Status] AS [MembershipAndAccreditations_Status], 
+    [User_Profile].[Personal_Interests] AS [Personal_Interests], 
+    [User_Profile].[Personal_Interests_Status] AS [Personal_Interests_Status], 
+    [User_Profile].[Status] AS [Status], 
+    [User_Profile].[Quality_Status] AS [Quality_Status], 
+    [User_Profile].[Html_Status] AS [Html_Status], 
+    [User_Profile].[Final_Status] AS [Final_Status], 
+    [User_Profile].[Created_Date] AS [Created_Date], 
+    [User_Profile].[Quality_Date] AS [Quality_Date], 
+    [User_Profile].[Html_Date] AS [Html_Date], 
+    [User_Profile].[Final_Date] AS [Final_Date], 
+    [User_Profile].[Drafts_status] AS [Drafts_status], 
+    [User_Profile].[Page_Title] AS [Page_Title], 
+    [User_Profile].[Page_Description] AS [Page_Description], 
+    [User_Profile].[Page_Keywords] AS [Page_Keywords]
+    FROM [dbo].[User_Profile] AS [User_Profile]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="User_Profile_FinalDraft" EntityType="Self.User_Profile_FinalDraft" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [User_Profile_FinalDraft].[Id] AS [Id], 
+    [User_Profile_FinalDraft].[Emp_code] AS [Emp_code], 
+    [User_Profile_FinalDraft].[Emp_Name] AS [Emp_Name], 
+    [User_Profile_FinalDraft].[Dept] AS [Dept], 
+    [User_Profile_FinalDraft].[Profile] AS [Profile], 
+    [User_Profile_FinalDraft].[Dept2] AS [Dept2], 
+    [User_Profile_FinalDraft].[Profile2] AS [Profile2], 
+    [User_Profile_FinalDraft].[Dept3] AS [Dept3], 
+    [User_Profile_FinalDraft].[Profile3] AS [Profile3], 
+    [User_Profile_FinalDraft].[Dept4] AS [Dept4], 
+    [User_Profile_FinalDraft].[Profile4] AS [Profile4], 
+    [User_Profile_FinalDraft].[Profile_Status] AS [Profile_Status], 
+    [User_Profile_FinalDraft].[Education] AS [Education], 
+    [User_Profile_FinalDraft].[Education_Status] AS [Education_Status], 
+    [User_Profile_FinalDraft].[Career] AS [Career], 
+    [User_Profile_FinalDraft].[Career_Status] AS [Career_Status], 
+    [User_Profile_FinalDraft].[Client_Comments] AS [Client_Comments], 
+    [User_Profile_FinalDraft].[Client_Comments_Status] AS [Client_Comments_Status], 
+    [User_Profile_FinalDraft].[Supreme_Court] AS [Supreme_Court], 
+    [User_Profile_FinalDraft].[Supreme_Court_Status] AS [Supreme_Court_Status], 
+    [User_Profile_FinalDraft].[Court_of_Appeal] AS [Court_of_Appeal], 
+    [User_Profile_FinalDraft].[Court_of_Appeal_Status] AS [Court_of_Appeal_Status], 
+    [User_Profile_FinalDraft].[High_Court] AS [High_Court], 
+    [User_Profile_FinalDraft].[High_Court_Status] AS [High_Court_Status], 
+    [User_Profile_FinalDraft].[Criminal_Court] AS [Criminal_Court], 
+    [User_Profile_FinalDraft].[Criminal_Court_Status] AS [Criminal_Court_Status], 
+    [User_Profile_FinalDraft].[Civil_Court] AS [Civil_Court], 
+    [User_Profile_FinalDraft].[Civil_Court_Status] AS [Civil_Court_Status], 
+    [User_Profile_FinalDraft].[Other_Supreme_Court] AS [Other_Supreme_Court], 
+    [User_Profile_FinalDraft].[Other_Supreme_Court_Status] AS [Other_Supreme_Court_Status], 
+    [User_Profile_FinalDraft].[Other_Court_of_Appeal] AS [Other_Court_of_Appeal], 
+    [User_Profile_FinalDraft].[Other_Court_of_Appeal_Status] AS [Other_Court_of_Appeal_Status], 
+    [User_Profile_FinalDraft].[Other_High_Court] AS [Other_High_Court], 
+    [User_Profile_FinalDraft].[Other_High_Court_Status] AS [Other_High_Court_Status], 
+    [User_Profile_FinalDraft].[Other_Criminal_Court] AS [Other_Criminal_Court], 
+    [User_Profile_FinalDraft].[Other_Criminal_Court_Status] AS [Other_Criminal_Court_Status], 
+    [User_Profile_FinalDraft].[Other_Civil_Court] AS [Other_Civil_Court], 
+    [User_Profile_FinalDraft].[Other_Civil_Court_Status] AS [Other_Civil_Court_Status], 
+    [User_Profile_FinalDraft].[Dir_RecAndAwards] AS [Dir_RecAndAwards], 
+    [User_Profile_FinalDraft].[Dir_RecAndAwards_Status] AS [Dir_RecAndAwards_Status], 
+    [User_Profile_FinalDraft].[MembershipAndAccreditations] AS [MembershipAndAccreditations], 
+    [User_Profile_FinalDraft].[MembershipAndAccreditations_Status] AS [MembershipAndAccreditations_Status], 
+    [User_Profile_FinalDraft].[Personal_Interests] AS [Personal_Interests], 
+    [User_Profile_FinalDraft].[Personal_Interests_Status] AS [Personal_Interests_Status], 
+    [User_Profile_FinalDraft].[Status] AS [Status], 
+    [User_Profile_FinalDraft].[Quality_Status] AS [Quality_Status], 
+    [User_Profile_FinalDraft].[Html_Status] AS [Html_Status], 
+    [User_Profile_FinalDraft].[Final_Status] AS [Final_Status], 
+    [User_Profile_FinalDraft].[Created_Date] AS [Created_Date], 
+    [User_Profile_FinalDraft].[Quality_Date] AS [Quality_Date], 
+    [User_Profile_FinalDraft].[Html_Date] AS [Html_Date], 
+    [User_Profile_FinalDraft].[Final_Date] AS [Final_Date], 
+    [User_Profile_FinalDraft].[Drafts_status] AS [Drafts_status], 
+    [User_Profile_FinalDraft].[Page_Title] AS [Page_Title], 
+    [User_Profile_FinalDraft].[Page_Description] AS [Page_Description], 
+    [User_Profile_FinalDraft].[Page_Keywords] AS [Page_Keywords]
+    FROM [dbo].[User_Profile_FinalDraft] AS [User_Profile_FinalDraft]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IT_DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="IT_DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Updates_MainWebsites" EntityType="IT_DatabaseModel.Updates_MainWebsites" />
+          <EntitySet Name="User_Profile" EntityType="IT_DatabaseModel.User_Profile" />
+          <EntitySet Name="Website_Department_Structure" EntityType="IT_DatabaseModel.Website_Department_Structure" />
+          <EntitySet Name="Website_Pages" EntityType="IT_DatabaseModel.Website_Pages" />
+          <EntitySet Name="Website_Pages_SubDepartments" EntityType="IT_DatabaseModel.Website_Pages_SubDepartments" />
+          <EntitySet Name="Website_Structure" EntityType="IT_DatabaseModel.Website_Structure" />
+          <EntitySet Name="Website_Videos" EntityType="IT_DatabaseModel.Website_Videos" />
+          <EntitySet Name="website_awards" EntityType="IT_DatabaseModel.website_awards" />
+          <EntitySet Name="website_Header_Pictures" EntityType="IT_DatabaseModel.website_Header_Pictures" />
+          <EntitySet Name="website_Office_Direction" EntityType="IT_DatabaseModel.website_Office_Direction" />
+          <EntitySet Name="User_Profile_FinalDraft" EntityType="IT_DatabaseModel.User_Profile_FinalDraft" />
+          <EntitySet Name="Website_Custom_SubDepartments" EntityType="IT_DatabaseModel.Website_Custom_SubDepartments" />
+          <EntitySet Name="SubDepartmentSwitchboards" EntityType="IT_DatabaseModel.SubDepartmentSwitchboard" />
+          <EntitySet Name="PhotoSession_StaffAttendance" EntityType="IT_DatabaseModel.PhotoSession_StaffAttendance" />
+          <EntitySet Name="PhotoSessions" EntityType="IT_DatabaseModel.PhotoSession" />
+          <EntitySet Name="MobileNoFor_ITIssues" EntityType="IT_DatabaseModel.MobileNoFor_ITIssues" />
+        </EntityContainer>
+        <EntityType Name="Updates_MainWebsites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Brief" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Contents" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="Date_Added" Type="DateTime" Precision="3" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Live" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Blog_Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Comments" Type="Int32" />
+          <Property Name="Image" Type="Boolean" />
+          <Property Name="Duplicate_ID" Type="Int64" />
+          <Property Name="KeywordsToBeUsed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Page_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DLorNonDL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="video" Type="Boolean" Nullable="false" />
+          <Property Name="filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User_Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Profile_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Education" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Education_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Career" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Career_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Client_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Client_Comments_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Supreme_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Supreme_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Court_of_Appeal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Court_of_Appeal_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="High_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="High_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Criminal_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Criminal_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Civil_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Civil_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Supreme_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Supreme_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Court_of_Appeal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Court_of_Appeal_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_High_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_High_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Criminal_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Criminal_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Civil_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Civil_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dir_RecAndAwards" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dir_RecAndAwards_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MembershipAndAccreditations" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MembershipAndAccreditations_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Personal_Interests" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Personal_Interests_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Quality_Status" Type="Boolean" />
+          <Property Name="Html_Status" Type="Boolean" />
+          <Property Name="Created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Quality_Date" Type="DateTime" Precision="3" />
+          <Property Name="Html_Date" Type="DateTime" Precision="3" />
+          <Property Name="Final_Status" Type="Boolean" />
+          <Property Name="Final_Date" Type="DateTime" Precision="3" />
+          <Property Name="Dept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dept2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Profile2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dept3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Profile3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dept4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Profile4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Drafts_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Page_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Page_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Page_Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Website_Department_Structure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Title1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Keywords1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="container1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Heading11" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Heading21" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Overview1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Services1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Our_Team1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="News1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="left_under_deptmenu1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="leftimage_under_deptmenu1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="folder1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="folderteam1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="contactstr1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="departmenttype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NameForNavigation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lawlogoimg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cssclass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessOrPersonal" Type="Boolean" />
+          <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="NameforHomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Private" Type="Int32" />
+          <Property Name="LegalAid" Type="Int32" />
+          <Property Name="Corporate" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Website_Pages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Sub_Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RewriteURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="date_update" Type="DateTime" Precision="3" />
+          <Property Name="anchortextnavigation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="AltTagIng1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomSubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartmentSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Website_Pages_SubDepartments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sequence1" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Website_Structure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="underwhichnode" Type="Int32" />
+          <Property Name="level" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="linkedid" Type="Int32" />
+          <Property Name="sequence" Type="Int32" />
+          <Property Name="underwhichnode1" Type="Int32" />
+          <Property Name="underwhichnode2" Type="Int32" />
+          <Property Name="underwhichnode3" Type="Int32" />
+          <Property Name="dept" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="Boolean" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="notesForSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewNameForSubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartmentNameForSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewNameForDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Website_Videos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoString" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emp_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Heading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="thumbnailpic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="website_filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DoneBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Reason_removal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="website_awards">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndividualCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StaffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="LegalDirectory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LegalDirectoryArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LegalDirectoryDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DLOffice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DLDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Blurb" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LogosToUse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="website_Header_Pictures">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Picture_Heading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Picture_Blurb" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imgfilename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mobileimgfilename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="updated" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="website_Office_Direction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Direction_From_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Category_Of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddressandDescription_of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Map_Of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DirectionByWalk" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DirectionByBus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="officeid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User_Profile_FinalDraft">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dept2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Profile2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dept3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Profile3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dept4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Profile4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Profile_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Education" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Education_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Career" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Career_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Client_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Client_Comments_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Supreme_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Supreme_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Court_of_Appeal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Court_of_Appeal_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="High_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="High_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Criminal_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Criminal_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Civil_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Civil_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Supreme_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Supreme_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Court_of_Appeal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Court_of_Appeal_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_High_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_High_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Criminal_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Criminal_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Civil_Court" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Civil_Court_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dir_RecAndAwards" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dir_RecAndAwards_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MembershipAndAccreditations" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MembershipAndAccreditations_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Personal_Interests" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Personal_Interests_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Quality_Status" Type="Boolean" />
+          <Property Name="Html_Status" Type="Boolean" />
+          <Property Name="Final_Status" Type="Boolean" />
+          <Property Name="Created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Quality_Date" Type="DateTime" Precision="3" />
+          <Property Name="Html_Date" Type="DateTime" Precision="3" />
+          <Property Name="Final_Date" Type="DateTime" Precision="3" />
+          <Property Name="Drafts_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Page_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Page_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Page_Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Website_Custom_SubDepartments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment_Switchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartmentTemp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubDepartmentSwitchboard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartmentDisplay" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PhotoSession_StaffAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="EmpName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Attendance" Type="Boolean" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PhotoSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Office" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Publish" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="MobileNoFor_ITIssues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Notification_Req" Type="Boolean" />
+          <Property Name="System_Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile_Auth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Updated" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IT_DatabaseModelStoreContainer" CdmEntityContainer="IT_DatabaseEntities">
+          <EntitySetMapping Name="Updates_MainWebsites">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.Updates_MainWebsites">
+              <MappingFragment StoreEntitySet="Updates_MainWebsites">
+                <ScalarProperty Name="Staff10" ColumnName="Staff10" />
+                <ScalarProperty Name="Staff9" ColumnName="Staff9" />
+                <ScalarProperty Name="Staff8" ColumnName="Staff8" />
+                <ScalarProperty Name="Staff7" ColumnName="Staff7" />
+                <ScalarProperty Name="Staff6" ColumnName="Staff6" />
+                <ScalarProperty Name="Staff5" ColumnName="Staff5" />
+                <ScalarProperty Name="Staff4" ColumnName="Staff4" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="video" ColumnName="video" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="Staff3" ColumnName="Staff3" />
+                <ScalarProperty Name="Staff2" ColumnName="Staff2" />
+                <ScalarProperty Name="Staff1" ColumnName="Staff1" />
+                <ScalarProperty Name="DLorNonDL" ColumnName="DLorNonDL" />
+                <ScalarProperty Name="Page_Title" ColumnName="Page_Title" />
+                <ScalarProperty Name="KeywordsToBeUsed" ColumnName="KeywordsToBeUsed" />
+                <ScalarProperty Name="Duplicate_ID" ColumnName="Duplicate_ID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Total_Comments" ColumnName="Total_Comments" />
+                <ScalarProperty Name="Blog_Department" ColumnName="Blog_Department" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Live" ColumnName="Live" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Date_Added" ColumnName="Date_Added" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Brief" ColumnName="Brief" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Profile">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.User_Profile">
+              <MappingFragment StoreEntitySet="User_Profile">
+                <ScalarProperty Name="Page_Keywords" ColumnName="Page_Keywords" />
+                <ScalarProperty Name="Page_Description" ColumnName="Page_Description" />
+                <ScalarProperty Name="Page_Title" ColumnName="Page_Title" />
+                <ScalarProperty Name="Drafts_status" ColumnName="Drafts_status" />
+                <ScalarProperty Name="Profile4" ColumnName="Profile4" />
+                <ScalarProperty Name="Dept4" ColumnName="Dept4" />
+                <ScalarProperty Name="Profile3" ColumnName="Profile3" />
+                <ScalarProperty Name="Dept3" ColumnName="Dept3" />
+                <ScalarProperty Name="Profile2" ColumnName="Profile2" />
+                <ScalarProperty Name="Dept2" ColumnName="Dept2" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="Final_Date" ColumnName="Final_Date" />
+                <ScalarProperty Name="Final_Status" ColumnName="Final_Status" />
+                <ScalarProperty Name="Html_Date" ColumnName="Html_Date" />
+                <ScalarProperty Name="Quality_Date" ColumnName="Quality_Date" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="Html_Status" ColumnName="Html_Status" />
+                <ScalarProperty Name="Quality_Status" ColumnName="Quality_Status" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Personal_Interests_Status" ColumnName="Personal_Interests_Status" />
+                <ScalarProperty Name="Personal_Interests" ColumnName="Personal_Interests" />
+                <ScalarProperty Name="MembershipAndAccreditations_Status" ColumnName="MembershipAndAccreditations_Status" />
+                <ScalarProperty Name="MembershipAndAccreditations" ColumnName="MembershipAndAccreditations" />
+                <ScalarProperty Name="Dir_RecAndAwards_Status" ColumnName="Dir_RecAndAwards_Status" />
+                <ScalarProperty Name="Dir_RecAndAwards" ColumnName="Dir_RecAndAwards" />
+                <ScalarProperty Name="Other_Civil_Court_Status" ColumnName="Other_Civil_Court_Status" />
+                <ScalarProperty Name="Other_Civil_Court" ColumnName="Other_Civil_Court" />
+                <ScalarProperty Name="Other_Criminal_Court_Status" ColumnName="Other_Criminal_Court_Status" />
+                <ScalarProperty Name="Other_Criminal_Court" ColumnName="Other_Criminal_Court" />
+                <ScalarProperty Name="Other_High_Court_Status" ColumnName="Other_High_Court_Status" />
+                <ScalarProperty Name="Other_High_Court" ColumnName="Other_High_Court" />
+                <ScalarProperty Name="Other_Court_of_Appeal_Status" ColumnName="Other_Court_of_Appeal_Status" />
+                <ScalarProperty Name="Other_Court_of_Appeal" ColumnName="Other_Court_of_Appeal" />
+                <ScalarProperty Name="Other_Supreme_Court_Status" ColumnName="Other_Supreme_Court_Status" />
+                <ScalarProperty Name="Other_Supreme_Court" ColumnName="Other_Supreme_Court" />
+                <ScalarProperty Name="Civil_Court_Status" ColumnName="Civil_Court_Status" />
+                <ScalarProperty Name="Civil_Court" ColumnName="Civil_Court" />
+                <ScalarProperty Name="Criminal_Court_Status" ColumnName="Criminal_Court_Status" />
+                <ScalarProperty Name="Criminal_Court" ColumnName="Criminal_Court" />
+                <ScalarProperty Name="High_Court_Status" ColumnName="High_Court_Status" />
+                <ScalarProperty Name="High_Court" ColumnName="High_Court" />
+                <ScalarProperty Name="Court_of_Appeal_Status" ColumnName="Court_of_Appeal_Status" />
+                <ScalarProperty Name="Court_of_Appeal" ColumnName="Court_of_Appeal" />
+                <ScalarProperty Name="Supreme_Court_Status" ColumnName="Supreme_Court_Status" />
+                <ScalarProperty Name="Supreme_Court" ColumnName="Supreme_Court" />
+                <ScalarProperty Name="Client_Comments_Status" ColumnName="Client_Comments_Status" />
+                <ScalarProperty Name="Client_Comments" ColumnName="Client_Comments" />
+                <ScalarProperty Name="Career_Status" ColumnName="Career_Status" />
+                <ScalarProperty Name="Career" ColumnName="Career" />
+                <ScalarProperty Name="Education_Status" ColumnName="Education_Status" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Profile_Status" ColumnName="Profile_Status" />
+                <ScalarProperty Name="Profile" ColumnName="Profile" />
+                <ScalarProperty Name="Emp_Name" ColumnName="Emp_Name" />
+                <ScalarProperty Name="Emp_code" ColumnName="Emp_code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Department_Structure">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Department_Structure">
+              <MappingFragment StoreEntitySet="Website_Department_Structure">
+                <ScalarProperty Name="Corporate" ColumnName="Corporate" />
+                <ScalarProperty Name="LegalAid" ColumnName="LegalAid" />
+                <ScalarProperty Name="Private" ColumnName="Private" />
+                <ScalarProperty Name="NameforHomePage" ColumnName="NameforHomePage" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="BusinessOrPersonal" ColumnName="BusinessOrPersonal" />
+                <ScalarProperty Name="cssclass" ColumnName="cssclass" />
+                <ScalarProperty Name="lawlogoimg" ColumnName="lawlogoimg" />
+                <ScalarProperty Name="NameForNavigation" ColumnName="NameForNavigation" />
+                <ScalarProperty Name="departmenttype" ColumnName="departmenttype" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="contactstr1" ColumnName="contactstr1" />
+                <ScalarProperty Name="folderteam1" ColumnName="folderteam1" />
+                <ScalarProperty Name="folder1" ColumnName="folder1" />
+                <ScalarProperty Name="leftimage_under_deptmenu1" ColumnName="leftimage_under_deptmenu1" />
+                <ScalarProperty Name="left_under_deptmenu1" ColumnName="left_under_deptmenu1" />
+                <ScalarProperty Name="News1" ColumnName="News1" />
+                <ScalarProperty Name="Our_Team1" ColumnName="Our_Team1" />
+                <ScalarProperty Name="Services1" ColumnName="Services1" />
+                <ScalarProperty Name="Overview1" ColumnName="Overview1" />
+                <ScalarProperty Name="Heading21" ColumnName="Heading21" />
+                <ScalarProperty Name="Heading11" ColumnName="Heading11" />
+                <ScalarProperty Name="container1" ColumnName="container1" />
+                <ScalarProperty Name="Keywords1" ColumnName="Keywords1" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Title1" ColumnName="Title1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Pages">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Pages">
+              <MappingFragment StoreEntitySet="Website_Pages">
+                <ScalarProperty Name="CustomDepartment" ColumnName="CustomDepartment" />
+                <ScalarProperty Name="SubDepartmentSwitchboard" ColumnName="SubDepartmentSwitchboard" />
+                <ScalarProperty Name="CustomSubDepartment" ColumnName="CustomSubDepartment" />
+                <ScalarProperty Name="AltTagIng7" ColumnName="AltTagIng7" />
+                <ScalarProperty Name="AltTagIng6" ColumnName="AltTagIng6" />
+                <ScalarProperty Name="AltTagIng5" ColumnName="AltTagIng5" />
+                <ScalarProperty Name="AltTagIng4" ColumnName="AltTagIng4" />
+                <ScalarProperty Name="AltTagIng3" ColumnName="AltTagIng3" />
+                <ScalarProperty Name="AltTagIng2" ColumnName="AltTagIng2" />
+                <ScalarProperty Name="AltTagIng1" ColumnName="AltTagIng1" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="anchortextnavigation" ColumnName="anchortextnavigation" />
+                <ScalarProperty Name="date_update" ColumnName="date_update" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="RewriteURL" ColumnName="RewriteURL" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="Sub_Sub_Department" ColumnName="Sub_Sub_Department" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Sub_Department" ColumnName="Sub_Department" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Pages_SubDepartments">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Pages_SubDepartments">
+              <MappingFragment StoreEntitySet="Website_Pages_SubDepartments">
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="sequence1" ColumnName="sequence1" />
+                <ScalarProperty Name="Sub_department" ColumnName="Sub_department" />
+                <ScalarProperty Name="department" ColumnName="department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Structure">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Structure">
+              <MappingFragment StoreEntitySet="Website_Structure">
+                <ScalarProperty Name="NewNameForDepartment" ColumnName="NewNameForDepartment" />
+                <ScalarProperty Name="SubDepartmentNameForSwitchboard" ColumnName="SubDepartmentNameForSwitchboard" />
+                <ScalarProperty Name="NewNameForSubDepartment" ColumnName="NewNameForSubDepartment" />
+                <ScalarProperty Name="notesForSwitchboard" ColumnName="notesForSwitchboard" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="underwhichnode3" ColumnName="underwhichnode3" />
+                <ScalarProperty Name="underwhichnode2" ColumnName="underwhichnode2" />
+                <ScalarProperty Name="underwhichnode1" ColumnName="underwhichnode1" />
+                <ScalarProperty Name="sequence" ColumnName="sequence" />
+                <ScalarProperty Name="linkedid" ColumnName="linkedid" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="underwhichnode" ColumnName="underwhichnode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Videos">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Videos">
+              <MappingFragment StoreEntitySet="Website_Videos">
+                <ScalarProperty Name="Reason_removal" ColumnName="Reason_removal" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DoneBy" ColumnName="DoneBy" />
+                <ScalarProperty Name="website_filename" ColumnName="website_filename" />
+                <ScalarProperty Name="thumbnailpic" ColumnName="thumbnailpic" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
+                <ScalarProperty Name="VideoString" ColumnName="VideoString" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="website_awards">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.website_awards">
+              <MappingFragment StoreEntitySet="website_awards">
+                <ScalarProperty Name="LogosToUse" ColumnName="LogosToUse" />
+                <ScalarProperty Name="Blurb" ColumnName="Blurb" />
+                <ScalarProperty Name="DLDepartment" ColumnName="DLDepartment" />
+                <ScalarProperty Name="DLOffice" ColumnName="DLOffice" />
+                <ScalarProperty Name="LegalDirectoryDepartment" ColumnName="LegalDirectoryDepartment" />
+                <ScalarProperty Name="LegalDirectoryArea" ColumnName="LegalDirectoryArea" />
+                <ScalarProperty Name="LegalDirectory" ColumnName="LegalDirectory" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="IndividualCompany" ColumnName="IndividualCompany" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="website_Header_Pictures">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.website_Header_Pictures">
+              <MappingFragment StoreEntitySet="website_Header_Pictures">
+                <ScalarProperty Name="updated" ColumnName="updated" />
+                <ScalarProperty Name="mobileimgfilename" ColumnName="mobileimgfilename" />
+                <ScalarProperty Name="imgfilename" ColumnName="imgfilename" />
+                <ScalarProperty Name="Picture_Blurb" ColumnName="Picture_Blurb" />
+                <ScalarProperty Name="Picture_Heading" ColumnName="Picture_Heading" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="website_Office_Direction">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.website_Office_Direction">
+              <MappingFragment StoreEntitySet="website_Office_Direction">
+                <ScalarProperty Name="officeid" ColumnName="officeid" />
+                <ScalarProperty Name="DirectionByBus" ColumnName="DirectionByBus" />
+                <ScalarProperty Name="DirectionByWalk" ColumnName="DirectionByWalk" />
+                <ScalarProperty Name="Map_Of_Site" ColumnName="Map_Of_Site" />
+                <ScalarProperty Name="AddressandDescription_of_Site" ColumnName="AddressandDescription_of_Site" />
+                <ScalarProperty Name="Category_Of_Site" ColumnName="Category_Of_Site" />
+                <ScalarProperty Name="Direction_From_Site" ColumnName="Direction_From_Site" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Profile_FinalDraft">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.User_Profile_FinalDraft">
+              <MappingFragment StoreEntitySet="User_Profile_FinalDraft">
+                <ScalarProperty Name="Page_Keywords" ColumnName="Page_Keywords" />
+                <ScalarProperty Name="Page_Description" ColumnName="Page_Description" />
+                <ScalarProperty Name="Page_Title" ColumnName="Page_Title" />
+                <ScalarProperty Name="Drafts_status" ColumnName="Drafts_status" />
+                <ScalarProperty Name="Final_Date" ColumnName="Final_Date" />
+                <ScalarProperty Name="Html_Date" ColumnName="Html_Date" />
+                <ScalarProperty Name="Quality_Date" ColumnName="Quality_Date" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="Final_Status" ColumnName="Final_Status" />
+                <ScalarProperty Name="Html_Status" ColumnName="Html_Status" />
+                <ScalarProperty Name="Quality_Status" ColumnName="Quality_Status" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Personal_Interests_Status" ColumnName="Personal_Interests_Status" />
+                <ScalarProperty Name="Personal_Interests" ColumnName="Personal_Interests" />
+                <ScalarProperty Name="MembershipAndAccreditations_Status" ColumnName="MembershipAndAccreditations_Status" />
+                <ScalarProperty Name="MembershipAndAccreditations" ColumnName="MembershipAndAccreditations" />
+                <ScalarProperty Name="Dir_RecAndAwards_Status" ColumnName="Dir_RecAndAwards_Status" />
+                <ScalarProperty Name="Dir_RecAndAwards" ColumnName="Dir_RecAndAwards" />
+                <ScalarProperty Name="Other_Civil_Court_Status" ColumnName="Other_Civil_Court_Status" />
+                <ScalarProperty Name="Other_Civil_Court" ColumnName="Other_Civil_Court" />
+                <ScalarProperty Name="Other_Criminal_Court_Status" ColumnName="Other_Criminal_Court_Status" />
+                <ScalarProperty Name="Other_Criminal_Court" ColumnName="Other_Criminal_Court" />
+                <ScalarProperty Name="Other_High_Court_Status" ColumnName="Other_High_Court_Status" />
+                <ScalarProperty Name="Other_High_Court" ColumnName="Other_High_Court" />
+                <ScalarProperty Name="Other_Court_of_Appeal_Status" ColumnName="Other_Court_of_Appeal_Status" />
+                <ScalarProperty Name="Other_Court_of_Appeal" ColumnName="Other_Court_of_Appeal" />
+                <ScalarProperty Name="Other_Supreme_Court_Status" ColumnName="Other_Supreme_Court_Status" />
+                <ScalarProperty Name="Other_Supreme_Court" ColumnName="Other_Supreme_Court" />
+                <ScalarProperty Name="Civil_Court_Status" ColumnName="Civil_Court_Status" />
+                <ScalarProperty Name="Civil_Court" ColumnName="Civil_Court" />
+                <ScalarProperty Name="Criminal_Court_Status" ColumnName="Criminal_Court_Status" />
+                <ScalarProperty Name="Criminal_Court" ColumnName="Criminal_Court" />
+                <ScalarProperty Name="High_Court_Status" ColumnName="High_Court_Status" />
+                <ScalarProperty Name="High_Court" ColumnName="High_Court" />
+                <ScalarProperty Name="Court_of_Appeal_Status" ColumnName="Court_of_Appeal_Status" />
+                <ScalarProperty Name="Court_of_Appeal" ColumnName="Court_of_Appeal" />
+                <ScalarProperty Name="Supreme_Court_Status" ColumnName="Supreme_Court_Status" />
+                <ScalarProperty Name="Supreme_Court" ColumnName="Supreme_Court" />
+                <ScalarProperty Name="Client_Comments_Status" ColumnName="Client_Comments_Status" />
+                <ScalarProperty Name="Client_Comments" ColumnName="Client_Comments" />
+                <ScalarProperty Name="Career_Status" ColumnName="Career_Status" />
+                <ScalarProperty Name="Career" ColumnName="Career" />
+                <ScalarProperty Name="Education_Status" ColumnName="Education_Status" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Profile_Status" ColumnName="Profile_Status" />
+                <ScalarProperty Name="Profile4" ColumnName="Profile4" />
+                <ScalarProperty Name="Dept4" ColumnName="Dept4" />
+                <ScalarProperty Name="Profile3" ColumnName="Profile3" />
+                <ScalarProperty Name="Dept3" ColumnName="Dept3" />
+                <ScalarProperty Name="Profile2" ColumnName="Profile2" />
+                <ScalarProperty Name="Dept2" ColumnName="Dept2" />
+                <ScalarProperty Name="Profile" ColumnName="Profile" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="Emp_Name" ColumnName="Emp_Name" />
+                <ScalarProperty Name="Emp_code" ColumnName="Emp_code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Custom_SubDepartments">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Custom_SubDepartments">
+              <MappingFragment StoreEntitySet="Website_Custom_SubDepartments">
+                <ScalarProperty Name="SubDepartmentTemp" ColumnName="SubDepartmentTemp" />
+                <ScalarProperty Name="SubDepartment_Switchboard" ColumnName="SubDepartment_Switchboard" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubDepartmentSwitchboards">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.SubDepartmentSwitchboard">
+              <MappingFragment StoreEntitySet="SubDepartmentSwitchboard">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="SubDepartmentDisplay" ColumnName="SubDepartmentDisplay" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoSession_StaffAttendance">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.PhotoSession_StaffAttendance">
+              <MappingFragment StoreEntitySet="PhotoSession_StaffAttendance">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Attendance" ColumnName="Attendance" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoSessions">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.PhotoSession">
+              <MappingFragment StoreEntitySet="PhotoSession">
+                <ScalarProperty Name="Publish" ColumnName="Publish" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MobileNoFor_ITIssues">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.MobileNoFor_ITIssues">
+              <MappingFragment StoreEntitySet="MobileNoFor_ITIssues">
+                <ScalarProperty Name="Date_Updated" ColumnName="Date_Updated" />
+                <ScalarProperty Name="Mobile_Auth" ColumnName="Mobile_Auth" />
+                <ScalarProperty Name="System_Username" ColumnName="System_Username" />
+                <ScalarProperty Name="Notification_Req" ColumnName="Notification_Req" />
+                <ScalarProperty Name="Emp_Code" ColumnName="Emp_Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

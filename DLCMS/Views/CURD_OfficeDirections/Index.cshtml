@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DLCMS.Models.website_Office_Direction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Direction_From_Site)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.officeid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category_Of_Site)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressandDescription_of_Site)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Map_Of_Site)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DirectionByWalk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DirectionByBus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direction_From_Site)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.officeid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category_Of_Site)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressandDescription_of_Site)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Map_Of_Site)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DirectionByWalk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DirectionByBus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,215 @@
+﻿@model DLCMS.Models.website_awards
+@{
+    ViewBag.Title = "Create";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>website_awards</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IndividualCompany, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IndividualCompany", new List<SelectListItem> { 
+                            new SelectListItem { Text = "Individual", Value = "Individual" }, 
+                            new SelectListItem { Text = "Department", Value = "Department" }
+                }, "select category", new { @class = "col-md-10 form-control" })
+                @Html.ValidationMessageFor(model => model.IndividualCompany)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StaffName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("StaffName", (SelectList)Dictionary["SatffList"], "-- Select --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StaffName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Year, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Year, new List<SelectListItem> {
+                            new SelectListItem { Text = "2018", Value = "2018" },
+                            new SelectListItem { Text = "2019", Value = "2019" },
+                            new SelectListItem { Text = "2020", Value = "2020" },
+                            new SelectListItem { Text = "2021", Value = "2021" },
+                            new SelectListItem { Text = "2022", Value = "2022" }
+                }, "select category", new { @class = "col-md-10 form-control" })
+                @Html.ValidationMessageFor(model => model.Year)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LegalDirectory, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("LegalDirectory", "Legal 500" ,new { @class="form-control", value="Legal 500" })
+                @*@Html.DropDownList("LegalDirectory", new List<SelectListItem> {
+                            new SelectListItem { Text = "Legal 500", Value = "Legal 500" },
+                            new SelectListItem { Text = "Chambers UK", Value = "Chambers UK" },
+                            new SelectListItem { Text = "AVMA", Value = "AVMA" },
+                            new SelectListItem { Text = "Other", Value = "Other" }
+                }, "select category", new { @class = "col-md-10 form-control" })*@
+                @Html.ValidationMessageFor(model => model.LegalDirectory)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LegalDirectoryArea, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.LegalDirectoryArea, new { @class="form-control" })
+                @Html.ValidationMessageFor(model => model.LegalDirectoryArea)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LegalDirectoryDepartment, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LegalDirectoryDepartment, new { @class = "form-control"})
+                @*@Html.DropDownList("LegalDirectoryDepartment", new List<SelectListItem> {
+           new SelectListItem { Text = "About Us", Value = "About Us" },
+new SelectListItem { Text = "Action Against Public Authorities", Value = "Action Against Public Authorities" },
+new SelectListItem { Text = "Business Crime &amp; Investigation", Value = "Business Crime &amp; Investigation" },
+new SelectListItem { Text = "Business Immigration", Value = "Business Immigration" },
+new SelectListItem { Text = "Campaign", Value = "Campaign" },
+new SelectListItem { Text = "Careers", Value = "Careers" },
+new SelectListItem { Text = "Charities", Value = "Charities" },
+new SelectListItem { Text = "Child Care", Value = "Child Care" },
+new SelectListItem { Text = "Civil Liberties and Human Rights", Value = "Civil Liberties and Human Rights" },
+new SelectListItem { Text = "Civil Litigation", Value = "Civil Litigation" },
+new SelectListItem { Text = "Clinical Negligence", Value = "Clinical Negligence" },
+new SelectListItem { Text = "Commercial &amp; Company", Value = "Commercial &amp; Company" },
+new SelectListItem { Text = "Commercial Litigation &amp; Disputes", Value = "Commercial Litigation &amp; Disputes" },
+new SelectListItem { Text = "Commercial Property Services", Value = "Commercial Property Services" },
+new SelectListItem { Text = "Community Care", Value = "Community Care" },
+new SelectListItem { Text = "Consultancy", Value = "Consultancy" },
+new SelectListItem { Text = "Court of Protection", Value = "Court of Protection" },
+new SelectListItem { Text = "Crime", Value = "Crime" },
+new SelectListItem { Text = "Debt", Value = "Debt" },
+new SelectListItem { Text = "Employment", Value = "Employment" },
+new SelectListItem { Text = "European Union", Value = "European Union" },
+new SelectListItem { Text = "Family", Value = "Family" },
+new SelectListItem { Text = "Fees &amp; Funding", Value = "Fees &amp; Funding" },
+new SelectListItem { Text = "Find Us", Value = "Find Us" },
+new SelectListItem { Text = "Housing", Value = "Housing" },
+new SelectListItem { Text = "Immigration", Value = "Immigration" },
+new SelectListItem { Text = "International Disputes", Value = "International Disputes" },
+new SelectListItem { Text = "InThePress", Value = "InThePress" },
+new SelectListItem { Text = "Islamic Law", Value = "Islamic Law" },
+new SelectListItem { Text = "Legal News", Value = "Legal News" },
+new SelectListItem { Text = "Main", Value = "Main" },
+new SelectListItem { Text = "Management Board", Value = "Management Board" },
+new SelectListItem { Text = "Mental Health", Value = "Mental Health" },
+new SelectListItem { Text = "Misleneous", Value = "Misleneous" },
+new SelectListItem { Text = "Motoring Law", Value = "Motoring Law" },
+new SelectListItem { Text = "Personal Injury", Value = "Personal Injury" },
+new SelectListItem { Text = "Prison Law", Value = "Prison Law" },
+new SelectListItem { Text = "Professional Negligence", Value = "Professional Negligence" },
+new SelectListItem { Text = "Public Law", Value = "Public Law" },
+new SelectListItem { Text = "Regulatory Law", Value = "Regulatory Law" },
+new SelectListItem { Text = "Reported Case", Value = "Reported Case" },
+new SelectListItem { Text = "Welfare Benefits", Value = "Welfare Benefits" },
+new SelectListItem { Text = "Wills and Probate", Value = "Wills and Probate" }
+}, "-- Select --", new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(model => model.LegalDirectoryDepartment)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DLOffice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.DLOffice, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DLOffice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DLDepartment, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DLDepartment", new List<SelectListItem> {
+           new SelectListItem { Text = "About Us", Value = "About Us" },
+new SelectListItem { Text = "Action Against Public Authorities", Value = "Action Against Public Authorities" },
+new SelectListItem { Text = "Business Crime &amp; Investigation", Value = "Business Crime &amp; Investigation" },
+new SelectListItem { Text = "Business Immigration", Value = "Business Immigration" },
+new SelectListItem { Text = "Campaign", Value = "Campaign" },
+new SelectListItem { Text = "Careers", Value = "Careers" },
+new SelectListItem { Text = "Charities", Value = "Charities" },
+new SelectListItem { Text = "Child Care", Value = "Child Care" },
+new SelectListItem { Text = "Civil Liberties and Human Rights", Value = "Civil Liberties and Human Rights" },
+new SelectListItem { Text = "Civil Litigation", Value = "Civil Litigation" },
+new SelectListItem { Text = "Clinical Negligence", Value = "Clinical Negligence" },
+new SelectListItem { Text = "Commercial &amp; Company", Value = "Commercial &amp; Company" },
+new SelectListItem { Text = "Commercial Litigation &amp; Disputes", Value = "Commercial Litigation &amp; Disputes" },
+new SelectListItem { Text = "Commercial Property Services", Value = "Commercial Property Services" },
+new SelectListItem { Text = "Community Care", Value = "Community Care" },
+new SelectListItem { Text = "Consultancy", Value = "Consultancy" },
+new SelectListItem { Text = "Court of Protection", Value = "Court of Protection" },
+new SelectListItem { Text = "Crime", Value = "Crime" },
+new SelectListItem { Text = "Debt", Value = "Debt" },
+new SelectListItem { Text = "Employment", Value = "Employment" },
+new SelectListItem { Text = "European Union", Value = "European Union" },
+new SelectListItem { Text = "Family", Value = "Family" },
+new SelectListItem { Text = "Fees &amp; Funding", Value = "Fees &amp; Funding" },
+new SelectListItem { Text = "Find Us", Value = "Find Us" },
+new SelectListItem { Text = "Housing", Value = "Housing" },
+new SelectListItem { Text = "Immigration", Value = "Immigration" },
+new SelectListItem { Text = "International Disputes", Value = "International Disputes" },
+new SelectListItem { Text = "InThePress", Value = "InThePress" },
+new SelectListItem { Text = "Islamic Law", Value = "Islamic Law" },
+new SelectListItem { Text = "Legal News", Value = "Legal News" },
+new SelectListItem { Text = "Main", Value = "Main" },
+new SelectListItem { Text = "Management Board", Value = "Management Board" },
+new SelectListItem { Text = "Mental Health", Value = "Mental Health" },
+new SelectListItem { Text = "Misleneous", Value = "Misleneous" },
+new SelectListItem { Text = "Motoring Law", Value = "Motoring Law" },
+new SelectListItem { Text = "Personal Injury", Value = "Personal Injury" },
+new SelectListItem { Text = "Prison Law", Value = "Prison Law" },
+new SelectListItem { Text = "Professional Negligence", Value = "Professional Negligence" },
+new SelectListItem { Text = "Public Law", Value = "Public Law" },
+new SelectListItem { Text = "Regulatory Law", Value = "Regulatory Law" },
+new SelectListItem { Text = "Reported Case", Value = "Reported Case" },
+new SelectListItem { Text = "Welfare Benefits", Value = "Welfare Benefits" },
+new SelectListItem { Text = "Wills and Probate", Value = "Wills and Probate" }
+}, "-- Select --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DLDepartment)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Blurb, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("Blurb", new { rows = "10", cols = "10", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Blurb)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LogosToUse, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LogosToUse)
+                @Html.ValidationMessageFor(model => model.LogosToUse)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

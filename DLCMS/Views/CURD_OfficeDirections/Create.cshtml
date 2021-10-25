@@ -1,0 +1,85 @@
+﻿@model DLCMS.Models.website_Office_Direction
+
+@{
+    ViewBag.Title = "Create";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>website_Office_Direction</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.officeid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.DropDownListFor(model => model.officeid, (SelectList)Dictionary["OfficeList"], "-- Select --")
+                @Html.ValidationMessageFor(model => model.officeid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Direction_From_Site, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Direction_From_Site)
+                @Html.ValidationMessageFor(model => model.Direction_From_Site)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category_Of_Site, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Category_Of_Site", new List<SelectListItem> { new SelectListItem { Text = "Car Park", Value = "Car Park" }, new SelectListItem { Text = "Train Station", Value = "Train Station" }, new SelectListItem { Text = "Underground Station", Value = "Underground Station" }, new SelectListItem { Text = "Overground Station", Value = "Overground Station" }, new SelectListItem { Text = "Bus Stop", Value = "Bus Stop" }, new SelectListItem { Text = "Bus Station", Value = "Bus Station" }, new SelectListItem { Text = "Details", Value = "Details" }, new SelectListItem { Text = "Street View", Value = "Street View" } }, "Select Category")
+                @Html.ValidationMessageFor(model => model.Category_Of_Site)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressandDescription_of_Site, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("AddressandDescription_of_Site", new { rows = "10", cols = "10", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AddressandDescription_of_Site)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Map_Of_Site, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("Map_Of_Site", new { rows = "10", cols = "10", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Map_Of_Site)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DirectionByWalk, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("DirectionByWalk", new { rows = "10", cols = "10", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DirectionByWalk)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DirectionByBus, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("DirectionByBus", new { rows = "10", cols = "10", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DirectionByBus)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

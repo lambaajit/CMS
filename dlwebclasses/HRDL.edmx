@@ -1,0 +1,1903 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HRDDLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HRDDL.dbo.Emp_ITInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Emp_ITInfo">
+          <Key>
+            <PropertyRef Name="auto_number" />
+          </Key>
+          <Property Name="auto_number" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_Code" Type="varchar" MaxLength="20" />
+          <Property Name="typist_name" Type="varchar" MaxLength="50" />
+          <Property Name="typist_email" Type="varchar" MaxLength="50" />
+          <Property Name="extension_no" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Network_Username" Type="varchar" MaxLength="20" />
+          <Property Name="Network_Password" Type="varchar" MaxLength="20" />
+          <Property Name="Osprey_Acc_Created" Type="char" MaxLength="1" />
+          <Property Name="Osprey_Username" Type="varchar" MaxLength="20" />
+          <Property Name="Osprey_Password" Type="varchar" MaxLength="20" />
+          <Property Name="feeearner_code" Type="varchar" MaxLength="10" />
+          <Property Name="bb_mobile_no" Type="varchar" MaxLength="50" />
+          <Property Name="bb_simcard_no" Type="varchar" MaxLength="50" />
+          <Property Name="bb_imei_no" Type="varchar" MaxLength="50" />
+          <Property Name="notes" Type="varchar" MaxLength="1000" />
+          <Property Name="Computer_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Location" Type="varchar" MaxLength="20" />
+          <Property Name="Inventory_Signed" Type="char" MaxLength="1" />
+          <Property Name="Personal_Portal_Created" Type="char" MaxLength="1" />
+          <Property Name="Staff_Personal_Portal_Username" Type="varchar" MaxLength="30" />
+          <Property Name="Staff_Persona_Portal_Password" Type="varchar" MaxLength="20" />
+          <Property Name="Butterworths_Email_Updates_Created" Type="char" MaxLength="1" />
+          <Property Name="DDn" Type="varchar" MaxLength="20" />
+          <Property Name="Access_To_HR_Database" Type="char" MaxLength="1" />
+          <Property Name="Perm_Level" Type="varchar" MaxLength="20" />
+          <Property Name="swipcard_number" Type="varchar" MaxLength="20" />
+          <Property Name="swipcards_taken" Type="char" MaxLength="1" />
+          <Property Name="fingerprints_taken" Type="varchar" MaxLength="50" />
+          <Property Name="Exch_ID_Created_Date" Type="datetime" />
+          <Property Name="Exch_ID_Deleted_Date" Type="datetime" />
+          <Property Name="Network_Username_Created" Type="char" MaxLength="1" />
+          <Property Name="OutLook_Acct_Created" Type="char" MaxLength="1" />
+          <Property Name="OutLook_Username" Type="varchar" MaxLength="50" />
+          <Property Name="OutLook_Password" Type="varchar" MaxLength="50" />
+          <Property Name="sign_title" Type="varchar" MaxLength="10" />
+          <Property Name="sign_jobtitle" Type="varchar" MaxLength="50" />
+          <Property Name="sign_title1" Type="varchar" MaxLength="50" />
+          <Property Name="sign_title2" Type="varchar" MaxLength="50" />
+          <Property Name="sign_title3" Type="varchar" MaxLength="50" />
+          <Property Name="sign_dx" Type="nvarchar" MaxLength="50" />
+          <Property Name="sign_fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="sign_office" Type="varchar" MaxLength="50" />
+          <Property Name="laptop_given" Type="char" MaxLength="1" />
+          <Property Name="remote_access_given" Type="char" MaxLength="1" />
+          <Property Name="dictaphone_given" Type="char" MaxLength="1" />
+          <Property Name="Emp_ITInfo_created_stamp" Type="datetime" />
+          <Property Name="Emp_ITInfo_created_user" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_ITInfo_created_version" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_ITInfo_created_user_Program" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_ITInfo_created_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_ITInfo_created_ip" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_ITInfo_modified_stamp" Type="datetime" />
+          <Property Name="Emp_ITInfo_modified_user" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_ITInfo_modified_version" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_ITInfo_modified_user_program" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_ITInfo_modified_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_ITInfo_modified_ip" Type="varchar" MaxLength="50" />
+          <Property Name="old_swipcard_number" Type="varchar" MaxLength="20" />
+          <Property Name="rdp_mobile_number" Type="varchar" MaxLength="50" />
+          <Property Name="INDIGO_Userid" Type="varchar" MaxLength="50" />
+          <Property Name="IndigoAccount_EndDate" Type="datetime" />
+          <Property Name="service_tag" Type="varchar" MaxLength="100" />
+          <Property Name="emp_email_code" Type="varchar" MaxLength="50" />
+          <Property Name="department_it" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Emp_Profile">
+          <Key>
+            <PropertyRef Name="emp_code" />
+            <PropertyRef Name="jobtitle" />
+            <PropertyRef Name="department" />
+          </Key>
+          <Property Name="emp_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="jobtitle" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="datejoined" Type="datetime" />
+          <Property Name="department" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="education" Type="varchar" MaxLength="500" />
+          <Property Name="prof_memship" Type="varchar" MaxLength="1000" />
+          <Property Name="email" Type="varchar" MaxLength="40" />
+          <Property Name="office" Type="varchar" MaxLength="20" />
+          <Property Name="experience" Type="varchar(max)" />
+          <Property Name="mem_and_int" Type="varchar" MaxLength="2000" />
+          <Property Name="web_permission" Type="char" MaxLength="1" />
+          <Property Name="keywords" Type="varchar" MaxLength="3000" />
+          <Property Name="title" Type="varchar" MaxLength="3000" />
+          <Property Name="description" Type="varchar" MaxLength="3000" />
+          <Property Name="updated_by" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_created_stamp" Type="datetime" />
+          <Property Name="Emp_Profile_created_user" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_created_version" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_created_Program" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_created_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_created_ip" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_modified_stamp" Type="datetime" />
+          <Property Name="Emp_Profile_modified_user" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_modified_version" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_modified_program" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_modified_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_Profile_modified_ip" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Offices">
+          <Key>
+            <PropertyRef Name="office_code" />
+          </Key>
+          <Property Name="office_code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="office_desc" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="office_address" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="office_addrText" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="office_type" Type="varchar" MaxLength="15" />
+          <Property Name="operation_statusO" Type="char" MaxLength="1" />
+          <Property Name="office_name" Type="varchar" MaxLength="50" />
+          <Property Name="office_geo_location" Type="varchar" MaxLength="30" />
+          <Property Name="datecreated" Type="datetime" />
+          <Property Name="dateclosed" Type="datetime" />
+          <Property Name="county" Type="varchar" MaxLength="200" />
+          <Property Name="office_status" Type="bit" />
+          <Property Name="office_dx_no" Type="varchar" MaxLength="30" />
+          <Property Name="organization_supplier_number" Type="varchar" MaxLength="12" />
+          <Property Name="created_stamp" Type="datetime" />
+          <Property Name="created_user" Type="varchar" MaxLength="50" />
+          <Property Name="created_version" Type="varchar" MaxLength="50" />
+          <Property Name="created_Program" Type="varchar" MaxLength="50" />
+          <Property Name="created_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="created_ip" Type="varchar" MaxLength="50" />
+          <Property Name="modified_stamp" Type="datetime" />
+          <Property Name="modified_user" Type="varchar" MaxLength="50" />
+          <Property Name="modified_version" Type="varchar" MaxLength="50" />
+          <Property Name="modified_program" Type="varchar" MaxLength="50" />
+          <Property Name="modified_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="modified_ip" Type="varchar" MaxLength="50" />
+          <Property Name="postcode" Type="varchar" MaxLength="50" />
+          <Property Name="isswipemachine_present" Type="bit" />
+          <Property Name="telephone_office_code" Type="varchar" MaxLength="50" />
+          <Property Name="indigo_office_code" Type="varchar" MaxLength="3" />
+          <Property Name="fb" Type="varbinary(max)" />
+          <Property Name="twitter" Type="varbinary(max)" />
+          <Property Name="linkedin" Type="varbinary(max)" />
+          <Property Name="TrainingPlan_office" Type="bit" />
+          <Property Name="Main_Office" Type="bit" />
+        </EntityType>
+        <EntityType Name="Emp_Details">
+          <Key>
+            <PropertyRef Name="emp_code" />
+          </Key>
+          <Property Name="emp_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="15" />
+          <Property Name="initial" Type="varchar" MaxLength="5" />
+          <Property Name="forename" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="known_as" Type="varchar" MaxLength="50" />
+          <Property Name="qualifications" Type="varchar" MaxLength="90" />
+          <Property Name="jobtitle" Type="varchar" MaxLength="80" />
+          <Property Name="jobtitle_id" Type="varchar" MaxLength="80" />
+          <Property Name="department_it" Type="varchar" MaxLength="50" />
+          <Property Name="bb_given" Type="char" MaxLength="1" />
+          <Property Name="admitted_staff" Type="char" MaxLength="1" />
+          <Property Name="nonadmitted_staff" Type="char" MaxLength="1" />
+          <Property Name="admin_staff" Type="char" MaxLength="1" />
+          <Property Name="freelance_consultant" Type="char" MaxLength="1" />
+          <Property Name="limited_company" Type="char" MaxLength="1" />
+          <Property Name="pc1" Type="float" />
+          <Property Name="pc2" Type="float" />
+          <Property Name="pc3" Type="float" />
+          <Property Name="previous_organisation" Type="varchar" MaxLength="50" />
+          <Property Name="solicitor_roll_number" Type="varchar" MaxLength="50" />
+          <Property Name="sra_number" Type="nvarchar" MaxLength="15" />
+          <Property Name="date_admitted" Type="datetime" />
+          <Property Name="start_date" Type="datetime" />
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="salary" Type="money" />
+          <Property Name="emp_status" Type="varchar" MaxLength="50" />
+          <Property Name="special_conditions" Type="text" />
+          <Property Name="address" Type="varchar(max)" />
+          <Property Name="ext_no" Type="nvarchar" MaxLength="12" />
+          <Property Name="home_tel_no" Type="nvarchar" MaxLength="18" />
+          <Property Name="ext_to_call" Type="nvarchar" MaxLength="5" />
+          <Property Name="company_name" Type="varchar" MaxLength="50" />
+          <Property Name="company_code" Type="varchar" MaxLength="20" />
+          <Property Name="mobile_tel_number" Type="nvarchar" MaxLength="18" />
+          <Property Name="rdp_mobile_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_of_birth" Type="datetime" />
+          <Property Name="ni_number" Type="nvarchar" MaxLength="15" />
+          <Property Name="ltd_company_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="next_of_kin" Type="varchar" MaxLength="50" />
+          <Property Name="nok_address" Type="text" />
+          <Property Name="nok_tel_no" Type="nvarchar" MaxLength="15" />
+          <Property Name="nok_mobile_no" Type="varchar" MaxLength="50" />
+          <Property Name="marital_status" Type="varchar" MaxLength="20" />
+          <Property Name="emp_notes" Type="varchar(max)" />
+          <Property Name="p45_from_prev_employer" Type="char" MaxLength="1" />
+          <Property Name="bank_name" Type="varchar(max)" />
+          <Property Name="bank_address" Type="text" />
+          <Property Name="bank_acc_no" Type="varchar(max)" />
+          <Property Name="bank_acc_name" Type="varchar(max)" />
+          <Property Name="status_in_uk" Type="varchar" MaxLength="50" />
+          <Property Name="head_count" Type="float" />
+          <Property Name="job_performance" Type="varchar" MaxLength="25" />
+          <Property Name="work_permit" Type="char" MaxLength="1" />
+          <Property Name="position_performance" Type="varchar" MaxLength="25" />
+          <Property Name="desk_no" Type="varchar" MaxLength="15" />
+          <Property Name="bank_sort_code" Type="varchar" MaxLength="50" />
+          <Property Name="manager" Type="varchar" MaxLength="100" />
+          <Property Name="recruitmanager" Type="varchar" MaxLength="100" />
+          <Property Name="office_code" Type="varchar" MaxLength="10" />
+          <Property Name="linked_office1" Type="varchar" MaxLength="20" />
+          <Property Name="linked_office2" Type="varchar" MaxLength="20" />
+          <Property Name="payroll_no" Type="int" />
+          <Property Name="first_referee_name" Type="varchar" MaxLength="30" />
+          <Property Name="first_referee_address" Type="text" />
+          <Property Name="first_reference_sentO" Type="char" MaxLength="1" />
+          <Property Name="first_reference_sent_date" Type="datetime" />
+          <Property Name="first_reference_reply_receivedO" Type="char" MaxLength="1" />
+          <Property Name="second_referee_name" Type="varchar" MaxLength="30" />
+          <Property Name="second_referee_address" Type="text" />
+          <Property Name="second_reference_sentO" Type="char" MaxLength="1" />
+          <Property Name="second_reference_sent_date" Type="datetime" />
+          <Property Name="second_reference_reply_receivedO" Type="char" MaxLength="1" />
+          <Property Name="third_referee_name" Type="varchar" MaxLength="30" />
+          <Property Name="third_referee_address" Type="text" />
+          <Property Name="third_reference_sentO" Type="char" MaxLength="1" />
+          <Property Name="third_reference_sent_date" Type="datetime" />
+          <Property Name="third_reference_reply_receivedO" Type="char" MaxLength="1" />
+          <Property Name="notice_period" Type="varchar" MaxLength="50" />
+          <Property Name="trial_period" Type="varchar" MaxLength="20" />
+          <Property Name="trial_period_notice" Type="varchar" MaxLength="20" />
+          <Property Name="offer_accepted" Type="char" MaxLength="1" />
+          <Property Name="offer_letter" Type="char" MaxLength="1" />
+          <Property Name="signed_contract_returned" Type="char" MaxLength="1" />
+          <Property Name="tc_offered" Type="char" MaxLength="1" />
+          <Property Name="tc_start_date" Type="datetime" />
+          <Property Name="tc_end_date" Type="datetime" />
+          <Property Name="trainee_sol_number" Type="varchar" MaxLength="10" />
+          <Property Name="first_aid_qualified" Type="char" MaxLength="1" />
+          <Property Name="interview_notes" Type="char" MaxLength="1" />
+          <Property Name="p45" Type="char" MaxLength="1" />
+          <Property Name="p46" Type="char" MaxLength="1" />
+          <Property Name="passport_copy" Type="char" MaxLength="1" />
+          <Property Name="qualification_certificates" Type="char" MaxLength="1" />
+          <Property Name="law_details_checklist" Type="char" MaxLength="1" />
+          <Property Name="qork_status_if_not_british" Type="char" MaxLength="1" />
+          <Property Name="staff_profile_created_on_dl_website" Type="char" MaxLength="1" />
+          <Property Name="google_search_carried_out" Type="char" MaxLength="1" />
+          <Property Name="induction_check_list_signed_off" Type="char" MaxLength="1" />
+          <Property Name="sra_check_carried_out" Type="char" MaxLength="1" />
+          <Property Name="practising_certificate" Type="char" MaxLength="1" />
+          <Property Name="valid_panel_membership_certificate" Type="char" MaxLength="1" />
+          <Property Name="evidence_that_you_are_100_percent_shareholder_of_the_Company" Type="char" MaxLength="1" />
+          <Property Name="evidence_of_directorship_for_all_directors" Type="char" MaxLength="1" />
+          <Property Name="certified_copies_of_the_certificate_of_Incorporation_of_your_company" Type="char" MaxLength="1" />
+          <Property Name="signed_original_it_agreement" Type="char" MaxLength="1" />
+          <Property Name="cpd_record" Type="char" MaxLength="1" />
+          <Property Name="utility_bill" Type="char" MaxLength="1" />
+          <Property Name="pre_employment_fitness_assessment_questionnaire" Type="char" MaxLength="1" />
+          <Property Name="health_and_safety_responsibilities_form_signed" Type="char" MaxLength="1" />
+          <Property Name="supervisor_declaration_form" Type="char" MaxLength="1" />
+          <Property Name="lpc_certificate" Type="char" MaxLength="1" />
+          <Property Name="bvc_certificate" Type="char" MaxLength="1" />
+          <Property Name="iaas_level1" Type="char" MaxLength="1" />
+          <Property Name="iaas_level2" Type="char" MaxLength="1" />
+          <Property Name="iaas_level2_supervisor" Type="char" MaxLength="1" />
+          <Property Name="management_stage1_course" Type="char" MaxLength="1" />
+          <Property Name="sra_enrollment_for_student_registration" Type="char" MaxLength="1" />
+          <Property Name="comp_reg_no_given" Type="char" MaxLength="1" />
+          <Property Name="memo_articles_of_association" Type="char" MaxLength="1" />
+          <Property Name="purchase_order" Type="char" MaxLength="1" />
+          <Property Name="ind_comments" Type="varchar" MaxLength="2000" />
+          <Property Name="group_code" Type="varchar" MaxLength="50" />
+          <Property Name="direct_dial_tel_number" Type="varchar" MaxLength="20" />
+          <Property Name="personal_email" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="lpc_gained" Type="char" MaxLength="1" />
+          <Property Name="lpc_gained_date" Type="datetime" />
+          <Property Name="lpc_gained_university" Type="varchar" MaxLength="500" />
+          <Property Name="lpc_result" Type="varchar" MaxLength="50" />
+          <Property Name="bvc_gained" Type="char" MaxLength="1" />
+          <Property Name="bvc_gained_date" Type="datetime" />
+          <Property Name="bvc_gained_university" Type="varchar" MaxLength="50" />
+          <Property Name="bvc_result" Type="varchar" MaxLength="50" />
+          <Property Name="law_degree" Type="char" MaxLength="1" />
+          <Property Name="law_degree_gained_date" Type="datetime" />
+          <Property Name="law_degree_gained_university" Type="varchar" MaxLength="50" />
+          <Property Name="law_degree_result" Type="varchar" MaxLength="50" />
+          <Property Name="male" Type="char" MaxLength="1" />
+          <Property Name="female" Type="char" MaxLength="1" />
+          <Property Name="gender" Type="varchar" MaxLength="6" />
+          <Property Name="seat_no" Type="varchar" MaxLength="10" />
+          <Property Name="ethnic_white" Type="char" MaxLength="1" />
+          <Property Name="ethnic_black_carrebean" Type="char" MaxLength="1" />
+          <Property Name="ethnic_black_african" Type="char" MaxLength="1" />
+          <Property Name="ethnic_black_other" Type="char" MaxLength="1" />
+          <Property Name="ethnic_pakistani" Type="char" MaxLength="1" />
+          <Property Name="ethnic_bagladeshi" Type="char" MaxLength="1" />
+          <Property Name="ethnic_indian" Type="char" MaxLength="1" />
+          <Property Name="ethnic_chinese" Type="char" MaxLength="1" />
+          <Property Name="ethnic_asian_other" Type="char" MaxLength="1" />
+          <Property Name="ethnic_other" Type="char" MaxLength="1" />
+          <Property Name="ethnic_other_specify" Type="varchar" MaxLength="50" />
+          <Property Name="faith_and_belief" Type="varchar" MaxLength="30" />
+          <Property Name="ethnicity" Type="varchar" MaxLength="200" />
+          <Property Name="ethnic_info_not_provided" Type="char" MaxLength="1" />
+          <Property Name="languages_spoken" Type="text" />
+          <Property Name="employed" Type="char" MaxLength="1" />
+          <Property Name="staff_access" Type="char" MaxLength="1" />
+          <Property Name="reason_for_leaving" Type="varchar" MaxLength="1000" />
+          <Property Name="offer_date" Type="datetime" />
+          <Property Name="proof_of_eligibility_to_work" Type="char" MaxLength="1" />
+          <Property Name="job_related_disabilities" Type="varchar" MaxLength="1000" />
+          <Property Name="fee_earner_code" Type="varchar" MaxLength="20" />
+          <Property Name="date_left_prev_org" Type="datetime" />
+          <Property Name="copy_of_lpc_given" Type="char" MaxLength="1" />
+          <Property Name="copy_of_bvc_given" Type="char" MaxLength="1" />
+          <Property Name="copy_of_degree_given" Type="char" MaxLength="1" />
+          <Property Name="photograph_taken" Type="char" MaxLength="1" />
+          <Property Name="team_photograph_taken" Type="char" MaxLength="1" />
+          <Property Name="recruited_from" Type="varchar" MaxLength="250" />
+          <Property Name="recruited_cost" Type="money" />
+          <Property Name="no" Type="int" />
+          <Property Name="contract_end_date" Type="datetime" />
+          <Property Name="prev_org_address" Type="varchar" MaxLength="250" />
+          <Property Name="nationality" Type="varchar" MaxLength="200" />
+          <Property Name="passport_type" Type="varchar" MaxLength="50" />
+          <Property Name="visa_type" Type="varchar" MaxLength="50" />
+          <Property Name="visa_expiry_date" Type="datetime" />
+          <Property Name="workpermit_start_date" Type="datetime" />
+          <Property Name="workpermit_end_date" Type="datetime" />
+          <Property Name="student_morethan_21hrs" Type="char" MaxLength="1" />
+          <Property Name="eu_worker_registration_no" Type="varchar" MaxLength="50" />
+          <Property Name="salary2_date" Type="datetime" />
+          <Property Name="salary3_date" Type="datetime" />
+          <Property Name="salary2" Type="money" />
+          <Property Name="salary3" Type="money" />
+          <Property Name="salary_review" Type="varchar" MaxLength="30" />
+          <Property Name="salary_review_date1" Type="datetime" />
+          <Property Name="salary_review_date2" Type="datetime" />
+          <Property Name="pt_requested_date" Type="datetime" />
+          <Property Name="pt_days_per_week" Type="int" />
+          <Property Name="pt_hours_per_day" Type="int" />
+          <Property Name="pt_time_to" Type="varchar" MaxLength="20" />
+          <Property Name="pt_time_from" Type="varchar" MaxLength="20" />
+          <Property Name="pt_date_contract_valued" Type="datetime" />
+          <Property Name="pt_request_refused_date" Type="datetime" />
+          <Property Name="pt_request_with_drawn_date" Type="datetime" />
+          <Property Name="language1" Type="varchar" MaxLength="50" />
+          <Property Name="language2" Type="varchar" MaxLength="50" />
+          <Property Name="language3" Type="varchar" MaxLength="50" />
+          <Property Name="Language4" Type="varchar" MaxLength="50" />
+          <Property Name="photo_path" Type="varchar" MaxLength="250" />
+          <Property Name="resignation_date" Type="datetime" />
+          <Property Name="department_covered_2" Type="varchar" MaxLength="100" />
+          <Property Name="department_covered_3" Type="varchar" MaxLength="100" />
+          <Property Name="department_covered_4" Type="varchar" MaxLength="100" />
+          <Property Name="department_covered_5" Type="varchar" MaxLength="100" />
+          <Property Name="written_lang_1" Type="varchar" MaxLength="30" />
+          <Property Name="written_lang_2" Type="varchar" MaxLength="30" />
+          <Property Name="written_lang_3" Type="varchar" MaxLength="30" />
+          <Property Name="sign_language" Type="char" MaxLength="1" />
+          <Property Name="short_hand_skills" Type="char" MaxLength="1" />
+          <Property Name="next_of_kin_1" Type="varchar" MaxLength="50" />
+          <Property Name="next_of_kin_1_address_1" Type="varchar" MaxLength="500" />
+          <Property Name="next_of_kin_1_tel_no" Type="varchar" MaxLength="25" />
+          <Property Name="next_of_kin_1_mbile_no" Type="varchar" MaxLength="15" />
+          <Property Name="next_of_kin_1_address_2" Type="varchar" MaxLength="500" />
+          <Property Name="next_of_kin_1_address_3" Type="varchar" MaxLength="500" />
+          <Property Name="prob_ext_date" Type="datetime" />
+          <Property Name="dos_in_current_position" Type="datetime" />
+          <Property Name="qltt_grade" Type="varchar" MaxLength="10" />
+          <Property Name="qltt_date" Type="datetime" />
+          <Property Name="qltt_received" Type="char" MaxLength="1" />
+          <Property Name="off_mon_from" Type="datetime" />
+          <Property Name="off_mon_to" Type="datetime" />
+          <Property Name="off_mon_hrs" Type="datetime" />
+          <Property Name="off_mon_work_location" Type="varchar" MaxLength="20" />
+          <Property Name="off_tue_from" Type="datetime" />
+          <Property Name="off_tue_to" Type="datetime" />
+          <Property Name="off_tue_hrs" Type="datetime" />
+          <Property Name="off_tue_work_location" Type="varchar" MaxLength="20" />
+          <Property Name="off_wed_from" Type="datetime" />
+          <Property Name="off_wed_to" Type="datetime" />
+          <Property Name="off_wed_hrs" Type="datetime" />
+          <Property Name="off_wed_work_location" Type="varchar" MaxLength="20" />
+          <Property Name="off_thu_from" Type="datetime" />
+          <Property Name="off_thu_to" Type="datetime" />
+          <Property Name="off_thu_hrs" Type="datetime" />
+          <Property Name="off_thu_work_location" Type="varchar" MaxLength="20" />
+          <Property Name="off_fri_from" Type="datetime" />
+          <Property Name="off_fri_to" Type="datetime" />
+          <Property Name="off_fri_hrs" Type="datetime" />
+          <Property Name="off_fri_work_location" Type="varchar" MaxLength="20" />
+          <Property Name="off_sat_from" Type="datetime" />
+          <Property Name="off_sat_to" Type="datetime" />
+          <Property Name="off_sat_hrs" Type="datetime" />
+          <Property Name="off_sat_work_location" Type="varchar" MaxLength="20" />
+          <Property Name="off_sun_from" Type="datetime" />
+          <Property Name="off_sun_to" Type="datetime" />
+          <Property Name="off_sun_hrs" Type="datetime" />
+          <Property Name="off_sun_work_location" Type="varchar" MaxLength="20" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" />
+          <Property Name="longitude" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="latitude" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="holidays_al_ent" Type="float" />
+          <Property Name="holidays2011_ent" Type="float" />
+          <Property Name="holidays_due" Type="float" />
+          <Property Name="holidays_cf" Type="float" />
+          <Property Name="holidays_due_1996" Type="float" />
+          <Property Name="holidays_cf_2003" Type="float" />
+          <Property Name="holidays_due_2004" Type="float" />
+          <Property Name="holidays_cf_2004" Type="float" />
+          <Property Name="holidays_2005" Type="float" />
+          <Property Name="holidays_due_2005" Type="int" />
+          <Property Name="cf_hol_2005" Type="float" />
+          <Property Name="holidays_2006" Type="float" />
+          <Property Name="cf_hol_2006" Type="float" />
+          <Property Name="holidays_2007" Type="float" />
+          <Property Name="cf_hol_2007" Type="float" />
+          <Property Name="holidays_2008" Type="float" />
+          <Property Name="cf_hol_2008" Type="float" />
+          <Property Name="holidays_2009" Type="float" />
+          <Property Name="cf_hol_2009" Type="float" />
+          <Property Name="holidays_2010" Type="float" />
+          <Property Name="cf_hol_2010" Type="float" />
+          <Property Name="holidays_2011" Type="float" />
+          <Property Name="cf_hol_2011" Type="float" />
+          <Property Name="holidays_2012" Type="float" />
+          <Property Name="cf_hol_2012" Type="float" />
+          <Property Name="holidays_2013" Type="float" />
+          <Property Name="cf_hol_2013" Type="float" />
+          <Property Name="holidays_2014" Type="float" />
+          <Property Name="cf_hol_2014" Type="float" />
+          <Property Name="holidays_2015" Type="float" />
+          <Property Name="cf_hol_2015" Type="float" />
+          <Property Name="first_reference_sent" Type="bit" />
+          <Property Name="first_reference_reply_received" Type="bit" />
+          <Property Name="second_reference_sent" Type="bit" />
+          <Property Name="second_reference_reply_received" Type="bit" />
+          <Property Name="third_reference_sent" Type="bit" />
+          <Property Name="third_reference_reply_received" Type="bit" />
+          <Property Name="new_employer_address" Type="varchar" MaxLength="200" />
+          <Property Name="Leavers_Comments" Type="varchar" MaxLength="1000" />
+          <Property Name="notice_type" Type="varchar" MaxLength="50" />
+          <Property Name="Leaver_Keydate" Type="datetime" />
+          <Property Name="fromdate6weeks" Type="datetime" />
+          <Property Name="todate6weeks" Type="datetime" />
+          <Property Name="fromdate33weeks" Type="datetime" />
+          <Property Name="todate33weeks" Type="datetime" />
+          <Property Name="Emp_details_created_stamp" Type="datetime" />
+          <Property Name="Emp_details_created_user" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_details_created_version" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_details_created_Program" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_details_created_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_details_created_ip" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_details_modified_stamp" Type="datetime" />
+          <Property Name="Emp_details_modified_user" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_details_modified_version" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_details_modified_program" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_details_modified_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="Emp_details_modified_ip" Type="varchar" MaxLength="50" />
+          <Property Name="EmailSent" Type="bit" />
+          <Property Name="Dept_code" Type="varchar" MaxLength="50" />
+          <Property Name="DocsPrinted" Type="bit" />
+          <Property Name="first_reference_chase1_date" Type="datetime" />
+          <Property Name="first_reference_chase2_date" Type="datetime" />
+          <Property Name="second_reference_chase1_date" Type="datetime" />
+          <Property Name="second_reference_chase2_date" Type="datetime" />
+          <Property Name="third_reference_chase1_date" Type="datetime" />
+          <Property Name="third_reference_chase2_date" Type="datetime" />
+          <Property Name="address2" Type="varchar(max)" />
+          <Property Name="post_code" Type="varchar" MaxLength="50" />
+          <Property Name="next_of_kin_relationship" Type="varchar" MaxLength="50" />
+          <Property Name="next_of_kin_relationship_Other" Type="varchar" MaxLength="50" />
+          <Property Name="address3" Type="varchar" MaxLength="50" />
+          <Property Name="holidays_2016" Type="float" />
+          <Property Name="cf_hol_2016" Type="float" />
+          <Property Name="Corraddress1" Type="text" />
+          <Property Name="Corraddress2" Type="text" />
+          <Property Name="Corraddress3" Type="text" />
+          <Property Name="Corraddress4" Type="text" />
+          <Property Name="Corraddress5" Type="text" />
+          <Property Name="ac_supervisor_1" Type="varchar" MaxLength="100" />
+          <Property Name="ac_supervisor_2" Type="varchar" MaxLength="100" />
+          <Property Name="ac_supervisor_3" Type="varchar" MaxLength="100" />
+          <Property Name="ac_supervisor_4" Type="varchar" MaxLength="100" />
+          <Property Name="ac_supervisor_5" Type="varchar" MaxLength="100" />
+          <Property Name="auto_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sexual_orientation" Type="varchar" MaxLength="50" />
+          <Property Name="personal_details_submitted_date" Type="datetime" />
+          <Property Name="first_referee_Email" Type="varchar" MaxLength="50" />
+          <Property Name="first_referee_PhoneNo" Type="varchar" MaxLength="20" />
+          <Property Name="first_referee_Jobtitle" Type="varchar" MaxLength="80" />
+          <Property Name="second_referee_Email" Type="varchar" MaxLength="50" />
+          <Property Name="second_referee_PhoneNo" Type="varchar" MaxLength="20" />
+          <Property Name="second_referee_Jobtitle" Type="varchar" MaxLength="80" />
+          <Property Name="third_referee_Email" Type="varchar" MaxLength="50" />
+          <Property Name="third_referee_PhoneNo" Type="varchar" MaxLength="20" />
+          <Property Name="third_referee_Jobtitle" Type="varchar" MaxLength="80" />
+          <Property Name="sup_date_from" Type="datetime" />
+          <Property Name="Lieu_Days_2016" Type="float" />
+          <Property Name="emp_skype_id" Type="varchar" MaxLength="50" />
+          <Property Name="Lieu_Days_2015" Type="float" />
+          <Property Name="Lieu_Days_2014" Type="float" />
+          <Property Name="Lieu_Days_2013" Type="float" />
+          <Property Name="Lieu_Days_2012" Type="float" />
+          <Property Name="Lieu_Days_2011" Type="float" />
+          <Property Name="Lieu_Days_2010" Type="float" />
+          <Property Name="Lieu_Days_2009" Type="float" />
+          <Property Name="Lieu_Days_2008" Type="float" />
+          <Property Name="Lieu_Days_2007" Type="float" />
+          <Property Name="Lieu_Days_2006" Type="float" />
+          <Property Name="Lieu_Days_2005" Type="float" />
+          <Property Name="Lieu_Days_2004" Type="float" />
+          <Property Name="holidays_2017" Type="float" />
+          <Property Name="cf_hol_2017" Type="float" />
+          <Property Name="Lieu_Days_2017" Type="float" />
+          <Property Name="manager_emp_code" Type="varchar" MaxLength="20" />
+          <Property Name="recruitmanager_old" Type="varchar" MaxLength="100" />
+          <Property Name="crimeduty_solicitor" Type="bit" />
+          <Property Name="Reference_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Picture_website" Type="bit" Nullable="false" />
+          <Property Name="Profile_website" Type="bit" Nullable="false" />
+          <Property Name="Retainempprofile" Type="bit" />
+          <Property Name="isdirector" Type="bit" />
+          <Property Name="holidays_2018" Type="float" />
+          <Property Name="cf_hol_2018" Type="float" />
+          <Property Name="Lieu_Days_2018" Type="float" />
+          <Property Name="New_Extn" Type="varchar" MaxLength="10" />
+          <Property Name="New_DDL" Type="varchar" MaxLength="20" />
+          <Property Name="Old_Extn" Type="varchar" MaxLength="50" />
+          <Property Name="Old_DDI" Type="varchar" MaxLength="50" />
+          <Property Name="Is_AdUpdate" Type="bit" />
+          <Property Name="main_add_line1" Type="varchar" MaxLength="50" />
+          <Property Name="main_add_line2" Type="varchar" MaxLength="50" />
+          <Property Name="main_add_line3" Type="varchar" MaxLength="50" />
+          <Property Name="main_add_town" Type="varchar" MaxLength="30" />
+          <Property Name="main_add_county" Type="varchar" MaxLength="30" />
+          <Property Name="corr_add_line1" Type="varchar" MaxLength="50" />
+          <Property Name="corr_add_line2" Type="varchar" MaxLength="50" />
+          <Property Name="corr_add_line3" Type="varchar" MaxLength="50" />
+          <Property Name="corr_add_town" Type="varchar" MaxLength="30" />
+          <Property Name="corr_add_county" Type="varchar" MaxLength="30" />
+          <Property Name="holidays_2019" Type="float" />
+          <Property Name="cf_hol_2019" Type="float" />
+          <Property Name="Lieu_Days_2019" Type="float" />
+          <Property Name="Director_Emp_code" Type="varchar" MaxLength="50" />
+          <Property Name="reporting_consultant" Type="bit" />
+          <Property Name="holidays_2020" Type="float" />
+          <Property Name="cf_hol_2020" Type="float" />
+          <Property Name="Lieu_Days_2020" Type="float" />
+          <Property Name="website_link" Type="nvarchar" MaxLength="100" />
+          <Property Name="holidays_2021" Type="float" />
+          <Property Name="cf_hol_2021" Type="float" />
+          <Property Name="Lieu_Days_2021" Type="float" />
+          <Property Name="new_client_referrals" Type="bit" />
+          <Property Name="copied_emp_profile" Type="bit" />
+          <Property Name="emp_website_email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Probation_end_date" Type="datetime" />
+          <Property Name="PRR_support" Type="bit" />
+          <Property Name="emp_email_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="probation_status" Type="varchar" MaxLength="50" />
+          <Property Name="probation_status_date" Type="datetime" />
+          <Property Name="ethnic_Other_details" Type="varchar(max)" />
+          <Property Name="furlough" Type="bit" />
+          <Property Name="furlough_startdate" Type="datetime" />
+          <Property Name="furlough_enddate" Type="datetime" />
+          <Property Name="LPC_IsApplicable" Type="char" MaxLength="1" />
+          <Property Name="holidays_2022" Type="float" />
+          <Property Name="cf_hol_2022" Type="float" />
+          <Property Name="Lieu_Days_2022" Type="float" />
+          <Property Name="holidays_2023" Type="float" />
+          <Property Name="TUPE_start_Date" Type="datetime" />
+          <Property Name="Tupe_end_date" Type="datetime" />
+          <Property Name="cls_intranet_access" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="HRDDLModelStoreContainer">
+          <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emp_Details" EntityType="Self.Emp_Details" Schema="hrd" store:Type="Tables" />
+          <EntitySet Name="Emp_ITInfo" EntityType="Self.Emp_ITInfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Emp_ITInfo].[auto_number] AS [auto_number], 
+    [Emp_ITInfo].[Emp_Code] AS [Emp_Code], 
+    [Emp_ITInfo].[typist_name] AS [typist_name], 
+    [Emp_ITInfo].[typist_email] AS [typist_email], 
+    [Emp_ITInfo].[extension_no] AS [extension_no], 
+    [Emp_ITInfo].[Email] AS [Email], 
+    [Emp_ITInfo].[Network_Username] AS [Network_Username], 
+    [Emp_ITInfo].[Network_Password] AS [Network_Password], 
+    [Emp_ITInfo].[Osprey_Acc_Created] AS [Osprey_Acc_Created], 
+    [Emp_ITInfo].[Osprey_Username] AS [Osprey_Username], 
+    [Emp_ITInfo].[Osprey_Password] AS [Osprey_Password], 
+    [Emp_ITInfo].[feeearner_code] AS [feeearner_code], 
+    [Emp_ITInfo].[bb_mobile_no] AS [bb_mobile_no], 
+    [Emp_ITInfo].[bb_simcard_no] AS [bb_simcard_no], 
+    [Emp_ITInfo].[bb_imei_no] AS [bb_imei_no], 
+    [Emp_ITInfo].[notes] AS [notes], 
+    [Emp_ITInfo].[Computer_Name] AS [Computer_Name], 
+    [Emp_ITInfo].[Location] AS [Location], 
+    [Emp_ITInfo].[Inventory_Signed] AS [Inventory_Signed], 
+    [Emp_ITInfo].[Personal_Portal_Created] AS [Personal_Portal_Created], 
+    [Emp_ITInfo].[Staff_Personal_Portal_Username] AS [Staff_Personal_Portal_Username], 
+    [Emp_ITInfo].[Staff_Persona_Portal_Password] AS [Staff_Persona_Portal_Password], 
+    [Emp_ITInfo].[Butterworths_Email_Updates_Created] AS [Butterworths_Email_Updates_Created], 
+    [Emp_ITInfo].[DDn] AS [DDn], 
+    [Emp_ITInfo].[Access_To_HR_Database] AS [Access_To_HR_Database], 
+    [Emp_ITInfo].[Perm_Level] AS [Perm_Level], 
+    [Emp_ITInfo].[swipcard_number] AS [swipcard_number], 
+    [Emp_ITInfo].[swipcards_taken] AS [swipcards_taken], 
+    [Emp_ITInfo].[fingerprints_taken] AS [fingerprints_taken], 
+    [Emp_ITInfo].[Exch_ID_Created_Date] AS [Exch_ID_Created_Date], 
+    [Emp_ITInfo].[Exch_ID_Deleted_Date] AS [Exch_ID_Deleted_Date], 
+    [Emp_ITInfo].[Network_Username_Created] AS [Network_Username_Created], 
+    [Emp_ITInfo].[OutLook_Acct_Created] AS [OutLook_Acct_Created], 
+    [Emp_ITInfo].[OutLook_Username] AS [OutLook_Username], 
+    [Emp_ITInfo].[OutLook_Password] AS [OutLook_Password], 
+    [Emp_ITInfo].[sign_title] AS [sign_title], 
+    [Emp_ITInfo].[sign_jobtitle] AS [sign_jobtitle], 
+    [Emp_ITInfo].[sign_title1] AS [sign_title1], 
+    [Emp_ITInfo].[sign_title2] AS [sign_title2], 
+    [Emp_ITInfo].[sign_title3] AS [sign_title3], 
+    [Emp_ITInfo].[sign_dx] AS [sign_dx], 
+    [Emp_ITInfo].[sign_fax] AS [sign_fax], 
+    [Emp_ITInfo].[sign_office] AS [sign_office], 
+    [Emp_ITInfo].[laptop_given] AS [laptop_given], 
+    [Emp_ITInfo].[remote_access_given] AS [remote_access_given], 
+    [Emp_ITInfo].[dictaphone_given] AS [dictaphone_given], 
+    [Emp_ITInfo].[Emp_ITInfo_created_stamp] AS [Emp_ITInfo_created_stamp], 
+    [Emp_ITInfo].[Emp_ITInfo_created_user] AS [Emp_ITInfo_created_user], 
+    [Emp_ITInfo].[Emp_ITInfo_created_version] AS [Emp_ITInfo_created_version], 
+    [Emp_ITInfo].[Emp_ITInfo_created_user_Program] AS [Emp_ITInfo_created_user_Program], 
+    [Emp_ITInfo].[Emp_ITInfo_created_machine_name] AS [Emp_ITInfo_created_machine_name], 
+    [Emp_ITInfo].[Emp_ITInfo_created_ip] AS [Emp_ITInfo_created_ip], 
+    [Emp_ITInfo].[Emp_ITInfo_modified_stamp] AS [Emp_ITInfo_modified_stamp], 
+    [Emp_ITInfo].[Emp_ITInfo_modified_user] AS [Emp_ITInfo_modified_user], 
+    [Emp_ITInfo].[Emp_ITInfo_modified_version] AS [Emp_ITInfo_modified_version], 
+    [Emp_ITInfo].[Emp_ITInfo_modified_user_program] AS [Emp_ITInfo_modified_user_program], 
+    [Emp_ITInfo].[Emp_ITInfo_modified_machine_name] AS [Emp_ITInfo_modified_machine_name], 
+    [Emp_ITInfo].[Emp_ITInfo_modified_ip] AS [Emp_ITInfo_modified_ip], 
+    [Emp_ITInfo].[old_swipcard_number] AS [old_swipcard_number], 
+    [Emp_ITInfo].[rdp_mobile_number] AS [rdp_mobile_number], 
+    [Emp_ITInfo].[INDIGO_Userid] AS [INDIGO_Userid], 
+    [Emp_ITInfo].[IndigoAccount_EndDate] AS [IndigoAccount_EndDate], 
+    [Emp_ITInfo].[service_tag] AS [service_tag], 
+    [Emp_ITInfo].[emp_email_code] AS [emp_email_code], 
+    [Emp_ITInfo].[department_it] AS [department_it]
+    FROM [dbo].[Emp_ITInfo] AS [Emp_ITInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Emp_Profile" EntityType="Self.Emp_Profile" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Emp_Profile].[emp_code] AS [emp_code], 
+    [Emp_Profile].[jobtitle] AS [jobtitle], 
+    [Emp_Profile].[datejoined] AS [datejoined], 
+    [Emp_Profile].[department] AS [department], 
+    [Emp_Profile].[education] AS [education], 
+    [Emp_Profile].[prof_memship] AS [prof_memship], 
+    [Emp_Profile].[email] AS [email], 
+    [Emp_Profile].[office] AS [office], 
+    [Emp_Profile].[experience] AS [experience], 
+    [Emp_Profile].[mem_and_int] AS [mem_and_int], 
+    [Emp_Profile].[web_permission] AS [web_permission], 
+    [Emp_Profile].[keywords] AS [keywords], 
+    [Emp_Profile].[title] AS [title], 
+    [Emp_Profile].[description] AS [description], 
+    [Emp_Profile].[updated_by] AS [updated_by], 
+    [Emp_Profile].[Emp_Profile_created_stamp] AS [Emp_Profile_created_stamp], 
+    [Emp_Profile].[Emp_Profile_created_user] AS [Emp_Profile_created_user], 
+    [Emp_Profile].[Emp_Profile_created_version] AS [Emp_Profile_created_version], 
+    [Emp_Profile].[Emp_Profile_created_Program] AS [Emp_Profile_created_Program], 
+    [Emp_Profile].[Emp_Profile_created_machine_name] AS [Emp_Profile_created_machine_name], 
+    [Emp_Profile].[Emp_Profile_created_ip] AS [Emp_Profile_created_ip], 
+    [Emp_Profile].[Emp_Profile_modified_stamp] AS [Emp_Profile_modified_stamp], 
+    [Emp_Profile].[Emp_Profile_modified_user] AS [Emp_Profile_modified_user], 
+    [Emp_Profile].[Emp_Profile_modified_version] AS [Emp_Profile_modified_version], 
+    [Emp_Profile].[Emp_Profile_modified_program] AS [Emp_Profile_modified_program], 
+    [Emp_Profile].[Emp_Profile_modified_machine_name] AS [Emp_Profile_modified_machine_name], 
+    [Emp_Profile].[Emp_Profile_modified_ip] AS [Emp_Profile_modified_ip]
+    FROM [dbo].[Emp_Profile] AS [Emp_Profile]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HRDDLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HRDDLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Offices" EntityType="HRDDLModel.Office" />
+          <EntitySet Name="Emp_Details" EntityType="HRDDLModel.Emp_Details" />
+          <AssociationSet Name="FK__Emp_Detai__offic__7D8391DF" Association="HRDDLModel.FK__Emp_Detai__offic__7D8391DF">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="Emp_Details" EntitySet="Emp_Details" />
+          </AssociationSet>
+          <EntitySet Name="Emp_ITInfo" EntityType="HRDDLModel.Emp_ITInfo" />
+          <EntitySet Name="Emp_Profile" EntityType="HRDDLModel.Emp_Profile" />
+        </EntityContainer>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="office_code" />
+          </Key>
+          <Property Name="office_code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="office_desc" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="office_address" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="office_addrText" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="office_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="operation_statusO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="office_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="office_geo_location" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="datecreated" Type="DateTime" Precision="3" />
+          <Property Name="dateclosed" Type="DateTime" Precision="3" />
+          <Property Name="county" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="office_status" Type="Boolean" />
+          <Property Name="office_dx_no" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="organization_supplier_number" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="created_stamp" Type="DateTime" Precision="3" />
+          <Property Name="created_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_Program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_stamp" Type="DateTime" Precision="3" />
+          <Property Name="modified_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Emp_Details" Relationship="HRDDLModel.FK__Emp_Detai__offic__7D8391DF" FromRole="Office" ToRole="Emp_Details" />
+          <Property Name="isswipemachine_present" Type="Boolean" />
+          <Property Name="telephone_office_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="indigo_office_code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="fb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="twitter" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="linkedin" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TrainingPlan_office" Type="Boolean" />
+          <Property Name="Main_Office" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Emp_Details">
+          <Key>
+            <PropertyRef Name="emp_code" />
+          </Key>
+          <Property Name="emp_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="initial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="forename" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="known_as" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qualifications" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="jobtitle" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="jobtitle_id" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="department_it" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bb_given" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="admitted_staff" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="nonadmitted_staff" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="admin_staff" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="freelance_consultant" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="limited_company" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="pc1" Type="Double" />
+          <Property Name="pc2" Type="Double" />
+          <Property Name="pc3" Type="Double" />
+          <Property Name="previous_organisation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="solicitor_roll_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sra_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="date_admitted" Type="DateTime" Precision="3" />
+          <Property Name="start_date" Type="DateTime" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="salary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="emp_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="special_conditions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ext_no" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="home_tel_no" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="ext_to_call" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="company_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="company_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mobile_tel_number" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="date_of_birth" Type="DateTime" Precision="3" />
+          <Property Name="ni_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ltd_company_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="next_of_kin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nok_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nok_tel_no" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="nok_mobile_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="marital_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="emp_notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="p45_from_prev_employer" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="bank_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bank_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bank_acc_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bank_acc_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_in_uk" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="head_count" Type="Double" />
+          <Property Name="job_performance" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="work_permit" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="position_performance" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="desk_no" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="bank_sort_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="manager" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="recruitmanager" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="office_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="linked_office1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="linked_office2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="payroll_no" Type="Int32" />
+          <Property Name="first_referee_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="first_referee_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="first_reference_sentO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="first_reference_sent_date" Type="DateTime" Precision="3" />
+          <Property Name="first_reference_reply_receivedO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="second_referee_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="second_referee_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="second_reference_sentO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="second_reference_sent_date" Type="DateTime" Precision="3" />
+          <Property Name="second_reference_reply_receivedO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="third_referee_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="third_referee_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="third_reference_sentO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="third_reference_sent_date" Type="DateTime" Precision="3" />
+          <Property Name="third_reference_reply_receivedO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="notice_period" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trial_period" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="trial_period_notice" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="offer_accepted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="offer_letter" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="signed_contract_returned" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tc_offered" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tc_start_date" Type="DateTime" Precision="3" />
+          <Property Name="tc_end_date" Type="DateTime" Precision="3" />
+          <Property Name="trainee_sol_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="first_aid_qualified" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="interview_notes" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="p45" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="p46" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="passport_copy" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="qualification_certificates" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="law_details_checklist" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="qork_status_if_not_british" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="staff_profile_created_on_dl_website" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="google_search_carried_out" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="induction_check_list_signed_off" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="sra_check_carried_out" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="practising_certificate" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="valid_panel_membership_certificate" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="evidence_that_you_are_100_percent_shareholder_of_the_Company" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="evidence_of_directorship_for_all_directors" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="certified_copies_of_the_certificate_of_Incorporation_of_your_company" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="signed_original_it_agreement" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cpd_record" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="utility_bill" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="pre_employment_fitness_assessment_questionnaire" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="health_and_safety_responsibilities_form_signed" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="supervisor_declaration_form" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="lpc_certificate" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="bvc_certificate" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="iaas_level1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="iaas_level2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="iaas_level2_supervisor" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="management_stage1_course" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="sra_enrollment_for_student_registration" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="comp_reg_no_given" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="memo_articles_of_association" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="purchase_order" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ind_comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="group_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direct_dial_tel_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="personal_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lpc_gained" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="lpc_gained_date" Type="DateTime" Precision="3" />
+          <Property Name="lpc_gained_university" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="lpc_result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bvc_gained" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="bvc_gained_date" Type="DateTime" Precision="3" />
+          <Property Name="bvc_gained_university" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bvc_result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="law_degree" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="law_degree_gained_date" Type="DateTime" Precision="3" />
+          <Property Name="law_degree_gained_university" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="law_degree_result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="male" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="female" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="seat_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ethnic_white" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_black_carrebean" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_black_african" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_black_other" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_pakistani" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_bagladeshi" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_indian" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_chinese" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_asian_other" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_other" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ethnic_other_specify" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="faith_and_belief" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ethnicity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ethnic_info_not_provided" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="languages_spoken" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="employed" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="staff_access" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="reason_for_leaving" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="offer_date" Type="DateTime" Precision="3" />
+          <Property Name="proof_of_eligibility_to_work" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="job_related_disabilities" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="fee_earner_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="date_left_prev_org" Type="DateTime" Precision="3" />
+          <Property Name="copy_of_lpc_given" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="copy_of_bvc_given" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="copy_of_degree_given" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="photograph_taken" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="team_photograph_taken" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="recruited_from" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="recruited_cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="no" Type="Int32" />
+          <Property Name="contract_end_date" Type="DateTime" Precision="3" />
+          <Property Name="prev_org_address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="nationality" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="passport_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="visa_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="visa_expiry_date" Type="DateTime" Precision="3" />
+          <Property Name="workpermit_start_date" Type="DateTime" Precision="3" />
+          <Property Name="workpermit_end_date" Type="DateTime" Precision="3" />
+          <Property Name="student_morethan_21hrs" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="eu_worker_registration_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="salary2_date" Type="DateTime" Precision="3" />
+          <Property Name="salary3_date" Type="DateTime" Precision="3" />
+          <Property Name="salary2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="salary3" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="salary_review" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="salary_review_date1" Type="DateTime" Precision="3" />
+          <Property Name="salary_review_date2" Type="DateTime" Precision="3" />
+          <Property Name="pt_requested_date" Type="DateTime" Precision="3" />
+          <Property Name="pt_days_per_week" Type="Int32" />
+          <Property Name="pt_hours_per_day" Type="Int32" />
+          <Property Name="pt_time_to" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pt_time_from" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pt_date_contract_valued" Type="DateTime" Precision="3" />
+          <Property Name="pt_request_refused_date" Type="DateTime" Precision="3" />
+          <Property Name="pt_request_with_drawn_date" Type="DateTime" Precision="3" />
+          <Property Name="language1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="language2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="language3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Language4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="photo_path" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="resignation_date" Type="DateTime" Precision="3" />
+          <Property Name="department_covered_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="department_covered_3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="department_covered_4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="department_covered_5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="written_lang_1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="written_lang_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="written_lang_3" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sign_language" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="short_hand_skills" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="next_of_kin_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="next_of_kin_1_address_1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="next_of_kin_1_tel_no" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="next_of_kin_1_mbile_no" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="next_of_kin_1_address_2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="next_of_kin_1_address_3" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="prob_ext_date" Type="DateTime" Precision="3" />
+          <Property Name="dos_in_current_position" Type="DateTime" Precision="3" />
+          <Property Name="qltt_grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="qltt_date" Type="DateTime" Precision="3" />
+          <Property Name="qltt_received" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="off_mon_from" Type="DateTime" Precision="3" />
+          <Property Name="off_mon_to" Type="DateTime" Precision="3" />
+          <Property Name="off_mon_hrs" Type="DateTime" Precision="3" />
+          <Property Name="off_mon_work_location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="off_tue_from" Type="DateTime" Precision="3" />
+          <Property Name="off_tue_to" Type="DateTime" Precision="3" />
+          <Property Name="off_tue_hrs" Type="DateTime" Precision="3" />
+          <Property Name="off_tue_work_location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="off_wed_from" Type="DateTime" Precision="3" />
+          <Property Name="off_wed_to" Type="DateTime" Precision="3" />
+          <Property Name="off_wed_hrs" Type="DateTime" Precision="3" />
+          <Property Name="off_wed_work_location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="off_thu_from" Type="DateTime" Precision="3" />
+          <Property Name="off_thu_to" Type="DateTime" Precision="3" />
+          <Property Name="off_thu_hrs" Type="DateTime" Precision="3" />
+          <Property Name="off_thu_work_location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="off_fri_from" Type="DateTime" Precision="3" />
+          <Property Name="off_fri_to" Type="DateTime" Precision="3" />
+          <Property Name="off_fri_hrs" Type="DateTime" Precision="3" />
+          <Property Name="off_fri_work_location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="off_sat_from" Type="DateTime" Precision="3" />
+          <Property Name="off_sat_to" Type="DateTime" Precision="3" />
+          <Property Name="off_sat_hrs" Type="DateTime" Precision="3" />
+          <Property Name="off_sat_work_location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="off_sun_from" Type="DateTime" Precision="3" />
+          <Property Name="off_sun_to" Type="DateTime" Precision="3" />
+          <Property Name="off_sun_hrs" Type="DateTime" Precision="3" />
+          <Property Name="off_sun_work_location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="latitude" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="holidays_al_ent" Type="Double" />
+          <Property Name="holidays2011_ent" Type="Double" />
+          <Property Name="holidays_due" Type="Double" />
+          <Property Name="holidays_cf" Type="Double" />
+          <Property Name="holidays_due_1996" Type="Double" />
+          <Property Name="holidays_cf_2003" Type="Double" />
+          <Property Name="holidays_due_2004" Type="Double" />
+          <Property Name="holidays_cf_2004" Type="Double" />
+          <Property Name="holidays_2005" Type="Double" />
+          <Property Name="holidays_due_2005" Type="Int32" />
+          <Property Name="cf_hol_2005" Type="Double" />
+          <Property Name="holidays_2006" Type="Double" />
+          <Property Name="cf_hol_2006" Type="Double" />
+          <Property Name="holidays_2007" Type="Double" />
+          <Property Name="cf_hol_2007" Type="Double" />
+          <Property Name="holidays_2008" Type="Double" />
+          <Property Name="cf_hol_2008" Type="Double" />
+          <Property Name="holidays_2009" Type="Double" />
+          <Property Name="cf_hol_2009" Type="Double" />
+          <Property Name="holidays_2010" Type="Double" />
+          <Property Name="cf_hol_2010" Type="Double" />
+          <Property Name="holidays_2011" Type="Double" />
+          <Property Name="cf_hol_2011" Type="Double" />
+          <Property Name="holidays_2012" Type="Double" />
+          <Property Name="cf_hol_2012" Type="Double" />
+          <Property Name="holidays_2013" Type="Double" />
+          <Property Name="cf_hol_2013" Type="Double" />
+          <Property Name="holidays_2014" Type="Double" />
+          <Property Name="cf_hol_2014" Type="Double" />
+          <Property Name="holidays_2015" Type="Double" />
+          <Property Name="cf_hol_2015" Type="Double" />
+          <Property Name="first_reference_sent" Type="Boolean" />
+          <Property Name="first_reference_reply_received" Type="Boolean" />
+          <Property Name="second_reference_sent" Type="Boolean" />
+          <Property Name="second_reference_reply_received" Type="Boolean" />
+          <Property Name="third_reference_sent" Type="Boolean" />
+          <Property Name="third_reference_reply_received" Type="Boolean" />
+          <Property Name="new_employer_address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Leavers_Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="notice_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Leaver_Keydate" Type="DateTime" Precision="3" />
+          <Property Name="fromdate6weeks" Type="DateTime" Precision="3" />
+          <Property Name="todate6weeks" Type="DateTime" Precision="3" />
+          <Property Name="fromdate33weeks" Type="DateTime" Precision="3" />
+          <Property Name="todate33weeks" Type="DateTime" Precision="3" />
+          <Property Name="Emp_details_created_stamp" Type="DateTime" Precision="3" />
+          <Property Name="Emp_details_created_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_details_created_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_details_created_Program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_details_created_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_details_created_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_details_modified_stamp" Type="DateTime" Precision="3" />
+          <Property Name="Emp_details_modified_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_details_modified_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_details_modified_program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_details_modified_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_details_modified_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailSent" Type="Boolean" />
+          <Property Name="Dept_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocsPrinted" Type="Boolean" />
+          <Property Name="first_reference_chase1_date" Type="DateTime" Precision="3" />
+          <Property Name="first_reference_chase2_date" Type="DateTime" Precision="3" />
+          <Property Name="second_reference_chase1_date" Type="DateTime" Precision="3" />
+          <Property Name="second_reference_chase2_date" Type="DateTime" Precision="3" />
+          <Property Name="third_reference_chase1_date" Type="DateTime" Precision="3" />
+          <Property Name="third_reference_chase2_date" Type="DateTime" Precision="3" />
+          <Property Name="address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="post_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="next_of_kin_relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="next_of_kin_relationship_Other" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="holidays_2016" Type="Double" />
+          <Property Name="cf_hol_2016" Type="Double" />
+          <Property Name="Corraddress1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Corraddress2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Corraddress3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Corraddress4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Corraddress5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ac_supervisor_1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ac_supervisor_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ac_supervisor_3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ac_supervisor_4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ac_supervisor_5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="auto_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sexual_orientation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="personal_details_submitted_date" Type="DateTime" Precision="3" />
+          <Property Name="first_referee_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="first_referee_PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="first_referee_Jobtitle" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="second_referee_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="second_referee_PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="second_referee_Jobtitle" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="third_referee_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="third_referee_PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="third_referee_Jobtitle" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="sup_date_from" Type="DateTime" Precision="3" />
+          <Property Name="Lieu_Days_2016" Type="Double" />
+          <Property Name="emp_skype_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lieu_Days_2015" Type="Double" />
+          <Property Name="Lieu_Days_2014" Type="Double" />
+          <Property Name="Lieu_Days_2013" Type="Double" />
+          <Property Name="Lieu_Days_2012" Type="Double" />
+          <Property Name="Lieu_Days_2011" Type="Double" />
+          <Property Name="Lieu_Days_2010" Type="Double" />
+          <Property Name="Lieu_Days_2009" Type="Double" />
+          <Property Name="Lieu_Days_2008" Type="Double" />
+          <Property Name="Lieu_Days_2007" Type="Double" />
+          <Property Name="Lieu_Days_2006" Type="Double" />
+          <Property Name="Lieu_Days_2005" Type="Double" />
+          <Property Name="Lieu_Days_2004" Type="Double" />
+          <Property Name="holidays_2017" Type="Double" />
+          <Property Name="cf_hol_2017" Type="Double" />
+          <Property Name="Lieu_Days_2017" Type="Double" />
+          <Property Name="manager_emp_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="recruitmanager_old" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="crimeduty_solicitor" Type="Boolean" />
+          <Property Name="Reference_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Picture_website" Type="Boolean" Nullable="false" />
+          <Property Name="Profile_website" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Office" Relationship="HRDDLModel.FK__Emp_Detai__offic__7D8391DF" FromRole="Emp_Details" ToRole="Office" />
+          <Property Name="Retainempprofile" Type="Boolean" />
+          <Property Name="isdirector" Type="Boolean" />
+          <Property Name="holidays_2018" Type="Double" />
+          <Property Name="cf_hol_2018" Type="Double" />
+          <Property Name="Lieu_Days_2018" Type="Double" />
+          <Property Name="New_Extn" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="New_DDL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Old_Extn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Old_DDI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Is_AdUpdate" Type="Boolean" />
+          <Property Name="main_add_line1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="main_add_line2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="main_add_line3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="main_add_town" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="main_add_county" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="corr_add_line1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="corr_add_line2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="corr_add_line3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="corr_add_town" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="corr_add_county" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="holidays_2019" Type="Double" />
+          <Property Name="cf_hol_2019" Type="Double" />
+          <Property Name="Lieu_Days_2019" Type="Double" />
+          <Property Name="Director_Emp_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reporting_consultant" Type="Boolean" />
+          <Property Name="rdp_mobile_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="holidays_2020" Type="Double" />
+          <Property Name="cf_hol_2020" Type="Double" />
+          <Property Name="Lieu_Days_2020" Type="Double" />
+          <Property Name="website_link" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="holidays_2021" Type="Double" />
+          <Property Name="cf_hol_2021" Type="Double" />
+          <Property Name="Lieu_Days_2021" Type="Double" />
+          <Property Name="new_client_referrals" Type="Boolean" />
+          <Property Name="copied_emp_profile" Type="Boolean" />
+          <Property Name="emp_website_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Probation_end_date" Type="DateTime" Precision="3" />
+          <Property Name="PRR_support" Type="Boolean" />
+          <Property Name="emp_email_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="probation_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="probation_status_date" Type="DateTime" Precision="3" />
+          <Property Name="ethnic_Other_details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="furlough" Type="Boolean" />
+          <Property Name="furlough_startdate" Type="DateTime" Precision="3" />
+          <Property Name="furlough_enddate" Type="DateTime" Precision="3" />
+          <Property Name="LPC_IsApplicable" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="holidays_2022" Type="Double" />
+          <Property Name="cf_hol_2022" Type="Double" />
+          <Property Name="Lieu_Days_2022" Type="Double" />
+          <Property Name="holidays_2023" Type="Double" />
+          <Property Name="TUPE_start_Date" Type="DateTime" Precision="3" />
+          <Property Name="Tupe_end_date" Type="DateTime" Precision="3" />
+          <Property Name="cls_intranet_access" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__Emp_Detai__offic__7D8391DF">
+          <End Type="HRDDLModel.Office" Role="Office" Multiplicity="0..1" />
+          <End Type="HRDDLModel.Emp_Details" Role="Emp_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="office_code" />
+            </Principal>
+            <Dependent Role="Emp_Details">
+              <PropertyRef Name="office_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Emp_ITInfo">
+          <Key>
+            <PropertyRef Name="auto_number" />
+          </Key>
+          <Property Name="auto_number" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="typist_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="typist_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="extension_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Network_Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Network_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Osprey_Acc_Created" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Osprey_Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Osprey_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="feeearner_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="bb_mobile_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bb_simcard_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bb_imei_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Computer_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Inventory_Signed" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Personal_Portal_Created" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Staff_Personal_Portal_Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Staff_Persona_Portal_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Butterworths_Email_Updates_Created" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DDn" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Access_To_HR_Database" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Perm_Level" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="swipcard_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="swipcards_taken" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fingerprints_taken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Exch_ID_Created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Exch_ID_Deleted_Date" Type="DateTime" Precision="3" />
+          <Property Name="Network_Username_Created" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="OutLook_Acct_Created" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="OutLook_Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OutLook_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sign_title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="sign_jobtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sign_title1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sign_title2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sign_title3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sign_dx" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sign_fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sign_office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="laptop_given" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="remote_access_given" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dictaphone_given" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Emp_ITInfo_created_stamp" Type="DateTime" Precision="3" />
+          <Property Name="Emp_ITInfo_created_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_ITInfo_created_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_ITInfo_created_user_Program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_ITInfo_created_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_ITInfo_created_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_ITInfo_modified_stamp" Type="DateTime" Precision="3" />
+          <Property Name="Emp_ITInfo_modified_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_ITInfo_modified_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_ITInfo_modified_user_program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_ITInfo_modified_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_ITInfo_modified_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="old_swipcard_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rdp_mobile_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="INDIGO_Userid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IndigoAccount_EndDate" Type="DateTime" Precision="3" />
+          <Property Name="service_tag" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="emp_email_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="department_it" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Emp_Profile">
+          <Key>
+            <PropertyRef Name="emp_code" />
+            <PropertyRef Name="jobtitle" />
+            <PropertyRef Name="department" />
+          </Key>
+          <Property Name="emp_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="jobtitle" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="datejoined" Type="DateTime" Precision="3" />
+          <Property Name="department" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="education" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="prof_memship" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="office" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="experience" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mem_and_int" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="web_permission" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="keywords" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_created_stamp" Type="DateTime" Precision="3" />
+          <Property Name="Emp_Profile_created_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_created_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_created_Program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_created_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_created_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_modified_stamp" Type="DateTime" Precision="3" />
+          <Property Name="Emp_Profile_modified_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_modified_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_modified_program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_modified_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Profile_modified_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HRDDLModelStoreContainer" CdmEntityContainer="HRDDLEntities">
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="HRDDLModel.Office">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="Main_Office" ColumnName="Main_Office" />
+                <ScalarProperty Name="TrainingPlan_office" ColumnName="TrainingPlan_office" />
+                <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+                <ScalarProperty Name="fb" ColumnName="fb" />
+                <ScalarProperty Name="indigo_office_code" ColumnName="indigo_office_code" />
+                <ScalarProperty Name="telephone_office_code" ColumnName="telephone_office_code" />
+                <ScalarProperty Name="isswipemachine_present" ColumnName="isswipemachine_present" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="modified_ip" ColumnName="modified_ip" />
+                <ScalarProperty Name="modified_machine_name" ColumnName="modified_machine_name" />
+                <ScalarProperty Name="modified_program" ColumnName="modified_program" />
+                <ScalarProperty Name="modified_version" ColumnName="modified_version" />
+                <ScalarProperty Name="modified_user" ColumnName="modified_user" />
+                <ScalarProperty Name="modified_stamp" ColumnName="modified_stamp" />
+                <ScalarProperty Name="created_ip" ColumnName="created_ip" />
+                <ScalarProperty Name="created_machine_name" ColumnName="created_machine_name" />
+                <ScalarProperty Name="created_Program" ColumnName="created_Program" />
+                <ScalarProperty Name="created_version" ColumnName="created_version" />
+                <ScalarProperty Name="created_user" ColumnName="created_user" />
+                <ScalarProperty Name="created_stamp" ColumnName="created_stamp" />
+                <ScalarProperty Name="organization_supplier_number" ColumnName="organization_supplier_number" />
+                <ScalarProperty Name="office_dx_no" ColumnName="office_dx_no" />
+                <ScalarProperty Name="office_status" ColumnName="office_status" />
+                <ScalarProperty Name="county" ColumnName="county" />
+                <ScalarProperty Name="dateclosed" ColumnName="dateclosed" />
+                <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+                <ScalarProperty Name="office_geo_location" ColumnName="office_geo_location" />
+                <ScalarProperty Name="office_name" ColumnName="office_name" />
+                <ScalarProperty Name="operation_statusO" ColumnName="operation_statusO" />
+                <ScalarProperty Name="office_type" ColumnName="office_type" />
+                <ScalarProperty Name="office_addrText" ColumnName="office_addrText" />
+                <ScalarProperty Name="office_address" ColumnName="office_address" />
+                <ScalarProperty Name="office_desc" ColumnName="office_desc" />
+                <ScalarProperty Name="office_code" ColumnName="office_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emp_Details">
+            <EntityTypeMapping TypeName="HRDDLModel.Emp_Details">
+              <MappingFragment StoreEntitySet="Emp_Details">
+                <ScalarProperty Name="cls_intranet_access" ColumnName="cls_intranet_access" />
+                <ScalarProperty Name="Tupe_end_date" ColumnName="Tupe_end_date" />
+                <ScalarProperty Name="TUPE_start_Date" ColumnName="TUPE_start_Date" />
+                <ScalarProperty Name="holidays_2023" ColumnName="holidays_2023" />
+                <ScalarProperty Name="Lieu_Days_2022" ColumnName="Lieu_Days_2022" />
+                <ScalarProperty Name="cf_hol_2022" ColumnName="cf_hol_2022" />
+                <ScalarProperty Name="holidays_2022" ColumnName="holidays_2022" />
+                <ScalarProperty Name="LPC_IsApplicable" ColumnName="LPC_IsApplicable" />
+                <ScalarProperty Name="furlough_enddate" ColumnName="furlough_enddate" />
+                <ScalarProperty Name="furlough_startdate" ColumnName="furlough_startdate" />
+                <ScalarProperty Name="furlough" ColumnName="furlough" />
+                <ScalarProperty Name="ethnic_Other_details" ColumnName="ethnic_Other_details" />
+                <ScalarProperty Name="probation_status_date" ColumnName="probation_status_date" />
+                <ScalarProperty Name="probation_status" ColumnName="probation_status" />
+                <ScalarProperty Name="emp_email_code" ColumnName="emp_email_code" />
+                <ScalarProperty Name="PRR_support" ColumnName="PRR_support" />
+                <ScalarProperty Name="Probation_end_date" ColumnName="Probation_end_date" />
+                <ScalarProperty Name="emp_website_email" ColumnName="emp_website_email" />
+                <ScalarProperty Name="copied_emp_profile" ColumnName="copied_emp_profile" />
+                <ScalarProperty Name="new_client_referrals" ColumnName="new_client_referrals" />
+                <ScalarProperty Name="Lieu_Days_2021" ColumnName="Lieu_Days_2021" />
+                <ScalarProperty Name="cf_hol_2021" ColumnName="cf_hol_2021" />
+                <ScalarProperty Name="holidays_2021" ColumnName="holidays_2021" />
+                <ScalarProperty Name="website_link" ColumnName="website_link" />
+                <ScalarProperty Name="Lieu_Days_2020" ColumnName="Lieu_Days_2020" />
+                <ScalarProperty Name="cf_hol_2020" ColumnName="cf_hol_2020" />
+                <ScalarProperty Name="holidays_2020" ColumnName="holidays_2020" />
+                <ScalarProperty Name="rdp_mobile_number" ColumnName="rdp_mobile_number" />
+                <ScalarProperty Name="reporting_consultant" ColumnName="reporting_consultant" />
+                <ScalarProperty Name="Director_Emp_code" ColumnName="Director_Emp_code" />
+                <ScalarProperty Name="Lieu_Days_2019" ColumnName="Lieu_Days_2019" />
+                <ScalarProperty Name="cf_hol_2019" ColumnName="cf_hol_2019" />
+                <ScalarProperty Name="holidays_2019" ColumnName="holidays_2019" />
+                <ScalarProperty Name="corr_add_county" ColumnName="corr_add_county" />
+                <ScalarProperty Name="corr_add_town" ColumnName="corr_add_town" />
+                <ScalarProperty Name="corr_add_line3" ColumnName="corr_add_line3" />
+                <ScalarProperty Name="corr_add_line2" ColumnName="corr_add_line2" />
+                <ScalarProperty Name="corr_add_line1" ColumnName="corr_add_line1" />
+                <ScalarProperty Name="main_add_county" ColumnName="main_add_county" />
+                <ScalarProperty Name="main_add_town" ColumnName="main_add_town" />
+                <ScalarProperty Name="main_add_line3" ColumnName="main_add_line3" />
+                <ScalarProperty Name="main_add_line2" ColumnName="main_add_line2" />
+                <ScalarProperty Name="main_add_line1" ColumnName="main_add_line1" />
+                <ScalarProperty Name="Is_AdUpdate" ColumnName="Is_AdUpdate" />
+                <ScalarProperty Name="Old_DDI" ColumnName="Old_DDI" />
+                <ScalarProperty Name="Old_Extn" ColumnName="Old_Extn" />
+                <ScalarProperty Name="New_DDL" ColumnName="New_DDL" />
+                <ScalarProperty Name="New_Extn" ColumnName="New_Extn" />
+                <ScalarProperty Name="Lieu_Days_2018" ColumnName="Lieu_Days_2018" />
+                <ScalarProperty Name="cf_hol_2018" ColumnName="cf_hol_2018" />
+                <ScalarProperty Name="holidays_2018" ColumnName="holidays_2018" />
+                <ScalarProperty Name="isdirector" ColumnName="isdirector" />
+                <ScalarProperty Name="Retainempprofile" ColumnName="Retainempprofile" />
+                <ScalarProperty Name="Profile_website" ColumnName="Profile_website" />
+                <ScalarProperty Name="Picture_website" ColumnName="Picture_website" />
+                <ScalarProperty Name="Reference_Id" ColumnName="Reference_Id" />
+                <ScalarProperty Name="crimeduty_solicitor" ColumnName="crimeduty_solicitor" />
+                <ScalarProperty Name="recruitmanager_old" ColumnName="recruitmanager_old" />
+                <ScalarProperty Name="manager_emp_code" ColumnName="manager_emp_code" />
+                <ScalarProperty Name="Lieu_Days_2017" ColumnName="Lieu_Days_2017" />
+                <ScalarProperty Name="cf_hol_2017" ColumnName="cf_hol_2017" />
+                <ScalarProperty Name="holidays_2017" ColumnName="holidays_2017" />
+                <ScalarProperty Name="Lieu_Days_2004" ColumnName="Lieu_Days_2004" />
+                <ScalarProperty Name="Lieu_Days_2005" ColumnName="Lieu_Days_2005" />
+                <ScalarProperty Name="Lieu_Days_2006" ColumnName="Lieu_Days_2006" />
+                <ScalarProperty Name="Lieu_Days_2007" ColumnName="Lieu_Days_2007" />
+                <ScalarProperty Name="Lieu_Days_2008" ColumnName="Lieu_Days_2008" />
+                <ScalarProperty Name="Lieu_Days_2009" ColumnName="Lieu_Days_2009" />
+                <ScalarProperty Name="Lieu_Days_2010" ColumnName="Lieu_Days_2010" />
+                <ScalarProperty Name="Lieu_Days_2011" ColumnName="Lieu_Days_2011" />
+                <ScalarProperty Name="Lieu_Days_2012" ColumnName="Lieu_Days_2012" />
+                <ScalarProperty Name="Lieu_Days_2013" ColumnName="Lieu_Days_2013" />
+                <ScalarProperty Name="Lieu_Days_2014" ColumnName="Lieu_Days_2014" />
+                <ScalarProperty Name="Lieu_Days_2015" ColumnName="Lieu_Days_2015" />
+                <ScalarProperty Name="emp_skype_id" ColumnName="emp_skype_id" />
+                <ScalarProperty Name="Lieu_Days_2016" ColumnName="Lieu_Days_2016" />
+                <ScalarProperty Name="sup_date_from" ColumnName="sup_date_from" />
+                <ScalarProperty Name="third_referee_Jobtitle" ColumnName="third_referee_Jobtitle" />
+                <ScalarProperty Name="third_referee_PhoneNo" ColumnName="third_referee_PhoneNo" />
+                <ScalarProperty Name="third_referee_Email" ColumnName="third_referee_Email" />
+                <ScalarProperty Name="second_referee_Jobtitle" ColumnName="second_referee_Jobtitle" />
+                <ScalarProperty Name="second_referee_PhoneNo" ColumnName="second_referee_PhoneNo" />
+                <ScalarProperty Name="second_referee_Email" ColumnName="second_referee_Email" />
+                <ScalarProperty Name="first_referee_Jobtitle" ColumnName="first_referee_Jobtitle" />
+                <ScalarProperty Name="first_referee_PhoneNo" ColumnName="first_referee_PhoneNo" />
+                <ScalarProperty Name="first_referee_Email" ColumnName="first_referee_Email" />
+                <ScalarProperty Name="personal_details_submitted_date" ColumnName="personal_details_submitted_date" />
+                <ScalarProperty Name="sexual_orientation" ColumnName="sexual_orientation" />
+                <ScalarProperty Name="auto_no" ColumnName="auto_no" />
+                <ScalarProperty Name="ac_supervisor_5" ColumnName="ac_supervisor_5" />
+                <ScalarProperty Name="ac_supervisor_4" ColumnName="ac_supervisor_4" />
+                <ScalarProperty Name="ac_supervisor_3" ColumnName="ac_supervisor_3" />
+                <ScalarProperty Name="ac_supervisor_2" ColumnName="ac_supervisor_2" />
+                <ScalarProperty Name="ac_supervisor_1" ColumnName="ac_supervisor_1" />
+                <ScalarProperty Name="Corraddress5" ColumnName="Corraddress5" />
+                <ScalarProperty Name="Corraddress4" ColumnName="Corraddress4" />
+                <ScalarProperty Name="Corraddress3" ColumnName="Corraddress3" />
+                <ScalarProperty Name="Corraddress2" ColumnName="Corraddress2" />
+                <ScalarProperty Name="Corraddress1" ColumnName="Corraddress1" />
+                <ScalarProperty Name="cf_hol_2016" ColumnName="cf_hol_2016" />
+                <ScalarProperty Name="holidays_2016" ColumnName="holidays_2016" />
+                <ScalarProperty Name="address3" ColumnName="address3" />
+                <ScalarProperty Name="next_of_kin_relationship_Other" ColumnName="next_of_kin_relationship_Other" />
+                <ScalarProperty Name="next_of_kin_relationship" ColumnName="next_of_kin_relationship" />
+                <ScalarProperty Name="post_code" ColumnName="post_code" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="third_reference_chase2_date" ColumnName="third_reference_chase2_date" />
+                <ScalarProperty Name="third_reference_chase1_date" ColumnName="third_reference_chase1_date" />
+                <ScalarProperty Name="second_reference_chase2_date" ColumnName="second_reference_chase2_date" />
+                <ScalarProperty Name="second_reference_chase1_date" ColumnName="second_reference_chase1_date" />
+                <ScalarProperty Name="first_reference_chase2_date" ColumnName="first_reference_chase2_date" />
+                <ScalarProperty Name="first_reference_chase1_date" ColumnName="first_reference_chase1_date" />
+                <ScalarProperty Name="DocsPrinted" ColumnName="DocsPrinted" />
+                <ScalarProperty Name="Dept_code" ColumnName="Dept_code" />
+                <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+                <ScalarProperty Name="Emp_details_modified_ip" ColumnName="Emp_details_modified_ip" />
+                <ScalarProperty Name="Emp_details_modified_machine_name" ColumnName="Emp_details_modified_machine_name" />
+                <ScalarProperty Name="Emp_details_modified_program" ColumnName="Emp_details_modified_program" />
+                <ScalarProperty Name="Emp_details_modified_version" ColumnName="Emp_details_modified_version" />
+                <ScalarProperty Name="Emp_details_modified_user" ColumnName="Emp_details_modified_user" />
+                <ScalarProperty Name="Emp_details_modified_stamp" ColumnName="Emp_details_modified_stamp" />
+                <ScalarProperty Name="Emp_details_created_ip" ColumnName="Emp_details_created_ip" />
+                <ScalarProperty Name="Emp_details_created_machine_name" ColumnName="Emp_details_created_machine_name" />
+                <ScalarProperty Name="Emp_details_created_Program" ColumnName="Emp_details_created_Program" />
+                <ScalarProperty Name="Emp_details_created_version" ColumnName="Emp_details_created_version" />
+                <ScalarProperty Name="Emp_details_created_user" ColumnName="Emp_details_created_user" />
+                <ScalarProperty Name="Emp_details_created_stamp" ColumnName="Emp_details_created_stamp" />
+                <ScalarProperty Name="todate33weeks" ColumnName="todate33weeks" />
+                <ScalarProperty Name="fromdate33weeks" ColumnName="fromdate33weeks" />
+                <ScalarProperty Name="todate6weeks" ColumnName="todate6weeks" />
+                <ScalarProperty Name="fromdate6weeks" ColumnName="fromdate6weeks" />
+                <ScalarProperty Name="Leaver_Keydate" ColumnName="Leaver_Keydate" />
+                <ScalarProperty Name="notice_type" ColumnName="notice_type" />
+                <ScalarProperty Name="Leavers_Comments" ColumnName="Leavers_Comments" />
+                <ScalarProperty Name="new_employer_address" ColumnName="new_employer_address" />
+                <ScalarProperty Name="third_reference_reply_received" ColumnName="third_reference_reply_received" />
+                <ScalarProperty Name="third_reference_sent" ColumnName="third_reference_sent" />
+                <ScalarProperty Name="second_reference_reply_received" ColumnName="second_reference_reply_received" />
+                <ScalarProperty Name="second_reference_sent" ColumnName="second_reference_sent" />
+                <ScalarProperty Name="first_reference_reply_received" ColumnName="first_reference_reply_received" />
+                <ScalarProperty Name="first_reference_sent" ColumnName="first_reference_sent" />
+                <ScalarProperty Name="cf_hol_2015" ColumnName="cf_hol_2015" />
+                <ScalarProperty Name="holidays_2015" ColumnName="holidays_2015" />
+                <ScalarProperty Name="cf_hol_2014" ColumnName="cf_hol_2014" />
+                <ScalarProperty Name="holidays_2014" ColumnName="holidays_2014" />
+                <ScalarProperty Name="cf_hol_2013" ColumnName="cf_hol_2013" />
+                <ScalarProperty Name="holidays_2013" ColumnName="holidays_2013" />
+                <ScalarProperty Name="cf_hol_2012" ColumnName="cf_hol_2012" />
+                <ScalarProperty Name="holidays_2012" ColumnName="holidays_2012" />
+                <ScalarProperty Name="cf_hol_2011" ColumnName="cf_hol_2011" />
+                <ScalarProperty Name="holidays_2011" ColumnName="holidays_2011" />
+                <ScalarProperty Name="cf_hol_2010" ColumnName="cf_hol_2010" />
+                <ScalarProperty Name="holidays_2010" ColumnName="holidays_2010" />
+                <ScalarProperty Name="cf_hol_2009" ColumnName="cf_hol_2009" />
+                <ScalarProperty Name="holidays_2009" ColumnName="holidays_2009" />
+                <ScalarProperty Name="cf_hol_2008" ColumnName="cf_hol_2008" />
+                <ScalarProperty Name="holidays_2008" ColumnName="holidays_2008" />
+                <ScalarProperty Name="cf_hol_2007" ColumnName="cf_hol_2007" />
+                <ScalarProperty Name="holidays_2007" ColumnName="holidays_2007" />
+                <ScalarProperty Name="cf_hol_2006" ColumnName="cf_hol_2006" />
+                <ScalarProperty Name="holidays_2006" ColumnName="holidays_2006" />
+                <ScalarProperty Name="cf_hol_2005" ColumnName="cf_hol_2005" />
+                <ScalarProperty Name="holidays_due_2005" ColumnName="holidays_due_2005" />
+                <ScalarProperty Name="holidays_2005" ColumnName="holidays_2005" />
+                <ScalarProperty Name="holidays_cf_2004" ColumnName="holidays_cf_2004" />
+                <ScalarProperty Name="holidays_due_2004" ColumnName="holidays_due_2004" />
+                <ScalarProperty Name="holidays_cf_2003" ColumnName="holidays_cf_2003" />
+                <ScalarProperty Name="holidays_due_1996" ColumnName="holidays_due_1996" />
+                <ScalarProperty Name="holidays_cf" ColumnName="holidays_cf" />
+                <ScalarProperty Name="holidays_due" ColumnName="holidays_due" />
+                <ScalarProperty Name="holidays2011_ent" ColumnName="holidays2011_ent" />
+                <ScalarProperty Name="holidays_al_ent" ColumnName="holidays_al_ent" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="off_sun_work_location" ColumnName="off_sun_work_location" />
+                <ScalarProperty Name="off_sun_hrs" ColumnName="off_sun_hrs" />
+                <ScalarProperty Name="off_sun_to" ColumnName="off_sun_to" />
+                <ScalarProperty Name="off_sun_from" ColumnName="off_sun_from" />
+                <ScalarProperty Name="off_sat_work_location" ColumnName="off_sat_work_location" />
+                <ScalarProperty Name="off_sat_hrs" ColumnName="off_sat_hrs" />
+                <ScalarProperty Name="off_sat_to" ColumnName="off_sat_to" />
+                <ScalarProperty Name="off_sat_from" ColumnName="off_sat_from" />
+                <ScalarProperty Name="off_fri_work_location" ColumnName="off_fri_work_location" />
+                <ScalarProperty Name="off_fri_hrs" ColumnName="off_fri_hrs" />
+                <ScalarProperty Name="off_fri_to" ColumnName="off_fri_to" />
+                <ScalarProperty Name="off_fri_from" ColumnName="off_fri_from" />
+                <ScalarProperty Name="off_thu_work_location" ColumnName="off_thu_work_location" />
+                <ScalarProperty Name="off_thu_hrs" ColumnName="off_thu_hrs" />
+                <ScalarProperty Name="off_thu_to" ColumnName="off_thu_to" />
+                <ScalarProperty Name="off_thu_from" ColumnName="off_thu_from" />
+                <ScalarProperty Name="off_wed_work_location" ColumnName="off_wed_work_location" />
+                <ScalarProperty Name="off_wed_hrs" ColumnName="off_wed_hrs" />
+                <ScalarProperty Name="off_wed_to" ColumnName="off_wed_to" />
+                <ScalarProperty Name="off_wed_from" ColumnName="off_wed_from" />
+                <ScalarProperty Name="off_tue_work_location" ColumnName="off_tue_work_location" />
+                <ScalarProperty Name="off_tue_hrs" ColumnName="off_tue_hrs" />
+                <ScalarProperty Name="off_tue_to" ColumnName="off_tue_to" />
+                <ScalarProperty Name="off_tue_from" ColumnName="off_tue_from" />
+                <ScalarProperty Name="off_mon_work_location" ColumnName="off_mon_work_location" />
+                <ScalarProperty Name="off_mon_hrs" ColumnName="off_mon_hrs" />
+                <ScalarProperty Name="off_mon_to" ColumnName="off_mon_to" />
+                <ScalarProperty Name="off_mon_from" ColumnName="off_mon_from" />
+                <ScalarProperty Name="qltt_received" ColumnName="qltt_received" />
+                <ScalarProperty Name="qltt_date" ColumnName="qltt_date" />
+                <ScalarProperty Name="qltt_grade" ColumnName="qltt_grade" />
+                <ScalarProperty Name="dos_in_current_position" ColumnName="dos_in_current_position" />
+                <ScalarProperty Name="prob_ext_date" ColumnName="prob_ext_date" />
+                <ScalarProperty Name="next_of_kin_1_address_3" ColumnName="next_of_kin_1_address_3" />
+                <ScalarProperty Name="next_of_kin_1_address_2" ColumnName="next_of_kin_1_address_2" />
+                <ScalarProperty Name="next_of_kin_1_mbile_no" ColumnName="next_of_kin_1_mbile_no" />
+                <ScalarProperty Name="next_of_kin_1_tel_no" ColumnName="next_of_kin_1_tel_no" />
+                <ScalarProperty Name="next_of_kin_1_address_1" ColumnName="next_of_kin_1_address_1" />
+                <ScalarProperty Name="next_of_kin_1" ColumnName="next_of_kin_1" />
+                <ScalarProperty Name="short_hand_skills" ColumnName="short_hand_skills" />
+                <ScalarProperty Name="sign_language" ColumnName="sign_language" />
+                <ScalarProperty Name="written_lang_3" ColumnName="written_lang_3" />
+                <ScalarProperty Name="written_lang_2" ColumnName="written_lang_2" />
+                <ScalarProperty Name="written_lang_1" ColumnName="written_lang_1" />
+                <ScalarProperty Name="department_covered_5" ColumnName="department_covered_5" />
+                <ScalarProperty Name="department_covered_4" ColumnName="department_covered_4" />
+                <ScalarProperty Name="department_covered_3" ColumnName="department_covered_3" />
+                <ScalarProperty Name="department_covered_2" ColumnName="department_covered_2" />
+                <ScalarProperty Name="resignation_date" ColumnName="resignation_date" />
+                <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+                <ScalarProperty Name="Language4" ColumnName="Language4" />
+                <ScalarProperty Name="language3" ColumnName="language3" />
+                <ScalarProperty Name="language2" ColumnName="language2" />
+                <ScalarProperty Name="language1" ColumnName="language1" />
+                <ScalarProperty Name="pt_request_with_drawn_date" ColumnName="pt_request_with_drawn_date" />
+                <ScalarProperty Name="pt_request_refused_date" ColumnName="pt_request_refused_date" />
+                <ScalarProperty Name="pt_date_contract_valued" ColumnName="pt_date_contract_valued" />
+                <ScalarProperty Name="pt_time_from" ColumnName="pt_time_from" />
+                <ScalarProperty Name="pt_time_to" ColumnName="pt_time_to" />
+                <ScalarProperty Name="pt_hours_per_day" ColumnName="pt_hours_per_day" />
+                <ScalarProperty Name="pt_days_per_week" ColumnName="pt_days_per_week" />
+                <ScalarProperty Name="pt_requested_date" ColumnName="pt_requested_date" />
+                <ScalarProperty Name="salary_review_date2" ColumnName="salary_review_date2" />
+                <ScalarProperty Name="salary_review_date1" ColumnName="salary_review_date1" />
+                <ScalarProperty Name="salary_review" ColumnName="salary_review" />
+                <ScalarProperty Name="salary3" ColumnName="salary3" />
+                <ScalarProperty Name="salary2" ColumnName="salary2" />
+                <ScalarProperty Name="salary3_date" ColumnName="salary3_date" />
+                <ScalarProperty Name="salary2_date" ColumnName="salary2_date" />
+                <ScalarProperty Name="eu_worker_registration_no" ColumnName="eu_worker_registration_no" />
+                <ScalarProperty Name="student_morethan_21hrs" ColumnName="student_morethan_21hrs" />
+                <ScalarProperty Name="workpermit_end_date" ColumnName="workpermit_end_date" />
+                <ScalarProperty Name="workpermit_start_date" ColumnName="workpermit_start_date" />
+                <ScalarProperty Name="visa_expiry_date" ColumnName="visa_expiry_date" />
+                <ScalarProperty Name="visa_type" ColumnName="visa_type" />
+                <ScalarProperty Name="passport_type" ColumnName="passport_type" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="prev_org_address" ColumnName="prev_org_address" />
+                <ScalarProperty Name="contract_end_date" ColumnName="contract_end_date" />
+                <ScalarProperty Name="no" ColumnName="no" />
+                <ScalarProperty Name="recruited_cost" ColumnName="recruited_cost" />
+                <ScalarProperty Name="recruited_from" ColumnName="recruited_from" />
+                <ScalarProperty Name="team_photograph_taken" ColumnName="team_photograph_taken" />
+                <ScalarProperty Name="photograph_taken" ColumnName="photograph_taken" />
+                <ScalarProperty Name="copy_of_degree_given" ColumnName="copy_of_degree_given" />
+                <ScalarProperty Name="copy_of_bvc_given" ColumnName="copy_of_bvc_given" />
+                <ScalarProperty Name="copy_of_lpc_given" ColumnName="copy_of_lpc_given" />
+                <ScalarProperty Name="date_left_prev_org" ColumnName="date_left_prev_org" />
+                <ScalarProperty Name="fee_earner_code" ColumnName="fee_earner_code" />
+                <ScalarProperty Name="job_related_disabilities" ColumnName="job_related_disabilities" />
+                <ScalarProperty Name="proof_of_eligibility_to_work" ColumnName="proof_of_eligibility_to_work" />
+                <ScalarProperty Name="offer_date" ColumnName="offer_date" />
+                <ScalarProperty Name="reason_for_leaving" ColumnName="reason_for_leaving" />
+                <ScalarProperty Name="staff_access" ColumnName="staff_access" />
+                <ScalarProperty Name="employed" ColumnName="employed" />
+                <ScalarProperty Name="languages_spoken" ColumnName="languages_spoken" />
+                <ScalarProperty Name="ethnic_info_not_provided" ColumnName="ethnic_info_not_provided" />
+                <ScalarProperty Name="ethnicity" ColumnName="ethnicity" />
+                <ScalarProperty Name="faith_and_belief" ColumnName="faith_and_belief" />
+                <ScalarProperty Name="ethnic_other_specify" ColumnName="ethnic_other_specify" />
+                <ScalarProperty Name="ethnic_other" ColumnName="ethnic_other" />
+                <ScalarProperty Name="ethnic_asian_other" ColumnName="ethnic_asian_other" />
+                <ScalarProperty Name="ethnic_chinese" ColumnName="ethnic_chinese" />
+                <ScalarProperty Name="ethnic_indian" ColumnName="ethnic_indian" />
+                <ScalarProperty Name="ethnic_bagladeshi" ColumnName="ethnic_bagladeshi" />
+                <ScalarProperty Name="ethnic_pakistani" ColumnName="ethnic_pakistani" />
+                <ScalarProperty Name="ethnic_black_other" ColumnName="ethnic_black_other" />
+                <ScalarProperty Name="ethnic_black_african" ColumnName="ethnic_black_african" />
+                <ScalarProperty Name="ethnic_black_carrebean" ColumnName="ethnic_black_carrebean" />
+                <ScalarProperty Name="ethnic_white" ColumnName="ethnic_white" />
+                <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="female" ColumnName="female" />
+                <ScalarProperty Name="male" ColumnName="male" />
+                <ScalarProperty Name="law_degree_result" ColumnName="law_degree_result" />
+                <ScalarProperty Name="law_degree_gained_university" ColumnName="law_degree_gained_university" />
+                <ScalarProperty Name="law_degree_gained_date" ColumnName="law_degree_gained_date" />
+                <ScalarProperty Name="law_degree" ColumnName="law_degree" />
+                <ScalarProperty Name="bvc_result" ColumnName="bvc_result" />
+                <ScalarProperty Name="bvc_gained_university" ColumnName="bvc_gained_university" />
+                <ScalarProperty Name="bvc_gained_date" ColumnName="bvc_gained_date" />
+                <ScalarProperty Name="bvc_gained" ColumnName="bvc_gained" />
+                <ScalarProperty Name="lpc_result" ColumnName="lpc_result" />
+                <ScalarProperty Name="lpc_gained_university" ColumnName="lpc_gained_university" />
+                <ScalarProperty Name="lpc_gained_date" ColumnName="lpc_gained_date" />
+                <ScalarProperty Name="lpc_gained" ColumnName="lpc_gained" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="personal_email" ColumnName="personal_email" />
+                <ScalarProperty Name="direct_dial_tel_number" ColumnName="direct_dial_tel_number" />
+                <ScalarProperty Name="group_code" ColumnName="group_code" />
+                <ScalarProperty Name="ind_comments" ColumnName="ind_comments" />
+                <ScalarProperty Name="purchase_order" ColumnName="purchase_order" />
+                <ScalarProperty Name="memo_articles_of_association" ColumnName="memo_articles_of_association" />
+                <ScalarProperty Name="comp_reg_no_given" ColumnName="comp_reg_no_given" />
+                <ScalarProperty Name="sra_enrollment_for_student_registration" ColumnName="sra_enrollment_for_student_registration" />
+                <ScalarProperty Name="management_stage1_course" ColumnName="management_stage1_course" />
+                <ScalarProperty Name="iaas_level2_supervisor" ColumnName="iaas_level2_supervisor" />
+                <ScalarProperty Name="iaas_level2" ColumnName="iaas_level2" />
+                <ScalarProperty Name="iaas_level1" ColumnName="iaas_level1" />
+                <ScalarProperty Name="bvc_certificate" ColumnName="bvc_certificate" />
+                <ScalarProperty Name="lpc_certificate" ColumnName="lpc_certificate" />
+                <ScalarProperty Name="supervisor_declaration_form" ColumnName="supervisor_declaration_form" />
+                <ScalarProperty Name="health_and_safety_responsibilities_form_signed" ColumnName="health_and_safety_responsibilities_form_signed" />
+                <ScalarProperty Name="pre_employment_fitness_assessment_questionnaire" ColumnName="pre_employment_fitness_assessment_questionnaire" />
+                <ScalarProperty Name="utility_bill" ColumnName="utility_bill" />
+                <ScalarProperty Name="cpd_record" ColumnName="cpd_record" />
+                <ScalarProperty Name="signed_original_it_agreement" ColumnName="signed_original_it_agreement" />
+                <ScalarProperty Name="certified_copies_of_the_certificate_of_Incorporation_of_your_company" ColumnName="certified_copies_of_the_certificate_of_Incorporation_of_your_company" />
+                <ScalarProperty Name="evidence_of_directorship_for_all_directors" ColumnName="evidence_of_directorship_for_all_directors" />
+                <ScalarProperty Name="evidence_that_you_are_100_percent_shareholder_of_the_Company" ColumnName="evidence_that_you_are_100_percent_shareholder_of_the_Company" />
+                <ScalarProperty Name="valid_panel_membership_certificate" ColumnName="valid_panel_membership_certificate" />
+                <ScalarProperty Name="practising_certificate" ColumnName="practising_certificate" />
+                <ScalarProperty Name="sra_check_carried_out" ColumnName="sra_check_carried_out" />
+                <ScalarProperty Name="induction_check_list_signed_off" ColumnName="induction_check_list_signed_off" />
+                <ScalarProperty Name="google_search_carried_out" ColumnName="google_search_carried_out" />
+                <ScalarProperty Name="staff_profile_created_on_dl_website" ColumnName="staff_profile_created_on_dl_website" />
+                <ScalarProperty Name="qork_status_if_not_british" ColumnName="qork_status_if_not_british" />
+                <ScalarProperty Name="law_details_checklist" ColumnName="law_details_checklist" />
+                <ScalarProperty Name="qualification_certificates" ColumnName="qualification_certificates" />
+                <ScalarProperty Name="passport_copy" ColumnName="passport_copy" />
+                <ScalarProperty Name="p46" ColumnName="p46" />
+                <ScalarProperty Name="p45" ColumnName="p45" />
+                <ScalarProperty Name="interview_notes" ColumnName="interview_notes" />
+                <ScalarProperty Name="first_aid_qualified" ColumnName="first_aid_qualified" />
+                <ScalarProperty Name="trainee_sol_number" ColumnName="trainee_sol_number" />
+                <ScalarProperty Name="tc_end_date" ColumnName="tc_end_date" />
+                <ScalarProperty Name="tc_start_date" ColumnName="tc_start_date" />
+                <ScalarProperty Name="tc_offered" ColumnName="tc_offered" />
+                <ScalarProperty Name="signed_contract_returned" ColumnName="signed_contract_returned" />
+                <ScalarProperty Name="offer_letter" ColumnName="offer_letter" />
+                <ScalarProperty Name="offer_accepted" ColumnName="offer_accepted" />
+                <ScalarProperty Name="trial_period_notice" ColumnName="trial_period_notice" />
+                <ScalarProperty Name="trial_period" ColumnName="trial_period" />
+                <ScalarProperty Name="notice_period" ColumnName="notice_period" />
+                <ScalarProperty Name="third_reference_reply_receivedO" ColumnName="third_reference_reply_receivedO" />
+                <ScalarProperty Name="third_reference_sent_date" ColumnName="third_reference_sent_date" />
+                <ScalarProperty Name="third_reference_sentO" ColumnName="third_reference_sentO" />
+                <ScalarProperty Name="third_referee_address" ColumnName="third_referee_address" />
+                <ScalarProperty Name="third_referee_name" ColumnName="third_referee_name" />
+                <ScalarProperty Name="second_reference_reply_receivedO" ColumnName="second_reference_reply_receivedO" />
+                <ScalarProperty Name="second_reference_sent_date" ColumnName="second_reference_sent_date" />
+                <ScalarProperty Name="second_reference_sentO" ColumnName="second_reference_sentO" />
+                <ScalarProperty Name="second_referee_address" ColumnName="second_referee_address" />
+                <ScalarProperty Name="second_referee_name" ColumnName="second_referee_name" />
+                <ScalarProperty Name="first_reference_reply_receivedO" ColumnName="first_reference_reply_receivedO" />
+                <ScalarProperty Name="first_reference_sent_date" ColumnName="first_reference_sent_date" />
+                <ScalarProperty Name="first_reference_sentO" ColumnName="first_reference_sentO" />
+                <ScalarProperty Name="first_referee_address" ColumnName="first_referee_address" />
+                <ScalarProperty Name="first_referee_name" ColumnName="first_referee_name" />
+                <ScalarProperty Name="payroll_no" ColumnName="payroll_no" />
+                <ScalarProperty Name="linked_office2" ColumnName="linked_office2" />
+                <ScalarProperty Name="linked_office1" ColumnName="linked_office1" />
+                <ScalarProperty Name="office_code" ColumnName="office_code" />
+                <ScalarProperty Name="recruitmanager" ColumnName="recruitmanager" />
+                <ScalarProperty Name="manager" ColumnName="manager" />
+                <ScalarProperty Name="bank_sort_code" ColumnName="bank_sort_code" />
+                <ScalarProperty Name="desk_no" ColumnName="desk_no" />
+                <ScalarProperty Name="position_performance" ColumnName="position_performance" />
+                <ScalarProperty Name="work_permit" ColumnName="work_permit" />
+                <ScalarProperty Name="job_performance" ColumnName="job_performance" />
+                <ScalarProperty Name="head_count" ColumnName="head_count" />
+                <ScalarProperty Name="status_in_uk" ColumnName="status_in_uk" />
+                <ScalarProperty Name="bank_acc_name" ColumnName="bank_acc_name" />
+                <ScalarProperty Name="bank_acc_no" ColumnName="bank_acc_no" />
+                <ScalarProperty Name="bank_address" ColumnName="bank_address" />
+                <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+                <ScalarProperty Name="p45_from_prev_employer" ColumnName="p45_from_prev_employer" />
+                <ScalarProperty Name="emp_notes" ColumnName="emp_notes" />
+                <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+                <ScalarProperty Name="nok_mobile_no" ColumnName="nok_mobile_no" />
+                <ScalarProperty Name="nok_tel_no" ColumnName="nok_tel_no" />
+                <ScalarProperty Name="nok_address" ColumnName="nok_address" />
+                <ScalarProperty Name="next_of_kin" ColumnName="next_of_kin" />
+                <ScalarProperty Name="ltd_company_name" ColumnName="ltd_company_name" />
+                <ScalarProperty Name="ni_number" ColumnName="ni_number" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="mobile_tel_number" ColumnName="mobile_tel_number" />
+                <ScalarProperty Name="company_code" ColumnName="company_code" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="ext_to_call" ColumnName="ext_to_call" />
+                <ScalarProperty Name="home_tel_no" ColumnName="home_tel_no" />
+                <ScalarProperty Name="ext_no" ColumnName="ext_no" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="special_conditions" ColumnName="special_conditions" />
+                <ScalarProperty Name="emp_status" ColumnName="emp_status" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="date_admitted" ColumnName="date_admitted" />
+                <ScalarProperty Name="sra_number" ColumnName="sra_number" />
+                <ScalarProperty Name="solicitor_roll_number" ColumnName="solicitor_roll_number" />
+                <ScalarProperty Name="previous_organisation" ColumnName="previous_organisation" />
+                <ScalarProperty Name="pc3" ColumnName="pc3" />
+                <ScalarProperty Name="pc2" ColumnName="pc2" />
+                <ScalarProperty Name="pc1" ColumnName="pc1" />
+                <ScalarProperty Name="limited_company" ColumnName="limited_company" />
+                <ScalarProperty Name="freelance_consultant" ColumnName="freelance_consultant" />
+                <ScalarProperty Name="admin_staff" ColumnName="admin_staff" />
+                <ScalarProperty Name="nonadmitted_staff" ColumnName="nonadmitted_staff" />
+                <ScalarProperty Name="admitted_staff" ColumnName="admitted_staff" />
+                <ScalarProperty Name="bb_given" ColumnName="bb_given" />
+                <ScalarProperty Name="department_it" ColumnName="department_it" />
+                <ScalarProperty Name="jobtitle_id" ColumnName="jobtitle_id" />
+                <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+                <ScalarProperty Name="qualifications" ColumnName="qualifications" />
+                <ScalarProperty Name="known_as" ColumnName="known_as" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="forename" ColumnName="forename" />
+                <ScalarProperty Name="initial" ColumnName="initial" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emp_ITInfo">
+            <EntityTypeMapping TypeName="HRDDLModel.Emp_ITInfo">
+              <MappingFragment StoreEntitySet="Emp_ITInfo">
+                <ScalarProperty Name="department_it" ColumnName="department_it" />
+                <ScalarProperty Name="emp_email_code" ColumnName="emp_email_code" />
+                <ScalarProperty Name="service_tag" ColumnName="service_tag" />
+                <ScalarProperty Name="IndigoAccount_EndDate" ColumnName="IndigoAccount_EndDate" />
+                <ScalarProperty Name="INDIGO_Userid" ColumnName="INDIGO_Userid" />
+                <ScalarProperty Name="rdp_mobile_number" ColumnName="rdp_mobile_number" />
+                <ScalarProperty Name="old_swipcard_number" ColumnName="old_swipcard_number" />
+                <ScalarProperty Name="Emp_ITInfo_modified_ip" ColumnName="Emp_ITInfo_modified_ip" />
+                <ScalarProperty Name="Emp_ITInfo_modified_machine_name" ColumnName="Emp_ITInfo_modified_machine_name" />
+                <ScalarProperty Name="Emp_ITInfo_modified_user_program" ColumnName="Emp_ITInfo_modified_user_program" />
+                <ScalarProperty Name="Emp_ITInfo_modified_version" ColumnName="Emp_ITInfo_modified_version" />
+                <ScalarProperty Name="Emp_ITInfo_modified_user" ColumnName="Emp_ITInfo_modified_user" />
+                <ScalarProperty Name="Emp_ITInfo_modified_stamp" ColumnName="Emp_ITInfo_modified_stamp" />
+                <ScalarProperty Name="Emp_ITInfo_created_ip" ColumnName="Emp_ITInfo_created_ip" />
+                <ScalarProperty Name="Emp_ITInfo_created_machine_name" ColumnName="Emp_ITInfo_created_machine_name" />
+                <ScalarProperty Name="Emp_ITInfo_created_user_Program" ColumnName="Emp_ITInfo_created_user_Program" />
+                <ScalarProperty Name="Emp_ITInfo_created_version" ColumnName="Emp_ITInfo_created_version" />
+                <ScalarProperty Name="Emp_ITInfo_created_user" ColumnName="Emp_ITInfo_created_user" />
+                <ScalarProperty Name="Emp_ITInfo_created_stamp" ColumnName="Emp_ITInfo_created_stamp" />
+                <ScalarProperty Name="dictaphone_given" ColumnName="dictaphone_given" />
+                <ScalarProperty Name="remote_access_given" ColumnName="remote_access_given" />
+                <ScalarProperty Name="laptop_given" ColumnName="laptop_given" />
+                <ScalarProperty Name="sign_office" ColumnName="sign_office" />
+                <ScalarProperty Name="sign_fax" ColumnName="sign_fax" />
+                <ScalarProperty Name="sign_dx" ColumnName="sign_dx" />
+                <ScalarProperty Name="sign_title3" ColumnName="sign_title3" />
+                <ScalarProperty Name="sign_title2" ColumnName="sign_title2" />
+                <ScalarProperty Name="sign_title1" ColumnName="sign_title1" />
+                <ScalarProperty Name="sign_jobtitle" ColumnName="sign_jobtitle" />
+                <ScalarProperty Name="sign_title" ColumnName="sign_title" />
+                <ScalarProperty Name="OutLook_Password" ColumnName="OutLook_Password" />
+                <ScalarProperty Name="OutLook_Username" ColumnName="OutLook_Username" />
+                <ScalarProperty Name="OutLook_Acct_Created" ColumnName="OutLook_Acct_Created" />
+                <ScalarProperty Name="Network_Username_Created" ColumnName="Network_Username_Created" />
+                <ScalarProperty Name="Exch_ID_Deleted_Date" ColumnName="Exch_ID_Deleted_Date" />
+                <ScalarProperty Name="Exch_ID_Created_Date" ColumnName="Exch_ID_Created_Date" />
+                <ScalarProperty Name="fingerprints_taken" ColumnName="fingerprints_taken" />
+                <ScalarProperty Name="swipcards_taken" ColumnName="swipcards_taken" />
+                <ScalarProperty Name="swipcard_number" ColumnName="swipcard_number" />
+                <ScalarProperty Name="Perm_Level" ColumnName="Perm_Level" />
+                <ScalarProperty Name="Access_To_HR_Database" ColumnName="Access_To_HR_Database" />
+                <ScalarProperty Name="DDn" ColumnName="DDn" />
+                <ScalarProperty Name="Butterworths_Email_Updates_Created" ColumnName="Butterworths_Email_Updates_Created" />
+                <ScalarProperty Name="Staff_Persona_Portal_Password" ColumnName="Staff_Persona_Portal_Password" />
+                <ScalarProperty Name="Staff_Personal_Portal_Username" ColumnName="Staff_Personal_Portal_Username" />
+                <ScalarProperty Name="Personal_Portal_Created" ColumnName="Personal_Portal_Created" />
+                <ScalarProperty Name="Inventory_Signed" ColumnName="Inventory_Signed" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Computer_Name" ColumnName="Computer_Name" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="bb_imei_no" ColumnName="bb_imei_no" />
+                <ScalarProperty Name="bb_simcard_no" ColumnName="bb_simcard_no" />
+                <ScalarProperty Name="bb_mobile_no" ColumnName="bb_mobile_no" />
+                <ScalarProperty Name="feeearner_code" ColumnName="feeearner_code" />
+                <ScalarProperty Name="Osprey_Password" ColumnName="Osprey_Password" />
+                <ScalarProperty Name="Osprey_Username" ColumnName="Osprey_Username" />
+                <ScalarProperty Name="Osprey_Acc_Created" ColumnName="Osprey_Acc_Created" />
+                <ScalarProperty Name="Network_Password" ColumnName="Network_Password" />
+                <ScalarProperty Name="Network_Username" ColumnName="Network_Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="extension_no" ColumnName="extension_no" />
+                <ScalarProperty Name="typist_email" ColumnName="typist_email" />
+                <ScalarProperty Name="typist_name" ColumnName="typist_name" />
+                <ScalarProperty Name="Emp_Code" ColumnName="Emp_Code" />
+                <ScalarProperty Name="auto_number" ColumnName="auto_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emp_Profile">
+            <EntityTypeMapping TypeName="HRDDLModel.Emp_Profile">
+              <MappingFragment StoreEntitySet="Emp_Profile">
+                <ScalarProperty Name="Emp_Profile_modified_ip" ColumnName="Emp_Profile_modified_ip" />
+                <ScalarProperty Name="Emp_Profile_modified_machine_name" ColumnName="Emp_Profile_modified_machine_name" />
+                <ScalarProperty Name="Emp_Profile_modified_program" ColumnName="Emp_Profile_modified_program" />
+                <ScalarProperty Name="Emp_Profile_modified_version" ColumnName="Emp_Profile_modified_version" />
+                <ScalarProperty Name="Emp_Profile_modified_user" ColumnName="Emp_Profile_modified_user" />
+                <ScalarProperty Name="Emp_Profile_modified_stamp" ColumnName="Emp_Profile_modified_stamp" />
+                <ScalarProperty Name="Emp_Profile_created_ip" ColumnName="Emp_Profile_created_ip" />
+                <ScalarProperty Name="Emp_Profile_created_machine_name" ColumnName="Emp_Profile_created_machine_name" />
+                <ScalarProperty Name="Emp_Profile_created_Program" ColumnName="Emp_Profile_created_Program" />
+                <ScalarProperty Name="Emp_Profile_created_version" ColumnName="Emp_Profile_created_version" />
+                <ScalarProperty Name="Emp_Profile_created_user" ColumnName="Emp_Profile_created_user" />
+                <ScalarProperty Name="Emp_Profile_created_stamp" ColumnName="Emp_Profile_created_stamp" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="web_permission" ColumnName="web_permission" />
+                <ScalarProperty Name="mem_and_int" ColumnName="mem_and_int" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+                <ScalarProperty Name="office" ColumnName="office" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="prof_memship" ColumnName="prof_memship" />
+                <ScalarProperty Name="education" ColumnName="education" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="datejoined" ColumnName="datejoined" />
+                <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

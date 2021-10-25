@@ -1,0 +1,26 @@
+﻿@model Dictionary<string,string>
+@{
+    ViewBag.Title = "ViewSubDepartments";
+}
+
+<h2>Query Strings</h2>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Query String</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                <tr><th>Webpage Name</th>
+                <th>Department</th>
+                <th>Sub Department</th></tr>
+                @foreach (var item1 in Model)
+                {
+                    <tr>
+                        <td>@item1.Key</td>
+                        <td>@(item1.Value.Contains("?") ? item1.Value.Substring(1, item1.Value.IndexOf("?") - 1) : "")</td>
+                        <td>@(item1.Value.Contains("?") ? item1.Value.Substring(item1.Value.IndexOf("=") + 1) : "")</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+}
+

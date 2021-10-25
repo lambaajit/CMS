@@ -1,0 +1,26 @@
+﻿@model List<DLCMS.Models.Website_Pages>
+@{
+    ViewBag.Title = "getlistofwebpages";
+}
+
+@foreach (var item in Model.GroupBy(x => x.Department).Select(g => new { g.Key, Count = g.Count() }).ToList())
+{
+<div class="panel panel-primary col-sm-12">
+    <div class="panel-heading" style="margin:0px">
+        <span style="float:right"><a href="/CURD_WebSitePages/getlistofwebpages/" style="color:#fff">View All</a></span><h4 style="margin:0px"><a style="color:#fff" href="/CURD_WebSitePages/getlistofwebpages/@(item.Key)">@(item.Key) - Total Pages: @(item.Count)</a></h4> 
+    </div>
+    <div class="panel-body">
+        <ul>
+            
+                @foreach (var item1 in Model.Where(x => x.Department == item.Key).OrderByDescending(x => x.DateUpdated).OrderBy(y => y.Name).ToList())
+                {
+                    <li>
+                        <a href="/CURD_WebsitePages/Edit/@(item1.ID)">@(Html.Raw(item1.Name))</a>  @(item1.DateUpdated == null ? "" : "  -  -  Updated On: " + item1.DateUpdated.Value.ToLongDateString())
+                    </li>
+                }
+                    
+        </ul>
+    </div>
+</div>
+}
+

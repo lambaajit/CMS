@@ -1,0 +1,246 @@
+﻿@model DLCMS.Models.Updates_MainWebsites
+
+@{
+    ViewBag.Title = "Create";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "CURD_NewsArticles", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+
+<div id="ng-app" class="form-horizontal">
+    <h4>Updates_MainWebsites</h4>
+    <hr />
+    @Html.ValidationSummary(true)
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.category, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.category, new List<SelectListItem>
+                    {
+                      new SelectListItem{ Text = "DL related News", Value="DL"},
+                      new SelectListItem{ Text = "Non DL related Article", Value="NonDL"},
+                      new SelectListItem{ Text = "Reported Case", Value="Reported Case"},
+                      new SelectListItem{ Text = "InThePress", Value="InThePress"}
+                    },"-- Select --"
+                     , new { ng_model = "StaffName", ng_change = "getReference(StaffName)" })
+            @Html.ValidationMessageFor(model => model.category)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Title, new { @class = "col-md-10 form-control", ng_model = "NameWP" })
+            @Html.ValidationMessageFor(model => model.Title)
+            <br /><p>Maximum Allowed: 170, Word Count: {{NameWP.length}}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Brief, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Brief, new { @class = "col-md-10 form-control", @cols = "40", @rows = "3" })
+            @Html.ValidationMessageFor(model => model.Brief)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Contents, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Contents, new { @class = "col-md-10 form-control", @cols = "40", @rows = "24" })
+            @Html.ValidationMessageFor(model => model.Contents)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Date_Update, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Date_Update)
+            @Html.ValidationMessageFor(model => model.Date_Update)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Department, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="cbo_Department" id="cbo_Department" multiple style=" width:200px; height:300px">
+                <option ng-repeat="x in myData" value="{{ x }}">{{ x }}</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Department)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Page_Title, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Page_Title, new { @class = "col-md-10 form-control", ng_model = "TitleWP" })
+            @Html.ValidationMessageFor(model => model.Page_Title)
+            <br /><p>Maximum Allowed: 60, Word Count: {{TitleWP.length}}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Description, new { @class = "col-md-10 form-control", ng_model = "DescriptionWP" })
+            @Html.ValidationMessageFor(model => model.Description)
+            <br /><p>Maximum Allowed: 160, Current Word Count: {{DescriptionWP.length}}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Keywords, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Keywords, new { @class = "col-md-10 form-control" })
+            @Html.ValidationMessageFor(model => model.Keywords)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Blog_Department, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="Blog_Department" id="Blog_Department" style="width:200px;">
+                <option ng-repeat="x in myData" ng-if="x !== 'Legal News'" value="{{ x }}">{{ x }}</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Blog_Department)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Image)
+            @Html.ValidationMessageFor(model => model.Image)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Upload Image", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="fileupload" id="fileupload">
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff1, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff1, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff1)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff2, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff2, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff2)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff3, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff3, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff3)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff4, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff4, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff4)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff5, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff5, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff5)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff6, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff6, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff6)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff7, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff7, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff7)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff8, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff8, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff8)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff9, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff9, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff9)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Staff10, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Staff10, new { @class = "staff" })
+            @Html.ValidationMessageFor(model => model.Staff10)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.video, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.video)
+            @Html.ValidationMessageFor(model => model.video)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Upload file if Department is In The Press")
+        <div class="col-md-10">
+            <input type="file" class="single" name="files" /><br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section scripts {
+    <script type="text/javascript">
+        
+
+    </script>
+}

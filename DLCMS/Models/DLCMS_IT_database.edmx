@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DLCMS_IT.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Updates_MainWebsites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar(max)" Nullable="false" />
+          <Property Name="Brief" Type="varchar(max)" Nullable="false" />
+          <Property Name="Contents" Type="varchar(max)" Nullable="false" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="Date_Added" Type="datetime" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="Live" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Keywords" Type="varchar(max)" />
+          <Property Name="Blog_Department" Type="varchar(max)" />
+          <Property Name="Total_Comments" Type="int" />
+          <Property Name="Image" Type="bit" />
+          <Property Name="Duplicate_ID" Type="bigint" />
+          <Property Name="KeywordsToBeUsed" Type="varchar(max)" />
+          <Property Name="Page_Title" Type="varchar(max)" />
+          <Property Name="DLorNonDL" Type="varchar(max)" />
+          <Property Name="Staff1" Type="varchar(max)" />
+          <Property Name="Staff2" Type="varchar(max)" />
+          <Property Name="Staff3" Type="varchar(max)" />
+          <Property Name="Staff4" Type="varchar(max)" />
+          <Property Name="Staff5" Type="varchar(max)" />
+          <Property Name="Staff6" Type="varchar(max)" />
+          <Property Name="Staff7" Type="varchar(max)" />
+          <Property Name="Staff8" Type="varchar(max)" />
+          <Property Name="Staff9" Type="varchar(max)" />
+          <Property Name="Staff10" Type="varchar(max)" />
+          <Property Name="category" Type="varchar(max)" />
+          <Property Name="video" Type="bit" Nullable="false" />
+          <Property Name="filename" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="website_awards">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IndividualCompany" Type="varchar(max)" />
+          <Property Name="StaffName" Type="varchar(max)" />
+          <Property Name="Year" Type="int" />
+          <Property Name="LegalDirectory" Type="varchar(max)" />
+          <Property Name="LegalDirectoryArea" Type="varchar(max)" />
+          <Property Name="LegalDirectoryDepartment" Type="varchar(max)" />
+          <Property Name="DLOffice" Type="varchar(max)" />
+          <Property Name="DLDepartment" Type="varchar(max)" />
+          <Property Name="Blurb" Type="varchar(max)" />
+          <Property Name="LogosToUse" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="website_Office_Direction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Direction_From_Site" Type="varchar(max)" />
+          <Property Name="Category_Of_Site" Type="varchar(max)" />
+          <Property Name="AddressandDescription_of_Site" Type="varchar(max)" />
+          <Property Name="Map_Of_Site" Type="varchar(max)" />
+          <Property Name="DirectionByWalk" Type="varchar(max)" />
+          <Property Name="DirectionByBus" Type="varchar(max)" />
+          <Property Name="officeid" Type="int" />
+        </EntityType>
+        <EntityType Name="Website_Pages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="Sub_Department" Type="varchar(max)" />
+          <Property Name="Keywords" Type="varchar(max)" />
+          <Property Name="Title" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Text" Type="varchar(max)" />
+          <Property Name="Sub_Sub_Department" Type="varchar(max)" />
+          <Property Name="Filename" Type="varchar(max)" />
+          <Property Name="RewriteURL" Type="varchar(max)" />
+          <Property Name="Company" Type="varchar(max)" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="date_update" Type="datetime" />
+          <Property Name="anchortextnavigation" Type="varchar(max)" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="AltTagIng1" Type="varchar(max)" />
+          <Property Name="AltTagIng2" Type="varchar(max)" />
+          <Property Name="AltTagIng3" Type="varchar(max)" />
+          <Property Name="AltTagIng4" Type="varchar(max)" />
+          <Property Name="AltTagIng5" Type="varchar(max)" />
+          <Property Name="AltTagIng6" Type="varchar(max)" />
+          <Property Name="AltTagIng7" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Website_Structure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="underwhichnode" Type="int" />
+          <Property Name="underwhichnode1" Type="int" />
+          <Property Name="underwhichnode2" Type="int" />
+          <Property Name="underwhichnode3" Type="int" />
+          <Property Name="level" Type="varchar(max)" />
+          <Property Name="linkedid" Type="int" />
+          <Property Name="sequence" Type="int" />
+          <Property Name="dept" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Website_Videos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="VideoString" Type="varchar(max)" />
+          <Property Name="emp_code" Type="varchar(max)" />
+          <Property Name="MetaTitle" Type="varchar(max)" />
+          <Property Name="MetaKeyword" Type="varchar(max)" />
+          <Property Name="MetaDescription" Type="varchar(max)" />
+          <Property Name="Heading" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="website_filename" Type="varchar(max)" />
+          <Property Name="content" Type="varchar(max)" />
+          <Property Name="thumbnailpic" Type="varchar(max)" />
+          <Property Name="DoneBy" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Reason_removal" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="DLCMS_ITStoreContainer">
+          <EntitySet Name="Updates_MainWebsites" EntityType="Self.Updates_MainWebsites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="website_awards" EntityType="Self.website_awards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="website_Office_Direction" EntityType="Self.website_Office_Direction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Website_Pages" EntityType="Self.Website_Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Website_Structure" EntityType="Self.Website_Structure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Website_Videos" EntityType="Self.Website_Videos" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DLCMS_IT" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Updates_MainWebsites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Brief" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="Date_Added" Type="DateTime" Precision="3" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Live" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Blog_Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Comments" Type="Int32" />
+          <Property Name="Image" Type="Boolean" />
+          <Property Name="Duplicate_ID" Type="Int64" />
+          <Property Name="KeywordsToBeUsed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Page_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DLorNonDL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="video" Type="Boolean" Nullable="false" />
+          <Property Name="filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Staff10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="DLCMS_ITDatabase" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Updates_MainWebsites" EntityType="Self.Updates_MainWebsites" />
+          <EntitySet Name="Website_Pages" EntityType="DLCMS_IT.Website_Pages" />
+          <EntitySet Name="Website_Structure" EntityType="DLCMS_IT.Website_Structure" />
+          <EntitySet Name="Website_Videos" EntityType="DLCMS_IT.Website_Videos" />
+          <EntitySet Name="website_Office_Direction" EntityType="DLCMS_IT.website_Office_Direction" />
+          <EntitySet Name="website_awards" EntityType="DLCMS_IT.website_awards" />
+        </EntityContainer>
+        <EntityType Name="Website_Pages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Sub_Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RewriteURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="date_update" Type="DateTime" Precision="3" />
+          <Property Name="anchortextnavigation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="AltTagIng1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AltTagIng7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Website_Structure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="underwhichnode" Type="Int32" />
+          <Property Name="level" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="linkedid" Type="Int32" />
+          <Property Name="sequence" Type="Int32" />
+          <Property Name="underwhichnode1" Type="Int32" />
+          <Property Name="underwhichnode2" Type="Int32" />
+          <Property Name="underwhichnode3" Type="Int32" />
+          <Property Name="dept" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Website_Videos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoString" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emp_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Heading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="website_filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="thumbnailpic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DoneBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Reason_removal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="website_Office_Direction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Direction_From_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Category_Of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddressandDescription_of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Map_Of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DirectionByWalk" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DirectionByBus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="officeid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="website_awards">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndividualCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StaffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="LegalDirectory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LegalDirectoryArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LegalDirectoryDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DLOffice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DLDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Blurb" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LogosToUse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DLCMS_ITStoreContainer" CdmEntityContainer="DLCMS_ITDatabase">
+          <EntitySetMapping Name="Updates_MainWebsites">
+            <EntityTypeMapping TypeName="DLCMS_IT.Updates_MainWebsites">
+              <MappingFragment StoreEntitySet="Updates_MainWebsites">
+                <ScalarProperty Name="Staff10" ColumnName="Staff10" />
+                <ScalarProperty Name="Staff9" ColumnName="Staff9" />
+                <ScalarProperty Name="Staff8" ColumnName="Staff8" />
+                <ScalarProperty Name="Staff7" ColumnName="Staff7" />
+                <ScalarProperty Name="Staff6" ColumnName="Staff6" />
+                <ScalarProperty Name="Staff5" ColumnName="Staff5" />
+                <ScalarProperty Name="Staff4" ColumnName="Staff4" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Brief" ColumnName="Brief" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="Date_Added" ColumnName="Date_Added" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Live" ColumnName="Live" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Blog_Department" ColumnName="Blog_Department" />
+                <ScalarProperty Name="Total_Comments" ColumnName="Total_Comments" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Duplicate_ID" ColumnName="Duplicate_ID" />
+                <ScalarProperty Name="KeywordsToBeUsed" ColumnName="KeywordsToBeUsed" />
+                <ScalarProperty Name="Page_Title" ColumnName="Page_Title" />
+                <ScalarProperty Name="DLorNonDL" ColumnName="DLorNonDL" />
+                <ScalarProperty Name="Staff1" ColumnName="Staff1" />
+                <ScalarProperty Name="Staff2" ColumnName="Staff2" />
+                <ScalarProperty Name="Staff3" ColumnName="Staff3" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="video" ColumnName="video" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Pages">
+            <EntityTypeMapping TypeName="DLCMS_IT.Website_Pages">
+              <MappingFragment StoreEntitySet="Website_Pages">
+                <ScalarProperty Name="AltTagIng7" ColumnName="AltTagIng7" />
+                <ScalarProperty Name="AltTagIng6" ColumnName="AltTagIng6" />
+                <ScalarProperty Name="AltTagIng5" ColumnName="AltTagIng5" />
+                <ScalarProperty Name="AltTagIng4" ColumnName="AltTagIng4" />
+                <ScalarProperty Name="AltTagIng3" ColumnName="AltTagIng3" />
+                <ScalarProperty Name="AltTagIng2" ColumnName="AltTagIng2" />
+                <ScalarProperty Name="AltTagIng1" ColumnName="AltTagIng1" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="anchortextnavigation" ColumnName="anchortextnavigation" />
+                <ScalarProperty Name="date_update" ColumnName="date_update" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="RewriteURL" ColumnName="RewriteURL" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="Sub_Sub_Department" ColumnName="Sub_Sub_Department" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Sub_Department" ColumnName="Sub_Department" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Structure">
+            <EntityTypeMapping TypeName="DLCMS_IT.Website_Structure">
+              <MappingFragment StoreEntitySet="Website_Structure">
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="underwhichnode3" ColumnName="underwhichnode3" />
+                <ScalarProperty Name="underwhichnode2" ColumnName="underwhichnode2" />
+                <ScalarProperty Name="underwhichnode1" ColumnName="underwhichnode1" />
+                <ScalarProperty Name="sequence" ColumnName="sequence" />
+                <ScalarProperty Name="linkedid" ColumnName="linkedid" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="underwhichnode" ColumnName="underwhichnode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Videos">
+            <EntityTypeMapping TypeName="DLCMS_IT.Website_Videos">
+              <MappingFragment StoreEntitySet="Website_Videos">
+                <ScalarProperty Name="Reason_removal" ColumnName="Reason_removal" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DoneBy" ColumnName="DoneBy" />
+                <ScalarProperty Name="thumbnailpic" ColumnName="thumbnailpic" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="website_filename" ColumnName="website_filename" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
+                <ScalarProperty Name="VideoString" ColumnName="VideoString" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="website_Office_Direction">
+            <EntityTypeMapping TypeName="DLCMS_IT.website_Office_Direction">
+              <MappingFragment StoreEntitySet="website_Office_Direction">
+                <ScalarProperty Name="officeid" ColumnName="officeid" />
+                <ScalarProperty Name="DirectionByBus" ColumnName="DirectionByBus" />
+                <ScalarProperty Name="DirectionByWalk" ColumnName="DirectionByWalk" />
+                <ScalarProperty Name="Map_Of_Site" ColumnName="Map_Of_Site" />
+                <ScalarProperty Name="AddressandDescription_of_Site" ColumnName="AddressandDescription_of_Site" />
+                <ScalarProperty Name="Category_Of_Site" ColumnName="Category_Of_Site" />
+                <ScalarProperty Name="Direction_From_Site" ColumnName="Direction_From_Site" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="website_awards">
+            <EntityTypeMapping TypeName="DLCMS_IT.website_awards">
+              <MappingFragment StoreEntitySet="website_awards">
+                <ScalarProperty Name="LogosToUse" ColumnName="LogosToUse" />
+                <ScalarProperty Name="Blurb" ColumnName="Blurb" />
+                <ScalarProperty Name="DLDepartment" ColumnName="DLDepartment" />
+                <ScalarProperty Name="DLOffice" ColumnName="DLOffice" />
+                <ScalarProperty Name="LegalDirectoryDepartment" ColumnName="LegalDirectoryDepartment" />
+                <ScalarProperty Name="LegalDirectoryArea" ColumnName="LegalDirectoryArea" />
+                <ScalarProperty Name="LegalDirectory" ColumnName="LegalDirectory" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="IndividualCompany" ColumnName="IndividualCompany" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

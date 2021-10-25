@@ -1,0 +1,60 @@
+﻿@using System.Collections.Generic;
+@{
+    ViewBag.Title = "Index";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @using (@Html.BeginForm("CreateStaffProfiles", "StaffProfiles_NewWebsite", FormMethod.Post))
+    {
+        <div class="panel panel-default col-md-3" style="padding:0px;">
+            <div class="panel-heading" style="width:100%;">Create News/Articles Pages</div>
+            <div class="panel-body">
+                @Html.Label("Staff Name")
+                @Html.DropDownList("cbo_StaffList", (SelectList)Dictionary["SatffList"])
+                <br />
+                @Html.Label("Department")
+                @Html.DropDownList("cbo_Staffdept", (SelectList)Dictionary["StaffDeptList"])
+                <br />
+                @Html.Label("Create What?")<br />
+                @Html.DropDownList("cbo_Type", new List<SelectListItem>
+                           {
+                               new SelectListItem{Text = "Team Pages", Value="Team Pages"},
+                               new SelectListItem{Text = "Staff Pages", Value="Staff Pages"},
+                               new SelectListItem{Text = "Both Pages", Value="Both Pages"},
+                               new SelectListItem{Text = "AlphabeticTeamPages", Value = "AlphabeticTeamPages"}
+                           }
+                )
+                <br />
+                @Html.CheckBox("htaccessfile")
+                <br />
+                <input type="submit" value="Create" />
+                <br />
+            </div>
+        </div>
+    }
+
+    @using (@Html.BeginForm("CostLawTeamPages", "StaffProfiles_NewWebsite", FormMethod.Post))
+    {
+        <input type="submit" value="Create Cost Law Team Pages" />
+    }
+
+    @using (@Html.BeginForm("CostLawProfilePages", "StaffProfiles_NewWebsite", FormMethod.Post))
+    {
+        <input type="submit" value="Create Cost Law Staff Profiles" />
+    }
+    @*<ul>
+            @foreach (var item in (List<string>)ViewBag.listlinks)
+            {
+                <li>@Html.Raw(item)</li>
+            }
+        </ul>*@
+</body>
+</html>

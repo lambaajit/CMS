@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (@Html.BeginForm("createHomePage", "HomePage", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create HomePage</div>
+        <div class="panel-body">
+            <input type="submit" id="CreateHomePage" name="CreateHomePage" value="Create Home Page">
+        </div>
+    </div>
+}

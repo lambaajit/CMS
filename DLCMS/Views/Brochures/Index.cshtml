@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (@Html.BeginForm("createBrochures", "Brochures", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Brochures Pages</div>
+        <div class="panel-body">
+            <input type="submit" value="Create Brochures Pages" />
+        </div>
+    </div>
+}
+

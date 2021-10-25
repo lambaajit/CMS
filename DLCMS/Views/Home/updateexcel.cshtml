@@ -1,0 +1,20 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "updateexcel";
+}
+
+<h2>updateexcel</h2>
+<span>@ViewBag.TotalCount</span>
+<table class="table table-bordered table-striped">
+    @foreach (System.Data.DataRow dc in Model.Rows)
+    {
+    <tr>
+        <td>@dc[0].ToString()</td>
+        <td>@dc[1].ToString()</td>
+        <td>@dc[2].ToString()</td>
+        @*<td>@dc[3].ToString()</td>
+        <td>@dc[4].ToString()</td>*@
+        @*<td>@dc[5].ToString()</td>*@
+    </tr>
+    }
+</table>

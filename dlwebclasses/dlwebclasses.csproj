@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD843D4A-8B69-493A-B906-0E2460F136CF}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dlwebclasses</RootNamespace>
+    <AssemblyName>dlwebclasses</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>dlwebclasses.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Area.cs">
+      <DependentUpon>DLWEB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AreasofLaws\areasoflaw.cs" />
+    <Compile Include="Brochure.cs">
+      <DependentUpon>DLWEB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contents\AlphapheticalTeamPage\AlphabeticalTeamPage.cs" />
+    <Compile Include="Contents\AlphapheticalTeamPage\AlphabeticalTeamPage_NewWebsite.cs" />
+    <Compile Include="Contents\Careers\Jobs_LandingPage_NewWebsite.cs" />
+    <Compile Include="Contents\Careers\Jobs_Pages_NewWebsite.cs" />
+    <Compile Include="Contents\ContentsOldWebsite\Content_NewsArticlesLandingPages.cs" />
+    <Compile Include="Contents\ContentsOldWebsite\Content_StaffProfile.cs" />
+    <Compile Include="Contents\AContents.cs" />
+    <Compile Include="Contents\Content_AlphabeticPages_NewWebsite.cs" />
+    <Compile Include="Contents\Content_Brochures.cs" />
+    <Compile Include="Contents\Content_CostLawTeamPages.cs" />
+    <Compile Include="Contents\Content_CostLawOfficespages.cs" />
+    <Compile Include="Contents\Content_HomePage.cs" />
+    <Compile Include="Contents\Content_JobsLanding_NewWebsite.cs" />
+    <Compile Include="Contents\Content_JobsPage_NewWebsite.cs" />
+    <Compile Include="Contents\Content_NewsArticlesLandingPages_NewWebsite.cs" />
+    <Compile Include="Contents\Content_NewsArticles_NewWebsite.cs" />
+    <Compile Include="Contents\Content_OfficesLanding_NewWebsite.cs" />
+    <Compile Include="Contents\Content_Offices_NewWebsite.cs" />
+    <Compile Include="Contents\Content_CostLawStaffProfile.cs" />
+    <Compile Include="Contents\Content_StaffProfileNewWebsite.cs" />
+    <Compile Include="Contents\ContentsOldWebsite\Content_WebsitePages.cs" />
+    <Compile Include="Contents\Content_TeamPages_NewWebsite.cs" />
+    <Compile Include="Contents\Content_VideoslandingPage_NewWebsite.cs" />
+    <Compile Include="Contents\Content_Video_NewWebsite.cs" />
+    <Compile Include="Contents\Content_WebsitePages_NewWebsite.cs" />
+    <Compile Include="Contents\Content_CostLawWebpages.cs" />
+    <Compile Include="Contents\CostLaw_WebPages\CostLawWebPages.cs" />
+    <Compile Include="Contents\CostLaw_WebPages\CostLaw_OfficePages.cs" />
+    <Compile Include="Contents\CostLaw_WebPages\CostLaw_staffprofiles.cs" />
+    <Compile Include="Contents\CostLaw_WebPages\CostLaw_TeamPages.cs" />
+    <Compile Include="Contents\HomePage\HomePage.cs" />
+    <Compile Include="Contents\NewsArticlesLandingPages\GetLinkfromArticleRef.cs" />
+    <Compile Include="Contents\NewsArticlesLandingPages\NewArticlesLandingPages.cs" />
+    <Compile Include="Contents\NewsArticlesLandingPages\NewsArticlesLandingPages_NewWebsite.cs" />
+    <Compile Include="Contents\NewsArticles\NewsArticles.cs" />
+    <Compile Include="Contents\ContentsOldWebsite\Content_NewsArticles.cs" />
+    <Compile Include="Contents\ContentsOldWebsite\Content_TeamPages.cs" />
+    <Compile Include="Contents\NewsArticles\NewsArticles_NewWebsite.cs" />
+    <Compile Include="Contents\Brochures\BrochurePages_NewWebsite.cs" />
+    <Compile Include="Contents\Offices\OfficePages_NewWebsite.cs" />
+    <Compile Include="Contents\Offices\Office_LandingPages_NewWebsite.cs" />
+    <Compile Include="Contents\StaffProfiles\CheckMissingProfiles.cs" />
+    <Compile Include="Contents\StaffProfiles\staffprofileitdatabaseNewWebsite.cs" />
+    <Compile Include="Contents\StaffProfiles\staffprofiles_NewWebsite.cs" />
+    <Compile Include="Contents\TeamPages\TeamPages.cs" />
+    <Compile Include="Contents\ContentsOldWebsite\Content_AlphabeticPages.cs" />
+    <Compile Include="Contents\TeamPages\TeamPages_NewWebsite.cs" />
+    <Compile Include="Contents\Videos\VideosLandingPage_NewWebsite.cs" />
+    <Compile Include="Contents\Videos\Videos_NewWebsite.cs" />
+    <Compile Include="Contents\WebSitePages\WebSitePages.cs" />
+    <Compile Include="Contents\WebSitePages\WebsitePages_NewWebsite.cs" />
+    <Compile Include="CreateWebPages\CreateHTMLFiles.cs" />
+    <Compile Include="CreateWebPages\CreateHTMLFiles_CostLaw.cs" />
+    <Compile Include="CreateWebPages\CreateHTMLFIles_NEwWebsite.cs" />
+    <Compile Include="CreateWebPages\GenerateWebPages_NewWebsite.cs" />
+    <Compile Include="CreateWebPages\GenerateWebPage_CostLaw.cs" />
+    <Compile Include="DepartmentNavigation\ADepartmentNavigation_NewWebsite.cs" />
+    <Compile Include="DepartmentNavigation\DepartmentNavigationNewWebsite.cs" />
+    <Compile Include="Emp_ITInfo.cs">
+      <DependentUpon>HRDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Emp_Profile.cs">
+      <DependentUpon>HRDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreateWebPages\GenerateWebPages.cs" />
+    <Compile Include="Deleted\X-Department-NavigationTab.cs" />
+    <Compile Include="DepartmentNavigation\ADepartmentNavigation.cs" />
+    <Compile Include="DLWEB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLWEB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLWEB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLWEB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLWEB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLWEB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Emp_Details.cs">
+      <DependentUpon>HRDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Footer\AFooter.cs" />
+    <Compile Include="Footer\Footer.cs" />
+    <Compile Include="Footer\Footer_CostLaw.cs" />
+    <Compile Include="Footer\Footer_NewWebsite.cs" />
+    <Compile Include="HeadSection\AHeadSection.cs" />
+    <Compile Include="HeadSection\HeadSection.cs" />
+    <Compile Include="DepartmentNavigation\DepartmentNavigation.cs" />
+    <Compile Include="Deleted\X-DepartmentDetails.cs" />
+    <Compile Include="DepartmentDetails\DepartmentDetails.cs" />
+    <Compile Include="Bindings.cs" />
+    <Compile Include="AreasofLaws\AAreasoflaw.cs" />
+    <Compile Include="getstaffprofiles.cs" />
+    <Compile Include="HeadSection\HeadSection_CostLaw.cs" />
+    <Compile Include="HeadSection\HeadSection_NewWebsite.cs" />
+    <Compile Include="HRDL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRDL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HRDL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HRDL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRDL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Itdatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Itdatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Itdatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Itdatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Itdatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MainNavigation\IMainNavigation.cs" />
+    <Compile Include="MainNavigation\MainNavigation.cs" />
+    <Compile Include="MainNavigation\MainNavigationNewWebsite.cs" />
+    <Compile Include="MobileNoFor_ITIssues.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Office.cs">
+      <DependentUpon>HRDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeDLW.cs">
+      <DependentUpon>DLWEB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Offices\AOffices.cs" />
+    <Compile Include="Offices\Offices.cs" />
+    <Compile Include="PageHeader\AHeaderContainer.cs" />
+    <Compile Include="PageHeader\APageHeader.cs" />
+    <Compile Include="PageHeader\HeaderContainer.cs" />
+    <Compile Include="PageHeader\HeaderContainer_NewWebsite.cs" />
+    <Compile Include="PageHeader\PageHeader.cs" />
+    <Compile Include="PageHeader\PageHeader_CostLaw.cs" />
+    <Compile Include="PageHeader\PageHeader_NewWebsite.cs" />
+    <Compile Include="PageScripts\APageScripts.cs" />
+    <Compile Include="PageScripts\PageScripts.cs" />
+    <Compile Include="PhotoSession.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhotoSession_StaffAttendance.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products\AWebPage.cs" />
+    <Compile Include="Products\client_WebPage.cs" />
+    <Compile Include="Products\CostLaw_WebPage.cs" />
+    <Compile Include="Products\WebPage.cs" />
+    <Compile Include="Products\WebPage_CostLaw.cs" />
+    <Compile Include="Products\WebPage_NewWebsite.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Contents\StaffProfiles\IStaffProfile.cs" />
+    <Compile Include="Contents\StaffProfiles\staffprofile.cs" />
+    <Compile Include="Contents\StaffProfiles\staffprofileitdatabase.cs" />
+    <Compile Include="Contents\StaffProfiles\staffprofileoldhrd.cs" />
+    <Compile Include="Recruitment_DlWeb.cs">
+      <DependentUpon>DLWEB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RightColoumn\ARightColoumn.cs" />
+    <Compile Include="RightColoumn\RightColoumn.cs" />
+    <Compile Include="SiteMap\Sitemap.cs" />
+    <Compile Include="StaticClasses\allStatic.cs" />
+    <Compile Include="SubDepartment.cs">
+      <DependentUpon>DLWEB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubDepartmentSwitchboard.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Updates_MainWebsites.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_Profile.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_Profile_FinalDraft.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WebsitePagesSubDepartment.cs">
+      <DependentUpon>DLWEB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="website_awards.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Website_Custom_SubDepartments.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Website_Department_Structure.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="website_Header_Pictures.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="website_Office_Direction.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Website_Pages.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Website_Pages_SubDepartments.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Website_Structure.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Website_Videos.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="HRDL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HRDL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="DLWEB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DLWEB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DLWEB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DLWEB.edmx</DependentUpon>
+      <LastGenOutput>DLWEB.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DLWEB.edmx.diagram">
+      <DependentUpon>DLWEB.edmx</DependentUpon>
+    </None>
+    <None Include="DLWEB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DLWEB.edmx</DependentUpon>
+      <LastGenOutput>DLWEB.cs</LastGenOutput>
+    </None>
+    <None Include="HRDL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRDL.edmx</DependentUpon>
+      <LastGenOutput>HRDL.Context.cs</LastGenOutput>
+    </None>
+    <None Include="HRDL.edmx.diagram">
+      <DependentUpon>HRDL.edmx</DependentUpon>
+    </None>
+    <None Include="HRDL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRDL.edmx</DependentUpon>
+      <LastGenOutput>HRDL.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Itdatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Itdatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Itdatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Itdatabase.edmx</DependentUpon>
+      <LastGenOutput>Itdatabase.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Itdatabase.edmx.diagram">
+      <DependentUpon>Itdatabase.edmx</DependentUpon>
+    </None>
+    <None Include="Itdatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Itdatabase.edmx</DependentUpon>
+      <LastGenOutput>Itdatabase.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

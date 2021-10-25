@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @using (@Html.BeginForm("createwebsitepages", "WebsitePages_NewWebsite", FormMethod.Post))
+    {
+        <div class="panel panel-default col-md-3" style="padding:0px;">
+            <div class="panel-heading" style="width:100%;">Create News/Articles Pages</div>
+            <div class="panel-body">
+                @Html.Label("Department")
+                @Html.DropDownList("cbo_WebPagedept", (SelectList)Dictionary["Webpagedeptlist"])
+                <br />
+                <br />
+                <input type="submit" value="Create" />
+
+            </div>
+        </div>
+    }
+    @using (@Html.BeginForm("CreateCostLaw", "WebsitePages_NewWebsite", FormMethod.Post))
+    {
+        <br /><br />
+        <input type="submit" value="Create Cost Law" />
+    }
+
+    @using (@Html.BeginForm("Create247Website", "WebsitePages_NewWebsite", FormMethod.Post))
+    {
+        <br /><br />
+        <input type="submit" value="Create 247 Website" />
+    }
+</body>
+</html>

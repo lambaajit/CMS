@@ -1,0 +1,14 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "SubDepartmentDropdownlist";
+}
+
+<h2>SubDepartmentDropdownlist</h2>
+<table class="table table-bordered table-striped">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item</td>
+        </tr>
+    }
+</table>

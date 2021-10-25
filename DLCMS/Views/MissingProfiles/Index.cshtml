@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DLCMS.Models.MissingStaffList>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h1>Missing Staff @ViewBag.category</h1>
+        <table cellpadding="12" cellspacing="0" style="font-family:Arial; font-style:normal; font-size:14px; border:solid 1px #000;">
+            <tr style="background-color:navy; color:#fff">
+                <th style="border-bottom:solid 1px #000; text-align: left">Row No.</th>
+                <th style="border-bottom:solid 1px #000; text-align: left"> staff name</th>
+                <th style="border-bottom:solid 1px #000; text-align: left">Department</th>
+                <th style="border-bottom:solid 1px #000; text-align: left">JobTitle</th>
+                <th style="border-bottom:solid 1px #000; text-align: left">StartDate</th>
+                <th style="border-bottom:solid 1px #000; text-align: left">Supervisor</th>
+                <th style="border-bottom:solid 1px #000; text-align: left">Status</th>
+                <th style="border-bottom:solid 1px #000; text-align: left">Employment Status</th>
+                <th style="border-bottom:solid 1px #000; text-align: left">Office</th>
+            </tr>
+            @{int i = 0;}
+                        @foreach (var item in Model)
+            {
+                i++;
+                <tr style="@(item.Status == "Not Submitted by Fee earner" ? "background-color:lightpink" : "background-color:lightgoldenrodyellow") ">
+                    <td style=" border-bottom:solid 1px #000; text-align: left;">
+                    @i.ToString()</td>
+                    <td style="border-bottom: solid 1px #000; text-align: left">@item.staffname</td>
+                    <td style="border-bottom: solid 1px #000; text-align: left">@item.Department</td>
+                    <td style="border-bottom: solid 1px #000; text-align: left">@item.JobTitle</td>
+                    <td style="border-bottom: solid 1px #000; text-align: left">@item.StartDate</td>
+                    <td style="border-bottom: solid 1px #000; text-align: left">@item.Supervisor</td>
+                    <td style="border-bottom: solid 1px #000; text-align: left">@item.Status</td>
+                    <td style="border-bottom: solid 1px #000; text-align: left">@item.employment_Status</td>
+                    <td style="border-bottom: solid 1px #000; text-align: left">@item.office_name</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

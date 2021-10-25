@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+    @using (Html.BeginForm())
+{
+    <div> 
+        @Html.Hidden("ID")
+        <input type="submit" id="Save" value="Create Staff Preview" />
+        @if (File.Exists(ViewBag.filepath))
+        {
+            @:<a href="http://10.0.2.157/DuncanLewis_NewWebsite_Revised/Preview/StaffProfile_Preview.html" style="padding-left:50px; padding-top:10px;" target="_blank">Preview Staff Profile</a>
+        }
+        @if (File.Exists(ViewBag.filepathnewwebsite))
+        {
+            @:<a href="http://10.0.2.157:8080/Preview/StaffProfile_Preview.html" style="padding-left:50px; padding-top:10px;" target="_blank">Preview Staff Profile New Website</a>
+        }
+    </div>
+}

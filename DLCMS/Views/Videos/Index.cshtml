@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+
+@using (@Html.BeginForm("createVideos", "Videos", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Videos Pages</div>
+        <div class="panel-body">
+            <input type="submit" value="Create Videos Pages" />
+        </div>
+    </div>
+}
+
+@using (@Html.BeginForm("createVideoslandingpage", "Videos", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Videos Landing</div>
+        <div class="panel-body">
+            <input type="submit" value="Create Videos Landing Pages" />
+        </div>
+    </div>
+}
+

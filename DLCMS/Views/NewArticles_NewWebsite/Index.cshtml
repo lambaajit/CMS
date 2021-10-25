@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+<br />
+@using (@Html.BeginForm("CreateNewslandingPages", "NewArticles_NewWebsite", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create News/Articles Pages</div>
+        <div class="panel-body">
+            @Html.Label("Department")
+            @Html.DropDownList("cbo_Newsdept", (SelectList)Dictionary["NewsArticleList"])
+            <br />
+            @Html.Label("Year")<br />
+            @Html.DropDownList("cbo_years", (SelectList)Dictionary["Years"])
+            <br />
+            @Html.Label("Month")<br />
+            @Html.DropDownList("cbo_month", (SelectList)Dictionary["Months"])
+            <br />
+            @Html.Label("Category")<br />
+            @Html.DropDownList("cbo_category", (SelectList)Dictionary["Categories"])
+            <br />
+            @Html.Label("Create What?")<br />
+            @Html.DropDownList("cbo_Type", new List<SelectListItem>
+                       {
+                           new SelectListItem{Text = "Landing Page", Value="Landing Page"},
+                           new SelectListItem{Text = "Article/News Page", Value="Article/News Page"}
+                       }
+            )
+            <br />
+            <br />
+            <input type="submit" value="Create" />
+        </div>
+    </div>
+}

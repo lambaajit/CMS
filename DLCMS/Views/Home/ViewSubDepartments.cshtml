@@ -1,0 +1,20 @@
+﻿@model List<DLCMS.Models.ListSubDepartments>
+@{
+    ViewBag.Title = "ViewSubDepartments";
+}
+
+<h2>ViewSubDepartments</h2>
+@foreach (var item in Model.GroupBy(x => x.department).OrderBy(z => z.Key).Select(y => y.Key).ToList())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">@item</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                @foreach (var item1 in Model.Where(x => x.department == item).OrderBy(y => y.subdepartment).ToList())
+                {
+                    <tr><td>@item1.subdepartment</td></tr>
+                }
+            </table>
+        </div>
+    </div>
+}

@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DLWEBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Brochures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Image_File" Type="varchar(max)" />
+          <Property Name="PDF_File" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Offices">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Lat" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="Lng" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="Appointment" Type="varchar(max)" />
+          <Property Name="Postcode" Type="varchar(max)" />
+          <Property Name="Google_Map_String" Type="varchar(max)" />
+          <Property Name="In_Out_London" Type="varchar(max)" />
+          <Property Name="Picture" Type="varchar(max)" />
+          <Property Name="OfficeCode" Type="varchar(max)" />
+          <Property Name="County" Type="varchar(max)" />
+          <Property Name="Dedicated_Numbers" Type="varchar(max)" />
+          <Property Name="Business_Cards_Address" Type="varchar(max)" />
+          <Property Name="RoomBooking" Type="bit" />
+          <Property Name="Company" Type="varchar(max)" />
+          <Property Name="Sequence" Type="int" />
+        </EntityType>
+        <EntityType Name="Recruitment_DlWeb">
+          <Key>
+            <PropertyRef Name="Job_Ref_Code" />
+          </Key>
+          <Property Name="Job_Ref_Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Job_Brief_Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="Job_Title" Type="varchar(max)" Nullable="false" />
+          <Property Name="Job_Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="Key_Skills_Required" Type="varchar(max)" Nullable="false" />
+          <Property Name="Date_Posted" Type="datetime" Nullable="false" />
+          <Property Name="Location" Type="varchar(max)" Nullable="false" />
+          <Property Name="Job_Type" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="Visited_Count" Type="int" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+          <Property Name="Salary" Type="varchar(max)" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="Live_Inhouse" Type="bit" Nullable="false" />
+          <Property Name="Live" Type="bit" Nullable="false" />
+          <Property Name="EssentialCriteria1" Type="varchar(max)" />
+          <Property Name="EssentialCriteria2" Type="varchar(max)" />
+          <Property Name="EssentialCriteria3" Type="varchar(max)" />
+          <Property Name="EssentialCriteria4" Type="varchar(max)" />
+          <Property Name="Agencies" Type="varchar(max)" />
+          <Property Name="Email1" Type="varchar(max)" />
+          <Property Name="Email2" Type="varchar(max)" />
+          <Property Name="Agency1" Type="varchar(max)" />
+          <Property Name="Agency2" Type="varchar(max)" />
+          <Property Name="Agency3" Type="varchar(max)" />
+          <Property Name="Agency4" Type="varchar(max)" />
+          <Property Name="Agency5" Type="varchar(max)" />
+          <Property Name="S_Date1" Type="datetime" />
+          <Property Name="S_Date2" Type="datetime" />
+          <Property Name="S_Date3" Type="datetime" />
+          <Property Name="S_Date4" Type="datetime" />
+          <Property Name="S_Date5" Type="datetime" />
+          <Property Name="E_Date1" Type="datetime" />
+          <Property Name="E_Date2" Type="datetime" />
+          <Property Name="E_Date3" Type="datetime" />
+          <Property Name="E_Date4" Type="datetime" />
+          <Property Name="E_Date5" Type="datetime" />
+          <Property Name="Keywords" Type="varchar(max)" />
+          <Property Name="Created_user" Type="varchar" MaxLength="50" />
+          <Property Name="Created_version" Type="varchar" MaxLength="50" />
+          <Property Name="Created_stamp" Type="datetime" />
+          <Property Name="Created_Program" Type="varchar" MaxLength="50" />
+          <Property Name="Created_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="created_ip" Type="varchar" MaxLength="50" />
+          <Property Name="modified_stamp" Type="datetime" />
+          <Property Name="modified_ueser" Type="varchar" MaxLength="50" />
+          <Property Name="modified_version" Type="varchar" MaxLength="50" />
+          <Property Name="modified_program" Type="varchar" MaxLength="50" />
+          <Property Name="modified_machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="modified_ip" Type="varchar" MaxLength="50" />
+          <Property Name="emp_code" Type="varchar" MaxLength="50" />
+          <Property Name="MetaTitle" Type="varchar(max)" />
+          <Property Name="MetaKeywords" Type="varchar(max)" />
+          <Property Name="MetaDescription" Type="varchar(max)" />
+          <Property Name="Duncanlewis_Desc" Type="varchar(max)" />
+          <Property Name="Department_Desc" Type="varchar(max)" />
+          <Property Name="Rewards" Type="varchar(max)" />
+          <Property Name="VacancyRole" Type="varchar(max)" />
+          <Property Name="Equal_Opportunities" Type="varchar(max)" />
+          <Property Name="Recruit_Job_ID" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SubDepartments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Department" Type="varchar(max)" Nullable="false" />
+          <Property Name="SubDepartment" Type="varchar(max)" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubDepartment_Switchboard" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="WebsitePagesSubDepartments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebPageName" Type="varchar(max)" />
+          <Property Name="Dept" Type="varchar(max)" />
+          <Property Name="SubDept" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="DLWEBModelStoreContainer">
+          <EntitySet Name="Brochures" EntityType="Self.Brochures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recruitment_DlWeb" EntityType="Self.Recruitment_DlWeb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubDepartments" EntityType="Self.SubDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebsitePagesSubDepartments" EntityType="Self.WebsitePagesSubDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Areas" EntityType="Self.Areas" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Areas].[ID] AS [ID], 
+    [Areas].[Department] AS [Department]
+    FROM [dbo].[Areas] AS [Areas]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DLWEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OfficeDLW">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Lat" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="Lng" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="Appointment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Postcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Google_Map_String" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="In_Out_London" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="County" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dedicated_Numbers" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Business_Cards_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RoomBooking" Type="Boolean" />
+          <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DLWEBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OfficesDLW" EntityType="DLWEBModel.OfficeDLW" />
+          <EntitySet Name="Recruitment_DlWeb" EntityType="DLWEBModel.Recruitment_DlWeb" />
+          <EntitySet Name="Areas" EntityType="DLWEBModel.Area" />
+          <EntitySet Name="Brochures" EntityType="DLWEBModel.Brochure" />
+          <EntitySet Name="SubDepartments" EntityType="DLWEBModel.SubDepartment" />
+          <EntitySet Name="WebsitePagesSubDepartments" EntityType="DLWEBModel.WebsitePagesSubDepartment" />
+        </EntityContainer>
+        <EntityType Name="Recruitment_DlWeb">
+          <Key>
+            <PropertyRef Name="Job_Ref_Code" />
+          </Key>
+          <Property Name="Job_Ref_Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Job_Brief_Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Key_Skills_Required" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Posted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Type" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="Visited_Count" Type="Int32" Nullable="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+          <Property Name="Salary" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="Live_Inhouse" Type="Boolean" Nullable="false" />
+          <Property Name="Live" Type="Boolean" Nullable="false" />
+          <Property Name="EssentialCriteria1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EssentialCriteria2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EssentialCriteria3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EssentialCriteria4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Agencies" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Agency1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Agency2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Agency3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Agency4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Agency5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="S_Date1" Type="DateTime" Precision="3" />
+          <Property Name="S_Date2" Type="DateTime" Precision="3" />
+          <Property Name="S_Date3" Type="DateTime" Precision="3" />
+          <Property Name="S_Date4" Type="DateTime" Precision="3" />
+          <Property Name="S_Date5" Type="DateTime" Precision="3" />
+          <Property Name="E_Date1" Type="DateTime" Precision="3" />
+          <Property Name="E_Date2" Type="DateTime" Precision="3" />
+          <Property Name="E_Date3" Type="DateTime" Precision="3" />
+          <Property Name="E_Date4" Type="DateTime" Precision="3" />
+          <Property Name="E_Date5" Type="DateTime" Precision="3" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Created_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Created_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Created_stamp" Type="DateTime" Precision="3" />
+          <Property Name="Created_Program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Created_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_stamp" Type="DateTime" Precision="3" />
+          <Property Name="modified_ueser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_machine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modified_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Duncanlewis_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Department_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Rewards" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VacancyRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Equal_Opportunities" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Recruit_Job_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Brochure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image_File" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PDF_File" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubDepartment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Department" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubDepartment_Switchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WebsitePagesSubDepartment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebPageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dept" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDept" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DLWEBModelStoreContainer" CdmEntityContainer="DLWEBEntities">
+          <EntitySetMapping Name="OfficesDLW">
+            <EntityTypeMapping TypeName="DLWEBModel.OfficeDLW">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="RoomBooking" ColumnName="RoomBooking" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Appointment" ColumnName="Appointment" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="Google_Map_String" ColumnName="Google_Map_String" />
+                <ScalarProperty Name="In_Out_London" ColumnName="In_Out_London" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="OfficeCode" ColumnName="OfficeCode" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="Dedicated_Numbers" ColumnName="Dedicated_Numbers" />
+                <ScalarProperty Name="Business_Cards_Address" ColumnName="Business_Cards_Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recruitment_DlWeb">
+            <EntityTypeMapping TypeName="DLWEBModel.Recruitment_DlWeb">
+              <MappingFragment StoreEntitySet="Recruitment_DlWeb">
+                <ScalarProperty Name="Recruit_Job_ID" ColumnName="Recruit_Job_ID" />
+                <ScalarProperty Name="Equal_Opportunities" ColumnName="Equal_Opportunities" />
+                <ScalarProperty Name="VacancyRole" ColumnName="VacancyRole" />
+                <ScalarProperty Name="Rewards" ColumnName="Rewards" />
+                <ScalarProperty Name="Department_Desc" ColumnName="Department_Desc" />
+                <ScalarProperty Name="Duncanlewis_Desc" ColumnName="Duncanlewis_Desc" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
+                <ScalarProperty Name="modified_ip" ColumnName="modified_ip" />
+                <ScalarProperty Name="modified_machine_name" ColumnName="modified_machine_name" />
+                <ScalarProperty Name="modified_program" ColumnName="modified_program" />
+                <ScalarProperty Name="modified_version" ColumnName="modified_version" />
+                <ScalarProperty Name="modified_ueser" ColumnName="modified_ueser" />
+                <ScalarProperty Name="modified_stamp" ColumnName="modified_stamp" />
+                <ScalarProperty Name="created_ip" ColumnName="created_ip" />
+                <ScalarProperty Name="Created_machine_name" ColumnName="Created_machine_name" />
+                <ScalarProperty Name="Created_Program" ColumnName="Created_Program" />
+                <ScalarProperty Name="Created_stamp" ColumnName="Created_stamp" />
+                <ScalarProperty Name="Created_version" ColumnName="Created_version" />
+                <ScalarProperty Name="Created_user" ColumnName="Created_user" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="E_Date5" ColumnName="E_Date5" />
+                <ScalarProperty Name="E_Date4" ColumnName="E_Date4" />
+                <ScalarProperty Name="E_Date3" ColumnName="E_Date3" />
+                <ScalarProperty Name="E_Date2" ColumnName="E_Date2" />
+                <ScalarProperty Name="E_Date1" ColumnName="E_Date1" />
+                <ScalarProperty Name="S_Date5" ColumnName="S_Date5" />
+                <ScalarProperty Name="S_Date4" ColumnName="S_Date4" />
+                <ScalarProperty Name="S_Date3" ColumnName="S_Date3" />
+                <ScalarProperty Name="S_Date2" ColumnName="S_Date2" />
+                <ScalarProperty Name="S_Date1" ColumnName="S_Date1" />
+                <ScalarProperty Name="Agency5" ColumnName="Agency5" />
+                <ScalarProperty Name="Agency4" ColumnName="Agency4" />
+                <ScalarProperty Name="Agency3" ColumnName="Agency3" />
+                <ScalarProperty Name="Agency2" ColumnName="Agency2" />
+                <ScalarProperty Name="Agency1" ColumnName="Agency1" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Agencies" ColumnName="Agencies" />
+                <ScalarProperty Name="EssentialCriteria4" ColumnName="EssentialCriteria4" />
+                <ScalarProperty Name="EssentialCriteria3" ColumnName="EssentialCriteria3" />
+                <ScalarProperty Name="EssentialCriteria2" ColumnName="EssentialCriteria2" />
+                <ScalarProperty Name="EssentialCriteria1" ColumnName="EssentialCriteria1" />
+                <ScalarProperty Name="Live" ColumnName="Live" />
+                <ScalarProperty Name="Live_Inhouse" ColumnName="Live_Inhouse" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Visited_Count" ColumnName="Visited_Count" />
+                <ScalarProperty Name="Job_Type" ColumnName="Job_Type" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Date_Posted" ColumnName="Date_Posted" />
+                <ScalarProperty Name="Key_Skills_Required" ColumnName="Key_Skills_Required" />
+                <ScalarProperty Name="Job_Description" ColumnName="Job_Description" />
+                <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Job_Brief_Description" ColumnName="Job_Brief_Description" />
+                <ScalarProperty Name="Job_Ref_Code" ColumnName="Job_Ref_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="DLWEBModel.Area">
+              <MappingFragment StoreEntitySet="Areas">
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brochures">
+            <EntityTypeMapping TypeName="DLWEBModel.Brochure">
+              <MappingFragment StoreEntitySet="Brochures">
+                <ScalarProperty Name="PDF_File" ColumnName="PDF_File" />
+                <ScalarProperty Name="Image_File" ColumnName="Image_File" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubDepartments">
+            <EntityTypeMapping TypeName="DLWEBModel.SubDepartment">
+              <MappingFragment StoreEntitySet="SubDepartments">
+                <ScalarProperty Name="SubDepartment_Switchboard" ColumnName="SubDepartment_Switchboard" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubDepartment1" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebsitePagesSubDepartments">
+            <EntityTypeMapping TypeName="DLWEBModel.WebsitePagesSubDepartment">
+              <MappingFragment StoreEntitySet="WebsitePagesSubDepartments">
+                <ScalarProperty Name="SubDept" ColumnName="SubDept" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="WebPageName" ColumnName="WebPageName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

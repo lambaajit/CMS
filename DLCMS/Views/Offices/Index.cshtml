@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var Dictionary = (Dictionary<string, SelectList>)ViewBag.Dict;
+}
+
+@using (@Html.BeginForm("createoffices", "Offices", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Offices Pages</div>
+        <div class="panel-body">
+            <input type="submit" value="Create Office Pages" />
+        </div>
+    </div>
+}
+
+@using (@Html.BeginForm("createofficelandingpage", "Offices", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Offices Landing</div>
+        <div class="panel-body">
+            <input type="submit" value="Create Office Landing Pages" />
+        </div>
+    </div>
+}
+
+
+@using (@Html.BeginForm("createofficelandingpage", "Offices", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Offices Landing</div>
+        <div class="panel-body">
+            <input type="submit" value="Create Cost Law Office Landing Pages" />
+        </div>
+    </div>
+}
+
+
+@using (@Html.BeginForm("createcostlawofficepage", "Offices", FormMethod.Post))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Create Offices Landing</div>
+        <div class="panel-body">
+            <input type="submit" value="Create Cost Law Office Pages" />
+        </div>
+    </div>
+}
+
