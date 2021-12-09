@@ -14,6 +14,8 @@ namespace dlwebclasses
             HRDDLEntities hrdb = new HRDDLEntities();
             List<Emp_Details> _ed = new List<Emp_Details>();
             _ed = allStatic.getcurrentemployedstafflist();
+            List<string> excludenames = new List<string>() { "Nina Joshi", "Shany Gupta", "Sridhar Ponnada" };
+            _ed = _ed.Where(x => !excludenames.Contains(x.forename + " " + x.surname)).ToList();
 
             if (company == null)
                 _ed = _ed.Where(x => x.Profile_website == true && x.admin_staff == "0" && (x.reporting_consultant == false || x.reporting_consultant == null)).ToList();
@@ -56,7 +58,48 @@ namespace dlwebclasses
             List<Emp_Details> _ed = new List<Emp_Details>();
             _ed = allStatic.getcurrentemployedstafflist();
             HRDDLEntities dbhr = new HRDDLEntities();
-            _ed = dbhr.Emp_Details.Where(x => x.employed == "1" || x.start_date > DateTime.Now).ToList();
+            List<string> excludenames = new List<string>() { "Azrina Bhunnoo",
+"Karolina Natkaniec",
+"Mohammed Kamran",
+"Jarata Coker",
+"Nazir Mirza",
+"Lily J Meredith",
+"Savvina Kostakou",
+"Isabelle Piper",
+"Gemma Motion",
+"Usha Karathia",
+"Dorcas Orimogunje",
+"Angelique Hu ",
+"Miranda Quashie",
+"Vanessa Ugbo",
+"Keziah Doudy-Yepmo",
+"Miranda Quashie",
+"Lily Kalati",
+"Tommaso Poli",
+"Rebecca Tomkins",
+"Divinea Lyman",
+"Oskar Butcher",
+"Janine Williams",
+"Emma Dawson",
+"Shaista Ahmady",
+"Hiba Warsame",
+"Olivia Doherty",
+"Eva Ford",
+"Kyra Omondi",
+"Naim Islam",
+"Preeti Sarin",
+"Joshua Munt",
+"Daisy Tremlett",
+"Chloe Palmer",
+"Chloe Gilbert",
+"Bunmi Alemoru",
+"Yasmin Samra",
+"Somayya Butt",
+"Ezzatullah Zamani",
+"Beatrice de Burgh",
+"Oluwatobi Akinwande (Tobi)"
+};
+            _ed = dbhr.Emp_Details.Where(x => x.employed == "1" && !x.forename.StartsWith("Donald") && !excludenames.Contains(x.forename + " " + x.surname)).OrderBy(x => x.office_code).ThenBy(x => x.forename).ToList();
             if (company == null)
                 _ed = _ed.Where(x => x.Picture_website == true && x.admin_staff == "0" && (x.reporting_consultant == false || x.reporting_consultant == null)).ToList();
             else
@@ -66,7 +109,9 @@ namespace dlwebclasses
             foreach (Emp_Details ed in _ed)
             {
                 if (System.IO.File.Exists("C:\\inetpub\\wwwroot\\DuncanLewis_NewWebsite_Revised_2017\\Photos\\StaffPics\\" + ed.forename + " " + ed.surname + ".png") == false)
-                missinglist.Add(ed);
+                {
+                    missinglist.Add(ed);
+                }
             }
             return missinglist;
         }

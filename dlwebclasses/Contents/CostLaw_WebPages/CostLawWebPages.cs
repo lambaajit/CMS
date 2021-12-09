@@ -70,7 +70,7 @@ namespace dlwebclasses
             else if (WP.Filename == "blog")
             {
                 StringBuilder bloglist = new StringBuilder();
-                foreach (var item in db.Website_Pages.Where(x => (x.Company == "Cost Law" || x.Company == "Both") && x.Department == "Blog").OrderBy(y => y.DateUpdated).ToList())
+                foreach (var item in db.Website_Pages.Where(x => (x.Company == "Cost Law" || x.Company == "Both") && x.Department == "Blog").OrderByDescending(y => y.DateUpdated).ToList())
                 {
                     bloglist.AppendLine("     <p class=\"news-title\"><a href=\"/Blog/" + item.Filename + ".html" + "\" class=\"news-titlea\">" + item.Name + (string.IsNullOrEmpty(item.AltTagIng7) ? "" : " - written by " + item.AltTagIng7) + " - " + item.DateUpdated.Value.ToShortDateString() + "</a></p><br />");
 

@@ -39,3 +39,15 @@
         </div>
     </div>
 }
+
+@using (@Html.BeginForm("refreshalllivejobstocurrentdate", "Jobs", FormMethod.Get))
+{
+    <div class="panel panel-default col-md-3" style="padding:0px;">
+        <div class="panel-heading" style="width:100%;">Refresh All Jobs</div>
+        <div class="panel-body">
+            <input type="submit" value="Refresh All Jobs" />
+        </div>
+    </div>
+}
+
+

@@ -29,9 +29,11 @@ namespace DLCMS.Controllers
             List<PhotoMissingVM> pm = new List<PhotoMissingVM>();
             int i = 1; 
             DateTime dt = DateTime.Now.Date;
+            DateTime dt1 = DateTime.Now.AddDays(-10);
+
 
             //Filtering Staff already Booked for PhotoSession
-            List<int> sessionids = itdb.PhotoSessions.Where(x => x.Date > DateTime.Now).Select(y => y.Id).ToList();
+            List<int> sessionids = itdb.PhotoSessions.Where(x => x.Date > dt1).Select(y => y.Id).ToList();
             var booked = itdb.PhotoSession_StaffAttendance.Where(x => sessionids.Contains(x.EventId)).Select(x => x.EmpName).ToList();
 
             //Filtering London Offices
@@ -41,7 +43,9 @@ namespace DLCMS.Controllers
             //filtering out manual names
             string[] name = new string[] { "Arvin Bharj", "Lubna Chauhan","Sonal Ruparelia","Vincent Davis", "Ellie Sabet","Ariola Toslloukou" };
 
-            var res = hrdb.Emp_Details.Where(x => x.employed.Equals("1") && x.Picture_website == true && x.start_date < dt && !booked.Contains(x.forename + " " + x.surname) && !name.Contains(x.forename + " " + x.surname) && !(x.forename + " " + x.surname).Contains("Donald") && officecodes.Contains(x.office_code) && x.start_date.Value.Year > 2018).Select(y => y).OrderByDescending(x => x.start_date).ThenBy(z => z.forename + " " + z.surname).ToList();
+
+            //&& officecodes.Contains(x.office_code)
+            var res = hrdb.Emp_Details.Where(x => x.employed.Equals("1") && x.Picture_website == true && x.start_date < dt && !booked.Contains(x.forename + " " + x.surname) && !name.Contains(x.forename + " " + x.surname) && !(x.forename + " " + x.surname).Contains("Donald") && x.start_date.Value.Year > 2018).Select(y => y).OrderByDescending(x => x.office_code).ThenBy(z => z.forename + " " + z.surname).ToList();
             string[] filePaths = Directory.GetFiles("C:\\inetpub\\wwwroot\\DuncanLewis_NewWebsite_Revised_2017\\Photos\\StaffPics");
 
             //filtering admin staff

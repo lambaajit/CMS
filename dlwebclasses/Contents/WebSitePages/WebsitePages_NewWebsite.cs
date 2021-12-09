@@ -153,7 +153,7 @@ namespace dlwebclasses
                     SB.AppendLine("                            <div class=\"legaldirectorypanel " + DD.cssclass + " lightkolor deptbordercolor\" style=\"margin-top:20px\">");
                     SB.AppendLine("                                <div class=\"row nopadding\">");
                     SB.AppendLine("                                    <div class=\"col-sm-4 nopadding\">");
-                    SB.AppendLine("                                        <div class=\"awardtext\">Awards and Recommendations for " + DD.Name + " Department</div>");
+                    SB.AppendLine("                                        <div class=\"awardtext\">Awards and Recommendations for the " + DD.Name + " Department</div>");
                     SB.AppendLine("                                        <div class=\"legaldirectoryimgdiv\">");
 
                     foreach (var item in logos)
@@ -177,7 +177,7 @@ namespace dlwebclasses
                         SB.AppendLine("                                            <div class=\"col-sm-12 nopadding\">");
                         SB.AppendLine("                                                <div class=\"legaldirectoryblurb " + DD.cssclass + " lightkolor\">");
                         SB.AppendLine("                                                    <p class=\"" + DD.cssclass + " lightkolor\">" + item.Blurb + "</p>");
-                        SB.AppendLine("                                                    <span class=\"" + DD.cssclass + " forecolor deptbordercolor\">" + item.LegalDirectory + " " + item.Year + " Edition.<br />" + item.LegalDirectoryDepartment + " / " + item.LegalDirectoryDepartment + "</span>");
+                        SB.AppendLine("                                                    <span class=\"" + DD.cssclass + " forecolor deptbordercolor\">" + item.LegalDirectory + " " + item.Year + " Edition.<br />" + item.LegalDirectoryDepartment + " / " + item.LegalDirectoryArea + "</span>");
                         SB.AppendLine("                                                </div>");
                         SB.AppendLine("                                            </div>");
                     }

@@ -435,7 +435,7 @@ namespace dlwebclasses
                     int i = 0;
                     IT_DatabaseEntities dbit = new IT_DatabaseEntities();
                     List<Website_Pages> WP = new List<Website_Pages>();
-                    WP = dbit.Website_Pages.Where(x => x.Department == item && x.Company== "Duncan Lewis").OrderBy(z => z.Sequence).ThenBy(y => y.Name).ToList();
+                    WP = dbit.Website_Pages.Where(x => x.Department == item && x.Company== "Duncan Lewis").OrderBy(y => y.Name).ToList(); //.OrderBy(z => z.Sequence)
                     foreach (var item1 in WP)
                     {
                         sb.AppendLine("<li><a href=\"/" + item1.Filename + ".html\">" + item1.Name + "</a></li>");

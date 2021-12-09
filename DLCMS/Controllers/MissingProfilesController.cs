@@ -16,7 +16,7 @@ namespace DLCMS.Controllers
             List<dlwebclasses.Emp_Details> mp = new List<dlwebclasses.Emp_Details>();
             if (id == "Photos")
             {
-                mp = _mp.getmissingphotographs(company).OrderBy(x => x.forename).ToList();
+                mp = _mp.getmissingphotographs(company).OrderBy(x => x.office_code).ThenBy(x => x.forename).ToList();
                 ViewBag.category = "Photos";
                 //foreach (var item in mp.Skip(100).Take(10))
                 //{
@@ -41,7 +41,7 @@ namespace DLCMS.Controllers
                 msl.office_name = _ed.Office.office_name;
                 ed.Add(msl);
             }
-            return View(ed.OrderBy(x => x.staffname));
+            return View(ed.OrderBy(x => x.office_name).ThenBy(x => x.staffname));
         }
 
 

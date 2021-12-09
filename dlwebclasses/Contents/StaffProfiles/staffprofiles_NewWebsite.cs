@@ -273,10 +273,7 @@ namespace dlwebclasses
 
             if (mangementstaffjobtitle != "")
             {
-                if (Name != "Nina Joshi")
-                    _NewContents.AppendLine("                            <li><span class=\"fa fa-building\"></span><a href=\"/offices/Harrow_Office.html\">Harrow</a></li>");
-                else
-                    _NewContents.AppendLine("                            <li><span class=\"fa fa-building\"></span><a href=\"/offices/Hackney_Office.html\">Hackney</a></li>");
+                    _NewContents.AppendLine("                            <li><span class=\"fa fa-building\"></span><a href=\"/offices/City of London_Office.html\">City of London</a></li>");
             }
             else
             {

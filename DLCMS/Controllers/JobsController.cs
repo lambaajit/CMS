@@ -126,7 +126,7 @@ namespace DLCMS.Controllers
                 List<int> jobids = StringToIntList(JobsIDs).ToList();
                 
                 List<string> depts = new List<string>() { "Family", "Child Care", "Housing" };
-                recruitment = dlweb.Recruitment_DlWeb.Where(x => x.Live == true && jobids.Contains(x.Job_Ref_Code)).OrderByDescending(z => z.Job_Ref_Code).ToList();//&& jobids.Contains(x.Job_Ref_Code) && x.Job_Type == "Permanent"
+                recruitment = dlweb.Recruitment_DlWeb.Where(x => x.Live == true).OrderByDescending(z => z.Job_Ref_Code).ToList();// && x.Job_Type == "Permanent"
                                                                                                                                                                                    //
 
                 //
@@ -166,7 +166,67 @@ namespace DLCMS.Controllers
             return View("Index");
         }
 
-        public static IEnumerable<int> StringToIntList(string str)
+        public ActionResult refreshalllivejobstocurrentdate()
+        {
+            List<int> ids = new List<int>();
+            List<KeyValuePair<string, string>> KVP = new List<KeyValuePair<string, string>>();
+            Content_JobsPage_NewWebsite NAL;
+            foreach (var item in dlweb.Recruitment_DlWeb.Where(x => x.Live == true).ToList())
+            {
+                Recruitment_DlWeb rec = item;
+                rec.Date_Posted = DateTime.Now;
+                dlweb.Entry(rec).State = System.Data.Entity.EntityState.Modified;
+                dlweb.SaveChanges();
+
+                NAL = new Content_JobsPage_NewWebsite(item.Job_Ref_Code);
+                CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
+
+
+                ids.Add(item.Job_Ref_Code);
+                if (KVP.Where(x => x.Value == item.Department).Count() != 0)
+                    KVP.Add(new KeyValuePair<string, string>("AreaOfLaw", item.Department));
+            }
+            KVP.Add(new KeyValuePair<string, string>("Category", "Admin"));
+            KVP.Add(new KeyValuePair<string, string>("Category", "Solicitor"));
+            KVP.Add(new KeyValuePair<string, string>("Category", "Trainee"));
+            KVP.Add(new KeyValuePair<string, string>("Category", "Caseworker"));
+            KVP.Add(new KeyValuePair<string, string>("Category", "All"));
+            KVP.Add(new KeyValuePair<string, string>("Category", "Cost Draftsman and Billing"));
+
+            foreach (var item in KVP)
+            {
+                Content_JobsLanding_NewWebsite NAL1;
+                NAL1 = new Content_JobsLanding_NewWebsite(item.Value, item.Key);
+                CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL1);
+            }
+
+            List<SelectListItem> departments = dbit.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw").Select(y => new SelectListItem { Text = y.Name, Value = y.Name }).ToList();
+            departments.AddRange(new List<SelectListItem> {  new SelectListItem { Text = "Caseworker", Value = "Caseworker"},
+                                                        new SelectListItem { Text = "Trainee", Value = "Trainee"},
+                                                        new SelectListItem { Text = "Solicitor", Value = "Solicitor"},
+                                                        new SelectListItem { Text = "Consultant", Value = "Consultant"},
+                                                        new SelectListItem { Text = "Admin", Value = "Admin"},
+                                                        new SelectListItem { Text = "Internship", Value = "Internship"},
+                                                        new SelectListItem { Text = "Cost Draftsman and Billing", Value = "Cost Draftsman and Billing"},
+                                                        new SelectListItem { Text = "Apprenticeship", Value = "Apprenticeship"},
+                                                        new SelectListItem { Text = "All", Value = "All"}
+                                                    });
+
+            ViewBag.department = departments;
+            ViewBag.category = new List<SelectListItem> {
+                                                            new SelectListItem { Value = "AreaOfLaw", Text = "AreaOfLaw" },
+                                                            new SelectListItem { Value = "Category", Text = "Category" }
+                                                            };
+
+            return View("Index");
+        }
+
+
+
+
+
+
+            public static IEnumerable<int> StringToIntList(string str)
         {
             if (String.IsNullOrEmpty(str))
                 yield break;
