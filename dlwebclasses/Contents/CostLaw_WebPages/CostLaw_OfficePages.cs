@@ -23,10 +23,10 @@ namespace dlwebclasses
             DLWEBEntities db = new DLWEBEntities();
             var office = db.OfficesDLW.Where(x => x.Active == true && (x.Company == "Cost Law" || x.Company == "Both") && x.ID == id).FirstOrDefault();
 
-            Title = "Costs Draftsmen | Lawyers | " +office.Name+" | Cost Law Services";
-            Description = "Specialist Nationwide Costs Draftsmen and Lawyers at Cost Law Services providing a full range of Legal Bill drafting services, Inter Partes and Legal aid in " + office.Name + ", " + office.County;
-            Keywords = "Cost Draftsmen " + office.Name;
-            HeadingH1 =  "Cost Draftsmen in " + office.Name;
+            Title = "Costs Draftsperson | Lawyers | " +office.Name+" | Cost Law Services";
+            Description = "Specialist Nationwide Costs Draftsperson and Lawyers at Cost Law Services providing a full range of Legal Bill drafting services, Inter Partes and Legal aid in " + office.Name + ", " + office.County;
+            Keywords = "Cost Draftsperson " + office.Name;
+            HeadingH1 =  "Cost Draftsperson in " + office.Name;
             canonicaltag = "https://www.costlaw.com/Cost-Drafting-" + office.Name + ".html";
             filepath = ConfigurationManager.AppSettings["RootpathCostLawWebsite"].ToString() + "\\Cost-Drafting-" + office.Name + ".html";
 

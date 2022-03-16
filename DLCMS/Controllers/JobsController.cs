@@ -126,7 +126,7 @@ namespace DLCMS.Controllers
                 List<int> jobids = StringToIntList(JobsIDs).ToList();
                 
                 List<string> depts = new List<string>() { "Family", "Child Care", "Housing" };
-                recruitment = dlweb.Recruitment_DlWeb.Where(x => x.Live == true).OrderByDescending(z => z.Job_Ref_Code).ToList();// && x.Job_Type == "Permanent"
+                recruitment = dlweb.Recruitment_DlWeb.Where(x => x.Live == true && jobids.Contains(x.Job_Ref_Code)).OrderByDescending(z => z.Job_Ref_Code).ToList();// && x.Job_Type == "Permanent"
                                                                                                                                                                                    //
 
                 //
@@ -183,7 +183,7 @@ namespace DLCMS.Controllers
 
 
                 ids.Add(item.Job_Ref_Code);
-                if (KVP.Where(x => x.Value == item.Department).Count() != 0)
+                if (KVP.Where(x => x.Value == item.Department).Count() == 0)
                     KVP.Add(new KeyValuePair<string, string>("AreaOfLaw", item.Department));
             }
             KVP.Add(new KeyValuePair<string, string>("Category", "Admin"));
@@ -192,6 +192,8 @@ namespace DLCMS.Controllers
             KVP.Add(new KeyValuePair<string, string>("Category", "Caseworker"));
             KVP.Add(new KeyValuePair<string, string>("Category", "All"));
             KVP.Add(new KeyValuePair<string, string>("Category", "Cost Draftsman and Billing"));
+
+
 
             foreach (var item in KVP)
             {

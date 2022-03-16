@@ -34,14 +34,17 @@ namespace DLCMS.Controllers
                 msl.staffname = _ed.forename.ToString() + " " + _ed.surname.ToString();
                 msl.JobTitle = _ed.jobtitle;
                 msl.Department = _ed.department_it;
-                msl.StartDate = _ed.start_date.Value.ToShortDateString();
+                msl.StartDate = _ed.start_date;
                 msl.Supervisor = _ed.recruitmanager;
                 msl.Status = _ed.bb_given;
                 msl.employment_Status = _ed.emp_status;
                 msl.office_name = _ed.Office.office_name;
                 ed.Add(msl);
             }
-            return View(ed.OrderBy(x => x.office_name).ThenBy(x => x.staffname));
+            //if (id != "Photos")
+            //    return View(ed.OrderBy(x => x.office_name).ThenBy(x => x.staffname));
+            //else
+                return View(ed.OrderBy(x => x.StartDate).ThenBy(x => x.staffname));
         }
 
 

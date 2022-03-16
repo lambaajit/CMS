@@ -10,7 +10,7 @@ namespace DLCMS.Models
         public string staffname { get; set; }
         public string Department { get; set; }
         public string JobTitle { get; set; }
-        public string StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
         public string Supervisor { get; set; }
         public string Status { get; set; }
         public string employment_Status { get; set; }

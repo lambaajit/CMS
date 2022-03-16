@@ -18,5 +18,6 @@ namespace dlwebclasses
         public string SubDepartment1 { get; set; }
         public int ID { get; set; }
         public string SubDepartment_Switchboard { get; set; }
+        public string email { get; set; }
     }
 }

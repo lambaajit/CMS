@@ -74,5 +74,6 @@ namespace dlwebclasses
         public string VacancyRole { get; set; }
         public string Equal_Opportunities { get; set; }
         public string Recruit_Job_ID { get; set; }
+        public string FIlename { get; set; }
     }
 }

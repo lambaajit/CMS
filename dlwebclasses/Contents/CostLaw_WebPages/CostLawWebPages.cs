@@ -145,7 +145,7 @@ namespace dlwebclasses
             sb.AppendLine("                            <li class=\"right-list\"> <i class=\"fa fa-user\">&nbsp;</i> <a href=\"/contact.html\">Advocates</a></li>");
             sb.AppendLine("                            <li class=\"right-list\"> <i class=\"fa fa-user\">&nbsp;</i> <a href=\"/contact.html\">Chartered Legal Executives</a></li>");
             sb.AppendLine("                            <li class=\"right-list\"> <i class=\"fa fa-user\">&nbsp;</i> <a href=\"/contact.html\">Senior Law Costs Draftsman</a></li>");
-            sb.AppendLine("                            <li class=\"right-list\"> <i class=\"fa fa-user\">&nbsp </i> <a href=\"/contact.html\">Costs Draftsmen</a></li>");
+            sb.AppendLine("                            <li class=\"right-list\"> <i class=\"fa fa-user\">&nbsp </i> <a href=\"/contact.html\">Costs Draftsperson</a></li>");
             sb.AppendLine("                            <li class=\"right-list\"> <i class=\"fa fa-user\">&nbsp;</i> <a href=\"/contact.html\">Costs Negotiators</a></li>");
 
             sb.AppendLine("                        </ul>");
@@ -159,7 +159,7 @@ namespace dlwebclasses
 
             sb.AppendLine("                        <div class=\"yellow-box\">");
             sb.AppendLine("                            <h4 class=\"yellow-box-heading\">Cost Law Services</h4>");
-            sb.AppendLine("                            <p class=\"box-text\"> Our Cost Lawyers and Cost Draftsmen, have considerable experience in dealing with a range of legal billing services.</p>");
+            sb.AppendLine("                            <p class=\"box-text\"> Our Cost Lawyers and Cost Draftsperson, have considerable experience in dealing with a range of legal billing services.</p>");
             sb.AppendLine("                            <a href=\"/our-people.html\" class=\"btn btn-warning3\"> View More </a>");
             sb.AppendLine("                        </div>");
             return sb;
@@ -204,19 +204,19 @@ namespace dlwebclasses
             sb.AppendLine("                    <img src=\"/Images/banner2.jpg\" alt=\"Cost Law Services\" class=\"img-responsive hidden-xs\" />");
             sb.AppendLine("                    <img src=\"/Images/banner2_M.jpg\" alt=\"Cost Law Services\" class=\"img-responsive hidden-sm hidden-lg hidden-md\" />");
             sb.AppendLine("                    <div class=\"carousel-caption\">");
-            sb.AppendLine("                        <h3 class=\"caption-title\">Specialist Law Costs Draftsmen</h3>");
-            sb.AppendLine("                        <p class=\"caption-text hidden-xs hidden-sm\">\"Experienced Costs Draftsmen and Costs Lawyers to help maximize your costs recovery.\"</p>");
+            sb.AppendLine("                        <h3 class=\"caption-title\">Specialist Law Costs Draftsperson</h3>");
+            sb.AppendLine("                        <p class=\"caption-text hidden-xs hidden-sm\">\"Experienced Costs Draftsperson and Costs Lawyers to help maximize your costs recovery.\"</p>");
             sb.AppendLine("                        <span class=\"slider-buttons hidden-xs\"> <a href=\"/services.html\" class=\"btn btn-primary\"> Our Services </a> <a href=\"/contact.html\" class=\"btn btn-warning\"> Contact us </a> </span>");
 
             sb.AppendLine("                    </div>");
             sb.AppendLine("                </div>");
 
             sb.AppendLine("                <div class=\"item\">");
-            sb.AppendLine("                    <img src=\"/Images/banner4.jpg\" alt=\"Costs Draftsmen\" class=\"img-responsive hidden-xs\" />");
-            sb.AppendLine("                    <img src=\"/Images/banner4_M.jpg\" alt=\"Costs Draftsmen\" class=\"img-responsive hidden-sm hidden-lg hidden-md\" />");
+            sb.AppendLine("                    <img src=\"/Images/banner4.jpg\" alt=\"Costs Draftsperson\" class=\"img-responsive hidden-xs\" />");
+            sb.AppendLine("                    <img src=\"/Images/banner4_M.jpg\" alt=\"Costs Draftsperson\" class=\"img-responsive hidden-sm hidden-lg hidden-md\" />");
             sb.AppendLine("                    <div class=\"carousel-caption\">");
             sb.AppendLine("                        <h3 class=\"caption-title\">Billing Services</h3>");
-            sb.AppendLine("                        <p class=\"caption-text hidden-xs hidden-sm\">\"Specialist Costs Lawyers and Draftsmen offering a full spectrum of Legal Aid and Inter Partes Costs services.\"</p>");
+            sb.AppendLine("                        <p class=\"caption-text hidden-xs hidden-sm\">\"Specialist Costs Lawyers and Draftsperson offering a full spectrum of Legal Aid and Inter Partes Costs services.\"</p>");
             sb.AppendLine("                        <span class=\"slider-buttons hidden-xs\"> <a href=\"/services.html\" class=\"btn btn-primary\"> Our Services </a> <a href=\"/contact.html\" class=\"btn btn-warning\"> Contact us </a> </span>");
             sb.AppendLine("                    </div>");
             sb.AppendLine("                </div>");
@@ -226,14 +226,14 @@ namespace dlwebclasses
             sb.AppendLine("                    <img src=\"/Images/banner5_M.jpg\" alt=\"Legal Aid Billing\" class=\"img-responsive hidden-sm hidden-lg hidden-md\" />");
             sb.AppendLine("                    <div class=\"carousel-caption\">");
             sb.AppendLine("                        <h3 class=\"caption-title\">Our Reach</h3>");
-            sb.AppendLine("                        <p class=\"caption-text hidden-xs hidden-sm\">\"Our Costs Lawyers and Costs draftsmen are able to provide a nationwide legal bill drafting service.\"</p>");
+            sb.AppendLine("                        <p class=\"caption-text hidden-xs hidden-sm\">\"Our Costs Lawyers and Costs Draftsperson are able to provide a nationwide legal bill drafting service.\"</p>");
             sb.AppendLine("                        <span class=\"slider-buttons hidden-xs\"> <a href=\"/services.html\" class=\"btn btn-primary\"> Our Services </a> <a href=\"/contact.html\" class=\"btn btn-warning\"> Contact us </a> </span>");
             sb.AppendLine("                    </div>");
             sb.AppendLine("                </div>");
 
             sb.AppendLine("                <div class=\"item\">");
-            sb.AppendLine("                    <img src=\"/Images/banner3.jpg\" alt=\"Law Costs Draftsmen\" class=\"img-responsive hidden-xs\" />");
-            sb.AppendLine("                    <img src=\"/Images/banner3_M.jpg\" alt=\"Law Costs Draftsmen\" class=\"img-responsive hidden-sm hidden-lg hidden-md\" />");
+            sb.AppendLine("                    <img src=\"/Images/banner3.jpg\" alt=\"Law Costs Draftsperson\" class=\"img-responsive hidden-xs\" />");
+            sb.AppendLine("                    <img src=\"/Images/banner3_M.jpg\" alt=\"Law Costs Draftsperson\" class=\"img-responsive hidden-sm hidden-lg hidden-md\" />");
             sb.AppendLine("                    <div class=\"carousel-caption\">");
             sb.AppendLine("                        <h3 class=\"caption-title\">Our Commitment & Quality</h3>");
             sb.AppendLine("                        <p class=\"caption-text hidden-xs hidden-sm\">\"Competitive legal bill drafting rates but not compromising on bill accuracy, quality of service and turnaround time.\"</p>");

@@ -26,9 +26,9 @@ namespace dlwebclasses
             Emp_Profile _emp_Profile = new Emp_Profile();
             _emp_Details = db.Emp_Details.Where(x => x.emp_code == staffcode).FirstOrDefault();
 
-            Title = _emp_Details.forename + " " + _emp_Details.surname + " | Law Costs Draftsman | Cost Law Services";
-            Description = _emp_Details.forename + " " + _emp_Details.surname + ", Specialist Cost Draftsman at Cost Law Services";
-            Keywords = _emp_Details.forename + " " + _emp_Details.surname + ", Cost Draftsman , " + "Cost Law Services";
+            Title = _emp_Details.forename + " " + _emp_Details.surname + " | Law Costs Draftsperson | Cost Law Services";
+            Description = _emp_Details.forename + " " + _emp_Details.surname + ", Specialist Cost Draftsperson at Cost Law Services";
+            Keywords = _emp_Details.forename + " " + _emp_Details.surname + ", Cost Draftsperson , " + "Cost Law Services";
 
             HeadingH1 = _emp_Details.forename + " " + _emp_Details.surname;
             filepath = ConfigurationManager.AppSettings["RootpathCostLawWebsite"].ToString() + "\\Profiles\\" + _emp_Details.forename.Replace(" ","-") + "-" + _emp_Details.surname.Replace(" ", "-") + ".html";
@@ -62,11 +62,11 @@ namespace dlwebclasses
             else if (jobtitle1.Contains("Lawyer"))
                 jobtitle1 = "Costs Lawyers";
             else if (jobtitle1.Contains("Senior") || jobtitle1.Contains("Executive"))
-                jobtitle1 = "Senior Costs Draftsman";
+                jobtitle1 = "Senior Costs Draftsperson";
             else if (jobtitle1.Contains("Junior") || jobtitle1.Contains("Trainee"))
-                jobtitle1 = "Junior Costs Draftsman";
+                jobtitle1 = "Junior Costs Draftsperson";
             else
-                jobtitle1 = "Law Costs Draftsman";
+                jobtitle1 = "Law Costs Draftsperson";
 
             SB.AppendLine("        <div class=\"row nopadding\">");
             SB.AppendLine("            <div class=\"col-sm-8 col-sm-offset-2 applyblock centerdiv\">");
@@ -224,7 +224,7 @@ namespace dlwebclasses
             
 
             if (UP.Page_Title == null || String.IsNullOrEmpty(UP.Page_Title))
-                Title = _emp_Details.forename + " " + _emp_Details.surname +" | Law Costs Draftsman | Cost Law Services";
+                Title = _emp_Details.forename + " " + _emp_Details.surname +" | Law Costs Draftsperson | Cost Law Services";
             else
                 Title = UP.Page_Title;
 

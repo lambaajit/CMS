@@ -20,9 +20,9 @@ namespace dlwebclasses
 
         public CostLaw_TeamPages(AContents _Acontent)
         {
-            Title = "Cost Draftsmen | Cost Lawyer | Team";
+            Title = "Cost Draftsperson | Cost Lawyer | Team";
             Description = "Meet our team dealing with billing, cost drafting";
-            Keywords = "Cost Draftsmen, Cost Lawyer, Team";
+            Keywords = "Cost Draftsperson, Cost Lawyer, Team";
             HeadingH1 =  "Cost Lawyres";
             filepath = ConfigurationManager.AppSettings["RootpathCostLawWebsite"].ToString() + "\\our-people.html";
             canonicaltag = "https://www.costlaw.com/our-people.html";
@@ -58,7 +58,8 @@ namespace dlwebclasses
                 {
                     jtitle = "Development Manager";
                     jtitle1 = "Assistant Manager";
-                    heading = "Assistant Manager";
+                    jtitle2 = "HR Generalist";
+                    heading = "Assistant Managers &amp; HR";
                 }
                 else if (j == 3)
                 {
@@ -71,7 +72,7 @@ namespace dlwebclasses
                 {
                     jtitle = "Senior";
                     jtitle1 = "Executive";
-                    heading = "Senior Law Costs Draftsman And Chartered Legal Executives";
+                    heading = "Senior Law Costs Draftspersonss";
                 }
                 else if (j == 5)
                 {
@@ -83,7 +84,7 @@ namespace dlwebclasses
                 {
                     jtitle = "Draftsman";
                     jtitle1 = "Draftsman";
-                    heading = "Trainee Costs Lawyers And Junior Law Costs Draftsman";
+                    heading = "Trainee Costs Lawyers & Junior Law Costs Draftspersons";
                 }
                 else if (j == 7)
                 {
@@ -98,7 +99,7 @@ namespace dlwebclasses
                 if (j == 1)
                     employeelist = dbhr.Emp_Details.Where(x => x.forename +  " " + x.surname == "Yllka Olly Sufi" || x.forename + " " + x.surname == "Arvin Bharj" && excludednames.Contains(x.forename + " " + x.surname) == false && x.Profile_website == true).ToList();
                 else if (j == 2)
-                    employeelist = dbhr.Emp_Details.Where(x => x.employed == "1" && x.Profile_website == true && x.start_date < DateTime.Now && excludednames.Contains(x.forename + " " + x.surname) == false && (x.end_date == null || x.end_date > DateTime.Now || x.end_date.Value.ToString().Contains("1900")) && (x.jobtitle.Contains(jtitle) || x.jobtitle.Contains(jtitle1)) && (x.company_name == "Cost Law Services Limited" || x.company_name == "Cost Law Limited" || x.cls_intranet_access == true)).OrderBy(y => y.forename).ToList();
+                    employeelist = dbhr.Emp_Details.Where(x => x.employed == "1" && x.Profile_website == true && x.start_date < DateTime.Now && excludednames.Contains(x.forename + " " + x.surname) == false && (x.end_date == null || x.end_date > DateTime.Now || x.end_date.Value.ToString().Contains("1900")) && (x.jobtitle.Contains(jtitle) || x.jobtitle.Contains(jtitle1) || x.jobtitle.Contains(jtitle2)) && (x.company_name == "Cost Law Services Limited" || x.company_name == "Cost Law Limited" || x.cls_intranet_access == true)).OrderBy(y => y.forename).ToList();
                 else if (j == 3)
                     employeelist = dbhr.Emp_Details.Where(x => x.employed == "1" && x.Profile_website == true && x.start_date < DateTime.Now && excludednames.Contains(x.forename + " " + x.surname) == false && (x.end_date == null || x.end_date > DateTime.Now || x.end_date.Value.ToString().Contains("1900")) && (x.jobtitle.Contains(jtitle) || x.jobtitle.Contains(jtitle1) || x.jobtitle.Contains(jtitle2)) && (x.company_name == "Cost Law Services Limited" || x.company_name == "Cost Law Limited" || x.cls_intranet_access == true) && !x.jobtitle.Contains("Controlled Work") && !x.jobtitle.Contains("exceptional") && !x.jobtitle.Contains("Manager")).OrderBy(y => y.forename).ToList();
                 else if (j == 4)
@@ -126,9 +127,9 @@ namespace dlwebclasses
                     SB.AppendLine("                        <div class=\"profilebox\">");
                     //SB.AppendLine("                            <img src=\"/staffpics/" + emp.forename + " " + emp.surname + ".png\" />");
                     if (System.IO.File.Exists("C:\\inetpub\\wwwroot\\DuncanLewis_NewWebsite_Revised_2017\\Photos\\StaffPics\\" + emp.forename + " " + emp.surname + ".png"))
-                        SB.AppendLine("                            <img src=\"/StaffPics/" + emp.forename + " " + emp.surname + ".png\" alt=\"" + emp.forename + " " + emp.surname + "is a Cost Lawyers/Cost Draftsmen at Cost Law Services working in " + emp.Office.office_name + " office\" />");
+                        SB.AppendLine("                            <img src=\"/StaffPics/" + emp.forename + " " + emp.surname + ".png\" alt=\"" + emp.forename + " " + emp.surname + "is a Cost Lawyers/Cost Draftsperson at Cost Law Services working in " + emp.Office.office_name + " office\" />");
                     else
-                        SB.AppendLine("                            <img src=\"/StaffPics/missing.png\" alt=\"" + emp.forename + " " + emp.surname + "is a Cost Lawyers/Cost Draftsmen at Cost Law Services working in " + emp.Office.office_name + " office\" />");
+                        SB.AppendLine("                            <img src=\"/StaffPics/missing.png\" alt=\"" + emp.forename + " " + emp.surname + "is a Cost Lawyers/Cost Draftsperson at Cost Law Services working in " + emp.Office.office_name + " office\" />");
 
                     SB.AppendLine("                            <div class=\"profileboxbuttons\">");
                     SB.AppendLine("                                <a href=\"/Profiles/" + emp.forename.Replace(" ","-") + "-" + emp.surname.Replace(" ", "-") + ".html\" class=\"btn btn-primary\"><i class=\"fa fa-user\"></i><span>Profile</span></a>");

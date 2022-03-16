@@ -110,6 +110,7 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="VacancyRole" Type="varchar(max)" />
           <Property Name="Equal_Opportunities" Type="varchar(max)" />
           <Property Name="Recruit_Job_ID" Type="varchar(max)" />
+          <Property Name="FIlename" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="SubDepartments">
           <Key>
@@ -119,6 +120,7 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="SubDepartment" Type="varchar(max)" Nullable="false" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SubDepartment_Switchboard" Type="varchar(max)" />
+          <Property Name="email" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="WebsitePagesSubDepartments">
           <Key>
@@ -241,6 +243,7 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="VacancyRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Equal_Opportunities" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Recruit_Job_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FIlename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Area">
           <Key>
@@ -266,6 +269,7 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="SubDepartment1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubDepartment_Switchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="WebsitePagesSubDepartment">
           <Key>
@@ -309,6 +313,7 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <EntitySetMapping Name="Recruitment_DlWeb">
             <EntityTypeMapping TypeName="DLWEBModel.Recruitment_DlWeb">
               <MappingFragment StoreEntitySet="Recruitment_DlWeb">
+                <ScalarProperty Name="FIlename" ColumnName="FIlename" />
                 <ScalarProperty Name="Recruit_Job_ID" ColumnName="Recruit_Job_ID" />
                 <ScalarProperty Name="Equal_Opportunities" ColumnName="Equal_Opportunities" />
                 <ScalarProperty Name="VacancyRole" ColumnName="VacancyRole" />
@@ -393,6 +398,7 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <EntitySetMapping Name="SubDepartments">
             <EntityTypeMapping TypeName="DLWEBModel.SubDepartment">
               <MappingFragment StoreEntitySet="SubDepartments">
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="SubDepartment_Switchboard" ColumnName="SubDepartment_Switchboard" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SubDepartment1" ColumnName="SubDepartment" />

@@ -213,12 +213,16 @@ SB.AppendLine("                        </div>");
 SB.AppendLine("                        <div class=\"col-sm-4\">");
 SB.AppendLine("                            <table class=\"table table-responsive table-hover table-bordered\">");
 SB.AppendLine("                                <tr><th colspan=\"2\">Job Details<span class=\"fa fa-caret-down\"></span></th></tr>");
-SB.AppendLine("                 <tr><td><span class=\"fa fa-building\"></span>Office:</td><td><b>" + recruitment.Location + "</b></td></tr>");
+SB.AppendLine("                 <tr><td><span class=\"fa fa-building\"></span>Location:</td><td><b>" + recruitment.Location + "</b></td></tr>");
 SB.AppendLine("                                <tr><td><span class=\"fa fa-certificate\"></span>Department: </td><td><b>" + recruitment.Department + "</b></td></tr>");
 SB.AppendLine("                                <tr><td><span class=\"fa fa-money\"></span>Salary:</td><td> <b>" + recruitment.Salary + "</b></td></tr>");
 SB.AppendLine("                                <tr><td><span class=\"fa fa-user-circle\"></span>Job Type:</td><td> <b>" + (recruitment.Job_Type == "Freeleance" ? "Consultancy" : "Permanent") + "</b></td></tr>");
 SB.AppendLine("                                <tr><td><span class=\"fa fa-calendar\"></span>Date Posted:</td><td> <b>" + recruitment.Date_Posted.Date.ToShortDateString() + "</b></td></tr>");
 SB.AppendLine("                                <tr><td><span class=\"fa fa-calendar\"></span>Last Date for Application:</td><td> <b>" + recruitment.Date_Posted.AddDays(21).Date.ToShortDateString() + "</b></td></tr>");
+            if (!string.IsNullOrEmpty(recruitment.FIlename) && recruitment.FIlename.Contains("."))
+            {
+                SB.AppendLine("                                <tr><td colspan=\"2\"><a style=\"margin:0px !important\" class=\"btn btn-primary\" href=\"/JobDescriptionDocuments/" + recruitment.Job_Ref_Code + ".pdf\" target=\"_blank\"><i class=\"fa fa-file\" style=\"margin-right:10px\"></i>View Job Description</td></tr>");
+            }
             SB.AppendLine("                                <tr><td colspan=\"2\">");
 SB.AppendLine("                                    <b>Disclaimer</b><br /><br />");
 SB.AppendLine("                                    <p>We are the fastest growing firm of Solicitors, with offices across London and the UK. We deal in a wide range of legal services that caters for clients on a public funding or private fee basis. Duncan Lewis is privileged to have several franchises from the Legal Aid Agency.");
