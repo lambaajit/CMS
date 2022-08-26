@@ -95,6 +95,9 @@ namespace dlwebclasses
                 string photostr;
                 if (File.Exists("C:\\Inetpub\\wwwroot\\DuncanLewis_NewWebsite_Revised_2017\\Photos\\StaffPics\\" + Name + ".png") && _ed.Picture_website == true)
                 {
+                    if (_ed.email == "SimranKa@duncanlewis.com")
+                        photostr = "/Photos/Staffpics/KaurS20220713110928.png";
+                    else
                         photostr = "/Photos/Staffpics/" + Name + managementpic + ".png";
                 }
                 else if (_ed.gender == "M")

@@ -50,6 +50,11 @@
     {
         <input type="submit" value="Create Cost Law Staff Profiles" />
     }
+
+    @using (@Html.BeginForm("CreateVCFCards", "StaffProfiles_NewWebsite", FormMethod.Post))
+    {
+        <input type="submit" value="CreateVCFCards" />
+    }
     @*<ul>
             @foreach (var item in (List<string>)ViewBag.listlinks)
             {

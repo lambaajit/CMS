@@ -242,7 +242,10 @@ namespace dlwebclasses
 
             if (File.Exists("C:\\Inetpub\\wwwroot\\DuncanLewis_NewWebsite_Revised_2017\\Photos\\StaffPics\\" + Name + ".png") && picture_required == true)
             {
-                _NewContents.AppendLine("        <img alt=\"" + Title.Replace("|", ",").Replace("^", "") + "\" src=\"/Photos/StaffPics/" + Name + ".png\" />");
+                if (Email == "SimranKa@duncanlewis.com")
+                    _NewContents.AppendLine("        <img alt=\"" + Title.Replace("|", ",").Replace("^", "") + "\" src=\"/Photos/StaffPics/KaurS20220713110928.png\" />");
+                else
+                    _NewContents.AppendLine("        <img alt=\"" + Title.Replace("|", ",").Replace("^", "") + "\" src=\"/Photos/StaffPics/" + Name + ".png\" />");
             }
             else if (_emp_Details.gender == "M")
             {

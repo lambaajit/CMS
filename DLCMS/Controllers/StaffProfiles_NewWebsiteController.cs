@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using dlwebclasses;
 using System.IO;
+using dlwebclasses.Contents.StaffProfiles;
 
 namespace DLCMS.Controllers
 {
@@ -115,7 +116,12 @@ namespace DLCMS.Controllers
         {
             allStatic.htaccessstaffold();
             return View("Index");
+        }
 
+        public ActionResult CreateVCFCards()
+        {
+            VCFCards.generateVCFCards();
+            return View("Index");
         }
 
         public ActionResult CostLawTeamPages()

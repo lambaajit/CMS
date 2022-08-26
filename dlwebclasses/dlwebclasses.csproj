@@ -107,6 +107,7 @@
     <Compile Include="Contents\StaffProfiles\CheckMissingProfiles.cs" />
     <Compile Include="Contents\StaffProfiles\staffprofileitdatabaseNewWebsite.cs" />
     <Compile Include="Contents\StaffProfiles\staffprofiles_NewWebsite.cs" />
+    <Compile Include="Contents\StaffProfiles\VCFCards.cs" />
     <Compile Include="Contents\TeamPages\TeamPages.cs" />
     <Compile Include="Contents\ContentsOldWebsite\Content_AlphabeticPages.cs" />
     <Compile Include="Contents\TeamPages\TeamPages_NewWebsite.cs" />

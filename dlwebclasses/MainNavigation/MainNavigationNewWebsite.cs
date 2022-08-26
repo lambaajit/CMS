@@ -374,7 +374,7 @@ namespace dlwebclasses
                     sb.AppendLine("<div class=\"col-lg-12 megamunulevel2middleband deptbordercolor dept_default lightkolor\">");
                     DLWEBEntities dbweb = new DLWEBEntities();
                     List<OfficeDLW> Off = new List<OfficeDLW>();
-                    Off = dbweb.OfficesDLW.Where(x => x.In_Out_London == officeinout && x.Active == true).OrderBy(x => x.Sequence).ThenBy(x => x.Name).ToList();
+                    Off = dbweb.OfficesDLW.Where(x => x.In_Out_London == officeinout && x.Active == true && (x.Company == "Duncan Lewis" || x.Company == "Both")).OrderBy(x => x.Sequence).ThenBy(x => x.Name).ToList();
                     string cols = "col-lg-4";
                     if (Off.Count() > 27)
                         cols = "col-lg-3";

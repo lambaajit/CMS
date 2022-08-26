@@ -55,7 +55,7 @@ namespace DLCMS.Controllers
             else
             {
                     List<int> ids = new List<int>() { 592,1331 };
-                IDs = db.Updates_MainWebsites.Where(x => x.Department == cbo_Newsdept && x.ID < 6289).OrderByDescending(e => e.ID).Select(y => y.ID).ToList();
+                IDs = db.Updates_MainWebsites.Where(x => x.Department == cbo_Newsdept).OrderByDescending(e => e.ID).Select(y => y.ID).ToList();
                 Content_NewsArticles_NewWebsite NAL;
                 foreach (int ID in IDs)
                 {

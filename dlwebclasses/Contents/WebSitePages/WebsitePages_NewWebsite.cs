@@ -211,7 +211,7 @@ namespace dlwebclasses
             
             string strsubdept_newreferral = getsubdepartmentforclientreferral.getsubdept(WP);
 
-            if (!string.IsNullOrEmpty(DD.contactstr1))
+            if (!string.IsNullOrEmpty(DD.contactstr1) && DD.Name != "Mental Health")
             {
                 SB.AppendLine("<br /><div class=\"deptcontactus " + DD.cssclass + " lightkolor\"><span class=\"" + DD.cssclass + " forecolor\">For all " + DD.Name + " related matters contact us online now.</span><a  class=\"deptcontactus " + DD.cssclass + " kolor\" href=\"/Home/Contact/" + strsubdept_newreferral + "\">Contact Us</a></div><br />");
             }
