@@ -15,6 +15,8 @@
           <Property Name="System_Username" Type="varchar" MaxLength="50" />
           <Property Name="Mobile_Auth" Type="varchar" MaxLength="50" />
           <Property Name="Date_Updated" Type="datetime" />
+          <Property Name="CodeToVerify" Type="int" />
+          <Property Name="Verified" Type="bit" />
         </EntityType>
         <EntityType Name="PhotoSession">
           <Key>
@@ -25,6 +27,7 @@
           <Property Name="Time" Type="varchar(max)" />
           <Property Name="Office" Type="varchar(max)" />
           <Property Name="Publish" Type="bit" />
+          <Property Name="Room" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="PhotoSession_StaffAttendance">
           <Key>
@@ -36,6 +39,16 @@
           <Property Name="Attendance" Type="bit" />
           <Property Name="Notes" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="SubDepartmentProfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_code" Type="varchar(max)" />
+          <Property Name="Profile" Type="varchar(max)" />
+          <Property Name="SubDepartment" Type="varchar(max)" />
+          <Property Name="StaffName" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="SubDepartmentSwitchboard">
           <Key>
             <PropertyRef Name="ID" />
@@ -45,6 +58,7 @@
           <Property Name="SubDepartment" Type="varchar(max)" />
           <Property Name="SubDepartmentDisplay" Type="varchar(max)" />
           <Property Name="email" Type="varchar(max)" />
+          <Property Name="Active" Type="bit" />
         </EntityType>
         <EntityType Name="Updates_MainWebsites">
           <Key>
@@ -378,6 +392,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySet Name="MobileNoFor_ITIssues" EntityType="Self.MobileNoFor_ITIssues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhotoSession" EntityType="Self.PhotoSession" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhotoSession_StaffAttendance" EntityType="Self.PhotoSession_StaffAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubDepartmentProfiles" EntityType="Self.SubDepartmentProfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubDepartmentSwitchboard" EntityType="Self.SubDepartmentSwitchboard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Updates_MainWebsites" EntityType="Self.Updates_MainWebsites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="website_awards" EntityType="Self.website_awards" Schema="dbo" store:Type="Tables" />
@@ -531,6 +546,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySet Name="PhotoSession_StaffAttendance" EntityType="IT_DatabaseModel.PhotoSession_StaffAttendance" />
           <EntitySet Name="PhotoSessions" EntityType="IT_DatabaseModel.PhotoSession" />
           <EntitySet Name="MobileNoFor_ITIssues" EntityType="IT_DatabaseModel.MobileNoFor_ITIssues" />
+          <EntitySet Name="SubDepartmentProfiles" EntityType="IT_DatabaseModel.SubDepartmentProfile" />
         </EntityContainer>
         <EntityType Name="Updates_MainWebsites">
           <Key>
@@ -865,6 +881,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="SubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SubDepartmentDisplay" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
         </EntityType>
         <EntityType Name="PhotoSession_StaffAttendance">
           <Key>
@@ -885,6 +902,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Office" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Publish" Type="Boolean" />
+          <Property Name="Room" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MobileNoFor_ITIssues">
           <Key>
@@ -896,6 +914,18 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="System_Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Mobile_Auth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Date_Updated" Type="DateTime" Precision="3" />
+          <Property Name="CodeToVerify" Type="Int32" />
+          <Property Name="Verified" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SubDepartmentProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StaffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1242,6 +1272,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="SubDepartmentSwitchboards">
             <EntityTypeMapping TypeName="IT_DatabaseModel.SubDepartmentSwitchboard">
               <MappingFragment StoreEntitySet="SubDepartmentSwitchboard">
+                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="SubDepartmentDisplay" ColumnName="SubDepartmentDisplay" />
                 <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
@@ -1264,6 +1295,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="PhotoSessions">
             <EntityTypeMapping TypeName="IT_DatabaseModel.PhotoSession">
               <MappingFragment StoreEntitySet="PhotoSession">
+                <ScalarProperty Name="Room" ColumnName="Room" />
                 <ScalarProperty Name="Publish" ColumnName="Publish" />
                 <ScalarProperty Name="Office" ColumnName="Office" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
@@ -1275,11 +1307,24 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="MobileNoFor_ITIssues">
             <EntityTypeMapping TypeName="IT_DatabaseModel.MobileNoFor_ITIssues">
               <MappingFragment StoreEntitySet="MobileNoFor_ITIssues">
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="CodeToVerify" ColumnName="CodeToVerify" />
                 <ScalarProperty Name="Date_Updated" ColumnName="Date_Updated" />
                 <ScalarProperty Name="Mobile_Auth" ColumnName="Mobile_Auth" />
                 <ScalarProperty Name="System_Username" ColumnName="System_Username" />
                 <ScalarProperty Name="Notification_Req" ColumnName="Notification_Req" />
                 <ScalarProperty Name="Emp_Code" ColumnName="Emp_Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubDepartmentProfiles">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.SubDepartmentProfile">
+              <MappingFragment StoreEntitySet="SubDepartmentProfiles">
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Profile" ColumnName="Profile" />
+                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

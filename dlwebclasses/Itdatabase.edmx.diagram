@@ -21,6 +21,7 @@
         <EntityTypeShape EntityType="IT_DatabaseModel.PhotoSession_StaffAttendance" Width="1.5" PointX="12.375" PointY="6.75" />
         <EntityTypeShape EntityType="IT_DatabaseModel.PhotoSession" Width="1.5" PointX="12.375" PointY="9.75" />
         <EntityTypeShape EntityType="IT_DatabaseModel.MobileNoFor_ITIssues" Width="1.5" PointX="12.375" PointY="12.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.SubDepartmentProfile" Width="1.5" PointX="13.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

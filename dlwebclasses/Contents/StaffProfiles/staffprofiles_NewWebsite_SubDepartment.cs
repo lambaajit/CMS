@@ -8,7 +8,7 @@ using System.Configuration;
 
 namespace dlwebclasses
 {
-    public class staffprofiles_NewWebsite
+    public class staffprofiles_NewWebsite_SubDepartment
     {
         private HRDDLEntities db = new HRDDLEntities();
 
@@ -48,7 +48,7 @@ namespace dlwebclasses
 
         public string canonicaltag { get; set; }
 
-        public staffprofiles_NewWebsite(string staffcode, DepartmentDetails dd, bool preview = false)
+        public staffprofiles_NewWebsite_SubDepartment(string staffcode, DepartmentDetails dd, string subDepartment, bool preview = false)
         {
 
             Emp_Details _emp_Details = new Emp_Details();
@@ -79,27 +79,10 @@ namespace dlwebclasses
 
             List<Updates_MainWebsites> Articles_Staff = new List<Updates_MainWebsites>();
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
-            Articles_Staff = dbit.Updates_MainWebsites.Where(x => x.Staff1 == _emp_Details.forename + " " + _emp_Details.surname || x.Staff2 == _emp_Details.forename + " " + _emp_Details.surname || x.Staff3 == _emp_Details.forename + " " + _emp_Details.surname || x.Staff4 == _emp_Details.forename + " " + _emp_Details.surname || x.Staff5 == _emp_Details.forename + " " + _emp_Details.surname || x.Staff6 == _emp_Details.forename + " " + _emp_Details.surname || x.Staff7 == _emp_Details.forename + " " + _emp_Details.surname || x.Staff8 == _emp_Details.forename + " " + _emp_Details.surname || x.Staff9 == _emp_Details.forename + " " + _emp_Details.surname || x.Staff10 == _emp_Details.forename + " " + _emp_Details.surname).OrderByDescending(x => x.ID).ToList();
-            StringBuilder CRC = new StringBuilder();
-            CRC.AppendLine("<!--Contents coming from content section-->");
-            if (Articles_Staff.Count > 0)
-            {
-                CRC.AppendLine("        <ul class=\"bigbuts\">");
-                CRC.AppendLine("          <li><a href=\"#\" style=\"background-position:0px 0px; height:50px;\" class=\"bigbuts_accreditation\"><span>" + _emp_Details.forename + " " + _emp_Details.surname + "'s Articles</span></a></li>");
-                CRC.AppendLine("        </ul>");
 
-                CRC.AppendLine("<div id=\"reportedtop\"><div id=\"reportedbottom\"><ul class=\"reportedmenu\">");
-                foreach (Updates_MainWebsites UM1 in Articles_Staff)
-                {
-                    GetLinkfromArticleRef _getlink = new GetLinkfromArticleRef();
-                    CRC.AppendLine(_getlink.GetLink(UM1, null, "StaffPage"));
-                }
-                CRC.AppendLine("</ul></div></div><div class=\"bigbuts_seperator\"></div>");
-            }
-            contentrightcolumn = CRC;
 
-            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + dd.folderteam1 + "\\" + Name.ToString().Replace(" ", "_") + ".html";
-            canonicaltag = "<link rel=\"canonical\" href=\"https://www.duncanlewis.co.uk/" + allStatic.getRewriteUrlLinkForStaff(_emp_Details) + "/\" />";
+            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + subDepartment.Replace(" ","-") + "_ourTeam" + "\\" + Name.ToString().Replace(" ", "_") + ".html";
+            //canonicaltag = "<link rel=\"canonical\" href=\"https://www.duncanlewis.co.uk/" + allStatic.getRewriteUrlLinkForStaff(_emp_Details) + "/\" />";
             Department = _emp_Details.department_it;
             Emp_Status = _emp_Details.emp_status;
             Office = _emp_Details.Office.office_name;
@@ -190,34 +173,12 @@ namespace dlwebclasses
                 JobTitle = "Motoring Law Specialist";
 
 
-            string mangementstaffjobtitle = "";
-            if (Name == "Shany Gupta")
-                mangementstaffjobtitle = "Chief Executive Officer";
-            else if (Name == "Syed Talha Rafique")
-                mangementstaffjobtitle = "Chairman";
-            else if (Name == "Mohan Bharj")
-                mangementstaffjobtitle = "CFO";
-            else if (Name == "Sridhar Ponnada")
-                mangementstaffjobtitle = "Director - IT And Operations";
-            else if (Name == "Nina Joshi")
-                mangementstaffjobtitle = "Managing Director";
-            else if (Name == "Judith Lee-Scott")
-                mangementstaffjobtitle = "HR Manager";
-            else if (Name == "David Daud")
-                mangementstaffjobtitle = "Operations Manager";
-            else if (Name == "Jason Bruce")
-                mangementstaffjobtitle = "Practice Director &amp; Solicitor";
 
 
 
             string deptstaff = Department;
             string jobtitlestaff = JobTitle;
-            if (Name == "Shany Gupta" || Name == "Syed Talha Rafique" || Name == "Mohan Bharj" || Name == "Sridhar Ponnada" || Name == "Nina Joshi" || Name == "Judith Lee-Scott" || Name == "David Daud" || Name == "Jason Bruce")
-            {
-                deptstaff = "Management";
-                jobtitlestaff = mangementstaffjobtitle;
-            }
-            else if (HOD == "Yes")
+            if (HOD == "Yes")
                 jobtitlestaff = "Head of Department";
             else if (_emp_Details.jobtitle.Contains("Chartered"))
                 jobtitlestaff = "Chartered Legal Executive";
@@ -229,20 +190,12 @@ namespace dlwebclasses
 
             _NewContents.AppendLine("<div class=\"row nopadding\">");
             Random r = new Random();
-            if (Name == "Shany Gupta")
-                _NewContents.AppendLine("    <div class=\"col-md-12 col-lg-12 col-sm-12 col-xs-12 nopadding managementbanner1 profilebanner profilebanner5\">");
-            else if (deptstaff == "Management")
-                _NewContents.AppendLine("    <div class=\"col-md-12 col-lg-12 col-sm-12 col-xs-12 nopadding managementbanner profilebanner profilebanner5\">");
-            else
                 _NewContents.AppendLine("    <div class=\"col-md-12 col-lg-12 col-sm-12 col-xs-12 nopadding profilebanner profilebanner" + r.Next(1, 8).ToString() + "\">");
             
                 _NewContents.AppendLine("        <div class=\"profilebannerbandtop " + dd.cssclass + " kolor\"></div>");
 
             if (File.Exists("C:\\Inetpub\\wwwroot\\DuncanLewis_NewWebsite_Revised_2017\\Photos\\StaffPics\\" + Name + ".png") && picture_required == true)
             {
-                if (Email == "SimranKa@duncanlewis.com")
-                    _NewContents.AppendLine("        <img alt=\"" + Title.Replace("|", ",").Replace("^", "") + "\" src=\"/Photos/StaffPics/KaurS20220713110928.png\" />");
-                else
                     _NewContents.AppendLine("        <img alt=\"" + Title.Replace("|", ",").Replace("^", "") + "\" src=\"/Photos/StaffPics/" + Name + ".png\" />");
             }
             else if (_emp_Details.gender == "M")
@@ -272,12 +225,7 @@ namespace dlwebclasses
             _NewContents.AppendLine(deptstaff);
             _NewContents.AppendLine("                            </li>");
 
-            if (mangementstaffjobtitle != "")
-            {
-                    _NewContents.AppendLine("                            <li><span class=\"fa fa-building\"></span><a href=\"/offices/City of London_Office.html\">City of London</a></li>");
-            }
-            else
-            {
+
                 _NewContents.AppendLine("                            <li><span class=\"fa fa-building\"></span><a href=\"/offices/" + Office.Replace("Dalston","Hackney") + "_Office.html\">" + Office + "</a></li>");
                 if ((Emp_Status != "Freelance Consultant" || Name == "Aina Khan") && Name != "Sabeela Malik" && ddi != null)
                 {
@@ -308,7 +256,6 @@ namespace dlwebclasses
                 {
                     _NewContents.AppendLine("                            <li><span class=\"fa fa-vcard\"></span><a href=\"/VCFCards/" + Name + ".vcf\" class=\"personcontact\" style=\"text-decoration:none\">Download VCard</a></li>");
                 }
-            }
 
 
             _NewContents.AppendLine("                        </ul>");
@@ -335,30 +282,30 @@ namespace dlwebclasses
             }
 
 
-            if (staffVideos.Count() > 0)
-            {
-                _NewContents.AppendLine("                    <div class=\"panel panel-primary homepagepanels " + dd.cssclass + "\">");
-                _NewContents.AppendLine("                        <div class=\"panel-heading\">");
-                _NewContents.AppendLine("                            <a data-toggle=\"collapse\" href=\"#panelProfileVideos\">Videos<span class=\"fa fa-caret-down\"></span></a>");
-                _NewContents.AppendLine("                        </div>");
-                _NewContents.AppendLine("                        <div id=\"panelProfileVideos\" class=\"panel-body panel-collapse collapse in\">");
-                _NewContents.AppendLine("                            <ul>");
-                foreach (var itemv in staffVideos)
-                {
-                    _NewContents.AppendLine("                                <li>" + itemv + "</li>");
-                }
-                _NewContents.AppendLine("                            </ul>");
-                _NewContents.AppendLine("                        </div>");
-                _NewContents.AppendLine("                    </div>");
-            }
             _NewContents.AppendLine("                </div>");
             _NewContents.AppendLine("            </div>");
 
             _NewContents.AppendLine("            <div class=\"col-sm-9 col-xs-12 " + dd.cssclass + " profiletabs\">");
 
             //Profile contents
-            staffprofileitdatabaseNewWebsite spnd = new staffprofileitdatabaseNewWebsite();
-            _NewContents.AppendLine(spnd.getstaffProfile(staffcode).ToString());
+            var _profile = dbit.SubDepartmentProfiles.Where(x => x.SubDepartment == subDepartment && x.emp_code == staffcode).Select(x => x.Profile).FirstOrDefault();
+            
+
+
+
+            _NewContents.AppendLine("                    <div id=\"Profile\" class=\"container-fluid\">");
+            _NewContents.AppendLine("                        <h3 class=\"" + dd.cssclass + " lightkolor\">" + _emp_Details.forename + "'s " + subDepartment + " Profile / Experience<span class=\"fa fa-user-circle\"></span></h3>");
+            _NewContents.AppendLine("                        <div class=\"sectionbody\">");
+
+            _NewContents.AppendLine("<p>" + _profile.Replace(Environment.NewLine, "</p><p>&nbsp;</p><p>") + "</p>");
+
+            _NewContents.AppendLine("</p><p>&nbsp;</p><p><div class=\"btn btn-primary\"><h4 style=\"margin-top:10px !important;margin-bottom:0px !important;\">To view " + Name + "’s main profile – please <a href=\"/" + allStatic.getRewriteUrlLinkForStaff(_emp_Details) + "\" style=\"display:inline-block !important;font-size:18px !important; color:#ffffff !important; text-decoration:underline !important; font-weight:bold !important;\">click here</a>.</h4></div>");
+
+
+            _NewContents.AppendLine("                        </div>");
+            _NewContents.AppendLine("                    </div>");
+
+
 
 
             _NewContents.AppendLine("            </div>");

@@ -33,7 +33,7 @@ namespace dlwebclasses
                             brief = UM1.Contents.ToString().Replace("*sm*", "<em>").Replace("*em*", "</em>");
                     }
                     else
-                        brief = UM1.Contents.ToString().Replace("*sm*", "<em>").Replace("*em*", "</em>");
+                        brief = UM1.Contents.Length > 150 ? UM1.Contents.ToString().Substring(0, 150).Replace("*sm*", "<em>").Replace("*em*", "</em>") : UM1.Contents.ToString().Replace("*sm*", "<em>").Replace("*em*", "</em>");
                 else
                     brief = UM1.Brief;
 
@@ -57,10 +57,10 @@ namespace dlwebclasses
                 Update_Title = UM1.Title.ToString().Replace("^", "'") + " (" + UM1.Date_Update.Value.Day + " " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(UM1.Date_Update.Value.Month) + " " + UM1.Date_Update.Value.Year + ")";
                 Link_Title = UM1.filename.ToString().Replace("^", "") + " (" + UM1.Date_Update.Value.Day + " " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(UM1.Date_Update.Value.Month) + " " + UM1.Date_Update.Value.Year + ")";
 
-                if (dept != "InThePress")
+                //if (dept != "InThePress")
                     link = "/" + DD.folder1 + "/" + allStatic.refinenewarticlelink(Link_Title) + ".html";
-                else
-                    link = "/" + DD.folder1 + "/" + allStatic.refinenewarticlelink(UM1.filename) + ".pdf";
+                //else
+                //    link = "/" + DD.folder1 + "/" + allStatic.refinenewarticlelink(UM1.filename) + ".pdf";
 
                 string rtval;
                 if (fromwhere == "News Articles Landing Pages")

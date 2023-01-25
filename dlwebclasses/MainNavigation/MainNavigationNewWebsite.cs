@@ -534,7 +534,8 @@ namespace dlwebclasses
                     sb.AppendLine("<div class=\"col-lg-4 megamunulevel2middlebandcolumns\">");
                     sb.AppendLine("<ul>");
                     sb.AppendLine("<li><a href=\"/careers.html\">Overview</a></li>");
-                    sb.AppendLine("<li><a href=\"/Jobs_Caseworker.html\">Paralegals Jobs</a></li>");
+                sb.AppendLine("<li><a href=\"/Employee-Reward-and-Benefits.html\">Employee Reward & Benefits</a></li>");
+                sb.AppendLine("<li><a href=\"/Jobs_Caseworker.html\">Paralegals Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Trainees.html\">Trainees Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Jobs_Solicitor.html\">Solicitors Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/JobsConsultancy.html\">Consultant Jobs</a></li>");

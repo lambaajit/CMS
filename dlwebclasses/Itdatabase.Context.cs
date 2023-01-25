@@ -41,5 +41,6 @@ namespace dlwebclasses
         public virtual DbSet<PhotoSession_StaffAttendance> PhotoSession_StaffAttendance { get; set; }
         public virtual DbSet<PhotoSession> PhotoSessions { get; set; }
         public virtual DbSet<MobileNoFor_ITIssues> MobileNoFor_ITIssues { get; set; }
+        public virtual DbSet<SubDepartmentProfile> SubDepartmentProfiles { get; set; }
     }
 }

@@ -19,5 +19,6 @@ namespace dlwebclasses
         public string Time { get; set; }
         public string Office { get; set; }
         public Nullable<bool> Publish { get; set; }
+        public string Room { get; set; }
     }
 }

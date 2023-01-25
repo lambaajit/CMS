@@ -106,6 +106,7 @@
     <Compile Include="Contents\Offices\Office_LandingPages_NewWebsite.cs" />
     <Compile Include="Contents\StaffProfiles\CheckMissingProfiles.cs" />
     <Compile Include="Contents\StaffProfiles\staffprofileitdatabaseNewWebsite.cs" />
+    <Compile Include="Contents\StaffProfiles\staffprofiles_NewWebsite_SubDepartment.cs" />
     <Compile Include="Contents\StaffProfiles\staffprofiles_NewWebsite.cs" />
     <Compile Include="Contents\StaffProfiles\VCFCards.cs" />
     <Compile Include="Contents\TeamPages\TeamPages.cs" />
@@ -243,6 +244,9 @@
     <Compile Include="StaticClasses\allStatic.cs" />
     <Compile Include="SubDepartment.cs">
       <DependentUpon>DLWEB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubDepartmentProfile.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="SubDepartmentSwitchboard.cs">
       <DependentUpon>Itdatabase.tt</DependentUpon>

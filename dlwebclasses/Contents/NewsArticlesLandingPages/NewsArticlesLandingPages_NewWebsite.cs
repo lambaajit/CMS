@@ -89,7 +89,7 @@ namespace dlwebclasses
             SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/News.html\">News<span class=\"fa fa-newspaper-o\"></span></a>");
             SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over hidden-xs\" href=\"/InThePress.html\">Press<span class=\"fa fa-newspaper-o\"></span></a>");
             SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Reportedcases.html\">Reported Cases<span class=\"fa fa-newspaper-o\"></span></a>");
-            SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Legal_News.html\">Legal News<span class=\"fa fa-newspaper-o\"></span></a>");
+            SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Legal_News.html\">Legal Articles<span class=\"fa fa-newspaper-o\"></span></a>");
             SB.AppendLine("            </div>");
             SB.AppendLine("        </div>");
             SB.AppendLine("    </div>");

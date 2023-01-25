@@ -17,10 +17,12 @@ namespace dlwebclasses
             List<string> excludenames = new List<string>() { "Nina Joshi", "Shany Gupta", "Sridhar Ponnada" };
             _ed = _ed.Where(x => !excludenames.Contains(x.forename + " " + x.surname)).ToList();
 
+            DateTime dt = DateTime.Now;
+
             if (company == null)
-                _ed = _ed.Where(x => x.Profile_website == true && x.admin_staff == "0" && (x.reporting_consultant == false || x.reporting_consultant == null)).ToList();
+                _ed = _ed.Where(x => x.Profile_website == true && x.admin_staff == "0" && (x.reporting_consultant == false || x.reporting_consultant == null) && x.start_date < dt).ToList();
             else
-                _ed = _ed.Where(x => x.company_name.Contains(company)).ToList();
+                _ed = _ed.Where(x => x.company_name.Contains(company) && x.Profile_website == true && x.start_date < dt).ToList();
 
             List<Emp_Details> missinglist = new List<Emp_Details>();
             foreach (Emp_Details ed in _ed)
@@ -99,11 +101,12 @@ namespace dlwebclasses
 "Beatrice de Burgh",
 "Oluwatobi Akinwande (Tobi)"
 };
+            DateTime dt = DateTime.Now;
             _ed = dbhr.Emp_Details.Where(x => x.employed == "1" && !x.forename.StartsWith("Donald") && !excludenames.Contains(x.forename + " " + x.surname)).OrderBy(x => x.office_code).ThenBy(x => x.forename).ToList();
             if (company == null)
-                _ed = _ed.Where(x => x.Picture_website == true && x.admin_staff == "0" && (x.reporting_consultant == false || x.reporting_consultant == null)).ToList();
+                _ed = _ed.Where(x => x.start_date < dt && x.Profile_website == true && x.Picture_website == true && x.admin_staff == "0" && (x.reporting_consultant == false || x.reporting_consultant == null)).ToList();
             else
-                _ed = _ed.Where(x => x.company_name.Contains(company)).ToList();
+                _ed = _ed.Where(x => x.start_date < dt && x.company_name.Contains(company) && x.Profile_website == true && x.Picture_website == true).ToList();
 
             List<Emp_Details> missinglist = new List<Emp_Details>();
             foreach (Emp_Details ed in _ed)

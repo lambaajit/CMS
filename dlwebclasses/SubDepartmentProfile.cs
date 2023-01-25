@@ -12,13 +12,12 @@ namespace dlwebclasses
     using System;
     using System.Collections.Generic;
     
-    public partial class SubDepartmentSwitchboard
+    public partial class SubDepartmentProfile
     {
-        public int ID { get; set; }
-        public string Department { get; set; }
+        public int Id { get; set; }
+        public string emp_code { get; set; }
+        public string Profile { get; set; }
         public string SubDepartment { get; set; }
-        public string SubDepartmentDisplay { get; set; }
-        public string email { get; set; }
-        public Nullable<bool> Active { get; set; }
+        public string StaffName { get; set; }
     }
 }

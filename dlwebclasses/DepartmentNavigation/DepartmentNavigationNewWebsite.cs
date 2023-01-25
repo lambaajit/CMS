@@ -18,7 +18,7 @@ namespace dlwebclasses
 
             if ((_Acontent.GetType() == typeof(Content_WebsitePages_NewWebsite) || _Acontent.GetType() == typeof(Content_TeamPages_NewWebsite)))
             {
-                DepartmentDetails DD = new DepartmentDetails(_Acontent.Department);
+                DepartmentDetails DD = new DepartmentDetails(_Acontent.Department.Replace("High Net Worth Divorce", "Family"));
                 if (DD.Name != "Careers" && DD.Name != "Misleneous")
                     sb = getDeptNavigationAreaofLaws(DD, activenode,_Acontent);
                 else if (DD.Name == "Misleneous")
@@ -44,6 +44,8 @@ namespace dlwebclasses
                         sb = getDeptNavigationCareers(DD, "Internship", 1);
                     else if (WP.Filename == "Apprenticeship")
                         sb = getDeptNavigationCareers(DD, "Apprenticeship", 1);
+                    else if (WP.Filename == "Employee-Reward-and-Benefits")
+                        sb = getDeptNavigationCareers(DD, "Employee Reward and Benefits", 1);
                 }
 
             }
@@ -83,6 +85,8 @@ namespace dlwebclasses
 
         public StringBuilder getDeptNavigationNewsMedia(DepartmentDetails DD, int? activenode = 0, string category = null, int? activemonth = 0)
         {
+
+
             StringBuilder SB = new StringBuilder();
             List<int?> activeNodes = new List<int?>();
             activeNodes.Add(activenode);

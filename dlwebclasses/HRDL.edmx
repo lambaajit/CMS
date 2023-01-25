@@ -121,7 +121,8 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <Property Name="office_desc" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="office_address" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="office_addrText" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="office_type" Type="varchar" MaxLength="15" />
+          <Property Name="office_address_businesscards" Type="varchar" MaxLength="200" />
+          <Property Name="office_type" Type="varchar" MaxLength="20" />
           <Property Name="operation_statusO" Type="char" MaxLength="1" />
           <Property Name="office_name" Type="varchar" MaxLength="50" />
           <Property Name="office_geo_location" Type="varchar" MaxLength="30" />
@@ -584,6 +585,12 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <Property Name="TUPE_start_Date" Type="datetime" />
           <Property Name="Tupe_end_date" Type="datetime" />
           <Property Name="cls_intranet_access" Type="bit" />
+          <Property Name="IsNewNQRole" Type="bit" />
+          <Property Name="Enable_TClink" Type="bit" />
+          <Property Name="cf_hol_2023" Type="float" />
+          <Property Name="Lieu_Days_2023" Type="float" />
+          <Property Name="Offerdocuments_Fullaccess" Type="bit" />
+          <Property Name="cilex" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="HRDDLModelStoreContainer">
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
@@ -711,7 +718,7 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <Property Name="office_desc" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="office_address" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="office_addrText" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="office_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="office_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="operation_statusO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="office_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="office_geo_location" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -743,6 +750,7 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <Property Name="linkedin" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="TrainingPlan_office" Type="Boolean" />
           <Property Name="Main_Office" Type="Boolean" />
+          <Property Name="office_address_businesscards" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Emp_Details">
           <Key>
@@ -1176,6 +1184,12 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <Property Name="TUPE_start_Date" Type="DateTime" Precision="3" />
           <Property Name="Tupe_end_date" Type="DateTime" Precision="3" />
           <Property Name="cls_intranet_access" Type="Boolean" />
+          <Property Name="IsNewNQRole" Type="Boolean" />
+          <Property Name="Enable_TClink" Type="Boolean" />
+          <Property Name="cf_hol_2023" Type="Double" />
+          <Property Name="Lieu_Days_2023" Type="Double" />
+          <Property Name="Offerdocuments_Fullaccess" Type="Boolean" />
+          <Property Name="cilex" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Emp_Detai__offic__7D8391DF">
           <End Type="HRDDLModel.Office" Role="Office" Multiplicity="0..1" />
@@ -1302,6 +1316,7 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <EntitySetMapping Name="Offices">
             <EntityTypeMapping TypeName="HRDDLModel.Office">
               <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="office_address_businesscards" ColumnName="office_address_businesscards" />
                 <ScalarProperty Name="Main_Office" ColumnName="Main_Office" />
                 <ScalarProperty Name="TrainingPlan_office" ColumnName="TrainingPlan_office" />
                 <ScalarProperty Name="linkedin" ColumnName="linkedin" />
@@ -1343,6 +1358,12 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <EntitySetMapping Name="Emp_Details">
             <EntityTypeMapping TypeName="HRDDLModel.Emp_Details">
               <MappingFragment StoreEntitySet="Emp_Details">
+                <ScalarProperty Name="cilex" ColumnName="cilex" />
+                <ScalarProperty Name="Offerdocuments_Fullaccess" ColumnName="Offerdocuments_Fullaccess" />
+                <ScalarProperty Name="Lieu_Days_2023" ColumnName="Lieu_Days_2023" />
+                <ScalarProperty Name="cf_hol_2023" ColumnName="cf_hol_2023" />
+                <ScalarProperty Name="Enable_TClink" ColumnName="Enable_TClink" />
+                <ScalarProperty Name="IsNewNQRole" ColumnName="IsNewNQRole" />
                 <ScalarProperty Name="cls_intranet_access" ColumnName="cls_intranet_access" />
                 <ScalarProperty Name="Tupe_end_date" ColumnName="Tupe_end_date" />
                 <ScalarProperty Name="TUPE_start_Date" ColumnName="TUPE_start_Date" />

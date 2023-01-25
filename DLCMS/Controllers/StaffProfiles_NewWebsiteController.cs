@@ -28,6 +28,18 @@ namespace DLCMS.Controllers
             return View();
         }
 
+        public ActionResult CreateStaffProfilesSubDepartments()
+        {
+            AContents NAL;
+            IT_DatabaseEntities dbit = new IT_DatabaseEntities();
+            foreach (var staff in dbit.SubDepartmentProfiles.ToList())
+            {
+                NAL = new Content_StaffProfileNewWebsite(staff.emp_code, false, "Family", staff.SubDepartment);
+                CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
+            }
+            return View("Index");
+        }
+
         [HttpPost]
         public ActionResult CreateStaffProfiles(string cbo_StaffList, string cbo_Staffdept, string cbo_Type, bool htaccessfile = false)
         {

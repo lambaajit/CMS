@@ -20,5 +20,7 @@ namespace dlwebclasses
         public string System_Username { get; set; }
         public string Mobile_Auth { get; set; }
         public Nullable<System.DateTime> Date_Updated { get; set; }
+        public Nullable<int> CodeToVerify { get; set; }
+        public Nullable<bool> Verified { get; set; }
     }
 }

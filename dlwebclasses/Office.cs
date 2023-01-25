@@ -54,6 +54,7 @@ namespace dlwebclasses
         public byte[] linkedin { get; set; }
         public Nullable<bool> TrainingPlan_office { get; set; }
         public Nullable<bool> Main_Office { get; set; }
+        public string office_address_businesscards { get; set; }
     
         public virtual ICollection<Emp_Details> Emp_Details { get; set; }
     }

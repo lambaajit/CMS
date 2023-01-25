@@ -12,7 +12,12 @@
     <title>Index</title>
 </head>
 <body>
-    <div> 
+    <div>
+        <a href="/Missingprofiles">Missing Profiles DL</a><br />
+        <a href="/Missingprofiles/Index?company=Cost%20Law">Missing Profiles Cost Law</a><br />
+        <a href="/Missingprofiles/Index/Photos">Missing Photos DL</a><br />
+        <a href="/Missingprofiles/Index?company=Cost%20Law&Id=Photos">Missing Photos Cost Law</a><br />
+
         <h1>Missing Staff @ViewBag.category</h1>
         <table cellpadding="12" cellspacing="0" style="font-family:Arial; font-style:normal; font-size:14px; border:solid 1px #000;">
             <tr style="background-color:navy; color:#fff">
@@ -27,12 +32,13 @@
                 <th style="border-bottom:solid 1px #000; text-align: left">Office</th>
             </tr>
             @{int i = 0;}
-                        @foreach (var item in Model)
+            @foreach (var item in Model)
             {
                 i++;
                 <tr style="@(item.Status == "Not Submitted by Fee earner" ? "background-color:lightpink" : "background-color:lightgoldenrodyellow") ">
                     <td style=" border-bottom:solid 1px #000; text-align: left;">
-                    @i.ToString()</td>
+                        @i.ToString()
+                    </td>
                     <td style="border-bottom: solid 1px #000; text-align: left">@item.staffname</td>
                     <td style="border-bottom: solid 1px #000; text-align: left">@item.Department</td>
                     <td style="border-bottom: solid 1px #000; text-align: left">@item.JobTitle</td>

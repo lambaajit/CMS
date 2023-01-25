@@ -78,7 +78,7 @@ namespace dlwebclasses
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Trainees.html\">Training Contracts<span class=\"fa fa-suitcase\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/JobsConsultancy.html\">Consultancy<span class=\"fa fa-suitcase\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/internship.html\">Volunteer<span class=\"fa fa-suitcase\"></span></a>");
-                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Apprenticeship.html\">Apprenticeship<span class=\"fa fa-suitcase\"></span></a>");
+                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Employee-Reward-and-Benefits.html\">Rewards<span class=\"fa fa-suitcase\"></span></a>");
 
                 SB.AppendLine("        </div>");
             }
@@ -100,7 +100,7 @@ namespace dlwebclasses
             else
             {
                 SB.AppendLine("            <div class=\"col-sm-12 col-md-7 col-xs-12 col-md-offset-5 depttabs\">");
-                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.Our_Team1 + "\">Our Team<span class=\"fa fa-users\"></span></a>");
+                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + (WP.Sub_Department == "High Net Worth Divorce" ? "HighNetWorthDivorce_ourTeam.html" : DD.Our_Team1) + "\">Our Team<span class=\"fa fa-users\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.News1 + "\">News<span class=\"fa fa-newspaper-o\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.News1.Replace("news", "articles") + "\">Articles<span class=\"fa fa-book\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.Video + "\">Videos<span class=\"fa fa-video-camera\"></span></a>");

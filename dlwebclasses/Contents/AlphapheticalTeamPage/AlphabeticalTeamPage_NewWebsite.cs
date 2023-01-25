@@ -89,12 +89,14 @@ namespace dlwebclasses
                 string hodstring = "";
                 if (_ed.jobtitle.Contains("Head of Department") == true)
                     hodstring = " - HOD";
+                else if (_ed.jobtitle.Contains("Chartered"))
+                    Jobtitle = "Chartered Legal Executive";
 
-                
-                    if (picmiss == true)
-                        StaffMissing.AppendLine("<div class=\"col-sm-4\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + " dept_default lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + name1 +  "\" /></a><p  class=\" dept_default lightkolor\">" + name1 + "<span>" + Jobtitle + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a></span></p></div></div>");
+
+                if (picmiss == true)
+                        StaffMissing.AppendLine("<div class=\"col-sm-4 col-xs-6 nopadding\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + " dept_default lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + name1 +  "\" /></a><p  class=\" dept_default lightkolor\">" + name1 + "<span>" + Jobtitle + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a></span></p></div></div>");
                     else
-                        Staff.AppendLine("<div class=\"col-sm-4\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + "  dept_default lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + name1 + "\" /></a><p class=\" dept_default lightkolor\">" + name1 + "<span>" + Jobtitle + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a></span></p></div></div>");
+                        Staff.AppendLine("<div class=\"col-sm-4 col-xs-6 nopadding\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + "  dept_default lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + name1 + "\" /></a><p class=\" dept_default lightkolor\">" + name1 + "<span>" + Jobtitle + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a><a class=\"btm btn-primary dept_default kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a></span></p></div></div>");
 
                     backimgloop++;
                     if (backimgloop > 16)
@@ -155,9 +157,12 @@ namespace dlwebclasses
 
             _NewContent.AppendLine("                <div class=\"row collapse in\">");
 
+            _NewContent.AppendLine("<div class=\"container\">");
+
             _NewContent.AppendLine(Staff.ToString());
             _NewContent.AppendLine(StaffMissing.ToString());
 
+            _NewContent.AppendLine("                </div>");
 
             _NewContent.AppendLine("                </div>");
 

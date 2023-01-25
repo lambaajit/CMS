@@ -35,6 +35,7 @@ namespace dlwebclasses
 
             public DepartmentDetails(string dept)
             {
+
                 IT_DatabaseEntities db1 = new IT_DatabaseEntities();
                 Website_Department_Structure db = new Website_Department_Structure();
 

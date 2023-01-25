@@ -59,19 +59,20 @@ namespace dlwebclasses
                 {
                     _Joblist = dlweb.Recruitment_DlWeb.Where(x => x.Live == true).OrderByDescending(y => y.Job_Ref_Code).ToList();
                 }
+                else if (dept == "Consultant")
+                {
+                    _Joblist = dlweb.Recruitment_DlWeb.Where(x => x.Job_Type == "Freeleance" && x.Live == true).OrderBy(y => y.Location).ToList();
+                }
             }
-            else if (category == "Consultancy")
-            {
-                _Joblist = dlweb.Recruitment_DlWeb.Where(x => x.Job_Type == "Freeleance" && x.Live == true).OrderBy(y => y.Location).ToList();
-            }
+
 
 
             HeadingH1 = dept + " Vacancies";
             Department = "Careers";
-            if (category == "AreaOfLaw" || category == "Category")
-                filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"] + "\\Jobs_" + dept.Replace(" ", "-") + ".html";
-            else if (category == "Consultancy")
+            if (dept == "Consultant")
                 filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"] + "\\Jobs_Consultancy.html";
+            else if (category == "AreaOfLaw" || category == "Category")
+                filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"] + "\\Jobs_" + dept.Replace(" ", "-") + ".html";
             else
                 filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"] + "\\Jobs\\" + dept.Replace(" ", "-") + "-Jobs.html";
 
@@ -167,7 +168,7 @@ namespace dlwebclasses
             SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Trainees.html\">Training Contracts<span class=\"fa fa-suitcase\"></span></a>");
             SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/JobsConsultancy.html\">Consultancy<span class=\"fa fa-suitcase\"></span></a>");
             SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/internship.html\">Volunteer<span class=\"fa fa-suitcase\"></span></a>");
-            SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Apprenticeship.html\">Apprenticeship<span class=\"fa fa-suitcase\"></span></a>");
+            SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Employee-Reward-and-Benefits.html\">Rewards<span class=\"fa fa-suitcase\"></span></a>");
             SB.AppendLine("            </div>");
             SB.AppendLine("        </div>");
             SB.AppendLine("    </div>");

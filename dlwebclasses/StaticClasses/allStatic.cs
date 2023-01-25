@@ -28,30 +28,24 @@ namespace dlwebclasses
 
         public static string filterjobtitle(Emp_Details _Empdetails)
         {
-            if ((_Empdetails.nonadmitted_staff == "1" ||  _Empdetails.forename + " " + _Empdetails.surname == "Neel Chakrabarti") && _Empdetails.forename != "Sridhar" && _Empdetails.forename + " " + _Empdetails.surname != "Mohan Bharj")
-            {
-                return "Caseworker";
-            }
-            else if ((_Empdetails.emp_status.Contains("Freelance Consultant") == true) || (_Empdetails.emp_status.Contains("Limited Company") == true))
-            {
-                return "Freelance Consultant";
-            }
-            else if ((_Empdetails.jobtitle.Contains("Paralegal") == true) || (_Empdetails.jobtitle.Contains("Caseworker") == true) || (_Empdetails.jobtitle.Contains("Legal Consultant") == true) || (_Empdetails.jobtitle.Contains("Legal Assistant") == true) || (_Empdetails.jobtitle.Contains("Clerk") == true) || (_Empdetails.jobtitle.Contains("Trainee") == true) || (_Empdetails.jobtitle.Contains("In-House Counsel") == true))
-            {
-                return "Caseworker";
-            }
-            else if ((_Empdetails.jobtitle.Contains("Supervisor") == true) || (_Empdetails.jobtitle.Contains("Solicitor") == true) || (_Empdetails.jobtitle.Contains("High Court Advocate") == true))
-            {
-                return "Solicitor";
-            }
-            else if ((_Empdetails.jobtitle.Contains("Partner") == true) || (_Empdetails.jobtitle.Contains("Director") == true) || (_Empdetails.jobtitle.Contains("Manager") == true))
-            {
+            if (_Empdetails.cilex == true && _Empdetails.jobtitle.Contains("Director") == true)
                 return "Partner";
-            }
-            else
-            {
+            else if (_Empdetails.cilex == true)
                 return "Solicitor";
-            }
+            else if ((_Empdetails.nonadmitted_staff == "1" || _Empdetails.forename + " " + _Empdetails.surname == "Neel Chakrabarti") && _Empdetails.forename != "Sridhar" && _Empdetails.forename + " " + _Empdetails.surname != "Mohan Bharj" && !_Empdetails.jobtitle.Contains("Chartered") && _Empdetails.jobtitle.Contains("Trainee"))
+                return "Trainee";
+            else if ((_Empdetails.nonadmitted_staff == "1" ||  _Empdetails.forename + " " + _Empdetails.surname == "Neel Chakrabarti") && _Empdetails.forename != "Sridhar" && _Empdetails.forename + " " + _Empdetails.surname != "Mohan Bharj" && !_Empdetails.jobtitle.Contains("Chartered") && !_Empdetails.jobtitle.Contains("Trainee"))
+                return "Caseworker";
+            else if ((_Empdetails.emp_status.Contains("Freelance Consultant") == true) || (_Empdetails.emp_status.Contains("Limited Company") == true))
+                return "Freelance Consultant";
+            else if ((_Empdetails.jobtitle.Contains("Paralegal") == true) || (_Empdetails.jobtitle.Contains("Caseworker") == true) || (_Empdetails.jobtitle.Contains("Legal Consultant") == true) || (_Empdetails.jobtitle.Contains("Legal Assistant") == true) || (_Empdetails.jobtitle.Contains("Clerk") == true) || (_Empdetails.jobtitle.Contains("Trainee") == true) || (_Empdetails.jobtitle.Contains("In-House Counsel") == true))
+                return "Caseworker";
+            else if ((_Empdetails.jobtitle.Contains("Supervisor") == true) || (_Empdetails.jobtitle.Contains("Solicitor") == true) || (_Empdetails.jobtitle.Contains("High Court Advocate") == true) || _Empdetails.jobtitle.Contains("Chartered"))
+                return "Solicitor";
+            else if ((_Empdetails.jobtitle.Contains("Partner") == true) || (_Empdetails.jobtitle.Contains("Director") == true) || (_Empdetails.jobtitle.Contains("Manager") == true))
+                return "Partner";
+            else
+                return "Solicitor";
         }
 
 
@@ -184,6 +178,7 @@ namespace dlwebclasses
             ed1 = ed.Where(x => (departments_aol.Contains(x.department_it))).OrderBy(x => x.forename).ToList();
             StreamWriter fp;
             fp = File.CreateText(path);
+
             int i = 1;
             foreach (Emp_Details ed2 in ed1)
             {
@@ -203,6 +198,25 @@ namespace dlwebclasses
                 dbhr.SaveChanges();
                 //fp.WriteLine("RewriteRule " + rewriteurllink + "/ " + DD.folderteam1 + "/" + Name.Replace(" ", "_") + ".html [NC,L]");
             }
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
+            fp.WriteLine("<match url=\"mentalhealth.html.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"Index.html\" />");
+            fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
+            fp.WriteLine("<match url=\"mentalhealth_services.html.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"Index.html\" />");
+            fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
+            fp.WriteLine("<match url=\"mentalhealth_ourteam.html.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"courtofprotection_ourteam.html\" />");
+            fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
+            fp.WriteLine("<match url=\"/High-net-worth-individuals.html.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"/High-net-worth-divorce.html\" />");
+            fp.WriteLine("</rule>");
             fp.Close();
         }
 
@@ -270,7 +284,7 @@ namespace dlwebclasses
 
             //url = Name.ToString().Replace(" ", "-") + "-" + _Empdetails.department_it.ToString().Replace(" ", "-") + "-" + jobtitle1 + "-" + _Empdetails.Office.office_name.Replace(" ", "-") + "-" + (_Empdetails.Office.county == null ? "" : _Empdetails.Office.county.ToString().Replace(" ", "-"));
             url = Name.ToString().Replace(" ", "-") + "-" + _Empdetails.department_it.ToString().Replace(" ", "-") + "-" + jobtitle1 + "-" + _Empdetails.Office.office_name.Replace(" ", "-") + "-";
-
+            url = url.Replace("(", "").Replace(")", "");
             return url;
         }
 

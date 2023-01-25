@@ -441,6 +441,12 @@ namespace dlwebclasses
         public Nullable<System.DateTime> TUPE_start_Date { get; set; }
         public Nullable<System.DateTime> Tupe_end_date { get; set; }
         public Nullable<bool> cls_intranet_access { get; set; }
+        public Nullable<bool> IsNewNQRole { get; set; }
+        public Nullable<bool> Enable_TClink { get; set; }
+        public Nullable<double> cf_hol_2023 { get; set; }
+        public Nullable<double> Lieu_Days_2023 { get; set; }
+        public Nullable<bool> Offerdocuments_Fullaccess { get; set; }
+        public bool cilex { get; set; }
     
         public virtual Office Office { get; set; }
     }

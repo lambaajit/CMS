@@ -106,6 +106,7 @@ namespace DLCMS.Controllers
                 sl_sl.Add(new SelectListItem() { Text = str, Value = str, Selected = false });
             }
             sl_sl.Add(new SelectListItem() { Text = "Management Board", Value = "Management Board", Selected = false });
+            //sl_sl.Add(new SelectListItem() { Text = "High Net Worth Divorce", Value = "High Net Worth Divorce", Selected = false });
             SelectList slsl = new SelectList(sl_sl, "Value", "Text");
             dict.Add("StaffDeptList", slsl);
 

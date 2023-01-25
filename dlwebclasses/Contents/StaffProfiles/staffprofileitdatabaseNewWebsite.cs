@@ -268,6 +268,11 @@ namespace dlwebclasses
             else
                 _NewContents.AppendLine(Pro.ToString());
 
+            var _subDepartmentProfile = dbit.SubDepartmentProfiles.Where(x => x.emp_code == staffcode).FirstOrDefault();
+            if (_subDepartmentProfile != null)
+                    _NewContents.AppendLine("</p><p>&nbsp;</p><p><div class=\"btn btn-primary\"><h4 style=\"margin-top:10px !important;margin-bottom:0px !important;\">To view " + staffname + "’s " + _subDepartmentProfile.SubDepartment + " profile – please <a href=\"" + "/" + _subDepartmentProfile.SubDepartment.Replace(" ", "-") + "_ourteam/" + staffname.Replace(" ","_") + ".html" + "\" style=\"display:inline-block !important;font-size:18px !important; color:#ffffff !important; text-decoration:underline !important; font-weight:bold !important;\">click here</a>.</h4></div>");
+
+
             _NewContents.AppendLine("                        </div>");
             _NewContents.AppendLine("                    </div>");
             if (UP != null)

@@ -27,9 +27,11 @@ namespace dlwebclasses
             StringBuilder Solicitor =  new StringBuilder();
             StringBuilder Caseworker = new StringBuilder();
             StringBuilder partner = new StringBuilder();
+            StringBuilder Trainee = new StringBuilder();
             StringBuilder Solicitormisspic = new StringBuilder();
             StringBuilder Caseworkermisspic = new StringBuilder();
             StringBuilder partnermisspic = new StringBuilder();
+            StringBuilder Traineemisspic = new StringBuilder();
             string[] deptstr;
 
             DepartmentDetails DD = new DepartmentDetails(Dept);
@@ -47,6 +49,7 @@ namespace dlwebclasses
                 deptstr = new string[] { DD.Name };
 
             HRDDLEntities db = new HRDDLEntities();
+            IT_DatabaseEntities dbit = new IT_DatabaseEntities();
 
             List<Emp_Details> ED = new List<Emp_Details>();
             IEnumerable<Emp_Details> ED1;
@@ -84,13 +87,16 @@ namespace dlwebclasses
                 bool picmiss = false;
                 string rewriteurllink = "";
                 string managementpic = "";
+                List<string> _subDepartments = dbit.SubDepartmentProfiles.GroupBy(x => x.SubDepartment).Select(x => x.Key).ToList();
                 if (_ed.forename + ' ' + _ed.surname == "Syed Talha Rafique" || _ed.forename + ' ' + _ed.surname == "Shany Gupta" || _ed.forename + ' ' + _ed.surname == "Nina Joshi" || _ed.forename + ' ' + _ed.surname == "Sridhar Ponnada" || _ed.forename + ' ' + _ed.surname == "Jason Bruce" || _ed.forename + ' ' + _ed.surname == "Mohan Bharj" || _ed.forename + ' ' + _ed.surname == "David Daud" || _ed.forename + ' ' + _ed.surname == "Judith Lee-Scott")
                 {
                     rewriteurllink = "/about_managementboard/" + (_ed.forename + ' ' + _ed.surname).ToString().Replace(" ", "_") + ".html";
                     managementpic = "1";
                 }
+                else if (_subDepartments.Contains(DD.Name))
+                    rewriteurllink = "/" + DD.Name.Replace(" ", "-") + "_ourteam/" + _ed.forename + "_" + _ed.surname + ".html";
                 else
-                    rewriteurllink = "/" + allStatic.getRewriteUrlLinkForStaff(_ed) + "/#"+Department.Replace(" ","");
+                    rewriteurllink = "/" + allStatic.getRewriteUrlLinkForStaff(_ed) + "/#" + Department.Replace(" ", "");
 
                 string photostr;
                 if (File.Exists("C:\\Inetpub\\wwwroot\\DuncanLewis_NewWebsite_Revised_2017\\Photos\\StaffPics\\" + Name + ".png") && _ed.Picture_website == true)
@@ -119,6 +125,8 @@ namespace dlwebclasses
                     hodstring = "Head Of Department";
                 else if (name1 == "Neil Sargeant")
                     hodstring = "Motoring Law Specialist";
+                else if (_ed.jobtitle.Contains("Chartered"))
+                    hodstring = "Chartered Legal Executive";
                 else 
                     hodstring = "Solicitor";
 
@@ -129,7 +137,14 @@ namespace dlwebclasses
                     else
                         Solicitor.AppendLine("<div class=\"col-sm-4 col-xs-6 nopadding\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + "  " + DD.cssclass + " lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + _ed.forename + " " + _ed.surname + "\" /></a><p class=\"" + DD.cssclass + " lightkolor\">" + name1 + "<span>" + hodstring + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a></span></p></div></div>");
                 }
-                else if (Jobtitle == "Caseworker" || Jobtitle == "Trainee Solicitor")
+                else if (Jobtitle.Contains("Trainee"))
+                {
+                    if (picmiss == true)
+                        Traineemisspic.AppendLine("<div class=\"col-sm-4 col-xs-6 nopadding\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + " " + DD.cssclass + " lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + _ed.forename + " " + _ed.surname + "\" /></a><p class=\"" + DD.cssclass + " lightkolor\">" + name1 + "<span>" + Jobtitle + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary " + DD.cssclass + "y kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a></span></p></div></div>");
+                    else
+                        Trainee.AppendLine("<div class=\"col-sm-4 col-xs-6 nopadding\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + " " + DD.cssclass + " lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + _ed.forename + " " + _ed.surname + "\" /></a><p class=\"" + DD.cssclass + " lightkolor\">" + name1 + "<span>" + Jobtitle + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a></span></p></div></div>");
+                }
+                else if (Jobtitle == "Caseworker")
                 {
                     if (picmiss == true)
                         Caseworkermisspic.AppendLine("<div class=\"col-sm-4 col-xs-6 nopadding\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + " " + DD.cssclass + " lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + _ed.forename + " " + _ed.surname + "\" /></a><p class=\"" + DD.cssclass + " lightkolor\">" + name1 + "<span>" + Jobtitle + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary " + DD.cssclass + "y kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a></span></p></div></div>");
@@ -250,6 +265,20 @@ else
                 _NewContent.AppendLine("                </div>");
             }
 
+            if (Trainee.Length > 20 || Traineemisspic.Length > 20)
+            {
+                _NewContent.AppendLine("                <div class=\"row extramargin100 nopadding\" id=\"CaseworkerPanel\">");
+                _NewContent.AppendLine("                    <div class=\"col-sm-12 teampageseparator " + DD.cssclass + " kolor forecolorlight \"><a class=\"" + DD.cssclass + " forecolorlight\" href=\"#CaseworkerPanel\" data-toggle=\"collapse\">Trainee Solicitors</a><span class=\"fa fa-caret-down\"></span></div>");
+                _NewContent.AppendLine("                </div>");
+
+                _NewContent.AppendLine("                    <div class=\"row nopadding collapse in\">");
+                _NewContent.AppendLine("<div class=\"container\">");
+                _NewContent.AppendLine(Trainee.ToString());
+                _NewContent.AppendLine(Traineemisspic.ToString());
+                _NewContent.AppendLine("                    </div>");
+
+                _NewContent.AppendLine("                    </div>");
+            }
 
             if (Caseworker.Length > 20 || Caseworkermisspic.Length > 20)
             {
