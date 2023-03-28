@@ -253,7 +253,7 @@ namespace dlwebclasses
             {
                 _NewContents.AppendLine("        <img alt=\"" + Title.Replace("|", ",").Replace("^", "") + "\" src=\"/Photos/Staffpics/missingF.png\" />");
             }
-            _NewContents.AppendLine("        <div class=\"profilenamepanel\"><h1>" + Name + "</h1><h2>" + jobtitlestaff + "</h2></div>");
+            _NewContents.AppendLine("        <div class=\"profilenamepanel\"><h1>" + Name.Replace("Rajminder Mehat", "Mindy Chall Mehat") + " </h1><h2>" + jobtitlestaff + "</h2></div>");
             _NewContents.AppendLine("        <div class=\"profilebannerbandbottom " + dd.cssclass + " kolor\"></div>");
             _NewContents.AppendLine("    </div>");
             _NewContents.AppendLine("</div>");

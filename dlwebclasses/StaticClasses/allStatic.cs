@@ -214,7 +214,7 @@ namespace dlwebclasses
             fp.WriteLine("</rule>");
 
             fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
-            fp.WriteLine("<match url=\"/High-net-worth-individuals.html.*\" />");
+            fp.WriteLine("<match url=\"High-net-worth-individuals.html.*\" />");
             fp.WriteLine("<action type=\"Rewrite\" url=\"/High-net-worth-divorce.html\" />");
             fp.WriteLine("</rule>");
             fp.Close();

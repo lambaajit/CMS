@@ -54,6 +54,8 @@ namespace dlwebclasses
                 string name1 = "";
                 if (Name == "Raja Rajeswaran Uruthiravinayagan")
                     name1 = "Raja Uruthiravinayagan";
+                else if (Name == "Rajminder Mehat")
+                    name1 = "Mindy Chall Mehat";
                 else
                     name1 = Name;
 

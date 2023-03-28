@@ -43,7 +43,7 @@ app.controller('Jobs', function ($scope, $http) {
     $scope.changesubsubsubDepartment = function () {
         $http({
             method: 'GET',
-            url: baseUrldept + 'CURD_WebSitePages/getnodesundernode/' + $scope.subsubdeptname
+            url: '/CURD_WebSitePages/getnodesundernode/' + $scope.subsubdeptname
         }).then(function mySuccess(response) {
             $scope.SubSubSubDepartmentList = response.data;
         }, function myError(response) {
