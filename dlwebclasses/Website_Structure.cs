@@ -17,12 +17,12 @@ namespace dlwebclasses
         public int id { get; set; }
         public string name { get; set; }
         public Nullable<int> underwhichnode { get; set; }
-        public string level { get; set; }
-        public Nullable<int> linkedid { get; set; }
-        public Nullable<int> sequence { get; set; }
         public Nullable<int> underwhichnode1 { get; set; }
         public Nullable<int> underwhichnode2 { get; set; }
         public Nullable<int> underwhichnode3 { get; set; }
+        public string level { get; set; }
+        public Nullable<int> linkedid { get; set; }
+        public Nullable<decimal> sequence { get; set; }
         public string dept { get; set; }
         public Nullable<bool> SubDepartment { get; set; }
         public string email { get; set; }

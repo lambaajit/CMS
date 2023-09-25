@@ -24,11 +24,13 @@ namespace dlwebclasses
         public string Heading { get; set; }
         public string Description { get; set; }
         public string name { get; set; }
+        public string website_filename { get; set; }
         public string content { get; set; }
         public string thumbnailpic { get; set; }
-        public string website_filename { get; set; }
         public string DoneBy { get; set; }
         public Nullable<bool> Active { get; set; }
         public string Reason_removal { get; set; }
+        public Nullable<System.DateTime> DateOfVideo { get; set; }
+        public Nullable<int> Sequence { get; set; }
     }
 }

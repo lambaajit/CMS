@@ -37,9 +37,9 @@ namespace dlwebclasses
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
             List<Website_Videos> WV = new List<Website_Videos>();
             if (dept != "All")
-                WV = dbit.Website_Videos.Where(x => x.Department == dept && x.Active == true).ToList();
+                WV = dbit.Website_Videos.Where(x => x.Department == dept && x.Active == true).OrderBy(x => x.Sequence).ToList();
             else
-                WV = dbit.Website_Videos.Where(x => x.Active == true).ToList();
+                WV = dbit.Website_Videos.Where(x => x.Active == true).OrderBy(x => x.Department).ThenBy(x => x.Sequence).ToList();
 
              DepartmentNavigationNewWebsite Deptnav = new DepartmentNavigationNewWebsite();
              HRDDLEntities hrd = new HRDDLEntities();
@@ -96,6 +96,7 @@ _NewContent.AppendLine("            </div>");
 _NewContent.AppendLine("<div class=\"col-sm-9 col-xs-12 nopadding\">");
 _NewContent.AppendLine("<div class=\"row nopadding\">");
 
+            var _dept = "";
             int i = 0;
             foreach (var item in WV)
             {
@@ -108,16 +109,29 @@ _NewContent.AppendLine("<div class=\"row nopadding\">");
                 Website_Department_Structure WDS = new Website_Department_Structure();
                 string cssclass = dbit.Website_Department_Structure.Where(x => x.Name == item.Department).Select(y => y.cssclass).FirstOrDefault();
 
-                if ((i % 2 == 0) && i != 0)
+                if (((i % 2 == 0) && i != 0) || _dept != item.Department)
                 {
                     _NewContent.AppendLine("</div>");
+
+                    if (_dept != item.Department)
+                    {
+                        _NewContent.AppendLine("                        <div class=\"col-xs-12 col-sm-12\">");
+                        _NewContent.AppendLine("                            <div class=\"panel panel-primary videoimage " + cssclass + " deptbordercolor\">");
+                        _NewContent.AppendLine("                                <div class=\"panel-heading " + cssclass + " kolor forecolorlight deptbordercolorlight videoimage\">");
+                        _NewContent.AppendLine((item.Department == null ? item.Heading : item.Department) + "<span class=\"fa fa-caret-down " + cssclass + " forecolorlight\"></span>");
+                        _NewContent.AppendLine("                                </div>");
+                        _NewContent.AppendLine("                            </div>");
+                        _NewContent.AppendLine("                        </div>");
+                    }
+
+
                     _NewContent.AppendLine("<div class=\"row nopadding\">");
                 }
                 
                 _NewContent.AppendLine("                        <div class=\"col-xs-12 col-sm-6\">");
                 _NewContent.AppendLine("                            <div class=\"panel panel-primary videoimage " + cssclass + " deptbordercolor\">");
                 _NewContent.AppendLine("                                <div class=\"panel-heading " + cssclass + " kolor forecolorlight deptbordercolorlight videoimage\">");
-                _NewContent.AppendLine("<p>" + (item.Heading == null ? item.Department : item.Heading) + "</p><span class=\"fa fa-play-circle " + cssclass + " forecolorlight\"></span>");
+                _NewContent.AppendLine((item.Heading == null ? item.Department : item.Heading) + "<span class=\"fa fa-play-circle " + cssclass + " forecolorlight\"></span>");
                 _NewContent.AppendLine("                                </div>");
                 _NewContent.AppendLine("                                <div class=\"videoimage panel-body\">");
                 _NewContent.AppendLine("                                    <p>By: " + ((staffname.Length < 4) ? item.id.ToString() : staffname) + "<a href=\"/Videos/" + item.id + "_Videos.html\"><span class=\"fa fa-play-circle " + cssclass + " forecolorlight\"></span></a><a href=\"#\">Watch This Video</a><font size=\"3\" style=\"padding-top:10px; display:block\">Department: " + item.Department + "</font></p>");
@@ -126,6 +140,7 @@ _NewContent.AppendLine("<div class=\"row nopadding\">");
                 _NewContent.AppendLine("                            </div>");
                 _NewContent.AppendLine("                        </div>");
                 i++;
+                _dept = item.Department;
             }
             _NewContent.AppendLine("                </div>");
 

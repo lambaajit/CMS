@@ -134,6 +134,8 @@ namespace DLCMS.Controllers
             items.Add(new SelectListItem { Text = "All", Value = "All" });
             items.Add(new SelectListItem { Text = "All Landing pages", Value = "All Landing pages" });
             items.Add(new SelectListItem { Text = "All pages", Value = "All pages" });
+            items.Add(new SelectListItem { Text = "Website Pages with Videos", Value = "Website Pages with Videos" });
+            
 
             SelectList slcwp = new SelectList(items,  "Value","Text");
 

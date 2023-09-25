@@ -51,7 +51,11 @@ namespace DLCMS.Controllers
             else if (dept == "All pages")
             {
                 List<int> ids = new List<int>() { 62, 63, 81, 82 };
-                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis").ToList();
+                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && x.Title.Contains("Duncan Lewis") && x.Title.Length < 60).ToList();
+            }
+            else if (dept == "Website Pages with Videos")
+            {
+                WP = db.Website_Pages.Where(x => x.VideoId != null && x.VideoId > 0).ToList();
             }
             else
             {

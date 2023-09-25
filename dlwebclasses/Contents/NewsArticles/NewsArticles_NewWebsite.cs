@@ -79,6 +79,8 @@ namespace dlwebclasses
             contentstext = "<p>" + WP.Contents.ToString().Replace("^", "'").Replace("***", "</p><h6>").Replace("**", "</h6><p>").Replace("*is*", "<i>").Replace("*ie*", "</i>").Replace("*bis*", "<b><i>").Replace("*bie*", "</b></i>").Replace(". " + (char)13, ".<br />").Replace("." + (char)13, ".<br />").Replace("</br>", "<br />").Replace("" + (char)13,"<br />") + "</p>";
             if (WP.Department == "Legal News")
                 imgstr = "<img class=\"newsarticlesmainimage\" src=\"/images_newarticles/" + WP.Blog_Department + ".jpg\" alt=\"Duncan Lewis, " + DD.Name + " Solicitors, " + WP.Title + "\" />";
+            else if (WP.Department == "Reported Case" || WP.Department == "InThePress")
+                imgstr = "<img class=\"newsarticlesmainimage\" src=\"/ArticlesImages/DLStandardNewsImage.JPG\" alt=\"Duncan Lewis, " + DD.Name + " Solicitors, " + WP.Title + "\" />";
             else if (WP.Image == true && WP.video != true)
                 imgstr = "<img class=\"newsarticlesmainimage\" src=\"/ArticlesImages/" + ID + ".jpg\" alt=\"Duncan Lewis, " + WP.Department.ToString().Replace("'", "^") + " Solicitors, " + WP.Title + "\" />";
             else if (WP.video == true)

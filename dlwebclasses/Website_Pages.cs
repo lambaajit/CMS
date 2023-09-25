@@ -40,5 +40,6 @@ namespace dlwebclasses
         public string CustomSubDepartment { get; set; }
         public string SubDepartmentSwitchboard { get; set; }
         public string CustomDepartment { get; set; }
+        public Nullable<int> VideoId { get; set; }
     }
 }

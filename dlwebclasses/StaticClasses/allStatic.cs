@@ -30,6 +30,8 @@ namespace dlwebclasses
         {
             if (_Empdetails.cilex == true && _Empdetails.jobtitle.Contains("Director") == true)
                 return "Partner";
+            else if ((_Empdetails.jobtitle.Contains("Partner") == true) || (_Empdetails.jobtitle.Contains("Director") == true) || (_Empdetails.jobtitle.Contains("Manager") == true))
+                return "Partner";
             else if (_Empdetails.cilex == true)
                 return "Solicitor";
             else if ((_Empdetails.nonadmitted_staff == "1" || _Empdetails.forename + " " + _Empdetails.surname == "Neel Chakrabarti") && _Empdetails.forename != "Sridhar" && _Empdetails.forename + " " + _Empdetails.surname != "Mohan Bharj" && !_Empdetails.jobtitle.Contains("Chartered") && _Empdetails.jobtitle.Contains("Trainee"))
@@ -42,8 +44,6 @@ namespace dlwebclasses
                 return "Caseworker";
             else if ((_Empdetails.jobtitle.Contains("Supervisor") == true) || (_Empdetails.jobtitle.Contains("Solicitor") == true) || (_Empdetails.jobtitle.Contains("High Court Advocate") == true) || _Empdetails.jobtitle.Contains("Chartered"))
                 return "Solicitor";
-            else if ((_Empdetails.jobtitle.Contains("Partner") == true) || (_Empdetails.jobtitle.Contains("Director") == true) || (_Empdetails.jobtitle.Contains("Manager") == true))
-                return "Partner";
             else
                 return "Solicitor";
         }
@@ -217,6 +217,46 @@ namespace dlwebclasses
             fp.WriteLine("<match url=\"High-net-worth-individuals.html.*\" />");
             fp.WriteLine("<action type=\"Rewrite\" url=\"/High-net-worth-divorce.html\" />");
             fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"careers\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"careers.html\" />");
+            fp.WriteLine("</rule>");
+
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"childcare_CourtPowers.html.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"childcare_CareOrder.html\" />");
+            fp.WriteLine("</rule>");
+
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"childcare_kinship.html.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"Kinship-Care.html\" />");
+            fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"Children-Court-Orders.html.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"Specific-Issue-Orders.html\" />");
+            fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"Residence-Orders.html.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"Child-Arrangement-Orders.html\" />");
+            fp.WriteLine("</rule>");
+
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"branchLocator_DL_WithMap.aspx.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"findus.html\" />");
+            fp.WriteLine("</rule>");
+            
+
+            //fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            //fp.WriteLine("<match url=\"https://duncanlewis.co.uk/\" />");
+            //fp.WriteLine("<action type=\"Rewrite\" url=\"https://www.duncanlewis.co.uk/\" />");
+            //fp.WriteLine("</rule>");
+
             fp.Close();
         }
 

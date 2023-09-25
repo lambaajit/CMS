@@ -56,14 +56,20 @@ namespace DLCMS.Controllers
             {
                 if ((cbo_Type == "Both Pages") || (cbo_Type == "Staff Pages"))
                 {
+                    IT_DatabaseEntities db = new IT_DatabaseEntities();
+                    var _date = DateTime.Now.Date;
+                    var _staffProfilescreatedtoday = db.StaffProfilesCreatedLogs.Where(x => x.date_created == _date).Select(x => x.emp_code).ToList();
                     AContents NAL;
-                    foreach (Emp_Details staffmember in stafflist)
+                    foreach (Emp_Details staffmember in stafflist.Where(x => !_staffProfilescreatedtoday.Contains(x.emp_code)))
                     {
                         //DepartmentDetails dd = new DepartmentDetails(staffmember.department_it);
                         //if (System.IO.File.Exists("C:\\Inetpub\\wwwroot\\DuncanLewis_NewWebsite_Revised_2017\\" + dd.folderteam1 + "\\" + staffmember.forename.Replace(" ", "_") + "_" + staffmember.surname.Replace(" ", "_") + ".html") == false)
                         //{
                         NAL = new Content_StaffProfileNewWebsite(staffmember.emp_code);
                         CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
+                        StaffProfilesCreatedLog staffProfilesCreatedLog = new StaffProfilesCreatedLog() { emp_code = staffmember.emp_code, date_created = _date };
+                        db.StaffProfilesCreatedLogs.Add(staffProfilesCreatedLog);
+                        db.SaveChanges();
                         //}
                     }
                 }
@@ -146,7 +152,7 @@ namespace DLCMS.Controllers
 
         public ActionResult CostLawProfilePages()
         {
-            List<string> excludednames = new List<string>() { "Ajit Lamba", "Lubna Chauhan", "Ritu Sharma", "Robert Poulter", "Sangita Shah", "Sonal Ruparelia" };
+            List<string> excludednames = new List<string>() { "Ajit Lamba", "Lubna Chauhan", "Ritu Sharma", "Robert Poulter", "Sangita Shah", "Sonal Ruparelia", "Nina Joshi" };
             HRDDLEntities dbhr = new HRDDLEntities();
             var emplist = dbhr.Emp_Details.Where(x => x.employed == "1" && x.start_date < DateTime.Now && excludednames.Contains(x.forename + " " + x.surname) == false && x.start_date < DateTime.Now && (x.end_date == null || x.end_date > DateTime.Now || x.end_date.Value.ToString().Contains("1900")) && (x.company_name == "Cost Law Services Limited" || x.company_name == "Cost Law Limited")).OrderBy(y => y.forename).ToList();
             foreach (var item in emplist)

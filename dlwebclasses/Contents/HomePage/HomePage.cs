@@ -36,6 +36,7 @@ namespace dlwebclasses
             inthepress = dbit.Updates_MainWebsites.Where(x => x.Department == "InThePress").Take(2).OrderByDescending(y => y.ID).ToList();
             videolist = dbit.Website_Videos.Take(2).OrderByDescending(y => y.id).ToList();
 
+
             StringBuilder _NewContent = new StringBuilder();
             if (htype == HomePagetype.Main)
             {
@@ -207,7 +208,7 @@ namespace dlwebclasses
 
                 _NewContent.AppendLine("                <div class=\"lawlogo\">");
                 _NewContent.AppendLine("                    <h4>Our Regulator<span class=\"fa fa-certificate\"></span></h4>");
-                _NewContent.AppendLine("                    <div style=\"max-width:275px;max-height:163px;\"><div style=\"position: relative;padding-bottom: 59.1%;height: auto;overflow: hidden;\"><iframe frameborder=\"0\" scrolling=\"no\" allowTransparency=\"true\" src=\"https://cdn.yoshki.com/iframe/55845r.html\" style=\"border:0px; margin:0px; padding:0px; backgroundColor:transparent; top:0px; left:0px; width:100%; height:100%; position: absolute;\"></iframe></div></div>");
+                _NewContent.AppendLine("                    <div style=\"max-width:275px;max-height:163px;\">SRA No: 309586<br /><div style=\"position: relative;padding-bottom: 59.1%;height: auto;overflow: hidden;\"><iframe frameborder=\"0\" scrolling=\"no\" allowTransparency=\"true\" src=\"https://cdn.yoshki.com/iframe/55845r.html\" style=\"border:0px; margin:0px; padding:0px; backgroundColor:transparent; top:0px; left:0px; width:100%; height:100%; position: absolute;\"></iframe></div></div>");
                 _NewContent.AppendLine("                </div>");
                 _NewContent.AppendLine("                </div>");
                 _NewContent.AppendLine("        <div class=\"col-md-8\">");
@@ -386,7 +387,7 @@ namespace dlwebclasses
                     _NewContent.AppendLine("                                    <a href=\"/Videos/" + item.id + "_Videos.html\"><img src=\"/Video-Images/" + item.id + ".jpg\" class=\"img-responsive\" alt=\"Duncan Lewis Videos\" /></a>");
                     _NewContent.AppendLine("                            </li>");
                 }
-                _NewContent.AppendLine("<a href=\"/videos.html\" style=\"padding:10px; float:right; margin-right:20px; display:inline-block\">Read More ...</a>");
+                _NewContent.AppendLine("<a href=\"/video.html\" style=\"padding:10px; float:right; margin-right:20px; display:inline-block\">Read More ...</a>");
                 //_NewContent.AppendLine("                            <li>");
                 //_NewContent.AppendLine("                                <a href=\"#\">");
                 //_NewContent.AppendLine("                                    <img src=\"/Images/Video_img1.JPG\" class=\"img-responsive\" />");
@@ -410,23 +411,23 @@ namespace dlwebclasses
                     {
                         dd1 = DD.Where(x => x.Private > 0).OrderBy(x => x.Sequence).ThenBy(y => y.NameforHomePage).ToList();
                         filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\Private.html";
-                    Title = "Duncan Lewis | Services for Private Clients";
-                    Description = "Duncan Lewis Services for Private Clients";
+                    Title = "Private Solicitor - Duncan Lewis Solicitor";
+                    Description = "Duncan Lewis provides business immigration, civil litigation, education law, employment, international disputes, and more solicitor services in UK.";
                 }
                     else if (htype == HomePagetype.LegalAid)
                     {
                         dd1 = DD.Where(x => x.LegalAid > 0).OrderBy(y => y.NameforHomePage).ToList();
                         filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\LegalAid.html";
-                    Title = "Duncan Lewis | Services for Legal Aid Clients";
-                    Description = "Duncan Lewis Services for Legal Aid Clients";
+                    Title = "Legal Aid Solicitor - Get Legal Advice & Assistance for any Issue";
+                    Description = "Duncan Lewis is a trusted legal aid solicitor in UK. Our expert legal aid solicitors handle all types of legal issues and get your free legal advice now.";
 
                 }
                 else if (htype == HomePagetype.Corporate)
                     {
                         dd1 = DD.Where(x => x.Corporate > 0).OrderBy(y => y.Name).ToList();
                         filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\Corporate.html";
-                    Title = "Duncan Lewis | Services for Corporate Clients";
-                    Description = "Duncan Lewis Services for Corporate Clients";
+                    Title = "Corporate Solicitors - Corporate Lawyers | Duncan Lewis";
+                    Description = "Duncan Lewis is a trusted corporate solicitor in UK. Our export corporate lawyers handle all types of legal corporate matters.";
                 }
 
 
@@ -487,7 +488,12 @@ namespace dlwebclasses
 
 
             }
-            
+            if (string.IsNullOrEmpty(Title))
+                Title = "Duncan Lewis Solicitors";
+
+            if (string.IsNullOrEmpty(Description))
+                Description = "When you come to Duncan Lewis you come to a prominent and reputable national law firm with over 500 qualified solicitors and consultants";
+
             Keywords = "legal aid, free legal advice, legal aid lawyers, legal aid services, legal aid family, legal aid lawyer, legal aid solicitor, legal aid funding, solicitors, free legal advice, solicitor, legal custody, domestic violence solicitor, Children solicitor, child and social services involvement, legal aid immigration solicitors, immigration lawyers professional negligence lawyers, personal injury solicitors, crime solicitors, criminal lawyers, criminal solicitor specialist fraud solicitor, benefit fraud solicitor, personal injury solicitor, solicitors negligence, Birmingham solicitors, Solicitors Cardiff, solicitors Leicester, solicitors London, Solicitors East London, Solicitors south east London, solicitors south London, solicitors west London, no win no fee, Divorce solicitor, divorce lawyer, child abduction solicitor, wardship solicitor, mental capacity solicitor, mental health solicitor, solicitor, mortgage repossession, housing disrepair solicitor";
             HeadingH1 = "Duncan Lewis Solicitors";
             Department = "";

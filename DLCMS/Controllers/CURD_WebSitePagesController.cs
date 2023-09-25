@@ -52,7 +52,7 @@ namespace DLCMS.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include="Name,Department,Sub_Department,Keywords,Title,Description,Text,Sub_Sub_Department,Filename")] Website_Pages website_pages,string Sub_Sub_Sub_Department)
+        public ActionResult Create([Bind(Include="Name,Department,Sub_Department,Keywords,Title,Description,Text,Sub_Sub_Department,Filename,VideoId")] Website_Pages website_pages,string Sub_Sub_Sub_Department)
         {
             website_pages.Company = "Duncan Lewis";
             if (ModelState.IsValid)
@@ -127,7 +127,7 @@ namespace DLCMS.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit(int ID, string Name, string Text, string Title, string Description, string Keywords, string Department, string AltTagIng1, string AltTagIng2, string AltTagIng3, string AltTagIng4, string AltTagIng5, string AltTagIng6, string AltTagIng7)
+        public ActionResult Edit(int ID, string Name, string Text, string Title, string Description, string Keywords, string Department, string AltTagIng1, string AltTagIng2, string AltTagIng3, string AltTagIng4, string AltTagIng5, string AltTagIng6, string AltTagIng7, string VideoId)
         {
             Website_Pages WP = new Website_Pages();
             WP = db.Website_Pages.Find(ID);
@@ -144,6 +144,12 @@ namespace DLCMS.Controllers
             WP.AltTagIng7 = AltTagIng7;
             WP.DateUpdated = DateTime.Now;
             WP.Description = Description;
+            int Videoid = 0;
+            int.TryParse(VideoId,out Videoid);
+            
+            if (Videoid != 0)
+                WP.VideoId = Videoid;
+
             db.Entry(WP).State = EntityState.Modified;
             db.SaveChanges();
             if (WP.Company == "Duncan Lewis")

@@ -118,7 +118,7 @@ namespace dlwebclasses
                 SB.AppendLine("window.cookieconsent_options = {\"message\":\"We use cookies on our website to enhance your browsing experience and to improve our site. By continuing to use this website, you agree to our use of cookies in the manner described in our\",\"dismiss\":\"Accept\",\"learnMore\":\"Cookie Policy\",\"link\":\"https://www.duncanlewis.co.uk/cookie-policy.html\",\"theme\":\"light-bottom\"};");
                 SB.AppendLine("</script>");
                 SB.AppendLine("<script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js\"></script>");
- 
+                SB.AppendLine("<meta name=\"google-site-verification\" content=\"1j0zc-GqW-QwN61Ajih1HvUzE3WyKJkDoAJlSOCyOF4\" />");
             }
 
             if (_Contents.GetType() == typeof(Content_OfficesLanding_NewWebsite) || _Contents.GetType() == typeof(Content_HomePage))

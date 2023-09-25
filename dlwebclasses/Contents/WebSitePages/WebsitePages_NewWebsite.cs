@@ -32,7 +32,7 @@ namespace dlwebclasses
             DepartmentDetails DD = new DepartmentDetails(WP.Department);
 
             if (!string.IsNullOrEmpty(WP.Title))
-                Title = WP.Title + (WP.Title.Length < 60 ? " | Duncan Lewis" : "");
+                Title = WP.Title + (WP.Title.Length < 60 ? WP.Title.Contains("Duncan Lewis") ? "" : " | Duncan Lewis" : "");
             else
                 Title = DD.Title1;
 
@@ -75,10 +75,12 @@ namespace dlwebclasses
             {
                 SB.AppendLine("            <div class=\"col-sm-12 col-md-9 col-xs-12 col-md-offset-3 depttabs\">");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Careers.html\">Careers</a>");
-                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Trainees.html\">Training Contracts<span class=\"fa fa-suitcase\"></span></a>");
+                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Trainees.html\">Trainees<span class=\"fa fa-suitcase\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/JobsConsultancy.html\">Consultancy<span class=\"fa fa-suitcase\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/internship.html\">Volunteer<span class=\"fa fa-suitcase\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Employee-Reward-and-Benefits.html\">Rewards<span class=\"fa fa-suitcase\"></span></a>");
+                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Careers-Video.html\">Videos<span class=\"fa fa-suitcase\"></span></a>");
+                
 
                 SB.AppendLine("        </div>");
             }
@@ -205,6 +207,15 @@ namespace dlwebclasses
             else
             {
                 SB.AppendLine(WP.Text.ToString().Replace("^", "'"));
+            }
+
+            if (WP.VideoId != null && WP.VideoId > 0)
+            {
+                var _video = db.Website_Videos.Where(x => x.id == WP.VideoId).FirstOrDefault();
+                if (_video != null)
+                {
+                    SB.AppendLine(_video.VideoString);
+                }
             }
 
 

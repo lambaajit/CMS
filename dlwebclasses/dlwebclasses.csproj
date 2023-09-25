@@ -241,6 +241,9 @@
     <Compile Include="RightColoumn\ARightColoumn.cs" />
     <Compile Include="RightColoumn\RightColoumn.cs" />
     <Compile Include="SiteMap\Sitemap.cs" />
+    <Compile Include="StaffProfilesCreatedLog.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="StaticClasses\allStatic.cs" />
     <Compile Include="SubDepartment.cs">
       <DependentUpon>DLWEB.tt</DependentUpon>

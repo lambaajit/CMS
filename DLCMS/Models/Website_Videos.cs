@@ -30,5 +30,7 @@ namespace DLCMS.Models
         public string DoneBy { get; set; }
         public Nullable<bool> Active { get; set; }
         public string Reason_removal { get; set; }
+        public Nullable<System.DateTime> DateOfVideo { get; set; }
+        public Nullable<int> Sequence { get; set; }
     }
 }

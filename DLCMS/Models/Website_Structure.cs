@@ -24,5 +24,11 @@ namespace DLCMS.Models
         public Nullable<int> underwhichnode2 { get; set; }
         public Nullable<int> underwhichnode3 { get; set; }
         public string dept { get; set; }
+        public Nullable<bool> SubDepartment { get; set; }
+        public string email { get; set; }
+        public string notesForSwitchboard { get; set; }
+        public string NewNameForSubDepartment { get; set; }
+        public string SubDepartmentNameForSwitchboard { get; set; }
+        public string NewNameForDepartment { get; set; }
     }
 }

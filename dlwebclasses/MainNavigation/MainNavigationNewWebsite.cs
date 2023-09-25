@@ -66,7 +66,7 @@ namespace dlwebclasses
             int linki = 0;
             foreach (var item in Tabs)
             {
-                sb.AppendLine("<li><a href=\"" + tabslinks[linki].ToString() + "\" data-target=\"#" + item.Replace(" ", "").Replace("&", "") + "tab\" data-hover=\"tab\">" + item + "<span class=\"fa fa-chevron-down\" aria-hidden=\"true\"></span></a></li>");
+                sb.AppendLine("<li><a href=\"" + tabslinks[linki].ToString() + "\" data-target=\"#" + item.Replace(" ", "").Replace("&", "").Replace(":", "") + "tab\" data-hover=\"tab\">" + item + "<span class=\"fa fa-chevron-down\" aria-hidden=\"true\"></span></a></li>");
                 linki++;
             }
             sb.AppendLine("<li><a href=\"/Home/contact\">Contact<span class=\"fa fa-chevron-down\" aria-hidden=\"true\"></span></a></li>");
@@ -76,7 +76,7 @@ namespace dlwebclasses
 
             foreach (var item1 in Tabs)
             {
-                sb.AppendLine("<div class=\"tab-pane megamenu dropdown-menu nopadding\" id=\"" + item1.Replace(" ", "").Replace("&", "") + "tab\">");
+                sb.AppendLine("<div class=\"tab-pane megamenu dropdown-menu nopadding\" id=\"" + item1.Replace(" ", "").Replace("&", "").Replace(":", "") + "tab\">");
                 sb.AppendLine("<div class=\"row row-eq-height\">");
 
                         sb.AppendLine("<div class=\"col-lg-3 megamunulevel1 nopadding\">");
@@ -119,37 +119,37 @@ namespace dlwebclasses
                     overviewlink = "#";
                     overviewlink = dbit.Website_Department_Structure.Where(x => x.ID == item.ID).Select(y => y.Overview1).FirstOrDefault();
                     if (tab == "Legal Aid" && item.Name == "Housing")
-                        sb.AppendLine("<li class=\"" + item.cssclass + " over\"><a href=\"/" + overviewlink + "\" data-target=\"#" + tab.Replace(" ", "") + item.Name.Replace(" ", "-").Replace("&", "") + "\" data-hover=\"tab\">Social Housing<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
+                        sb.AppendLine("<li class=\"" + item.cssclass + " over\"><a href=\"/" + overviewlink + "\" data-target=\"#" + tab.Replace(" ", "") + item.Name.Replace(" ", "-").Replace("&", "").Replace(":", "") + "\" data-hover=\"tab\">Social Housing<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
                     else
-                        sb.AppendLine("<li class=\"" + item.cssclass + " over\"><a href=\"/" + overviewlink + "\" data-target=\"#" + tab.Replace(" ", "") + item.Name.Replace(" ", "-").Replace("&", "") + "\" data-hover=\"tab\">" + item.Name + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
+                        sb.AppendLine("<li class=\"" + item.cssclass + " over\"><a href=\"/" + overviewlink + "\" data-target=\"#" + tab.Replace(" ", "") + item.Name.Replace(" ", "-").Replace("&", "").Replace(":", "") + "\" data-hover=\"tab\">" + item.Name + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
                 }
             }
             else if (tab == "Our Team")
             {
                 foreach (var item in teamnames)
                 {
-                    sb.AppendLine("<li class=\"dept_default over\"><a href=\"#\" data-target=\"#" + item.Replace(" ", "-").Replace("&","") + "\" data-hover=\"tab\">" + item + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
+                    sb.AppendLine("<li class=\"dept_default over\"><a href=\"#\" data-target=\"#" + item.Replace(" ", "-").Replace("&","").Replace(":", "").Replace(":", "") + "\" data-hover=\"tab\">" + item + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
                 }
             }
             else if (tab == "Our Offices")
             {
                 foreach (var item in officelocation)
                 {
-                    sb.AppendLine("<li class=\"dept_default over\"><a href=\"#\" data-target=\"#" + item.Replace(" ", "-").Replace("&","") + "\" data-hover=\"tab\">" + item + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
+                    sb.AppendLine("<li class=\"dept_default over\"><a href=\"#\" data-target=\"#" + item.Replace(" ", "-").Replace("&","").Replace(":", "") + "\" data-hover=\"tab\">" + item + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
                 }
             }
             else if (tab == "About Us")
             {
                 foreach (var item in AboutFeesFunding)
                 {
-                    sb.AppendLine("<li class=\"dept_default over\"><a href=\"#\" data-target=\"#" + item.Replace(" ", "-").Replace("&","") + "\" data-hover=\"tab\">" + item + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
+                    sb.AppendLine("<li class=\"dept_default over\"><a href=\"#\" data-target=\"#" + item.Replace(" ", "-").Replace("&","").Replace(":", "") + "\" data-hover=\"tab\">" + item + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
                 }
             }
             else if (tab == "News")
             {
                 foreach (var item in NewsMedia)
                 {
-                    sb.AppendLine("<li class=\"dept_default over\"><a href=\"#\" data-target=\"#" + item.Replace(" ", "-").Replace("&","") + "\" data-hover=\"tab\">" + item.Replace("_", " ") + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
+                    sb.AppendLine("<li class=\"dept_default over\"><a href=\"#\" data-target=\"#" + item.Replace(" ", "-").Replace("&","").Replace(":", "") + "\" data-hover=\"tab\">" + item.Replace("_", " ") + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
                 }
             }
             else if (tab == "Careers")
@@ -193,7 +193,7 @@ namespace dlwebclasses
                     WS = dbit.Website_Structure.Where(x => x.underwhichnode == WS_dept.id).OrderBy(y => y.sequence).ThenBy(z => z.level).ToList();
                     
 
-                    sb.AppendLine("<div class=\"tab-pane megamunulevel2\" id=\"" + tab.Replace(" ","") + item.Name.Replace(" ", "-").Replace("&","") + "\">");
+                    sb.AppendLine("<div class=\"tab-pane megamunulevel2\" id=\"" + tab.Replace(" ","") + item.Name.Replace(" ", "-").Replace("&","").Replace(":", "") + "\">");
                     sb.AppendLine("<div class=\"row nopadding " + item.cssclass + "\">");
                     if (tab == "Legal Aid" && item.Name == "Housing")
                         sb.AppendLine("<div class=\"col-lg-12 megamunulevel2topband " + item.cssclass + " kolor\">Social Housing");
@@ -287,7 +287,7 @@ namespace dlwebclasses
                     //if (j == 1)
                     //    activeon = " active ";
                     //j++;
-                    sb.AppendLine("<div class=\"tab-pane megamunulevel2\" id=\"" + item.Replace(" ", "-").Replace("&","") + "\">");
+                    sb.AppendLine("<div class=\"tab-pane megamunulevel2\" id=\"" + item.Replace(" ", "-").Replace("&","").Replace(":", "") + "\">");
                     sb.AppendLine("<div class=\"row nopadding dept_default\">");
                     sb.AppendLine("<div class=\"col-lg-12 megamunulevel2topband dept_default kolor\">" + item);
                     sb.AppendLine("<span class=\"fa fa-caret-down\" aria-hidden=\"true\"></span>");
@@ -366,7 +366,7 @@ namespace dlwebclasses
                     if (item == "Offices outside London")
                         officeinout = "Out";
                     
-                    sb.AppendLine("<div class=\"tab-pane megamunulevel2 " + activeon + "\" id=\"" + item.Replace(" ", "-").Replace("&","") + "\">");
+                    sb.AppendLine("<div class=\"tab-pane megamunulevel2 " + activeon + "\" id=\"" + item.Replace(" ", "-").Replace("&","").Replace(":", "") + "\">");
                     sb.AppendLine("<div class=\"row nopadding dept_default\">");
                     sb.AppendLine("<div class=\"col-lg-12 megamunulevel2topband dept_default kolor\">" + item);
                     sb.AppendLine("<span class=\"fa fa-caret-down\" aria-hidden=\"true\"></span>");
@@ -423,7 +423,7 @@ namespace dlwebclasses
                     if (j == 1)
                         activeon = " active ";
                     j++;
-                    sb.AppendLine("<div class=\"tab-pane megamunulevel2 " + activeon + "\" id=\"" + item.Replace(" ", "-").Replace("&","") + "\">");
+                    sb.AppendLine("<div class=\"tab-pane megamunulevel2 " + activeon + "\" id=\"" + item.Replace(" ", "-").Replace("&","").Replace(":", "") + "\">");
                     sb.AppendLine("<div class=\"row nopadding dept_default\">");
                     sb.AppendLine("<div class=\"col-lg-12 megamunulevel2topband dept_default kolor\">" + item);
                     sb.AppendLine("<span class=\"fa fa-caret-down\" aria-hidden=\"true\"></span>");
@@ -473,7 +473,7 @@ namespace dlwebclasses
                     if (j == 1)
                         activeon = " active ";
                     j++;
-                    sb.AppendLine("<div class=\"tab-pane megamunulevel2 " + activeon + "\" id=\"" + item.Replace(" ", "-").Replace("&","") + "\">");
+                    sb.AppendLine("<div class=\"tab-pane megamunulevel2 " + activeon + "\" id=\"" + item.Replace(" ", "-").Replace("&","").Replace(":", "") + "\">");
                     sb.AppendLine("<div class=\"row nopadding dept_default\">");
                     sb.AppendLine("<div class=\"col-lg-12 megamunulevel2topband dept_default kolor\">" + item);
                     sb.AppendLine("<span class=\"fa fa-caret-down\" aria-hidden=\"true\"></span>");
@@ -541,7 +541,6 @@ namespace dlwebclasses
                     sb.AppendLine("<li><a href=\"/JobsConsultancy.html\">Consultant Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Jobs_Admin.html\">Admin/Support Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Apprenticeship.html\">Apprenticeship</a></li>");
-                    sb.AppendLine("<li><a href=\"/internship.aspx\">Internship</a></li>");  
                     sb.AppendLine("</ul>");
                     sb.AppendLine("</div>");
                     sb.AppendLine("<div class=\"col-lg-4 megamunulevel2middlebandcolumns\">");

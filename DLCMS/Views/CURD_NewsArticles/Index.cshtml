@@ -92,7 +92,10 @@
             @Html.DisplayFor(modelItem => item.category)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
         </td>
     </tr>
 }

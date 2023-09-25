@@ -34,7 +34,7 @@ namespace DLCMS.Controllers
         public ActionResult createVideoslandingpage()
         {
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
-            List<string> depts = dbit.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw").OrderBy(y => y.Name).Select(z => z.Name).ToList();
+            List<string> depts = dbit.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw" || x.Name == "Careers").OrderBy(y => y.Name).Select(z => z.Name).ToList();
             depts.Add("All");
             Content_VideoslandingPage_NewWebsite NAL;
             foreach (var item in depts)

@@ -91,9 +91,18 @@ namespace dlwebclasses
 
             _NewContent.AppendLine("<div class=\"jobdetails " + DD.cssclass + " deptbordercolor\"><h4 class=\"" + DD.cssclass + " forecolor\">" + ((WV.Heading == null ? "" : WV.Heading).Length < 4 ? (WV.website_filename != null ? WV.website_filename.Replace("-", " ").Replace(".html", "") : WV.Department) : WV.Heading) + "</h4></div>");
             _NewContent.AppendLine(WV.VideoString);
+
+            _NewContent.AppendLine("<p style=\"font-size:12px !important; color: gray !important\">Date when Video was Published: " + WV.DateOfVideo.Value.ToShortDateString() + "</p>");
+
             _NewContent.AppendLine("<div class=\"jobdetails " + DD.cssclass + " deptbordercolor\"><h4 class=\"" + DD.cssclass + " forecolor\">Script for the above Video</h4></div>");
             _NewContent.AppendLine(WV.content);
 
+           
+
+            if (!string.IsNullOrEmpty(DD.contactstr1) && DD.Name != "Mental Health")
+            {
+                _NewContent.AppendLine("<br /><div class=\"deptcontactus " + DD.cssclass + " lightkolor\"><span class=\"" + DD.cssclass + " forecolor\">For all " + DD.Name + " related matters contact us online now.</span><a  class=\"deptcontactus " + DD.cssclass + " kolor\" href=\"/Home/Contact?dept=" + DD.Name + "\">Contact Us</a></div><br />");
+            }
 
 
             _NewContent.AppendLine("                </div>");

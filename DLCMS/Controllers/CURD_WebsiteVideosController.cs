@@ -48,7 +48,7 @@ namespace DLCMS.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active")] Website_Videos website_videos)
+        public ActionResult Create([Bind(Include= "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo")] Website_Videos website_videos)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace DLCMS.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active")] Website_Videos website_videos)
+        public ActionResult Edit([Bind(Include= "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo")] Website_Videos website_videos)
         {
             if (ModelState.IsValid)
             {

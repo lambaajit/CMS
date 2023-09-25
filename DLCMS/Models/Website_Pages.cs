@@ -37,5 +37,9 @@ namespace DLCMS.Models
         public string AltTagIng5 { get; set; }
         public string AltTagIng6 { get; set; }
         public string AltTagIng7 { get; set; }
+        public string CustomSubDepartment { get; set; }
+        public string SubDepartmentSwitchboard { get; set; }
+        public string CustomDepartment { get; set; }
+        public Nullable<int> VideoId { get; set; }
     }
 }

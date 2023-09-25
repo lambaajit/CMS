@@ -9,113 +9,119 @@
     {
         @Html.AntiForgeryToken()
 
-    <div ng-app="myApp" id="ng-app" ng-controller="Jobs" class="form-horizontal">
-        <h4>Website_Pages</h4>
-        <hr />
-        @Html.ValidationSummary(true)
+<div ng-app="myApp" id="ng-app" ng-controller="Jobs" class="form-horizontal">
+    <h4>Website_Pages</h4>
+    <hr />
+    @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Name, new { @class = "col-md-10 form-control", @cols="40", @rows="3" })
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Filename, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Filename, new { @class = "col-md-10 form-control" })
-                @Html.ValidationMessageFor(model => model.Filename)
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Keywords, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Keywords, new { @class = "col-md-10 form-control"})
-                @Html.ValidationMessageFor(model => model.Keywords)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Title, new { @class = "col-md-10 form-control"})
-                @Html.ValidationMessageFor(model => model.Title)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Description, new { @class = "col-md-10 form-control"})
-                @Html.ValidationMessageFor(model => model.Description)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Text, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Text, new { @class = "col-md-10 form-control", @cols = "40", @rows = "40" })
-                @Html.ValidationMessageFor(model => model.Text)
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Department, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Department, (SelectList)Dictionary["Webpagedeptlist"], "-- Select --", new { ng_model = "deptname", ng_change = "changesubDepartment()" })
-                @Html.ValidationMessageFor(model => model.Department)
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Sub_Department, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="Sub_Department" id="Sub_Department" style=" width:200px;" ng-model="subdeptname" ng-change="changesubsubDepartment()">
-                    <option value=""></option>
-                    <option ng-repeat="dept in SubDepartmentList" value="{{ dept.id }}">{{ dept.name }}</option>
-                </select>
-                @Html.ValidationMessageFor(model => model.Sub_Department)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Sub_Sub_Department, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="Sub_Sub_Department" id="Sub_Sub_Department" style=" width:200px;" ng-model="subsubdeptname" ng-change="changesubsubsubDepartment()">
-                    <option value=""></option>
-                    <option ng-repeat="dept in SubSubDepartmentList" value="{{ dept.id }}">{{ dept.name }}</option>
-                </select>
-                @Html.ValidationMessageFor(model => model.Sub_Department)
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.Label("Sub Sub Sub Department", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="Sub_Sub_Sub_Department" id="Sub_Sub_Sub_Department" style=" width:200px;">
-                    <option value=""></option>
-                    <option ng-repeat="dept in SubSubSubDepartmentList" value="{{ dept.id }}">{{ dept.name }}</option>
-                </select>
-                @Html.ValidationMessageFor(model => model.Sub_Department)
-            </div>
-        </div>
-
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Name, new { @class = "col-md-10 form-control", @cols = "40", @rows = "3" })
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Filename, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Filename, new { @class = "col-md-10 form-control" })
+            @Html.ValidationMessageFor(model => model.Filename)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Keywords, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Keywords, new { @class = "col-md-10 form-control" })
+            @Html.ValidationMessageFor(model => model.Keywords)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Title, new { @class = "col-md-10 form-control" })
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Description, new { @class = "col-md-10 form-control" })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Text, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Text, new { @class = "col-md-10 form-control", @cols = "40", @rows = "40" })
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Department, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Department, (SelectList)Dictionary["Webpagedeptlist"], "-- Select --", new { ng_model = "deptname", ng_change = "changesubDepartment()" })
+            @Html.ValidationMessageFor(model => model.Department)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sub_Department, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="Sub_Department" id="Sub_Department" style=" width:200px;" ng-model="subdeptname" ng-change="changesubsubDepartment()">
+                <option value=""></option>
+                <option ng-repeat="dept in SubDepartmentList" value="{{ dept.id }}">{{ dept.name }}</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Sub_Department)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sub_Sub_Department, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="Sub_Sub_Department" id="Sub_Sub_Department" style=" width:200px;" ng-model="subsubdeptname" ng-change="changesubsubsubDepartment()">
+                <option value=""></option>
+                <option ng-repeat="dept in SubSubDepartmentList" value="{{ dept.id }}">{{ dept.name }}</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Sub_Department)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.Label("Sub Sub Sub Department", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="Sub_Sub_Sub_Department" id="Sub_Sub_Sub_Department" style=" width:200px;">
+                <option value=""></option>
+                <option ng-repeat="dept in SubSubSubDepartmentList" value="{{ dept.id }}">{{ dept.name }}</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Sub_Department)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.VideoId, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.VideoId, new { @class = "col-md-10 form-control" })
+            @Html.ValidationMessageFor(model => model.VideoId)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
     }
     
     <div>

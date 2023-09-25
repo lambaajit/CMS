@@ -45,7 +45,7 @@ namespace dlwebclasses
             string jtitle2 = "";
             string heading = "";
 
-            List<string> excludednames = new List<string>() {"Ajit Lamba", "Lubna Chauhan", "Ritu Sharma", "Robert Poulter", "Sangita Shah","Sonal Ruparelia"  };
+            List<string> excludednames = new List<string>() {"Ajit Lamba", "Lubna Chauhan", "Ritu Sharma", "Robert Poulter", "Sangita Shah","Sonal Ruparelia", "Nina Joshi"  };
             for (int j = 1; j <= 7; j++)
             {
                 if (j == 1)
@@ -58,7 +58,7 @@ namespace dlwebclasses
                 {
                     jtitle = "Development Manager";
                     jtitle1 = "Assistant Manager";
-                    jtitle2 = "HR Generalist";
+                    jtitle2 = "Legal Aid Manager";
                     heading = "Assistant Managers &amp; HR";
                 }
                 else if (j == 3)

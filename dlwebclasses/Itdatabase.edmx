@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IT_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IT_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="MobileNoFor_ITIssues">
           <Key>
             <PropertyRef Name="Id" />
@@ -38,6 +38,14 @@
           <Property Name="EmpName" Type="varchar(max)" />
           <Property Name="Attendance" Type="bit" />
           <Property Name="Notes" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="StaffProfilesCreatedLogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_code" Type="varchar(max)" />
+          <Property Name="date_created" Type="date" />
         </EntityType>
         <EntityType Name="SubDepartmentProfiles">
           <Key>
@@ -335,6 +343,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="CustomSubDepartment" Type="varchar(max)" />
           <Property Name="SubDepartmentSwitchboard" Type="varchar(max)" />
           <Property Name="CustomDepartment" Type="varchar(max)" />
+          <Property Name="VideoId" Type="int" />
         </EntityType>
         <EntityType Name="Website_Pages_SubDepartments">
           <Key>
@@ -358,7 +367,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="underwhichnode3" Type="int" />
           <Property Name="level" Type="varchar(max)" />
           <Property Name="linkedid" Type="int" />
-          <Property Name="sequence" Type="int" />
+          <Property Name="sequence" Type="decimal" Precision="18" Scale="2" />
           <Property Name="dept" Type="varchar(max)" />
           <Property Name="SubDepartment" Type="bit" />
           <Property Name="email" Type="varchar(max)" />
@@ -387,11 +396,14 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="DoneBy" Type="varchar" MaxLength="50" />
           <Property Name="Active" Type="bit" />
           <Property Name="Reason_removal" Type="varchar(max)" />
+          <Property Name="DateOfVideo" Type="datetime" />
+          <Property Name="Sequence" Type="int" />
         </EntityType>
         <EntityContainer Name="IT_DatabaseModelStoreContainer">
           <EntitySet Name="MobileNoFor_ITIssues" EntityType="Self.MobileNoFor_ITIssues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhotoSession" EntityType="Self.PhotoSession" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhotoSession_StaffAttendance" EntityType="Self.PhotoSession_StaffAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffProfilesCreatedLogs" EntityType="Self.StaffProfilesCreatedLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubDepartmentProfiles" EntityType="Self.SubDepartmentProfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubDepartmentSwitchboard" EntityType="Self.SubDepartmentSwitchboard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Updates_MainWebsites" EntityType="Self.Updates_MainWebsites" Schema="dbo" store:Type="Tables" />
@@ -535,8 +547,6 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySet Name="Website_Department_Structure" EntityType="IT_DatabaseModel.Website_Department_Structure" />
           <EntitySet Name="Website_Pages" EntityType="IT_DatabaseModel.Website_Pages" />
           <EntitySet Name="Website_Pages_SubDepartments" EntityType="IT_DatabaseModel.Website_Pages_SubDepartments" />
-          <EntitySet Name="Website_Structure" EntityType="IT_DatabaseModel.Website_Structure" />
-          <EntitySet Name="Website_Videos" EntityType="IT_DatabaseModel.Website_Videos" />
           <EntitySet Name="website_awards" EntityType="IT_DatabaseModel.website_awards" />
           <EntitySet Name="website_Header_Pictures" EntityType="IT_DatabaseModel.website_Header_Pictures" />
           <EntitySet Name="website_Office_Direction" EntityType="IT_DatabaseModel.website_Office_Direction" />
@@ -547,6 +557,9 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySet Name="PhotoSessions" EntityType="IT_DatabaseModel.PhotoSession" />
           <EntitySet Name="MobileNoFor_ITIssues" EntityType="IT_DatabaseModel.MobileNoFor_ITIssues" />
           <EntitySet Name="SubDepartmentProfiles" EntityType="IT_DatabaseModel.SubDepartmentProfile" />
+          <EntitySet Name="Website_Videos" EntityType="IT_DatabaseModel.Website_Videos" />
+          <EntitySet Name="StaffProfilesCreatedLogs" EntityType="IT_DatabaseModel.StaffProfilesCreatedLog" />
+          <EntitySet Name="Website_Structure" EntityType="IT_DatabaseModel.Website_Structure" />
         </EntityContainer>
         <EntityType Name="Updates_MainWebsites">
           <Key>
@@ -707,6 +720,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="CustomSubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SubDepartmentSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CustomDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoId" Type="Int32" />
         </EntityType>
         <EntityType Name="Website_Pages_SubDepartments">
           <Key>
@@ -717,48 +731,6 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="sequence1" Type="Int32" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Website_Structure">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="underwhichnode" Type="Int32" />
-          <Property Name="level" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="linkedid" Type="Int32" />
-          <Property Name="sequence" Type="Int32" />
-          <Property Name="underwhichnode1" Type="Int32" />
-          <Property Name="underwhichnode2" Type="Int32" />
-          <Property Name="underwhichnode3" Type="Int32" />
-          <Property Name="dept" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SubDepartment" Type="Boolean" />
-          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="notesForSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NewNameForSubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SubDepartmentNameForSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NewNameForDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Website_Videos">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="VideoString" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="emp_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="MetaTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="MetaKeyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Heading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="thumbnailpic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="website_filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DoneBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" />
-          <Property Name="Reason_removal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="website_awards">
           <Key>
@@ -927,6 +899,58 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="SubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="StaffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Website_Videos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoString" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emp_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Heading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="website_filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="thumbnailpic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DoneBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Reason_removal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfVideo" Type="DateTime" Precision="3" />
+          <Property Name="Sequence" Type="Int32" />
+        </EntityType>
+        <EntityType Name="StaffProfilesCreatedLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date_created" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Website_Structure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="underwhichnode" Type="Int32" />
+          <Property Name="underwhichnode1" Type="Int32" />
+          <Property Name="underwhichnode2" Type="Int32" />
+          <Property Name="underwhichnode3" Type="Int32" />
+          <Property Name="level" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="linkedid" Type="Int32" />
+          <Property Name="sequence" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="dept" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="Boolean" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="notesForSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewNameForSubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartmentNameForSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewNameForDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1068,6 +1092,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="Website_Pages">
             <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Pages">
               <MappingFragment StoreEntitySet="Website_Pages">
+                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
                 <ScalarProperty Name="CustomDepartment" ColumnName="CustomDepartment" />
                 <ScalarProperty Name="SubDepartmentSwitchboard" ColumnName="SubDepartmentSwitchboard" />
                 <ScalarProperty Name="CustomSubDepartment" ColumnName="CustomSubDepartment" />
@@ -1105,50 +1130,6 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
                 <ScalarProperty Name="sequence1" ColumnName="sequence1" />
                 <ScalarProperty Name="Sub_department" ColumnName="Sub_department" />
                 <ScalarProperty Name="department" ColumnName="department" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Website_Structure">
-            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Structure">
-              <MappingFragment StoreEntitySet="Website_Structure">
-                <ScalarProperty Name="NewNameForDepartment" ColumnName="NewNameForDepartment" />
-                <ScalarProperty Name="SubDepartmentNameForSwitchboard" ColumnName="SubDepartmentNameForSwitchboard" />
-                <ScalarProperty Name="NewNameForSubDepartment" ColumnName="NewNameForSubDepartment" />
-                <ScalarProperty Name="notesForSwitchboard" ColumnName="notesForSwitchboard" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
-                <ScalarProperty Name="dept" ColumnName="dept" />
-                <ScalarProperty Name="underwhichnode3" ColumnName="underwhichnode3" />
-                <ScalarProperty Name="underwhichnode2" ColumnName="underwhichnode2" />
-                <ScalarProperty Name="underwhichnode1" ColumnName="underwhichnode1" />
-                <ScalarProperty Name="sequence" ColumnName="sequence" />
-                <ScalarProperty Name="linkedid" ColumnName="linkedid" />
-                <ScalarProperty Name="level" ColumnName="level" />
-                <ScalarProperty Name="underwhichnode" ColumnName="underwhichnode" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Website_Videos">
-            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Videos">
-              <MappingFragment StoreEntitySet="Website_Videos">
-                <ScalarProperty Name="Reason_removal" ColumnName="Reason_removal" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="DoneBy" ColumnName="DoneBy" />
-                <ScalarProperty Name="website_filename" ColumnName="website_filename" />
-                <ScalarProperty Name="thumbnailpic" ColumnName="thumbnailpic" />
-                <ScalarProperty Name="content" ColumnName="content" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Heading" ColumnName="Heading" />
-                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
-                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
-                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
-                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
-                <ScalarProperty Name="VideoString" ColumnName="VideoString" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1326,6 +1307,61 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
                 <ScalarProperty Name="Profile" ColumnName="Profile" />
                 <ScalarProperty Name="emp_code" ColumnName="emp_code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Videos">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Videos">
+              <MappingFragment StoreEntitySet="Website_Videos">
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="DateOfVideo" ColumnName="DateOfVideo" />
+                <ScalarProperty Name="Reason_removal" ColumnName="Reason_removal" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DoneBy" ColumnName="DoneBy" />
+                <ScalarProperty Name="thumbnailpic" ColumnName="thumbnailpic" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="website_filename" ColumnName="website_filename" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
+                <ScalarProperty Name="VideoString" ColumnName="VideoString" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffProfilesCreatedLogs">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.StaffProfilesCreatedLog">
+              <MappingFragment StoreEntitySet="StaffProfilesCreatedLogs">
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Website_Structure">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Structure">
+              <MappingFragment StoreEntitySet="Website_Structure">
+                <ScalarProperty Name="NewNameForDepartment" ColumnName="NewNameForDepartment" />
+                <ScalarProperty Name="SubDepartmentNameForSwitchboard" ColumnName="SubDepartmentNameForSwitchboard" />
+                <ScalarProperty Name="NewNameForSubDepartment" ColumnName="NewNameForSubDepartment" />
+                <ScalarProperty Name="notesForSwitchboard" ColumnName="notesForSwitchboard" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="sequence" ColumnName="sequence" />
+                <ScalarProperty Name="linkedid" ColumnName="linkedid" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="underwhichnode3" ColumnName="underwhichnode3" />
+                <ScalarProperty Name="underwhichnode2" ColumnName="underwhichnode2" />
+                <ScalarProperty Name="underwhichnode1" ColumnName="underwhichnode1" />
+                <ScalarProperty Name="underwhichnode" ColumnName="underwhichnode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

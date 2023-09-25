@@ -91,7 +91,7 @@ namespace DLCMS.Controllers
                 ModelState.Remove("Department");
 
                 updates_mainwebsites.KeywordsToBeUsed = "Yes";
-                dup_id = db.Database.SqlQuery<int>("Select Max(ID) from updates_mainwebsites").FirstOrDefault();
+                dup_id = (int)db.Database.SqlQuery<decimal>("SELECT IDENT_CURRENT('updates_mainwebsites')").FirstOrDefault();
                 dup_id = dup_id + 1;
                 if (updates_mainwebsites.category == "NonDL")
                     updates_mainwebsites.DLorNonDL = "NonDL";
@@ -278,8 +278,8 @@ namespace DLCMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Updates_MainWebsites updates_mainwebsites = db.Updates_MainWebsites.Find(id);
-            db.Updates_MainWebsites.Remove(updates_mainwebsites);
+            var _articles = db.Updates_MainWebsites.Where(x => x.Duplicate_ID == id).ToList();
+            db.Updates_MainWebsites.RemoveRange(_articles);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
