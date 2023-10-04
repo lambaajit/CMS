@@ -188,7 +188,7 @@ namespace dlwebclasses
                     //    activeon = " active ";
                     //j++;
                     Website_Structure WS_dept = new Website_Structure();
-                    WS_dept = dbit.Website_Structure.Where(x => x.name == item.Name && x.level == "Root").FirstOrDefault();
+                    WS_dept = dbit.Website_Structure.Where(x => (x.name == item.Name || x.name == item.NameforHomePage) && x.level == "Root").FirstOrDefault();
                     List<Website_Structure> WS = new List<Website_Structure>();
                     WS = dbit.Website_Structure.Where(x => x.underwhichnode == WS_dept.id).OrderBy(y => y.sequence).ThenBy(z => z.level).ToList();
                     
@@ -488,7 +488,7 @@ namespace dlwebclasses
                     {
                         if (item == "Legal_News")
                         {
-                            sb.AppendLine("<li><a href=\"/" + item.Replace(" ", "").ToLower() + "_January" + "-" + item1 + ".html\">" + item + "-" + item1 + "</a></li>");
+                            sb.AppendLine("<li><a href=\"/" + item.Replace(" ", "").ToLower() + "_January" + "-" + item1 + ".html\">" + item.Replace("_", " ") + "-" + item1 + "</a></li>");
                         }
                         else
                         {

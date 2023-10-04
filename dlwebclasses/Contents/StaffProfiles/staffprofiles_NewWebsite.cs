@@ -221,7 +221,11 @@ namespace dlwebclasses
                 jobtitlestaff = "Head of Department";
             else if (_emp_Details.jobtitle.Contains("Chartered"))
                 jobtitlestaff = "Chartered Legal Executive";
+            else if (_emp_Details.jobtitle.Contains("Apprentice Solicitor"))
+                jobtitlestaff = "Apprentice Solicitor";
 
+
+            jobtitlestaff = jobtitlestaff.Replace("Trainee", "Trainee Solicitor ");
 
             //News Website Contents
 

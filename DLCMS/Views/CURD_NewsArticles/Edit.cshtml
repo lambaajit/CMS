@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
+<div id="ng-app" class="form-horizontal">
     <h4 ng-init="initialise('@(Model.Page_Title.Replace("'","^"))', '@(Model.Description.Replace("'","^"))', '@(Model.Title.Replace("'","^"))')">Updates MainWebsites</h4>
     <hr />
     @Html.ValidationSummary(true)
@@ -202,33 +202,33 @@
         //    $("#Keywords").val($("#Title").val());
         //});
 
-        var url1 = baseUrl + 'Api/StaffList';
-        $(".staff").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    url: url1,
-                    data: { ID: request.term },
-                    dataType: 'json',
-                    type: 'GET',
-                    success: function (data) {
-                        response($.map(data, function (item) {
-                            return {
-                                label: item,
-                                value: item
-                            }
-                        }));
-                    },
-                    error: function (xmlHttpRequest, textStatus, errorThrown) {
-                        console.log('some error occured', textStatus, errorThrown);
-                    }
-                });
-            },
-            select: function (event, ui) {
-                $(this).val(ui.item.label);
-                return false;
-            },
-            minLength: 2
-        });
+        //var url1 = baseUrl + 'Api/StaffList';
+        //$(".staff").autocomplete({
+        //    source: function (request, response) {
+        //        $.ajax({
+        //            url: url1,
+        //            data: { ID: request.term },
+        //            dataType: 'json',
+        //            type: 'GET',
+        //            success: function (data) {
+        //                response($.map(data, function (item) {
+        //                    return {
+        //                        label: item,
+        //                        value: item
+        //                    }
+        //                }));
+        //            },
+        //            error: function (xmlHttpRequest, textStatus, errorThrown) {
+        //                console.log('some error occured', textStatus, errorThrown);
+        //            }
+        //        });
+        //    },
+        //    select: function (event, ui) {
+        //        $(this).val(ui.item.label);
+        //        return false;
+        //    },
+        //    minLength: 2
+        //});
 
     </script>
 }

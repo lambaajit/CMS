@@ -112,7 +112,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.thumbnailpic, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.thumbnailpic, new { @class = "col-md-10 form-control", @cols = "40", @rows = "40" })
+                @Html.TextBoxFor(model => model.thumbnailpic, new { style = "width:850px; max-width:850px", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.thumbnailpic)
             </div>
         </div>
@@ -120,14 +120,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DoneBy, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.DoneBy, new { @class = "col-md-10 form-control", @cols = "40", @rows = "40" })
+                @Html.TextBoxFor(model => model.DoneBy, new { style = "width:850px; max-width:850px", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DoneBy)
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.DateOfVideo, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.DateOfVideo, new { @class = "col-md-10 form-control", @cols = "40", @rows = "40" })
+                @Html.EditorFor(model => model.DateOfVideo, new { style = "width:850px; max-width:850px", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DateOfVideo)
             </div>
         </div>

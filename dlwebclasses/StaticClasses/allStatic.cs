@@ -34,7 +34,7 @@ namespace dlwebclasses
                 return "Partner";
             else if (_Empdetails.cilex == true)
                 return "Solicitor";
-            else if ((_Empdetails.nonadmitted_staff == "1" || _Empdetails.forename + " " + _Empdetails.surname == "Neel Chakrabarti") && _Empdetails.forename != "Sridhar" && _Empdetails.forename + " " + _Empdetails.surname != "Mohan Bharj" && !_Empdetails.jobtitle.Contains("Chartered") && _Empdetails.jobtitle.Contains("Trainee"))
+            else if ((_Empdetails.nonadmitted_staff == "1" || _Empdetails.forename + " " + _Empdetails.surname == "Neel Chakrabarti") && _Empdetails.forename != "Sridhar" && _Empdetails.forename + " " + _Empdetails.surname != "Mohan Bharj" && !_Empdetails.jobtitle.Contains("Chartered") && (_Empdetails.jobtitle.Contains("Trainee") || _Empdetails.jobtitle.Contains("Apprentice Solicitor")))
                 return "Trainee";
             else if ((_Empdetails.nonadmitted_staff == "1" ||  _Empdetails.forename + " " + _Empdetails.surname == "Neel Chakrabarti") && _Empdetails.forename != "Sridhar" && _Empdetails.forename + " " + _Empdetails.surname != "Mohan Bharj" && !_Empdetails.jobtitle.Contains("Chartered") && !_Empdetails.jobtitle.Contains("Trainee"))
                 return "Caseworker";
@@ -171,6 +171,8 @@ namespace dlwebclasses
             IT_DatabaseEntities db = new IT_DatabaseEntities();
             HRDDLEntities dbhr = new HRDDLEntities();
             List<string> departments_aol = db.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw").Select(x => x.Name).ToList();
+
+            departments_aol.Add("Immigration");
 
             IEnumerable<Emp_Details> ed;
             ed = getcurrentemployedstafflist();

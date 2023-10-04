@@ -19,5 +19,7 @@ namespace dlwebclasses
         public string Profile { get; set; }
         public string SubDepartment { get; set; }
         public string StaffName { get; set; }
+        public Nullable<int> SubDepartmentProfileStructureId { get; set; }
+        public Nullable<bool> Selected { get; set; }
     }
 }

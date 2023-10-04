@@ -357,7 +357,7 @@ namespace dlwebclasses
 
             
             Website_Structure root = new Website_Structure();
-            root = dbit.Website_Structure.Where(x => x.name == DD.Name && x.level == "Root").FirstOrDefault();
+            root = dbit.Website_Structure.Where(x => (x.name == DD.Name || x.name == DD.NameForNavigation) && x.level == "Root").FirstOrDefault();
             List<Website_Structure> Level1 = new List<Website_Structure>();
             Level1 = dbit.Website_Structure.Where(x => x.underwhichnode == root.id || x.underwhichnode1 == root.id || x.underwhichnode2 == root.id || x.underwhichnode3 == root.id).OrderBy(y => y.sequence).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
             sb.AppendLine("                        <div id=\"deptnavigationmenu\" class=\"panel-collapse collapse in\">");

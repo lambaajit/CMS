@@ -29,8 +29,9 @@ namespace dlwebclasses
             public string departmenttype { get; set; }
             public string lawlogoimg { get; set; }
             public StringBuilder departmentnav1 { get; set; }
+        public string NameForNavigation { get; set; }
 
-            public string cssclass { get; set; }
+        public string cssclass { get; set; }
             public string Video { get; set; }
 
             public DepartmentDetails(string dept)
@@ -78,6 +79,7 @@ namespace dlwebclasses
                 lawlogoimg = db.lawlogoimg;
                 cssclass = db.cssclass;
                 Video = db.Video;
+                NameForNavigation = db.NameForNavigation;
             }
 
         }

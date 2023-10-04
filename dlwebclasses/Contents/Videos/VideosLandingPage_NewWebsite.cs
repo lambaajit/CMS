@@ -37,11 +37,11 @@ namespace dlwebclasses
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
             List<Website_Videos> WV = new List<Website_Videos>();
             if (dept != "All")
-                WV = dbit.Website_Videos.Where(x => x.Department == dept && x.Active == true).OrderBy(x => x.Sequence).ToList();
+                WV = dbit.Website_Videos.Where(x => x.Department == dept && x.Active == true).OrderByDescending(x => x.DateOfVideo).ToList();
             else
-                WV = dbit.Website_Videos.Where(x => x.Active == true).OrderBy(x => x.Department).ThenBy(x => x.Sequence).ToList();
+                WV = dbit.Website_Videos.Where(x => x.Active == true).OrderBy(x => x.Department).ThenByDescending(x => x.DateOfVideo).ToList();
 
-             DepartmentNavigationNewWebsite Deptnav = new DepartmentNavigationNewWebsite();
+            DepartmentNavigationNewWebsite Deptnav = new DepartmentNavigationNewWebsite();
              HRDDLEntities hrd = new HRDDLEntities();
 
             StringBuilder _NewContent = new StringBuilder();

@@ -99,6 +99,8 @@ namespace DLCMS.Controllers
             "on f.department_covered_5 collate DATABASE_DEFAULT = B.name) Main " +
             "where (Main.Department_IT is not null or department_covered_2  is not null or  department_covered_3  is not null or department_covered_4  is not null or  department_covered_5  is not null) order by name").ToList();
 
+            staffdeptlist.Add("Immigration");
+
             List<SelectListItem> sl_sl = new List<SelectListItem>();
             sl_sl.Add(new SelectListItem { Text = "All", Value = "All", Selected = true });
             foreach (string str in staffdeptlist)

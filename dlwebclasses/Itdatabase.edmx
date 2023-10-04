@@ -56,6 +56,8 @@
           <Property Name="Profile" Type="varchar(max)" />
           <Property Name="SubDepartment" Type="varchar(max)" />
           <Property Name="StaffName" Type="varchar(max)" />
+          <Property Name="SubDepartmentProfileStructureId" Type="int" />
+          <Property Name="Selected" Type="bit" />
         </EntityType>
         <EntityType Name="SubDepartmentSwitchboard">
           <Key>
@@ -898,6 +900,8 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="Profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="StaffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartmentProfileStructureId" Type="Int32" />
+          <Property Name="Selected" Type="Boolean" />
         </EntityType>
         <EntityType Name="Website_Videos">
           <Key>
@@ -1302,6 +1306,8 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="SubDepartmentProfiles">
             <EntityTypeMapping TypeName="IT_DatabaseModel.SubDepartmentProfile">
               <MappingFragment StoreEntitySet="SubDepartmentProfiles">
+                <ScalarProperty Name="Selected" ColumnName="Selected" />
+                <ScalarProperty Name="SubDepartmentProfileStructureId" ColumnName="SubDepartmentProfileStructureId" />
                 <ScalarProperty Name="StaffName" ColumnName="StaffName" />
                 <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
                 <ScalarProperty Name="Profile" ColumnName="Profile" />

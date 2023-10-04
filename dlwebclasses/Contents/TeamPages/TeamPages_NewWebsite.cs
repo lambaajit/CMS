@@ -35,6 +35,7 @@ namespace dlwebclasses
             string[] deptstr;
 
             DepartmentDetails DD = new DepartmentDetails(Dept);
+            
             Title = DD.Name + " Solicitors | Team | Lawyers";
             Description = DD.Name + " Team, " + DD.Name + " Solicitors, " + DD.Name + " Lawyers, Duncan Lewis " + DD.Name + " Team";
             Keywords = DD.Name + " Team, " + DD.Name + " Solicitors, " + DD.Name + " Lawyers, Duncan Lewis " + DD.Name + " Team";
@@ -270,7 +271,7 @@ else
             if (Trainee.Length > 20 || Traineemisspic.Length > 20)
             {
                 _NewContent.AppendLine("                <div class=\"row extramargin100 nopadding\" id=\"CaseworkerPanel\">");
-                _NewContent.AppendLine("                    <div class=\"col-sm-12 teampageseparator " + DD.cssclass + " kolor forecolorlight \"><a class=\"" + DD.cssclass + " forecolorlight\" href=\"#CaseworkerPanel\" data-toggle=\"collapse\">Trainee Solicitors</a><span class=\"fa fa-caret-down\"></span></div>");
+                _NewContent.AppendLine("                    <div class=\"col-sm-12 teampageseparator " + DD.cssclass + " kolor forecolorlight \"><a class=\"" + DD.cssclass + " forecolorlight\" href=\"#CaseworkerPanel\" data-toggle=\"collapse\">Trainee Solicitors &amp; Apprentice Solicitors</a><span class=\"fa fa-caret-down\"></span></div>");
                 _NewContent.AppendLine("                </div>");
 
                 _NewContent.AppendLine("                    <div class=\"row nopadding collapse in\">");
