@@ -40,6 +40,21 @@ namespace DLCMS.Controllers
             return View("Index");
         }
 
+        public ActionResult CreateStaffProfilesTeamPages()
+        {
+            AContents NAL;
+            IT_DatabaseEntities dbit = new IT_DatabaseEntities();
+            var _approvedProfilesSubDepartments = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile != "" && x.Id < 20).GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
+            foreach (var _approvedProfilesSubDepartment in _approvedProfilesSubDepartments)
+            {
+                NAL = new Content_TeamPages_NewWebsite(_approvedProfilesSubDepartment,true);
+                CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
+            }
+            return View("Index");
+        }
+
+
+
         [HttpPost]
         public ActionResult CreateStaffProfiles(string cbo_StaffList, string cbo_Staffdept, string cbo_Type, bool htaccessfile = false)
         {

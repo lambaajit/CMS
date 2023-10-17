@@ -102,7 +102,7 @@ namespace dlwebclasses
             else
             {
                 SB.AppendLine("            <div class=\"col-sm-12 col-md-7 col-xs-12 col-md-offset-5 depttabs\">");
-                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + (WP.Sub_Department == "High Net Worth Divorce" ? "HighNetWorthDivorce_ourTeam.html" : DD.Our_Team1) + "\">Our Team<span class=\"fa fa-users\"></span></a>");
+                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + (WP.Sub_Department == "High Net Worth Divorce" ? "High-Net-Worth-Divorce_ourTeam.html" : DD.Our_Team1) + "\">Our Team<span class=\"fa fa-users\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.News1 + "\">News<span class=\"fa fa-newspaper-o\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.News1.Replace("news", "articles") + "\">Articles<span class=\"fa fa-book\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.Video + "\">Videos<span class=\"fa fa-video-camera\"></span></a>");

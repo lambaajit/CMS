@@ -11,6 +11,7 @@ using System.Configuration;
 
 namespace DLCMS.Controllers
 {
+    [Authorize]
     public class CURD_WebsiteVideosController : Controller
     {
         private DLCMS_ITDatabase db = new DLCMS_ITDatabase();
@@ -48,16 +49,19 @@ namespace DLCMS.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include= "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo")] Website_Videos website_videos)
+        public ActionResult Create([Bind(Include= "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo")] dlwebclasses.Website_Videos website_videos)
         {
-            if (ModelState.IsValid)
+            using (var _website_VideosServices = new dlwebclasses.Website_VideosServices())
             {
-                db.Website_Videos.Add(website_videos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    _website_VideosServices.Add(website_videos);
+                    _website_VideosServices.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(website_videos);
+                return View(website_videos);
+            }
         }
 
         // GET: /CURD_WebsiteVideos/Edit/5
@@ -81,17 +85,20 @@ namespace DLCMS.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include= "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo")] Website_Videos website_videos)
+        public ActionResult Edit([Bind(Include = "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo")] dlwebclasses.Website_Videos website_videos)
         {
-            if (ModelState.IsValid)
+            using (var _website_VideosServices = new dlwebclasses.Website_VideosServices())
             {
-                db.Entry(website_videos).State = EntityState.Modified;
-                db.SaveChanges();
-                createpreviewpage_NewWebsite(website_videos.id);
-                ViewBag.filepath_NewWebsite = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\WebSite_Preview.html";
-                return View(website_videos);
+                if (ModelState.IsValid)
+                {
+                    _website_VideosServices.Update(website_videos);
+                    _website_VideosServices.SaveChanges();
+                    createpreviewpage_NewWebsite(website_videos.id);
+                    ViewBag.filepath_NewWebsite = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\WebSite_Preview.html";
+                    return RedirectToAction("Edit", "CURD_WebsiteVideos", new { id = website_videos.id });
+                }
+                return RedirectToAction("Edit", "CURD_WebsiteVideos", new { id = website_videos.id });
             }
-            return View(website_videos);
         }
 
         // GET: /CURD_WebsiteVideos/Delete/5

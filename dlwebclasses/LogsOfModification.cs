@@ -12,16 +12,12 @@ namespace dlwebclasses
     using System;
     using System.Collections.Generic;
     
-    public partial class Website_Pages_SubDepartments
+    public partial class LogsOfModification
     {
-        public string department { get; set; }
-        public string Sub_department { get; set; }
-        public int sequence1 { get; set; }
-        public int Id { get; set; }
-        public string link { get; set; }
-        public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public long Id { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<int> ModifiedId { get; set; }
+        public string ModfiedTable { get; set; }
     }
 }

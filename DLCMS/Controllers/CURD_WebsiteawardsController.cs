@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using DLCMS.Models;
 using dlwebclasses;
+using Microsoft.Ajax.Utilities;
 
 namespace DLCMS.Controllers
 {
+    [Authorize]
     public class CURD_WebsiteawardsController : BaseController
     {
+        
+        static int testint = 1;
         private DLCMS_ITDatabase db = new DLCMS_ITDatabase();
 
         // GET: /CURD_Websiteawards/
@@ -127,5 +134,49 @@ namespace DLCMS.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Test()
+        {
+            if ((int?)ViewBag.Test == null)
+                ViewBag.Test = testint;
+
+         
+            website_Header_Pictures _website_Header_Pictures = new website_Header_Pictures();
+            // Use type variables.
+            // ... Then pass the variables as an argument.
+            Type type1 = typeof(string[]);
+            Type type2 = "string".GetType();
+            Type type3 = typeof(Type);
+            Type type4 = _website_Header_Pictures.GetType();
+
+            Print(type1);
+            Print(type2);
+            Print(type3);
+            Print(type4);
+
+            return View(ViewBag.Test);
+        }
+
+        [HttpPost]
+        public ActionResult Test(int Test)
+        {
+            ViewBag.Test = Test;
+            return View(ViewBag.Test);
+        }
+    
+
+
+        static void Print(Type type)
+        {
+            // Print some properties of the Type formal parameter.
+            Debug.WriteLine("IsArray: {0}", type.IsArray);
+            Debug.WriteLine("Name: {0}", type.Name);
+            Debug.WriteLine("IsSealed: {0}", type.IsSealed);
+            Debug.WriteLine("BaseType.Name: {0}", type.BaseType.Name);
+            Debug.WriteLine("Assembly {0}", type.Assembly.FullName);
+            Debug.WriteLine("Namespace {0}", type.Namespace.ToString());
+            Debug.WriteLine(" ");
+        }
+
     }
 }

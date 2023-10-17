@@ -43,5 +43,7 @@ namespace dlwebclasses
         public virtual DbSet<Website_Videos> Website_Videos { get; set; }
         public virtual DbSet<StaffProfilesCreatedLog> StaffProfilesCreatedLogs { get; set; }
         public virtual DbSet<Website_Structure> Website_Structure { get; set; }
+        public virtual DbSet<SubDepartmentProfileStructure> SubDepartmentProfileStructures { get; set; }
+        public virtual DbSet<LogsOfModification> LogsOfModifications { get; set; }
     }
 }

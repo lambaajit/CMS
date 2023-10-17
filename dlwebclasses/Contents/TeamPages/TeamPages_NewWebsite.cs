@@ -18,8 +18,10 @@ namespace dlwebclasses
         public StringBuilder Contents { get; set; }
         public string filepath { get; set; }
         public string canonicaltag { get; set; }
-        public TeamPages_NewWebsite(string Dept, AContents _Acontent)
+        public TeamPages_NewWebsite(string Dept, AContents _Acontent, bool _subDepartmentTeamPage = false)
         {
+            HRDDLEntities db = new HRDDLEntities();
+            IT_DatabaseEntities dbit = new IT_DatabaseEntities();
 
             string Name = "";
             string Jobtitle = "";
@@ -34,14 +36,19 @@ namespace dlwebclasses
             StringBuilder Traineemisspic = new StringBuilder();
             string[] deptstr;
 
-            DepartmentDetails DD = new DepartmentDetails(Dept);
+            DepartmentDetails DD;
+            if (_subDepartmentTeamPage)
+                DD =  new DepartmentDetails(dbit.SubDepartmentProfileStructures.Where(x => x.SubDepartment == Dept).Select(x => x.Department1).FirstOrDefault());
+            else
+                DD = new DepartmentDetails(Dept);
+
             
-            Title = DD.Name + " Solicitors | Team | Lawyers";
-            Description = DD.Name + " Team, " + DD.Name + " Solicitors, " + DD.Name + " Lawyers, Duncan Lewis " + DD.Name + " Team";
-            Keywords = DD.Name + " Team, " + DD.Name + " Solicitors, " + DD.Name + " Lawyers, Duncan Lewis " + DD.Name + " Team";
+            Title = Dept + " Solicitors | Team | Lawyers";
+            Description = Dept + " Team, " + Dept + " Solicitors, " + Dept + " Lawyers, Duncan Lewis " + Dept + " Team";
+            Keywords = Dept + " Team, " + Dept + " Solicitors, " + Dept + " Lawyers, Duncan Lewis " + Dept + " Team";
             Department = DD.Name;
-            HeadingH1 = DD.Name + " Solicitors";
-            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + DD.Our_Team1;
+            HeadingH1 = Dept + " Solicitors";
+            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + (_subDepartmentTeamPage ? Dept.Replace(" ","-") + "_ourTeam.html" : DD.Our_Team1);
             canonicaltag = "<link rel=\"canonical\" href=\"https://www.duncanlewis.co.uk" + filepath.Replace(ConfigurationManager.AppSettings["RootpathNewWebsite"], "").Replace("\\", "/") + "\">";
 
             if (DD.Name == "Child Care" || DD.Name == "Family")
@@ -49,20 +56,24 @@ namespace dlwebclasses
             else
                 deptstr = new string[] { DD.Name };
 
-            HRDDLEntities db = new HRDDLEntities();
-            IT_DatabaseEntities dbit = new IT_DatabaseEntities();
+
 
             List<Emp_Details> ED = new List<Emp_Details>();
             IEnumerable<Emp_Details> ED1;
             ED1 = allStatic.getcurrentemployedstafflist();
             
-            if (DD.Name != "Management Board")
+            if (DD.Name != "Management Board" && _subDepartmentTeamPage == false)
                 ED = ED1.Where(x => ((deptstr.Contains(x.department_it)) || (deptstr.Contains(x.department_covered_2)) || (deptstr.Contains(x.department_covered_3)) || (deptstr.Contains(x.department_covered_4)) || (deptstr.Contains(x.department_covered_5))) && x.surname != "Mouse" && x.surname != "Duck" &&  x.Profile_website == true && x.admin_staff == "0" && (x.reporting_consultant == false || x.reporting_consultant == null)).OrderByDescending(x => x.Picture_website).ThenBy(x => x.forename).ToList(); /*&& x.jobtitle != "Legal Casework Assistant"*/
+            else if (_subDepartmentTeamPage)
+            {
+                var emp_codes = dbit.SubDepartmentProfiles.Where(x => x.SubDepartmentProfileStructure.SubDepartment == Dept && x.ApprovedProfile != null && x.ApprovedProfile != "").Select(x => x.emp_code).ToList();
+                ED = ED1.Where(x => x.Profile_website == true && x.admin_staff == "0" && emp_codes.Contains(x.emp_code)).OrderBy(x => x.forename).ToList();
+            }
             else
                 ED = ED1.Where(x => x.Profile_website == true && ((x.jobtitle.Contains("Director") && (x.forename + ' ' + x.surname) != "Ibrahim Daud Ali" && (x.Profile_website == true) && (x.admin_staff == "0")) || ((deptstr.Contains(x.department_it)) || (deptstr.Contains(x.department_covered_2)) || (deptstr.Contains(x.department_covered_3)) || (deptstr.Contains(x.department_covered_4)) || (deptstr.Contains(x.department_covered_5))))).OrderByDescending(x => x.forename == "Syed Talha").ThenByDescending(x => x.forename == "Shany").ThenByDescending(x => x.forename == "Nina").ThenByDescending(x => x.forename == "Sridhar").ThenByDescending(x => x.forename == "Jason").ThenByDescending(x => x.forename == "Mohan").ThenByDescending(x => x.forename + ' ' + x.surname == "David Daud").ThenByDescending(x => x.forename == "Judith").ThenBy(x => x.forename).ToList();
 
-            
-                        //CommandText = "select P.[Emp_Code], forename+' '+surname as Name, [Emp_Status] as Emp_Status, Department_IT,Isnull(department_covered_2,'') as areacovered11,Isnull(department_covered_3,'') as areacovered21, Department_IT as Department , O.Office_name as Office, Case when forename + ' ' + Surname = 'Geoffrey Yeung' then 'Partner' when p.jobtitle like '%High Court Advocate%' then 'High Court Advocate' when p.[Emp_Status] in ('Freelance Consultant','Limited Company') then 'Freelance Consultant'   when p.jobtitle like '%Partner%' then 'Partner' when p.jobtitle like '%Director%' then 'Partner' when p.forename + ' ' + Surname like 'BusinessDevelopmentManager' then 'Partner' when p.jobtitle like '%Director%' then 'Partner' when p.jobtitle like '%Paralegal%' then 'Caseworker' when p.jobtitle like '%Caseworker%' then 'Caseworker' when p.jobtitle like '%Legal Consultant%' then 'Caseworker' when p.jobtitle like '%Clerk%' then 'Caseworker' when p.jobtitle like '%Trainee%' then 'Trainee Solicitor' when p.jobtitle = 'In-House Counsel' then 'Solicitor' when p.jobtitle like '%Supervisor%' then 'Solicitor' when p.jobtitle like '%Solicitor%' then 'Solicitor' when p.jobtitle like '%Head of Department%' then 'Solicitor' when p.jobtitle like '%Manager%' then 'Senior Manager' else ' ' End as JobTitle, isnull(P.Email,'  ' ) as Email, direct_dial_tel_number as ddi,case when p.jobtitle like '%Head of Department%' then 'Yes' else 'No' End HOD, isnull(O.County,'') as County,Forename,Surname from hrd.[emp_Details] P , Emp_ITInfo E, Offices O where P.Office_Code = O.Office_Code and P.[Emp_Code] = E.emp_Code and  [employed] ='1' and ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1' or forename + ' ' + Surname = 'Geoffrey Yeung') and Department_IT Not In ('Office Administration','Cost Drafting', 'Information Technology','Finance','Marketing','Human Resources')  and (Department_IT = '" + Arraydept(i, 0) + "' or department_covered_2 = '" + Arraydept(i, 0) + "' or department_covered_3 = '" + Arraydept(i, 0) + "'  or department_covered_4 = '" + Arraydept(i, 0) + "'  or department_covered_5 = '" + Arraydept(i, 0) + "' " + famCC + ") and forename+' '+surname not in ('Fozia Iqbal','Andrew Egby','Rumana Kausar','Paresh Joshi','Charlotte Ecroyd','Reena Matharu','Ian Hawkings','Munsoor Ahmed Chaudhry','Isma Moghal','Sulaiha Ali','Sumitra Rao') ORDER BY Forename + ' ' + Surname";
+
+            //CommandText = "select P.[Emp_Code], forename+' '+surname as Name, [Emp_Status] as Emp_Status, Department_IT,Isnull(department_covered_2,'') as areacovered11,Isnull(department_covered_3,'') as areacovered21, Department_IT as Department , O.Office_name as Office, Case when forename + ' ' + Surname = 'Geoffrey Yeung' then 'Partner' when p.jobtitle like '%High Court Advocate%' then 'High Court Advocate' when p.[Emp_Status] in ('Freelance Consultant','Limited Company') then 'Freelance Consultant'   when p.jobtitle like '%Partner%' then 'Partner' when p.jobtitle like '%Director%' then 'Partner' when p.forename + ' ' + Surname like 'BusinessDevelopmentManager' then 'Partner' when p.jobtitle like '%Director%' then 'Partner' when p.jobtitle like '%Paralegal%' then 'Caseworker' when p.jobtitle like '%Caseworker%' then 'Caseworker' when p.jobtitle like '%Legal Consultant%' then 'Caseworker' when p.jobtitle like '%Clerk%' then 'Caseworker' when p.jobtitle like '%Trainee%' then 'Trainee Solicitor' when p.jobtitle = 'In-House Counsel' then 'Solicitor' when p.jobtitle like '%Supervisor%' then 'Solicitor' when p.jobtitle like '%Solicitor%' then 'Solicitor' when p.jobtitle like '%Head of Department%' then 'Solicitor' when p.jobtitle like '%Manager%' then 'Senior Manager' else ' ' End as JobTitle, isnull(P.Email,'  ' ) as Email, direct_dial_tel_number as ddi,case when p.jobtitle like '%Head of Department%' then 'Yes' else 'No' End HOD, isnull(O.County,'') as County,Forename,Surname from hrd.[emp_Details] P , Emp_ITInfo E, Offices O where P.Office_Code = O.Office_Code and P.[Emp_Code] = E.emp_Code and  [employed] ='1' and ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1' or forename + ' ' + Surname = 'Geoffrey Yeung') and Department_IT Not In ('Office Administration','Cost Drafting', 'Information Technology','Finance','Marketing','Human Resources')  and (Department_IT = '" + Arraydept(i, 0) + "' or department_covered_2 = '" + Arraydept(i, 0) + "' or department_covered_3 = '" + Arraydept(i, 0) + "'  or department_covered_4 = '" + Arraydept(i, 0) + "'  or department_covered_5 = '" + Arraydept(i, 0) + "' " + famCC + ") and forename+' '+surname not in ('Fozia Iqbal','Andrew Egby','Rumana Kausar','Paresh Joshi','Charlotte Ecroyd','Reena Matharu','Ian Hawkings','Munsoor Ahmed Chaudhry','Isma Moghal','Sulaiha Ali','Sumitra Rao') ORDER BY Forename + ' ' + Surname";
             int backimgloop = 1;
             foreach (Emp_Details _ed in ED)
             {
@@ -90,14 +101,14 @@ namespace dlwebclasses
                 bool picmiss = false;
                 string rewriteurllink = "";
                 string managementpic = "";
-                List<string> _subDepartments = dbit.SubDepartmentProfiles.GroupBy(x => x.SubDepartment).Select(x => x.Key).ToList();
+                List<string> _subDepartments = dbit.SubDepartmentProfiles.GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
                 if (_ed.forename + ' ' + _ed.surname == "Syed Talha Rafique" || _ed.forename + ' ' + _ed.surname == "Shany Gupta" || _ed.forename + ' ' + _ed.surname == "Nina Joshi" || _ed.forename + ' ' + _ed.surname == "Sridhar Ponnada" || _ed.forename + ' ' + _ed.surname == "Jason Bruce" || _ed.forename + ' ' + _ed.surname == "Mohan Bharj" || _ed.forename + ' ' + _ed.surname == "David Daud" || _ed.forename + ' ' + _ed.surname == "Judith Lee-Scott")
                 {
                     rewriteurllink = "/about_managementboard/" + (_ed.forename + ' ' + _ed.surname).ToString().Replace(" ", "_") + ".html";
                     managementpic = "1";
                 }
-                else if (_subDepartments.Contains(DD.Name))
-                    rewriteurllink = "/" + DD.Name.Replace(" ", "-") + "_ourteam/" + _ed.forename + "_" + _ed.surname + ".html";
+                else if (_subDepartmentTeamPage)
+                    rewriteurllink = "/" + Dept.Replace(" ", "-") + "_ourteam/" + _ed.forename + "_" + _ed.surname + ".html";
                 else
                     rewriteurllink = "/" + allStatic.getRewriteUrlLinkForStaff(_ed) + "/#" + Department.Replace(" ", "");
 

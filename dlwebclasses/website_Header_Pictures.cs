@@ -21,5 +21,9 @@ namespace dlwebclasses
         public string imgfilename { get; set; }
         public string mobileimgfilename { get; set; }
         public Nullable<bool> updated { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
     }
 }

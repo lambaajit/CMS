@@ -23,6 +23,9 @@
         <EntityTypeShape EntityType="IT_DatabaseModel.Website_Videos" Width="1.5" PointX="0.75" PointY="13.75" />
         <EntityTypeShape EntityType="IT_DatabaseModel.StaffProfilesCreatedLog" Width="1.5" PointX="13.375" PointY="3.75" />
         <EntityTypeShape EntityType="IT_DatabaseModel.Website_Structure" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.SubDepartmentProfileStructure" Width="1.5" PointX="11.125" PointY="17" />
+        <AssociationConnector Association="IT_DatabaseModel.FK__SubDepart__SubDe__19F5B35B" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.LogsOfModification" Width="1.5" PointX="14.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

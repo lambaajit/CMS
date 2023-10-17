@@ -10,6 +10,7 @@ using DLCMS.Models;
 
 namespace DLCMS.Controllers
 {
+    [Authorize]
     public class CURD_WebsiteStructureController : Controller
     {
         private DLCMS_ITDatabase db = new DLCMS_ITDatabase();

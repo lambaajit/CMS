@@ -33,11 +33,17 @@
     <StartupObject>dlwebclasses.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.4\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.4\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
@@ -49,6 +55,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -194,6 +201,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Itdatabase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="LogsOfModification.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainNavigation\IMainNavigation.cs" />
     <Compile Include="MainNavigation\MainNavigation.cs" />
     <Compile Include="MainNavigation\MainNavigationNewWebsite.cs" />
@@ -240,6 +250,12 @@
     </Compile>
     <Compile Include="RightColoumn\ARightColoumn.cs" />
     <Compile Include="RightColoumn\RightColoumn.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\Updates_MainWebsitesServices.cs" />
+    <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\TrackedEntity.cs" />
+    <Compile Include="Services\Website_PagesServices.cs" />
+    <Compile Include="Services\Website_VideosServices.cs" />
     <Compile Include="SiteMap\Sitemap.cs" />
     <Compile Include="StaffProfilesCreatedLog.cs">
       <DependentUpon>Itdatabase.tt</DependentUpon>
@@ -249,6 +265,9 @@
       <DependentUpon>DLWEB.tt</DependentUpon>
     </Compile>
     <Compile Include="SubDepartmentProfile.cs">
+      <DependentUpon>Itdatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubDepartmentProfileStructure.cs">
       <DependentUpon>Itdatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="SubDepartmentSwitchboard.cs">

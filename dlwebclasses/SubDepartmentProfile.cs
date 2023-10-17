@@ -21,5 +21,9 @@ namespace dlwebclasses
         public string StaffName { get; set; }
         public Nullable<int> SubDepartmentProfileStructureId { get; set; }
         public Nullable<bool> Selected { get; set; }
+        public bool Approve { get; set; }
+        public string ApprovedProfile { get; set; }
+    
+        public virtual SubDepartmentProfileStructure SubDepartmentProfileStructure { get; set; }
     }
 }

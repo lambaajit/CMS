@@ -12,142 +12,142 @@
     <title>Create</title>
 </head>
 <body>
-    @using (Html.BeginForm()) 
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
-    <div class="form-horizontal">
-        <h4>Website_Videos</h4>
-        <hr />
-        @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Department, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Department, new { style = "width:850px; max-width:850px", @class="form-control" })
-                @Html.ValidationMessageFor(model => model.Department)
-            </div>
-        </div>
+        <div class="form-horizontal">
+            <h4>Website_Videos</h4>
+            <hr />
+            @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.VideoString, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.VideoString, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.VideoString)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Department, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Department, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Department)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.emp_code, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.emp_code, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.emp_code)
+            <div class="form-group">
+                @Html.LabelFor(model => model.VideoString, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.VideoString, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.VideoString)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MetaTitle, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.MetaTitle, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MetaTitle)
+            <div class="form-group">
+                @Html.LabelFor(model => model.emp_code, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.emp_code, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.emp_code)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MetaKeyword, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.MetaKeyword, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MetaKeyword)
+            <div class="form-group">
+                @Html.LabelFor(model => model.MetaTitle, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.MetaTitle, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MetaTitle)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MetaDescription, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.MetaDescription, new { @class = "col-md-10 form-control", @cols = "40", @rows = "10" })
-                @Html.ValidationMessageFor(model => model.MetaDescription)
+            <div class="form-group">
+                @Html.LabelFor(model => model.MetaKeyword, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.MetaKeyword, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MetaKeyword)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Heading, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Heading, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Heading)
+            <div class="form-group">
+                @Html.LabelFor(model => model.MetaDescription, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.MetaDescription, new { @class = "col-md-10 form-control", @cols = "40", @rows = "10" })
+                    @Html.ValidationMessageFor(model => model.MetaDescription)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { @class = "col-md-10 form-control", @cols = "40", @rows = "10" })
-                @Html.ValidationMessageFor(model => model.Description)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Heading, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Heading, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Heading)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.name, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.name)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, new { @class = "col-md-10 form-control", @cols = "40", @rows = "10" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.website_filename, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.website_filename, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.website_filename)
+            <div class="form-group">
+                @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.name, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.name)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.content, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.content, new { @class = "col-md-10 form-control", @cols = "40", @rows = "40" })
-                @Html.ValidationMessageFor(model => model.content)
+            <div class="form-group">
+                @Html.LabelFor(model => model.website_filename, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.website_filename, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.website_filename)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.thumbnailpic, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.thumbnailpic, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.thumbnailpic)
+            <div class="form-group">
+                @Html.LabelFor(model => model.content, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.content, new { @class = "col-md-10 form-control", @cols = "40", @rows = "40" })
+                    @Html.ValidationMessageFor(model => model.content)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DoneBy, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DoneBy, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DoneBy)
+            <div class="form-group">
+                @Html.LabelFor(model => model.thumbnailpic, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.thumbnailpic, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.thumbnailpic)
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateOfVideo, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateOfVideo, new { style = "width:850px; max-width:850px", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DateOfVideo)
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Active, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Active)
-                @Html.ValidationMessageFor(model => model.Active)
+            <div class="form-group">
+                @Html.LabelFor(model => model.DoneBy, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.DoneBy, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DoneBy)
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateOfVideo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateOfVideo, new { style = "width:850px; max-width:850px", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DateOfVideo)
+                </div>
+            </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Active, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Active)
+                    @Html.ValidationMessageFor(model => model.Active)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
-    </div>
     }
-    
+
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

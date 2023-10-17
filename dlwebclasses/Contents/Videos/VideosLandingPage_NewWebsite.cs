@@ -134,7 +134,7 @@ _NewContent.AppendLine("<div class=\"row nopadding\">");
                 _NewContent.AppendLine((item.Heading == null ? item.Department : item.Heading) + "<span class=\"fa fa-play-circle " + cssclass + " forecolorlight\"></span>");
                 _NewContent.AppendLine("                                </div>");
                 _NewContent.AppendLine("                                <div class=\"videoimage panel-body\">");
-                _NewContent.AppendLine("                                    <p>By: " + ((staffname.Length < 4) ? item.id.ToString() : staffname) + "<a href=\"/Videos/" + item.id + "_Videos.html\"><span class=\"fa fa-play-circle " + cssclass + " forecolorlight\"></span></a><a href=\"#\">Watch This Video</a><font size=\"3\" style=\"padding-top:10px; display:block\">Department: " + item.Department + "</font></p>");
+               _NewContent.AppendLine("                                    <p>" + ((staffname.Length < 4) ? "" : "By:" + staffname) + " <a href=\"/Videos/" + item.id + "_Videos.html\"><span class=\"fa fa-play-circle " + cssclass + " forecolorlight\"></span></a><a href=\"#\">Watch This Video</a><font size=\"3\" style=\"padding-top:10px; display:block\">Department: " + item.Department + "</font></p>");
                 _NewContent.AppendLine("                                    <a href=\"/Videos/" + item.id + "_Videos.html\"><img src=\"/Video-Images/" + item.id + ".jpg\" class=\"img-responsive\" alt=\"" + item.name + "\" /></a>");
                 _NewContent.AppendLine("                                </div>");
                 _NewContent.AppendLine("                            </div>");

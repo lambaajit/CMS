@@ -15,6 +15,7 @@ using System.Configuration;
 
 namespace DLCMS.Controllers
 {
+    [Authorize]
     public class CURD_NewsArticlesController : BaseController
     {
         private DLCMS_ITDatabase db = new DLCMS_ITDatabase();
@@ -80,15 +81,18 @@ namespace DLCMS.Controllers
         [HttpPost]
         [ValidateInput(false)] 
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Title,Brief,Contents,Date_Update,Description,Keywords,Blog_Department,Image,Page_Title,Staff1,Staff2,Staff3,Staff4,Staff5,Staff6,Staff7,Staff8,Staff9,Staff10,category,video")] Updates_MainWebsites updates_mainwebsites, List<string> cbo_Department, HttpPostedFileBase files, HttpPostedFileBase fileupload)
+        public ActionResult Create([Bind(Include = "Title,Brief,Contents,Date_Update,Description,Keywords,Blog_Department,Image,Page_Title,Staff1,Staff2,Staff3,Staff4,Staff5,Staff6,Staff7,Staff8,Staff9,Staff10,category,video")] dlwebclasses.Updates_MainWebsites updates_mainwebsites, List<string> cbo_Department, HttpPostedFileBase files, HttpPostedFileBase fileupload)
         {
+            using (var _updates_MainWebsitesServices = new dlwebclasses.Updates_MainWebitesServices())
+            {
                 int dup_id = 0;
-
                 ModelState.Remove("Duplicate_ID");
                 ModelState.Remove("DLorNonDL");
                 ModelState.Remove("filename");
                 ModelState.Remove("Date_Added");
                 ModelState.Remove("Department");
+
+
 
                 updates_mainwebsites.KeywordsToBeUsed = "Yes";
                 dup_id = (int)db.Database.SqlQuery<decimal>("SELECT IDENT_CURRENT('updates_mainwebsites')").FirstOrDefault();
@@ -98,15 +102,15 @@ namespace DLCMS.Controllers
                 else
                     updates_mainwebsites.DLorNonDL = "DL";
 
-                    updates_mainwebsites.Duplicate_ID = dup_id;
-                    updates_mainwebsites.Total_Comments = 0;
-                    updates_mainwebsites.Live = true;
-                    updates_mainwebsites.Date_Added = DateTime.Now;
+                updates_mainwebsites.Duplicate_ID = dup_id;
+                updates_mainwebsites.Total_Comments = 0;
+                updates_mainwebsites.Live = true;
+                updates_mainwebsites.Date_Added = DateTime.Now;
 
-                    updates_mainwebsites.Contents = updates_mainwebsites.Contents.ToString().Replace(Environment.NewLine, "<br />");
-                    updates_mainwebsites.Brief = updates_mainwebsites.Brief.ToString().Replace(Environment.NewLine, "<br />");
+                updates_mainwebsites.Contents = updates_mainwebsites.Contents.ToString().Replace(Environment.NewLine, "<br />");
+                updates_mainwebsites.Brief = updates_mainwebsites.Brief.ToString().Replace(Environment.NewLine, "<br />");
 
-            string fname = "";
+                string fname = "";
                 if (updates_mainwebsites.Title.ToString().Length > 160)
                     fname = updates_mainwebsites.Title.ToString().Replace("'", "^").Replace("?", "").Replace("-", "").Replace("%", "").Replace("/", "").Replace(" ", "_").Replace("\"", "").Substring(0, 160);
                 else
@@ -118,11 +122,11 @@ namespace DLCMS.Controllers
                 foreach (string str in cbo_Department)
                 {
                     updates_mainwebsites.Department = str;
-                    var isSuccess = TryUpdateModel(updates_mainwebsites,"",null,new string[] {"ID"});
+                    var isSuccess = TryUpdateModel(updates_mainwebsites, "", null, new string[] { "ID" });
                     if (ModelState.IsValid)
                     {
-                        db.Updates_MainWebsites.Add(updates_mainwebsites);
-                        db.SaveChanges();
+                        _updates_MainWebsitesServices.Add(updates_mainwebsites);
+                        _updates_MainWebsitesServices.SaveChanges();
                         modelvalid = true;
                         if (files != null && files.ContentLength > 0 && str == "InThePress")
                             files.SaveAs(ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "//InthePress//" + fname.Replace("'", "").Replace(":", "") + ".pdf");
@@ -131,15 +135,15 @@ namespace DLCMS.Controllers
                         modelvalid = false;
 
                     if (!isSuccess)
-                     {
-                         foreach (var modelState in ModelState.Values)
-                         {
+                    {
+                        foreach (var modelState in ModelState.Values)
+                        {
                             foreach (var error in modelState.Errors)
                             {
-                               Debug.WriteLine(error.ErrorMessage);
+                                Debug.WriteLine(error.ErrorMessage);
                             }
-                         }
-                     }
+                        }
+                    }
                 }
 
 
@@ -159,7 +163,7 @@ namespace DLCMS.Controllers
                         new_id = new_id + 1;
                     }
 
-                var UMID = db.Updates_MainWebsites.Where(x => x.filename == updates_mainwebsites.filename).Select(x => x.ID).ToList();
+                    var UMID = db.Updates_MainWebsites.Where(x => x.filename == updates_mainwebsites.filename).Select(x => x.ID).ToList();
                     foreach (int IDs in UMID)
                     {
                         dlwebclasses.Content_NewsArticles_NewWebsite NAL;
@@ -172,6 +176,7 @@ namespace DLCMS.Controllers
                 {
                     return View(updates_mainwebsites);
                 }
+            }
         }
 
 
@@ -199,13 +204,14 @@ namespace DLCMS.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(int ID, string Title, string Brief, string Contents, string Description, string Keywords, bool Image, string Page_Title, string Staff1, string Staff2, string Staff3, string Staff4, string Staff5, string Staff6, string Staff7, string Staff8, string Staff9, string Staff10, string submitButton)
         {
-            ViewBag.filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\Preview\\News_Preview.html";
-                Updates_MainWebsites UM1 = db.Updates_MainWebsites.Find(ID);
-                var UMID = db.Updates_MainWebsites.Where(x => x.filename == UM1.filename).Select(x => x.ID).ToList();
-                bool changesmade = false;
-                foreach (int IDs in UMID)
+            using (dlwebclasses.Updates_MainWebitesServices _updates_MainWebsitesServices = new dlwebclasses.Updates_MainWebitesServices())
+            {
+                ViewBag.filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\Preview\\News_Preview.html";
+                dlwebclasses.Updates_MainWebsites UM1 = _updates_MainWebsitesServices.FindById(ID);
+                var UMID = _updates_MainWebsitesServices.GetAll().Where(x => x.filename == UM1.filename).Select(x => x.ID).ToList();
+                foreach (int id in UMID)
                 {
-                    Updates_MainWebsites UM = db.Updates_MainWebsites.Find(IDs);
+                    var UM = _updates_MainWebsitesServices.FindById(id);
                     UM.Title = Title;
                     UM.Brief = Brief;
                     UM.Contents = Contents;
@@ -216,25 +222,25 @@ namespace DLCMS.Controllers
                     UM.Staff1 = Staff1;
                     UM.Staff2 = Staff2;
                     UM.Staff3 = Staff3;
-                UM.Staff4 = Staff4;
-                UM.Staff5 = Staff5;
-                UM.Staff6 = Staff6;
-                UM.Staff7 = Staff7;
-                UM.Staff8 = Staff8;
-                UM.Staff9 = Staff9;
-                UM.Staff10 = Staff10;
-                db.Entry(UM).State = EntityState.Modified;
-                    db.SaveChanges();
-                    changesmade = true;
+                    UM.Staff4 = Staff4;
+                    UM.Staff5 = Staff5;
+                    UM.Staff6 = Staff6;
+                    UM.Staff7 = Staff7;
+                    UM.Staff8 = Staff8;
+                    UM.Staff9 = Staff9;
+                    UM.Staff10 = Staff10;
+                    _updates_MainWebsitesServices.Update(UM);
+                    _updates_MainWebsitesServices.SaveChanges();
+                    
 
                     dlwebclasses.Content_NewsArticlesLandingPages_NewWebsite NAL;
                     NAL = new dlwebclasses.Content_NewsArticlesLandingPages_NewWebsite(UM.Department, UM.category, DateTime.Now.Year, DateTime.Now.Month);
                     dlwebclasses.CreateHTMLFIles_NEwWebsite Fl = new dlwebclasses.CreateHTMLFIles_NEwWebsite(NAL);
 
                     dlwebclasses.Content_NewsArticles_NewWebsite NAL1;
-                    NAL1 = new dlwebclasses.Content_NewsArticles_NewWebsite(IDs);
+                    NAL1 = new dlwebclasses.Content_NewsArticles_NewWebsite(id);
                     dlwebclasses.CreateHTMLFIles_NEwWebsite F2 = new dlwebclasses.CreateHTMLFIles_NEwWebsite(NAL1);
-            }
+                }
 
                 createpreviewpage(ID);
                 Updates_MainWebsites UM2 = db.Updates_MainWebsites.Find(ID);
@@ -248,14 +254,15 @@ namespace DLCMS.Controllers
                 UM2.Staff1 = Staff1;
                 UM2.Staff2 = Staff2;
                 UM2.Staff3 = Staff3;
-            UM2.Staff4 = Staff4;
-            UM2.Staff5 = Staff5;
-            UM2.Staff6 = Staff6;
-            UM2.Staff7 = Staff7;
-            UM2.Staff8 = Staff8;
-            UM2.Staff9 = Staff9;
-            UM2.Staff10 = Staff10;
-            return View(UM2);
+                UM2.Staff4 = Staff4;
+                UM2.Staff5 = Staff5;
+                UM2.Staff6 = Staff6;
+                UM2.Staff7 = Staff7;
+                UM2.Staff8 = Staff8;
+                UM2.Staff9 = Staff9;
+                UM2.Staff10 = Staff10;
+                return View(UM2);
+            }
         }
 
         // GET: /CURD_NewsArticles/Delete/5

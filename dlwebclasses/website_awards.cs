@@ -25,5 +25,9 @@ namespace dlwebclasses
         public string DLDepartment { get; set; }
         public string Blurb { get; set; }
         public string LogosToUse { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
     }
 }

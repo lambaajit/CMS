@@ -425,6 +425,7 @@
     <Content Include="Views\Home\ViewSubDepartments.cshtml" />
     <Content Include="Views\Home\SubDepartmentsForWebpages.cshtml" />
     <Content Include="Views\NoPicsAndNoRequest\CheckPhotos.cshtml" />
+    <Content Include="Views\CURD_Websiteawards\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="IT_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LogsOfModification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedId" Type="int" />
+          <Property Name="ModfiedTable" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="MobileNoFor_ITIssues">
           <Key>
             <PropertyRef Name="Id" />
@@ -58,6 +68,19 @@
           <Property Name="StaffName" Type="varchar(max)" />
           <Property Name="SubDepartmentProfileStructureId" Type="int" />
           <Property Name="Selected" Type="bit" />
+          <Property Name="Approve" Type="bit" Nullable="false" />
+          <Property Name="ApprovedProfile" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SubDepartmentProfileStructure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department1" Type="varchar(max)" />
+          <Property Name="Department2" Type="varchar(max)" />
+          <Property Name="SubDepartment" Type="varchar(max)" />
+          <Property Name="BuzzWords" Type="varchar(max)" />
+          <Property Name="Enabled" Type="bit" />
         </EntityType>
         <EntityType Name="SubDepartmentSwitchboard">
           <Key>
@@ -104,6 +127,10 @@
           <Property Name="category" Type="varchar(max)" />
           <Property Name="video" Type="bit" Nullable="false" />
           <Property Name="filename" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'IT_Database.dbo.User_Profile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -246,6 +273,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="DLDepartment" Type="varchar(max)" />
           <Property Name="Blurb" Type="varchar(max)" />
           <Property Name="LogosToUse" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Website_Custom_SubDepartments">
           <Key>
@@ -301,6 +332,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="imgfilename" Type="varchar(max)" />
           <Property Name="mobileimgfilename" Type="varchar(max)" />
           <Property Name="updated" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="website_Office_Direction">
           <Key>
@@ -314,6 +349,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="DirectionByWalk" Type="varchar(max)" />
           <Property Name="DirectionByBus" Type="varchar(max)" />
           <Property Name="officeid" Type="int" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Website_Pages">
           <Key>
@@ -346,6 +385,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="SubDepartmentSwitchboard" Type="varchar(max)" />
           <Property Name="CustomDepartment" Type="varchar(max)" />
           <Property Name="VideoId" Type="int" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Website_Pages_SubDepartments">
           <Key>
@@ -356,6 +399,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="sequence1" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="link" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Website_Structure">
           <Key>
@@ -400,13 +447,31 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="Reason_removal" Type="varchar(max)" />
           <Property Name="DateOfVideo" Type="datetime" />
           <Property Name="Sequence" Type="int" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
+        <Association Name="FK__SubDepart__SubDe__19F5B35B">
+          <End Role="SubDepartmentProfileStructure" Type="Self.SubDepartmentProfileStructure" Multiplicity="0..1" />
+          <End Role="SubDepartmentProfiles" Type="Self.SubDepartmentProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDepartmentProfileStructure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubDepartmentProfiles">
+              <PropertyRef Name="SubDepartmentProfileStructureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="IT_DatabaseModelStoreContainer">
+          <EntitySet Name="LogsOfModification" EntityType="Self.LogsOfModification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MobileNoFor_ITIssues" EntityType="Self.MobileNoFor_ITIssues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhotoSession" EntityType="Self.PhotoSession" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhotoSession_StaffAttendance" EntityType="Self.PhotoSession_StaffAttendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffProfilesCreatedLogs" EntityType="Self.StaffProfilesCreatedLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubDepartmentProfiles" EntityType="Self.SubDepartmentProfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubDepartmentProfileStructure" EntityType="Self.SubDepartmentProfileStructure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubDepartmentSwitchboard" EntityType="Self.SubDepartmentSwitchboard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Updates_MainWebsites" EntityType="Self.Updates_MainWebsites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="website_awards" EntityType="Self.website_awards" Schema="dbo" store:Type="Tables" />
@@ -538,6 +603,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
     [User_Profile_FinalDraft].[Page_Keywords] AS [Page_Keywords]
     FROM [dbo].[User_Profile_FinalDraft] AS [User_Profile_FinalDraft]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK__SubDepart__SubDe__19F5B35B" Association="Self.FK__SubDepart__SubDe__19F5B35B">
+            <End Role="SubDepartmentProfileStructure" EntitySet="SubDepartmentProfileStructure" />
+            <End Role="SubDepartmentProfiles" EntitySet="SubDepartmentProfiles" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -562,6 +631,12 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySet Name="Website_Videos" EntityType="IT_DatabaseModel.Website_Videos" />
           <EntitySet Name="StaffProfilesCreatedLogs" EntityType="IT_DatabaseModel.StaffProfilesCreatedLog" />
           <EntitySet Name="Website_Structure" EntityType="IT_DatabaseModel.Website_Structure" />
+          <EntitySet Name="SubDepartmentProfileStructures" EntityType="IT_DatabaseModel.SubDepartmentProfileStructure" />
+          <AssociationSet Name="FK__SubDepart__SubDe__19F5B35B" Association="IT_DatabaseModel.FK__SubDepart__SubDe__19F5B35B">
+            <End Role="SubDepartmentProfileStructure" EntitySet="SubDepartmentProfileStructures" />
+            <End Role="SubDepartmentProfile" EntitySet="SubDepartmentProfiles" />
+          </AssociationSet>
+          <EntitySet Name="LogsOfModifications" EntityType="IT_DatabaseModel.LogsOfModification" />
         </EntityContainer>
         <EntityType Name="Updates_MainWebsites">
           <Key>
@@ -597,6 +672,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="Staff8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Staff9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Staff10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="User_Profile">
           <Key>
@@ -723,6 +802,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="SubDepartmentSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CustomDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="VideoId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Website_Pages_SubDepartments">
           <Key>
@@ -733,6 +816,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="sequence1" Type="Int32" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="website_awards">
           <Key>
@@ -749,6 +836,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="DLDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Blurb" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="LogosToUse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="website_Header_Pictures">
           <Key>
@@ -761,6 +852,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="imgfilename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="mobileimgfilename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="updated" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="website_Office_Direction">
           <Key>
@@ -774,6 +869,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="DirectionByWalk" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DirectionByBus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="officeid" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="User_Profile_FinalDraft">
           <Key>
@@ -902,6 +1001,9 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="StaffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SubDepartmentProfileStructureId" Type="Int32" />
           <Property Name="Selected" Type="Boolean" />
+          <Property Name="Approve" Type="Boolean" Nullable="false" />
+          <Property Name="ApprovedProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SubDepartmentProfileStructure" Relationship="IT_DatabaseModel.FK__SubDepart__SubDe__19F5B35B" FromRole="SubDepartmentProfile" ToRole="SubDepartmentProfileStructure" />
         </EntityType>
         <EntityType Name="Website_Videos">
           <Key>
@@ -925,6 +1027,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="Reason_removal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DateOfVideo" Type="DateTime" Precision="3" />
           <Property Name="Sequence" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="StaffProfilesCreatedLog">
           <Key>
@@ -955,6 +1061,40 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="SubDepartmentNameForSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NewNameForDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="SubDepartmentProfileStructure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Department2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BuzzWords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="SubDepartmentProfiles" Relationship="IT_DatabaseModel.FK__SubDepart__SubDe__19F5B35B" FromRole="SubDepartmentProfileStructure" ToRole="SubDepartmentProfile" />
+        </EntityType>
+        <Association Name="FK__SubDepart__SubDe__19F5B35B">
+          <End Type="IT_DatabaseModel.SubDepartmentProfileStructure" Role="SubDepartmentProfileStructure" Multiplicity="0..1" />
+          <End Type="IT_DatabaseModel.SubDepartmentProfile" Role="SubDepartmentProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubDepartmentProfileStructure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubDepartmentProfile">
+              <PropertyRef Name="SubDepartmentProfileStructureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LogsOfModification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedId" Type="Int32" />
+          <Property Name="ModfiedTable" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -964,6 +1104,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="Updates_MainWebsites">
             <EntityTypeMapping TypeName="IT_DatabaseModel.Updates_MainWebsites">
               <MappingFragment StoreEntitySet="Updates_MainWebsites">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="Staff10" ColumnName="Staff10" />
                 <ScalarProperty Name="Staff9" ColumnName="Staff9" />
                 <ScalarProperty Name="Staff8" ColumnName="Staff8" />
@@ -1096,6 +1240,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="Website_Pages">
             <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Pages">
               <MappingFragment StoreEntitySet="Website_Pages">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="VideoId" ColumnName="VideoId" />
                 <ScalarProperty Name="CustomDepartment" ColumnName="CustomDepartment" />
                 <ScalarProperty Name="SubDepartmentSwitchboard" ColumnName="SubDepartmentSwitchboard" />
@@ -1129,6 +1277,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="Website_Pages_SubDepartments">
             <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Pages_SubDepartments">
               <MappingFragment StoreEntitySet="Website_Pages_SubDepartments">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="link" ColumnName="link" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="sequence1" ColumnName="sequence1" />
@@ -1140,6 +1292,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="website_awards">
             <EntityTypeMapping TypeName="IT_DatabaseModel.website_awards">
               <MappingFragment StoreEntitySet="website_awards">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="LogosToUse" ColumnName="LogosToUse" />
                 <ScalarProperty Name="Blurb" ColumnName="Blurb" />
                 <ScalarProperty Name="DLDepartment" ColumnName="DLDepartment" />
@@ -1157,6 +1313,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="website_Header_Pictures">
             <EntityTypeMapping TypeName="IT_DatabaseModel.website_Header_Pictures">
               <MappingFragment StoreEntitySet="website_Header_Pictures">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="updated" ColumnName="updated" />
                 <ScalarProperty Name="mobileimgfilename" ColumnName="mobileimgfilename" />
                 <ScalarProperty Name="imgfilename" ColumnName="imgfilename" />
@@ -1170,6 +1330,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="website_Office_Direction">
             <EntityTypeMapping TypeName="IT_DatabaseModel.website_Office_Direction">
               <MappingFragment StoreEntitySet="website_Office_Direction">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="officeid" ColumnName="officeid" />
                 <ScalarProperty Name="DirectionByBus" ColumnName="DirectionByBus" />
                 <ScalarProperty Name="DirectionByWalk" ColumnName="DirectionByWalk" />
@@ -1306,6 +1470,8 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="SubDepartmentProfiles">
             <EntityTypeMapping TypeName="IT_DatabaseModel.SubDepartmentProfile">
               <MappingFragment StoreEntitySet="SubDepartmentProfiles">
+                <ScalarProperty Name="ApprovedProfile" ColumnName="ApprovedProfile" />
+                <ScalarProperty Name="Approve" ColumnName="Approve" />
                 <ScalarProperty Name="Selected" ColumnName="Selected" />
                 <ScalarProperty Name="SubDepartmentProfileStructureId" ColumnName="SubDepartmentProfileStructureId" />
                 <ScalarProperty Name="StaffName" ColumnName="StaffName" />
@@ -1319,6 +1485,10 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="Website_Videos">
             <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Videos">
               <MappingFragment StoreEntitySet="Website_Videos">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="Sequence" ColumnName="Sequence" />
                 <ScalarProperty Name="DateOfVideo" ColumnName="DateOfVideo" />
                 <ScalarProperty Name="Reason_removal" ColumnName="Reason_removal" />
@@ -1368,6 +1538,29 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
                 <ScalarProperty Name="underwhichnode" ColumnName="underwhichnode" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubDepartmentProfileStructures">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.SubDepartmentProfileStructure">
+              <MappingFragment StoreEntitySet="SubDepartmentProfileStructure">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="BuzzWords" ColumnName="BuzzWords" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department2" ColumnName="Department2" />
+                <ScalarProperty Name="Department1" ColumnName="Department1" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogsOfModifications">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.LogsOfModification">
+              <MappingFragment StoreEntitySet="LogsOfModification">
+                <ScalarProperty Name="ModfiedTable" ColumnName="ModfiedTable" />
+                <ScalarProperty Name="ModifiedId" ColumnName="ModifiedId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -10,98 +10,100 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>website_awards</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.id)
+<div class="form-horizontal">
+    <h4>website_awards</h4>
+    <hr />
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IndividualCompany, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IndividualCompany)
-                @Html.ValidationMessageFor(model => model.IndividualCompany)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.StaffName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StaffName)
-                @Html.ValidationMessageFor(model => model.StaffName)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Year, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Year)
-                @Html.ValidationMessageFor(model => model.Year)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LegalDirectory, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LegalDirectory)
-                @Html.ValidationMessageFor(model => model.LegalDirectory)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LegalDirectoryArea, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LegalDirectoryArea)
-                @Html.ValidationMessageFor(model => model.LegalDirectoryArea)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LegalDirectoryDepartment, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LegalDirectoryDepartment)
-                @Html.ValidationMessageFor(model => model.LegalDirectoryDepartment)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DLOffice, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DLOffice)
-                @Html.ValidationMessageFor(model => model.DLOffice)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DLDepartment, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DLDepartment)
-                @Html.ValidationMessageFor(model => model.DLDepartment)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Blurb, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Blurb)
-                @Html.ValidationMessageFor(model => model.Blurb)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LogosToUse, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LogosToUse)
-                @Html.ValidationMessageFor(model => model.LogosToUse)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IndividualCompany, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IndividualCompany)
+            @Html.ValidationMessageFor(model => model.IndividualCompany)
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StaffName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StaffName)
+            @Html.ValidationMessageFor(model => model.StaffName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Year, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Year)
+            @Html.ValidationMessageFor(model => model.Year)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LegalDirectory, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LegalDirectory)
+            @Html.ValidationMessageFor(model => model.LegalDirectory)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LegalDirectoryArea, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LegalDirectoryArea)
+            @Html.ValidationMessageFor(model => model.LegalDirectoryArea)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LegalDirectoryDepartment, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LegalDirectoryDepartment)
+            @Html.ValidationMessageFor(model => model.LegalDirectoryDepartment)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DLOffice, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DLOffice)
+            @Html.ValidationMessageFor(model => model.DLOffice)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DLDepartment, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DLDepartment)
+            @Html.ValidationMessageFor(model => model.DLDepartment)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Blurb, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Blurb)
+            @Html.ValidationMessageFor(model => model.Blurb)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LogosToUse, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LogosToUse)
+            @Html.ValidationMessageFor(model => model.LogosToUse)
+        </div>
+    </div>
+
+    @Html.ValidationMessageFor(model => model.Year)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>

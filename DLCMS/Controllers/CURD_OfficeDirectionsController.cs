@@ -11,6 +11,7 @@ using System.Configuration;
 
 namespace DLCMS.Controllers
 {
+    [Authorize]
     public class CURD_OfficeDirectionsController : BaseController
     {
         private DLCMS_ITDatabase db = new DLCMS_ITDatabase();

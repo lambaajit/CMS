@@ -12,16 +12,20 @@ namespace dlwebclasses
     using System;
     using System.Collections.Generic;
     
-    public partial class Website_Pages_SubDepartments
+    public partial class SubDepartmentProfileStructure
     {
-        public string department { get; set; }
-        public string Sub_department { get; set; }
-        public int sequence1 { get; set; }
+        public SubDepartmentProfileStructure()
+        {
+            this.SubDepartmentProfiles = new HashSet<SubDepartmentProfile>();
+        }
+    
         public int Id { get; set; }
-        public string link { get; set; }
-        public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public string ModifiedBy { get; set; }
-        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public string Department1 { get; set; }
+        public string Department2 { get; set; }
+        public string SubDepartment { get; set; }
+        public string BuzzWords { get; set; }
+        public Nullable<bool> Enabled { get; set; }
+    
+        public virtual ICollection<SubDepartmentProfile> SubDepartmentProfiles { get; set; }
     }
 }

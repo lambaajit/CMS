@@ -19,7 +19,7 @@ namespace DLCMS.Models
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<IdentityUser>().ToTable("DLCMSUsers").Property(p => p.Id).HasColumnName("UserId");
-            modelBuilder.Entity<ApplicationUser>().ToTable("MDLCMSUsers").Property(p => p.Id).HasColumnName("UserId");
+            modelBuilder.Entity<ApplicationUser>().ToTable("DLCMSUsers").Property(p => p.Id).HasColumnName("UserId");
             modelBuilder.Entity<IdentityUserRole>().ToTable("Roles");
             modelBuilder.Entity<IdentityUserLogin>().ToTable("DLCMSLogins");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("DLCMSClaims");

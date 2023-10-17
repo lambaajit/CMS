@@ -9,14 +9,16 @@ namespace dlwebclasses
     public class Content_TeamPages_NewWebsite:AContents
     {
         private string dept;
-        public Content_TeamPages_NewWebsite(string Dept)
+        private bool subDepartmentProfile;
+        public Content_TeamPages_NewWebsite(string Dept, bool subDepartmentProfile = false)
         {
             dept = Dept;
             Department = Dept;
+            this.subDepartmentProfile = subDepartmentProfile;
         }
         public override void getcontents()
         {
-            TeamPages_NewWebsite sp = new TeamPages_NewWebsite(dept, this);
+            TeamPages_NewWebsite sp = new TeamPages_NewWebsite(dept, this, subDepartmentProfile);
             title = sp.Title;
             description = sp.Description;
             keywords = sp.Keywords;

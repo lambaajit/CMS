@@ -56,7 +56,8 @@
         <input type="submit" value="Create Cost Law Staff Profiles" />
     }
 
-    @Html.ActionLink("Create SubDepartment Profiles", "CreateStaffProfilesSubDepartments", "StaffProfiles_NewWebsite",new { @class="btn btn-primary" })
+    @Html.ActionLink("Create SubDepartment Profiles", "CreateStaffProfilesSubDepartments", "StaffProfiles_NewWebsite", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Create SubDepartment Team Pages", "CreateStaffProfilesTeamPages", "StaffProfiles_NewWebsite", new { @class = "btn btn-primary" })
 
 
     @using (@Html.BeginForm("CreateVCFCards", "StaffProfiles_NewWebsite", FormMethod.Post))
