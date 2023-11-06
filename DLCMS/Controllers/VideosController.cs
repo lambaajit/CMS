@@ -20,7 +20,7 @@ namespace DLCMS.Controllers
         public ActionResult createVideos()
         {
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
-            List<int> ids = dbit.Website_Videos.Select(z => z.id).ToList();
+            List<int> ids = dbit.Website_Videos.Where(x => x.Active == true).OrderBy(x => x.id).Select(z => z.id).ToList();
             Content_Video_NewWebsite NAL;
             foreach (var item in ids)
             {

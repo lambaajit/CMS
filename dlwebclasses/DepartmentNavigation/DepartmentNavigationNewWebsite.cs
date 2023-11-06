@@ -916,7 +916,7 @@ namespace dlwebclasses
                 if (item == "All")
                     sb.AppendLine("<li class=\"lastnode\"><a " + active3 + " href=\"/Video.html\"><p>" + item + " Videos</p><span></span></a></li>");
                 else
-                    sb.AppendLine("<li class=\"lastnode\"><a " + active3 + " href=\"/" + item.Replace(" ","-") + "-Video.html\"><p>" + item + " Videos</p><span></span></a></li>");
+                    sb.AppendLine("<li class=\"lastnode\"><a " + active3 + " href=\"/" + item.Replace(" ","-") + "-Solicitor-Video.html\"><p>" + item + " Solicitor Videos</p><span></span></a></li>");
             }
 
             sb.AppendLine("                                </ul>");

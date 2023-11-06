@@ -48,7 +48,7 @@ namespace dlwebclasses
             Keywords = Dept + " Team, " + Dept + " Solicitors, " + Dept + " Lawyers, Duncan Lewis " + Dept + " Team";
             Department = DD.Name;
             HeadingH1 = Dept + " Solicitors";
-            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + (_subDepartmentTeamPage ? Dept.Replace(" ","-") + "_ourTeam.html" : DD.Our_Team1);
+            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + (_subDepartmentTeamPage ? Dept.Replace(" ","-").Replace("&", "and").Replace("/", "") + "_ourTeam.html" : DD.Our_Team1);
             canonicaltag = "<link rel=\"canonical\" href=\"https://www.duncanlewis.co.uk" + filepath.Replace(ConfigurationManager.AppSettings["RootpathNewWebsite"], "").Replace("\\", "/") + "\">";
 
             if (DD.Name == "Child Care" || DD.Name == "Family")
@@ -108,7 +108,7 @@ namespace dlwebclasses
                     managementpic = "1";
                 }
                 else if (_subDepartmentTeamPage)
-                    rewriteurllink = "/" + Dept.Replace(" ", "-") + "_ourteam/" + _ed.forename + "_" + _ed.surname + ".html";
+                    rewriteurllink = "/" + Dept.Replace(" ", "-").Replace("&", "and").Replace("/", "") + "_ourteam/" + _ed.forename + "_" + _ed.surname + ".html";
                 else
                     rewriteurllink = "/" + allStatic.getRewriteUrlLinkForStaff(_ed) + "/#" + Department.Replace(" ", "");
 
@@ -190,7 +190,7 @@ namespace dlwebclasses
             _NewContent.AppendLine("<div class=\"row nopadding " + DD.cssclass + " parentrowoffixedrow\">");
             _NewContent.AppendLine("    <div class=\"row nopadding " + DD.cssclass + " kolor deptheading\" data-spy=\"affix\" data-offset-top=\"100\">");
 _NewContent.AppendLine("        <div class=\"col-sm-8 col-xs-12 col-lg-offset-2 nopadding applyblock centerdiv\">");
-_NewContent.AppendLine("            <h1>" + (DD.Name != "Management Board" ? DD.Name + " Solicitors" : DD.Name) + "</h1>");
+_NewContent.AppendLine("            <h1>" + (DD.Name != "Management Board" ? (_subDepartmentTeamPage ? Dept.Replace("and","&amp;") : DD.Name) + " Solicitors" : DD.Name) + "</h1>");
 _NewContent.AppendLine("        </div>");
 _NewContent.AppendLine("    </div>");
 _NewContent.AppendLine("</div>");
@@ -212,7 +212,7 @@ _NewContent.AppendLine("<div class=\"row deptreverseband " + DD.cssclass + " lig
 _NewContent.AppendLine("    <div class=\"col-sm-8 col-xs-12 col-lg-offset-2 nopadding applyblock centerdiv\">");
 _NewContent.AppendLine("        <div class=\"row nopadding\">");
 _NewContent.AppendLine("            <div class=\"col-sm-9 col-xs-12 col-sm-offset-3 breadcrumbs\">");
-_NewContent.AppendLine("<p><a  class=\"" + DD.cssclass + " forecolor\" href=\"/index.html\"><p>Home</a><span class=\"fa fa-angle-double-right\"></span><a  class=\"" + DD.cssclass + " forecolor\" href=\"/" + DD.Overview1 + "\"><p>Our Team</a><span class=\"fa fa-angle-double-right\"></span>" + DD.Name + " Team</p>");
+_NewContent.AppendLine("<p><a  class=\"" + DD.cssclass + " forecolor\" href=\"/index.html\"><p>Home</a><span class=\"fa fa-angle-double-right\"></span><a  class=\"" + DD.cssclass + " forecolor\" href=\"/" + DD.Overview1 + "\"><p>Our Team</a><span class=\"fa fa-angle-double-right\"></span>" + (_subDepartmentTeamPage ? Dept : DD.Name) + " Team</p>");
 _NewContent.AppendLine("            </div>");
 _NewContent.AppendLine("        </div>");
 
@@ -243,7 +243,7 @@ else
             {
                 _NewContent.AppendLine("                <nav class=\"affixh3teampage hidden-sm hidden-md hidden-xs " + DD.cssclass + " lightcolor\" data-spy=\"affix\" data-offset-top=\"210\">");
                 _NewContent.AppendLine("                    <div class=\"collapse navbar-collapse\">");
-                _NewContent.AppendLine("                        <h3 class=\"navbar-brand\">" + DD.Name + " Team</h3>");
+                _NewContent.AppendLine("                        <h3 class=\"navbar-brand\">" + (_subDepartmentTeamPage == true ? Dept : DD.Name) + " Team</h3>");
                 _NewContent.AppendLine("                        <ul class=\"nav navbar-nav\">");
                 _NewContent.AppendLine("                            <li class=\"dept_Family deptbordercolor\"><a href=\"#DirectorsPanel\" class=\"" + DD.cssclass + " forecolor lightkolor over\">Directors<span class=\"fa fa-user-circle\"></span></a></li>");
                 _NewContent.AppendLine("                            <li class=\"dept_Family deptbordercolor\"><a href=\"#SolicitorsPanel\" class=\"" + DD.cssclass + " forecolor lightkolor over\">Solicitors<span class=\"fa fa-graduation-cap\"></span></a></li>");

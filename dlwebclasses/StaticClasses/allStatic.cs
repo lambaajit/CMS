@@ -197,9 +197,33 @@ namespace dlwebclasses
                 Emp_Details edupdate = dbhr.Emp_Details.Find(ed2.emp_code);
                 edupdate.website_link = rewriteurllink;
                 dbhr.Entry(edupdate).State = System.Data.Entity.EntityState.Modified;
-                dbhr.SaveChanges();
+
                 //fp.WriteLine("RewriteRule " + rewriteurllink + "/ " + DD.folderteam1 + "/" + Name.Replace(" ", "_") + ".html [NC,L]");
             }
+
+            dbhr.SaveChanges();
+
+
+            //updating old Video urls
+            List<string> depts = db.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw" || x.Name == "Careers").OrderBy(y => y.Name).Select(z => z.Name).ToList();
+            foreach (var item in depts)
+            {
+                fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
+                fp.WriteLine("<match url=\"" + item.Replace(" ","-").Replace("&","and") + "-Video.html.*\" />");
+                fp.WriteLine("<action type=\"Redirect\" url=\"" + item.Replace(" ", "-").Replace("&", "and") + "-Solicitor-Video.html\" redirectType=\"Permanent\" />");
+                fp.WriteLine("</rule>");
+            }
+
+            List<Website_Videos> _website_Videos = db.Website_Videos.Where(x => x.Active == true).OrderBy(y => y.id).ToList();
+            foreach (var _website_Video in _website_Videos)
+            {
+                fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
+                fp.WriteLine("<match url=\"" + _website_Video.id + "_Videos.html.*\" />");
+                fp.WriteLine("<action type=\"Redirect\" url=\"/Videos/" + allStatic.getVideoURL(_website_Video.Heading, _website_Video.Department) + "\" redirectType=\"Permanent\" />");
+                fp.WriteLine("</rule>");
+            }
+
+
             fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
             fp.WriteLine("<match url=\"mentalhealth.html.*\" />");
             fp.WriteLine("<action type=\"Rewrite\" url=\"Index.html\" />");
@@ -560,6 +584,28 @@ namespace dlwebclasses
             return "";
         }
 
+        public static string GetOurTeamLinkForSubDepartment(int Id)
+        {
+            IT_DatabaseEntities dbit = new IT_DatabaseEntities();
+            var _website_structure  = dbit.Website_Structure.Where(x => x.linkedid == Id).FirstOrDefault();
+            var _subDepartmentProfileStructuresIds = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile.Length > 20).GroupBy(x => x.SubDepartmentProfileStructureId).Select(x => x.Key).ToList();
+            var _website_Structure_Ids = dbit.SubDepartmentProfileStructures.Where(x => _subDepartmentProfileStructuresIds.Contains(x.Id)).Select(x => x.Website_Structure_Id).ToList();
+            if (_website_Structure_Ids.Contains(_website_structure.id))
+                return (dbit.SubDepartmentProfileStructures.Where(x => x.Website_Structure_Id == _website_structure.id).Select(x => x.SubDepartment).FirstOrDefault()).Replace(" ","-").Replace("&","and").Replace("/","") + "_ourTeam.html";
+            else
+            {
+                var _underWhichNodeId = dbit.Website_Structure.Where(x => x.id == _website_structure.underwhichnode).Select(x => x.id).FirstOrDefault();
+                if (_website_Structure_Ids.Contains(_underWhichNodeId))
+                    return (dbit.SubDepartmentProfileStructures.Where(x => x.Website_Structure_Id == _underWhichNodeId).Select(x => x.SubDepartment).FirstOrDefault()).Replace(" ", "-").Replace("&", "and").Replace("/", "") + "_ourTeam.html";
+                else
+                    return null;
+            }
+        }
+
+        internal static string getVideoURL(string heading, string department)
+        {
+            return heading.Trim().Replace(" ", "-").Replace("&", "and").Replace("?", "").Replace("!","").Replace(":", "").Trim() + "-" + department.Replace("High Net Worth Divorce", "Divorce").Replace(" ", "-").Replace("&", "and").Replace("?", "") + (department == "Careers" ? "" : "-Solicitors") + ".html";
+        }
     }
 
     public class SubDepartmentListModel{

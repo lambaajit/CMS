@@ -81,6 +81,7 @@
           <Property Name="SubDepartment" Type="varchar(max)" />
           <Property Name="BuzzWords" Type="varchar(max)" />
           <Property Name="Enabled" Type="bit" />
+          <Property Name="Website_Structure_Id" Type="int" />
         </EntityType>
         <EntityType Name="SubDepartmentSwitchboard">
           <Key>
@@ -1072,6 +1073,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="BuzzWords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Enabled" Type="Boolean" />
           <NavigationProperty Name="SubDepartmentProfiles" Relationship="IT_DatabaseModel.FK__SubDepart__SubDe__19F5B35B" FromRole="SubDepartmentProfileStructure" ToRole="SubDepartmentProfile" />
+          <Property Name="Website_Structure_Id" Type="Int32" />
         </EntityType>
         <Association Name="FK__SubDepart__SubDe__19F5B35B">
           <End Type="IT_DatabaseModel.SubDepartmentProfileStructure" Role="SubDepartmentProfileStructure" Multiplicity="0..1" />
@@ -1544,6 +1546,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="SubDepartmentProfileStructures">
             <EntityTypeMapping TypeName="IT_DatabaseModel.SubDepartmentProfileStructure">
               <MappingFragment StoreEntitySet="SubDepartmentProfileStructure">
+                <ScalarProperty Name="Website_Structure_Id" ColumnName="Website_Structure_Id" />
                 <ScalarProperty Name="Enabled" ColumnName="Enabled" />
                 <ScalarProperty Name="BuzzWords" ColumnName="BuzzWords" />
                 <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />

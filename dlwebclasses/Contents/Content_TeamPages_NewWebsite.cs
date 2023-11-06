@@ -10,9 +10,9 @@ namespace dlwebclasses
     {
         private string dept;
         private bool subDepartmentProfile;
-        public Content_TeamPages_NewWebsite(string Dept, bool subDepartmentProfile = false)
+        public Content_TeamPages_NewWebsite(string Dept, bool subDepartmentProfile = false, string SubDepartment = null)
         {
-            dept = Dept;
+            dept = SubDepartment??Dept;
             Department = Dept;
             this.subDepartmentProfile = subDepartmentProfile;
         }

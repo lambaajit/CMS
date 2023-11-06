@@ -41,7 +41,7 @@ namespace dlwebclasses
             Department = DD.Name;
             HeadingH1 = DD.Name.Replace("Videos", "") + " Videos";
 
-            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\Videos\\" + WV.id.ToString() + "_Videos.html";
+            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\Videos\\" + allStatic.getVideoURL(WV.Heading, WV.Department);
             DepartmentNavigationNewWebsite Deptnav = new DepartmentNavigationNewWebsite();
             HRDDLEntities hrd = new HRDDLEntities();
 

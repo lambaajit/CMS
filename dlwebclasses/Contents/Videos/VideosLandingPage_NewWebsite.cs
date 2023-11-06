@@ -32,7 +32,7 @@ namespace dlwebclasses
             if (dept == "All")
                 filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\Video.html";
             else
-                filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + DD.Name.Replace(" ","-") + "-Video.html";
+                filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + DD.Name.Replace(" ","-") + "-Solicitor-Video.html";
 
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
             List<Website_Videos> WV = new List<Website_Videos>();
@@ -134,8 +134,8 @@ _NewContent.AppendLine("<div class=\"row nopadding\">");
                 _NewContent.AppendLine((item.Heading == null ? item.Department : item.Heading) + "<span class=\"fa fa-play-circle " + cssclass + " forecolorlight\"></span>");
                 _NewContent.AppendLine("                                </div>");
                 _NewContent.AppendLine("                                <div class=\"videoimage panel-body\">");
-               _NewContent.AppendLine("                                    <p>" + ((staffname.Length < 4) ? "" : "By:" + staffname) + " <a href=\"/Videos/" + item.id + "_Videos.html\"><span class=\"fa fa-play-circle " + cssclass + " forecolorlight\"></span></a><a href=\"#\">Watch This Video</a><font size=\"3\" style=\"padding-top:10px; display:block\">Department: " + item.Department + "</font></p>");
-                _NewContent.AppendLine("                                    <a href=\"/Videos/" + item.id + "_Videos.html\"><img src=\"/Video-Images/" + item.id + ".jpg\" class=\"img-responsive\" alt=\"" + item.name + "\" /></a>");
+               _NewContent.AppendLine("                                    <p>" + ((staffname.Length < 4) ? "" : "By:" + staffname) + " <a href=\"/Videos/" + allStatic.getVideoURL(item.Heading, item.Department) + "\"><span class=\"fa fa-play-circle " + cssclass + " forecolorlight\"></span></a><a href=\"#\">Watch This Video</a><font size=\"3\" style=\"padding-top:10px; display:block\">Department: " + item.Department + "</font></p>");
+                _NewContent.AppendLine("                                    <a href=\"/Videos/" + allStatic.getVideoURL(item.Heading, item.Department) + "\"><img src=\"/Video-Images/" + item.id + ".jpg\" class=\"img-responsive\" alt=\"" + item.name + "\" /></a>");
                 _NewContent.AppendLine("                                </div>");
                 _NewContent.AppendLine("                            </div>");
                 _NewContent.AppendLine("                        </div>");

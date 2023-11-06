@@ -32,9 +32,9 @@ namespace DLCMS.Controllers
         {
             AContents NAL;
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
-            foreach (var staff in dbit.SubDepartmentProfiles.ToList())
+            foreach (var staff in dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile.Length > 20).ToList())
             {
-                NAL = new Content_StaffProfileNewWebsite(staff.emp_code, false, "Family", staff.SubDepartment);
+                NAL = new Content_StaffProfileNewWebsite(staff.emp_code, false, staff.SubDepartmentProfileStructure.Department1, staff.SubDepartmentProfileStructure.SubDepartment);
                 CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
             }
             return View("Index");
@@ -44,10 +44,11 @@ namespace DLCMS.Controllers
         {
             AContents NAL;
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
-            var _approvedProfilesSubDepartments = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile != "" && x.Id < 20).GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
+            var _approvedProfilesSubDepartments = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile != "" && x.ApprovedProfile.Length > 20).GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
             foreach (var _approvedProfilesSubDepartment in _approvedProfilesSubDepartments)
             {
-                NAL = new Content_TeamPages_NewWebsite(_approvedProfilesSubDepartment,true);
+                var _dept = dbit.SubDepartmentProfileStructures.Where(x => x.SubDepartment == _approvedProfilesSubDepartment).Select(x => x.Department1).FirstOrDefault();
+                NAL = new Content_TeamPages_NewWebsite(_dept, true, _approvedProfilesSubDepartment);
                 CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
             }
             return View("Index");
@@ -148,6 +149,12 @@ namespace DLCMS.Controllers
         public ActionResult CreateOldHTAccess()
         {
             allStatic.htaccessstaffold();
+            return View("Index");
+        }
+
+        public ActionResult CreateHTAccess()
+        {
+            allStatic.htaccessstaff();
             return View("Index");
         }
 

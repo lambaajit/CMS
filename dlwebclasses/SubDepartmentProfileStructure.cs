@@ -25,6 +25,7 @@ namespace dlwebclasses
         public string SubDepartment { get; set; }
         public string BuzzWords { get; set; }
         public Nullable<bool> Enabled { get; set; }
+        public Nullable<int> Website_Structure_Id { get; set; }
     
         public virtual ICollection<SubDepartmentProfile> SubDepartmentProfiles { get; set; }
     }

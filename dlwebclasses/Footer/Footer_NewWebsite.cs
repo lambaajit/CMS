@@ -59,7 +59,7 @@ namespace dlwebclasses
             SB.AppendLine("                        <div class=\"col-sm-2 col-xs-12 footercolumn socialicons  " + cssclass + "  forecolor\">");
             SB.AppendLine("                            <h6>Our Social Network</h6>");
             SB.AppendLine("                            <a class=\"" + cssclass + " forecolor\" href=\"https://twitter.com/DuncanLewis/\" target=\"_blank\" title=\"Duncan Lewis\" class=\"socialIcons\"   ><span class=\"fa fa-twitter-square\"></span></a>");
-            SB.AppendLine("                            <a class=\"" + cssclass + " forecolor\" href=\"https://www.youtube.com/duncanlewislawyers\" class=\"socialIcons\"  ><span class=\"fa fa-youtube-square\"></span></a>");
+            SB.AppendLine("                            <a class=\"" + cssclass + " forecolor\" href=\"https://www.youtube.com/@duncanlewissolicitors\" class=\"socialIcons\"  ><span class=\"fa fa-youtube-square\"></span></a>");
             SB.AppendLine("                            <a class=\"" + cssclass + " forecolor\" href=\"https://www.linkedin.com/companies/duncan-lewis-%26-co-solicitors-greater-london?trk=fc_badge\" class=\"socialIcons\"  ><span class=\"fa fa-linkedin-square\"></span></a>");
             SB.AppendLine("                            <a class=\"" + cssclass + " forecolor\" href=\"https://www.facebook.com/duncanlewislawfirm\" title=\"Duncan Lewis\" class=\"socialIcons\" ><span class=\"fa fa-facebook-square\"></span></a>");
             SB.AppendLine("                        </div>");

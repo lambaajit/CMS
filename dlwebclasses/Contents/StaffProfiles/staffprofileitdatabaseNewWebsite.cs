@@ -268,9 +268,16 @@ namespace dlwebclasses
             else
                 _NewContents.AppendLine(Pro.ToString());
 
-            var _subDepartmentProfile = dbit.SubDepartmentProfiles.Where(x => x.emp_code == staffcode && x.Id <60).FirstOrDefault();
+            var _subDepartmentProfile = dbit.SubDepartmentProfiles.Where(x => x.emp_code == staffcode && x.ApprovedProfile != null && x.ApprovedProfile.Length >20).ToList();
             if (_subDepartmentProfile != null)
-                    _NewContents.AppendLine("</p><p>&nbsp;</p><p><div class=\"btn btn-primary\"><h4 style=\"margin-top:10px !important;margin-bottom:0px !important;\">To view " + staffname + "’s " + _subDepartmentProfile.SubDepartment + " profile – please <a href=\"" + "/" + _subDepartmentProfile.SubDepartment.Replace(" ", "-") + "_ourteam/" + staffname.Replace(" ","_") + ".html" + "\" style=\"display:inline-block !important;font-size:18px !important; color:#ffffff !important; text-decoration:underline !important; font-weight:bold !important;\">click here</a>.</h4></div>");
+            {
+                _NewContents.AppendLine("<ul>");
+                foreach (var subDepartmentProfile in _subDepartmentProfile)
+                {
+                    _NewContents.AppendLine("<li><a href=\"/" + subDepartmentProfile.SubDepartmentProfileStructure.SubDepartment.Replace(" ", "-").Replace("&", "and").Replace("/", "") + "_ourteam/" + staffname.Replace(" ", "_").Replace("&", "and").Replace(" ", "") + ".html" + "\">View " + staffname + "’s \"" + subDepartmentProfile.SubDepartmentProfileStructure.SubDepartment + "\" profile</a></li>");
+                }
+                _NewContents.AppendLine("</ul><br /><br />");
+            }
 
 
             _NewContents.AppendLine("                        </div>");

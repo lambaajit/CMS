@@ -81,7 +81,7 @@ namespace dlwebclasses
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
 
 
-            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + subDepartment.Replace(" ","-") + "_ourTeam" + "\\" + Name.ToString().Replace(" ", "_") + ".html";
+            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + subDepartment.Replace(" ","-").Replace("&","and").Replace("/", "") + "_ourTeam" + "\\" + Name.ToString().Replace(" ", "_") + ".html";
             //canonicaltag = "<link rel=\"canonical\" href=\"https://www.duncanlewis.co.uk/" + allStatic.getRewriteUrlLinkForStaff(_emp_Details) + "/\" />";
             Department = _emp_Details.department_it;
             Emp_Status = _emp_Details.emp_status;
@@ -288,7 +288,7 @@ namespace dlwebclasses
             _NewContents.AppendLine("            <div class=\"col-sm-9 col-xs-12 " + dd.cssclass + " profiletabs\">");
 
             //Profile contents
-            var _profile = dbit.SubDepartmentProfiles.Where(x => x.SubDepartment == subDepartment && x.emp_code == staffcode).Select(x => x.Profile).FirstOrDefault();
+            var _profile = dbit.SubDepartmentProfiles.Where(x => x.SubDepartmentProfileStructure.SubDepartment == subDepartment && x.emp_code == staffcode).Select(x => x.Profile).FirstOrDefault();
             
 
 
@@ -297,9 +297,9 @@ namespace dlwebclasses
             _NewContents.AppendLine("                        <h3 class=\"" + dd.cssclass + " lightkolor\">" + _emp_Details.forename + "'s " + subDepartment + " Profile / Experience<span class=\"fa fa-user-circle\"></span></h3>");
             _NewContents.AppendLine("                        <div class=\"sectionbody\">");
 
-            _NewContents.AppendLine("<p>" + _profile.Replace(Environment.NewLine, "</p><p>&nbsp;</p><p>") + "</p>");
+            _NewContents.AppendLine("<p>" + _profile.Replace(Environment.NewLine, "<br />") + "</p>");
 
-            _NewContents.AppendLine("</p><p>&nbsp;</p><p><div class=\"btn btn-primary\"><h4 style=\"margin-top:10px !important;margin-bottom:0px !important;\">To view " + Name + "’s main profile – please <a href=\"/" + allStatic.getRewriteUrlLinkForStaff(_emp_Details) + "\" style=\"display:inline-block !important;font-size:18px !important; color:#ffffff !important; text-decoration:underline !important; font-weight:bold !important;\">click here</a>.</h4></div>");
+            _NewContents.AppendLine("</p><p>&nbsp;</p><p><a href=\"/" + allStatic.getRewriteUrlLinkForStaff(_emp_Details) + "\" style=\"display:inline-block !important;font-size:18px !important; text-decoration:underline !important; font-weight:bold !important;\">View " + Name + "’s main profile</a>");
 
 
             _NewContents.AppendLine("                        </div>");
