@@ -76,7 +76,11 @@ namespace dlwebclasses
 
             Update_Title = WP.filename + " (" + ((DateTime)WP.Date_Update).Day.ToString() + " " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName((((DateTime)WP.Date_Update).Month)) + " " + ((DateTime)WP.Date_Update).Year.ToString() + ")";
             string Linktext = WP.Title + " (" + ((DateTime)WP.Date_Update).Day.ToString() + " " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName((((DateTime)WP.Date_Update).Month)) + " " + ((DateTime)WP.Date_Update).Year.ToString() + ")";
-            contentstext = "<p>" + WP.Contents.ToString().Replace("^", "'").Replace("***", "</p><h6>").Replace("**", "</h6><p>").Replace("*is*", "<i>").Replace("*ie*", "</i>").Replace("*bis*", "<b><i>").Replace("*bie*", "</b></i>").Replace(". " + (char)13, ".<br />").Replace("." + (char)13, ".<br />").Replace("</br>", "<br />").Replace("" + (char)13,"<br />") + "</p>";
+            if (WP.ModifiedDate > new DateTime(2023, 12, 18))
+                contentstext = "<p>" + WP.Contents.ToString().Replace("^", "'") + "</p>";
+            else
+                contentstext = "<p>" + WP.Contents.ToString().Replace("^", "'").Replace("***", "</p><h6>").Replace("**", "</h6><p>").Replace("*is*", "<i>").Replace("*ie*", "</i>").Replace("*bis*", "<b><i>").Replace("*bie*", "</b></i>").Replace(". " + (char)13, ".<br />").Replace("." + (char)13, ".<br />").Replace("</br>", "<br />").Replace("" + (char)13,"<br />") + "</p>";
+
             if (WP.Department == "Legal News")
                 imgstr = "<img class=\"newsarticlesmainimage\" src=\"/images_newarticles/" + WP.Blog_Department + ".jpg\" alt=\"Duncan Lewis, " + DD.Name + " Solicitors, " + WP.Title + "\" />";
             else if (WP.Department == "Reported Case" || WP.Department == "InThePress")

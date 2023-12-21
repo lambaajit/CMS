@@ -42,5 +42,13 @@ namespace dlwebclasses
         public Nullable<int> Private { get; set; }
         public Nullable<int> LegalAid { get; set; }
         public Nullable<int> Corporate { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<bool> Enabled { get; set; }
+        public Nullable<int> WarningColorCode { get; set; }
+        public string WarningMessage { get; set; }
+        public string ip_address { get; set; }
     }
 }

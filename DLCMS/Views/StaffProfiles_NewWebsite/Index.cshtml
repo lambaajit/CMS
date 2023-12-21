@@ -15,7 +15,7 @@
     @using (@Html.BeginForm("CreateStaffProfiles", "StaffProfiles_NewWebsite", FormMethod.Post))
     {
         <div class="panel panel-default col-md-3" style="padding:0px;">
-            <div class="panel-heading" style="width:100%;">Create News/Articles Pages</div>
+            <div class="panel-heading" style="width:100%;">Create Staff Profiles</div>
             <div class="panel-body">
                 @Html.Label("Staff Name")
                 @Html.DropDownList("cbo_StaffList", (SelectList)Dictionary["SatffList"])
@@ -41,6 +41,30 @@
         </div>
     }
 
+    @using (@Html.BeginForm("CreateStaffProfilesSubDepartments", "StaffProfiles_NewWebsite", FormMethod.Post))
+    {
+        <div class="panel panel-default col-md-3" style="padding:0px;">
+            <div class="panel-heading" style="width:100%;">Create Sub Department Profiles</div>
+            <div class="panel-body">
+                @Html.Label("Sub Department")
+                @Html.DropDownList("SubDepartmentProfileStructureId", (SelectList)ViewBag.SubDepartments, "Select", new { required = "required" })
+                <br />
+                @Html.Label("Create What?")<br />
+                @Html.DropDownList("Category", new List<SelectListItem>
+                           {
+                               new SelectListItem{Text = "Team Pages", Value="Team Pages"},
+                               new SelectListItem{Text = "Profile Pages", Value="Profile Pages"},
+                               new SelectListItem{Text = "Both", Value="Both"},
+                           }, "Select", new { required = "required" }
+                )
+                <br />
+                <br />
+                <input type="submit" value="Create" />
+                <br />
+            </div>
+        </div>
+    }
+
     @using (@Html.BeginForm("CostLawTeamPages", "StaffProfiles_NewWebsite", FormMethod.Post))
     {
         <input type="submit" value="Create Cost Law Team Pages" />
@@ -55,13 +79,9 @@
     {
         <input type="submit" value="Create Cost Law Staff Profiles" />
     }
-
-    @Html.ActionLink("Create SubDepartment Profiles", "CreateStaffProfilesSubDepartments", "StaffProfiles_NewWebsite", new { @class = "btn btn-primary" })
-    <br />
-    @Html.ActionLink("Create SubDepartment Team Pages", "CreateStaffProfilesTeamPages", "StaffProfiles_NewWebsite", new { @class = "btn btn-primary" })
     <br />
     @Html.ActionLink("Create HT Access", "CreateHTAccess", "StaffProfiles_NewWebsite", new { @class = "btn btn-primary" })
-    
+
 
 
     @using (@Html.BeginForm("CreateVCFCards", "StaffProfiles_NewWebsite", FormMethod.Post))

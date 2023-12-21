@@ -14,6 +14,11 @@ namespace dlwebclasses
     
     public partial class Website_Pages
     {
+        public Website_Pages()
+        {
+            this.Website_Structure = new HashSet<Website_Structure>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public string Department { get; set; }
@@ -45,5 +50,11 @@ namespace dlwebclasses
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<bool> Enabled { get; set; }
+        public Nullable<int> WarningColorCode { get; set; }
+        public string WarningMessage { get; set; }
+        public string ip_address { get; set; }
+    
+        public virtual ICollection<Website_Structure> Website_Structure { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace dlwebclasses
 {
     public interface IService<T> where T : class
     {
-        IEnumerable<T> GetAll();
+        IQueryable<T> GetAll();
         T FindById(object id);
         void Add(T obj);
         void Update(T obj);

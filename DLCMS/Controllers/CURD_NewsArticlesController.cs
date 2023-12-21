@@ -15,7 +15,7 @@ using System.Configuration;
 
 namespace DLCMS.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Removed")]
     public class CURD_NewsArticlesController : BaseController
     {
         private DLCMS_ITDatabase db = new DLCMS_ITDatabase();

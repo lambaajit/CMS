@@ -31,6 +31,7 @@ namespace DLCMS
             "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+                    "~/Content/themes/base/jquery-ui.css",
                     "~/Content/themes/base/accordion.css",
                     "~/Content/themes/base/all.css",
                     "~/Content/themes/base/autocomplete.css",
@@ -52,7 +53,7 @@ namespace DLCMS
                     "~/Content/themes/base/theme.css",
                     "~/Content/themes/base/tooltip.css"));
 
-        
+
         }
     }
 }

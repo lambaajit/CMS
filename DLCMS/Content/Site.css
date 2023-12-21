@@ -16,6 +16,43 @@ textarea {
     max-width: 280px;
 }
 
+
+
+
+#CreateDiv input, #CreateDiv textarea, #CreateDiv select {
+    margin-bottom: 5px !important;
+}
+
+    #CreateDiv input[type=text], #CreateDiv textarea, #CreateDiv select {
+        min-width: 100%;
+        width: 100%;
+    }
+
+/*#region tr color coding */
+.RedTr {
+    background-color: lightcoral;
+}
+
+.OrangeTr {
+    background-color: lightsalmon;
+}
+
+.YellowTr {
+    background-color: lightgoldenrodyellow;
+}
+
+.GreenTr {
+    background-color: #d7fcd0;
+}
+
+/*#endregion */
+
+#SearchDiv select, #SearchDiv input[type=text] {
+    max-width: 200px !important;
+    width: 200px !important;
+}
+
+
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;

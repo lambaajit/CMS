@@ -1,0 +1,19 @@
+﻿@model dlwebclasses.AllProperties
+
+<input type="number" min="1" max="2500" name="NumberOfRecordsPerPages" class="form-control" style="display:inline-block; width:75px !important" value="@Model.NumberOfRecordsPerPages" title="Number of Records per page" />per page
+<div class="dropdown" style="display:inline-block">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Columns <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="padding:5px">
+        @for (int i = 0; i < Model.ClassProperties.Count; i++)
+        {
+
+            @Html.CheckBoxFor(model => Model.ClassProperties[i].IsSelected);
+            @Html.HiddenFor(model => Model.ClassProperties[i].Name);
+            @Html.LabelFor(model => Model.ClassProperties[i].IsSelected, Model.ClassProperties[i].Name);
+            <br />
+
+        }
+    </div>
+</div>

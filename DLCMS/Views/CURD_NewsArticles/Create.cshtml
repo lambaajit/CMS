@@ -79,7 +79,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Page_Title, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.Page_Title, new { @class = "col-md-10 form-control", ng_model = "TitleWP" })
+            @Html.TextBoxFor(model => model.Page_Title, new { @class = "col-md-10 form-control", ng_model = "TitleWP", maxlength = "70" })
             @Html.ValidationMessageFor(model => model.Page_Title)
             <br /><p>Maximum Allowed: 60, Word Count: {{TitleWP.length}}</p>
         </div>
@@ -88,7 +88,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.Description, new { @class = "col-md-10 form-control", ng_model = "DescriptionWP" })
+            @Html.TextBoxFor(model => model.Description, new { @class = "col-md-10 form-control", ng_model = "DescriptionWP", maxlength = "160" })
             @Html.ValidationMessageFor(model => model.Description)
             <br /><p>Maximum Allowed: 160, Current Word Count: {{DescriptionWP.length}}</p>
         </div>

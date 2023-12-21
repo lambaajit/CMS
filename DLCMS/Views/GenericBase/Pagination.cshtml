@@ -1,0 +1,36 @@
+﻿@model BaseViewModelWithColumnHeaders
+
+@*@if (Model.TotalNumberOfRecords > Model.NumberOfRecordsPerPage)
+{*@
+
+<div style="float:right">
+    @Ajax.ActionLink(" ", "GetFilteredRecordsWithPagination", Model.ControllerName, new { area = Model.AreaName, numberOfRecordsToTake = Model.NumberOfRecordsPerPage, startIndexOfList = 0 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('DataUpdated')", OnComplete = "$('#EntityList').hide().fadeIn()" }, new { @class = "btn btn-default fa fa-backward" })
+
+    @{int _totalpages = Model.TotalNumberOfRecords / Model.NumberOfRecordsPerPage; }
+
+    @if (Model.PageIndex < 5 || _totalpages < 10)
+    {
+        for (int i = 1; i <= (_totalpages > 10 ? 10 : _totalpages); i++)
+        {
+            @Ajax.ActionLink(i.ToString(), "GetFilteredRecordsWithPagination", Model.ControllerName, new { area = Model.AreaName, numberOfRecordsToTake = Model.NumberOfRecordsPerPage, startIndexOfList = (i - 1) }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('DataUpdated')", OnComplete = "$('#EntityList').hide().fadeIn()" }, new { @class = "btn " + (i-1 == Model.PageIndex ? "btn-primary" : "btn-default") })
+        }
+    }
+    else if ((Model.PageIndex > _totalpages - 5))
+    {
+        for (int i = _totalpages - 10; i <= _totalpages; i++)
+        {
+            @Ajax.ActionLink(i.ToString(), "GetFilteredRecordsWithPagination", Model.ControllerName, new { area = Model.AreaName, numberOfRecordsToTake = Model.NumberOfRecordsPerPage, startIndexOfList = (i - 1) }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('DataUpdated')", OnComplete = "$('#EntityList').hide().fadeIn()" }, new { @class = "btn " + (i-1 == Model.PageIndex ? "btn-primary" : "btn-default") })
+        }
+    }
+    else
+    {
+        for (int i = Model.PageIndex -5; i <= Model.PageIndex + 5; i++)
+        {
+            @Ajax.ActionLink(i.ToString(), "GetFilteredRecordsWithPagination", Model.ControllerName, new { area = Model.AreaName, numberOfRecordsToTake = Model.NumberOfRecordsPerPage, startIndexOfList = (i - 1) }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('DataUpdated')", OnComplete = "$('#EntityList').hide().fadeIn()" }, new { @class = "btn " + (i-1 == Model.PageIndex ? "btn-primary" : "btn-default") })
+        }
+    }
+    @Ajax.ActionLink(((int)(Model.TotalNumberOfRecords / Model.NumberOfRecordsPerPage) + 1).ToString(), "GetFilteredRecordsWithPagination", Model.ControllerName, new { area = Model.AreaName, numberOfRecordsToTake = Model.NumberOfRecordsPerPage, startIndexOfList = (int)(Model.TotalNumberOfRecords / Model.NumberOfRecordsPerPage) }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('DataUpdated')", OnComplete = "$('#EntityList').hide().fadeIn()" }, new { @class = "btn btn-default" })
+    @Ajax.ActionLink(" ", "GetFilteredRecordsWithPagination", Model.ControllerName, new { area = Model.AreaName, numberOfRecordsToTake = Model.NumberOfRecordsPerPage, startIndexOfList = (int)(Model.TotalNumberOfRecords / Model.NumberOfRecordsPerPage) }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('DataUpdated')", OnComplete = "$('#EntityList').hide().fadeIn()" }, new { @class = "btn btn-default fa fa-forward" })
+</div>
+
+@*}*@

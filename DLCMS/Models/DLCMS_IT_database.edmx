@@ -39,6 +39,10 @@
           <Property Name="category" Type="varchar(max)" />
           <Property Name="video" Type="bit" Nullable="false" />
           <Property Name="filename" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="website_awards">
           <Key>
@@ -55,6 +59,10 @@
           <Property Name="DLDepartment" Type="varchar(max)" />
           <Property Name="Blurb" Type="varchar(max)" />
           <Property Name="LogosToUse" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="website_Office_Direction">
           <Key>
@@ -68,6 +76,10 @@
           <Property Name="DirectionByWalk" Type="varchar(max)" />
           <Property Name="DirectionByBus" Type="varchar(max)" />
           <Property Name="officeid" Type="int" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Website_Pages">
           <Key>
@@ -100,6 +112,10 @@
           <Property Name="SubDepartmentSwitchboard" Type="varchar(max)" />
           <Property Name="CustomDepartment" Type="varchar(max)" />
           <Property Name="VideoId" Type="int" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Website_Structure">
           <Key>
@@ -113,7 +129,7 @@
           <Property Name="underwhichnode3" Type="int" />
           <Property Name="level" Type="varchar(max)" />
           <Property Name="linkedid" Type="int" />
-          <Property Name="sequence" Type="int" />
+          <Property Name="sequence" Type="decimal" Precision="18" Scale="2" />
           <Property Name="dept" Type="varchar(max)" />
           <Property Name="SubDepartment" Type="bit" />
           <Property Name="email" Type="varchar(max)" />
@@ -121,6 +137,13 @@
           <Property Name="NewNameForSubDepartment" Type="varchar(max)" />
           <Property Name="SubDepartmentNameForSwitchboard" Type="varchar(max)" />
           <Property Name="NewNameForDepartment" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="WarningColorCode" Type="int" />
+          <Property Name="WarningMessage" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Website_Videos">
           <Key>
@@ -144,7 +167,36 @@
           <Property Name="Reason_removal" Type="varchar(max)" />
           <Property Name="DateOfVideo" Type="datetime" />
           <Property Name="Sequence" Type="int" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Staff_Profile_Video" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Website_S__linke__5CB79AF1">
+          <End Role="Website_Pages" Type="Self.Website_Pages" Multiplicity="0..1" />
+          <End Role="Website_Structure" Type="Self.Website_Structure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Website_Pages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Website_Structure">
+              <PropertyRef Name="linkedid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Website_S__under__5DABBF2A">
+          <End Role="Website_Structure" Type="Self.Website_Structure" Multiplicity="0..1" />
+          <End Role="Website_Structure1" Type="Self.Website_Structure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Website_Structure">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Website_Structure1">
+              <PropertyRef Name="underwhichnode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DLCMS_ITStoreContainer">
           <EntitySet Name="Updates_MainWebsites" EntityType="Self.Updates_MainWebsites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="website_awards" EntityType="Self.website_awards" Schema="dbo" store:Type="Tables" />
@@ -152,6 +204,14 @@
           <EntitySet Name="Website_Pages" EntityType="Self.Website_Pages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Website_Structure" EntityType="Self.Website_Structure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Website_Videos" EntityType="Self.Website_Videos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Website_S__linke__5CB79AF1" Association="Self.FK__Website_S__linke__5CB79AF1">
+            <End Role="Website_Pages" EntitySet="Website_Pages" />
+            <End Role="Website_Structure" EntitySet="Website_Structure" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Website_S__under__5DABBF2A" Association="Self.FK__Website_S__under__5DABBF2A">
+            <End Role="Website_Structure" EntitySet="Website_Structure" />
+            <End Role="Website_Structure1" EntitySet="Website_Structure" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -191,6 +251,10 @@
           <Property Name="Staff8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Staff9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Staff10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityContainer Name="DLCMS_ITDatabase" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Updates_MainWebsites" EntityType="Self.Updates_MainWebsites" />
@@ -199,6 +263,14 @@
           <EntitySet Name="Website_Videos" EntityType="DLCMS_IT.Website_Videos" />
           <EntitySet Name="website_Office_Direction" EntityType="DLCMS_IT.website_Office_Direction" />
           <EntitySet Name="website_awards" EntityType="DLCMS_IT.website_awards" />
+          <AssociationSet Name="FK__Website_S__linke__5CB79AF1" Association="DLCMS_IT.FK__Website_S__linke__5CB79AF1">
+            <End Role="Website_Pages" EntitySet="Website_Pages" />
+            <End Role="Website_Structure" EntitySet="Website_Structure" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Website_S__under__5DABBF2A" Association="DLCMS_IT.FK__Website_S__under__5DABBF2A">
+            <End Role="Website_Structure" EntitySet="Website_Structure" />
+            <End Role="Website_Structure1" EntitySet="Website_Structure" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Website_Pages">
           <Key>
@@ -231,6 +303,11 @@
           <Property Name="SubDepartmentSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CustomDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="VideoId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Website_Structure" Relationship="DLCMS_IT.FK__Website_S__linke__5CB79AF1" FromRole="Website_Pages" ToRole="Website_Structure" />
         </EntityType>
         <EntityType Name="Website_Structure">
           <Key>
@@ -252,6 +329,16 @@
           <Property Name="NewNameForSubDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SubDepartmentNameForSwitchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NewNameForDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="WarningColorCode" Type="Int32" />
+          <Property Name="WarningMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Website_Pages" Relationship="DLCMS_IT.FK__Website_S__linke__5CB79AF1" FromRole="Website_Structure" ToRole="Website_Pages" />
+          <NavigationProperty Name="Website_Structure1" Relationship="DLCMS_IT.FK__Website_S__under__5DABBF2A" FromRole="Website_Structure" ToRole="Website_Structure1" />
+          <NavigationProperty Name="Website_Structure2" Relationship="DLCMS_IT.FK__Website_S__under__5DABBF2A" FromRole="Website_Structure1" ToRole="Website_Structure" />
         </EntityType>
         <EntityType Name="Website_Videos">
           <Key>
@@ -275,6 +362,11 @@
           <Property Name="Reason_removal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DateOfVideo" Type="DateTime" Precision="3" />
           <Property Name="Sequence" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Staff_Profile_Video" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="website_Office_Direction">
           <Key>
@@ -288,6 +380,10 @@
           <Property Name="DirectionByWalk" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DirectionByBus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="officeid" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="website_awards">
           <Key>
@@ -304,7 +400,35 @@
           <Property Name="DLDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Blurb" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="LogosToUse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <Association Name="FK__Website_S__linke__5CB79AF1">
+          <End Type="DLCMS_IT.Website_Pages" Role="Website_Pages" Multiplicity="0..1" />
+          <End Type="DLCMS_IT.Website_Structure" Role="Website_Structure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Website_Pages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Website_Structure">
+              <PropertyRef Name="linkedid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Website_S__under__5DABBF2A">
+          <End Type="DLCMS_IT.Website_Structure" Role="Website_Structure" Multiplicity="0..1" />
+          <End Type="DLCMS_IT.Website_Structure" Role="Website_Structure1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Website_Structure">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Website_Structure1">
+              <PropertyRef Name="underwhichnode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -314,6 +438,10 @@
           <EntitySetMapping Name="Updates_MainWebsites">
             <EntityTypeMapping TypeName="DLCMS_IT.Updates_MainWebsites">
               <MappingFragment StoreEntitySet="Updates_MainWebsites">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="Staff10" ColumnName="Staff10" />
                 <ScalarProperty Name="Staff9" ColumnName="Staff9" />
                 <ScalarProperty Name="Staff8" ColumnName="Staff8" />
@@ -350,6 +478,10 @@
           <EntitySetMapping Name="Website_Pages">
             <EntityTypeMapping TypeName="DLCMS_IT.Website_Pages">
               <MappingFragment StoreEntitySet="Website_Pages">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="VideoId" ColumnName="VideoId" />
                 <ScalarProperty Name="CustomDepartment" ColumnName="CustomDepartment" />
                 <ScalarProperty Name="SubDepartmentSwitchboard" ColumnName="SubDepartmentSwitchboard" />
@@ -383,6 +515,13 @@
           <EntitySetMapping Name="Website_Structure">
             <EntityTypeMapping TypeName="DLCMS_IT.Website_Structure">
               <MappingFragment StoreEntitySet="Website_Structure">
+                <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
+                <ScalarProperty Name="WarningColorCode" ColumnName="WarningColorCode" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="NewNameForDepartment" ColumnName="NewNameForDepartment" />
                 <ScalarProperty Name="SubDepartmentNameForSwitchboard" ColumnName="SubDepartmentNameForSwitchboard" />
                 <ScalarProperty Name="NewNameForSubDepartment" ColumnName="NewNameForSubDepartment" />
@@ -405,6 +544,11 @@
           <EntitySetMapping Name="Website_Videos">
             <EntityTypeMapping TypeName="DLCMS_IT.Website_Videos">
               <MappingFragment StoreEntitySet="Website_Videos">
+                <ScalarProperty Name="Staff_Profile_Video" ColumnName="Staff_Profile_Video" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="Sequence" ColumnName="Sequence" />
                 <ScalarProperty Name="DateOfVideo" ColumnName="DateOfVideo" />
                 <ScalarProperty Name="Reason_removal" ColumnName="Reason_removal" />
@@ -429,6 +573,10 @@
           <EntitySetMapping Name="website_Office_Direction">
             <EntityTypeMapping TypeName="DLCMS_IT.website_Office_Direction">
               <MappingFragment StoreEntitySet="website_Office_Direction">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="officeid" ColumnName="officeid" />
                 <ScalarProperty Name="DirectionByBus" ColumnName="DirectionByBus" />
                 <ScalarProperty Name="DirectionByWalk" ColumnName="DirectionByWalk" />
@@ -443,6 +591,10 @@
           <EntitySetMapping Name="website_awards">
             <EntityTypeMapping TypeName="DLCMS_IT.website_awards">
               <MappingFragment StoreEntitySet="website_awards">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="LogosToUse" ColumnName="LogosToUse" />
                 <ScalarProperty Name="Blurb" ColumnName="Blurb" />
                 <ScalarProperty Name="DLDepartment" ColumnName="DLDepartment" />

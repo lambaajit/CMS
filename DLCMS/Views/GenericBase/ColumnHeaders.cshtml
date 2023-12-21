@@ -1,0 +1,16 @@
+﻿@model BaseViewModelWithColumnHeaders
+
+<tr>
+    @foreach (var item in Model.ColumnHeaders)
+    {
+        if (Model.ClassProperties.Where(x => x.Name == item && x.IsSelected == true).FirstOrDefault() != null)
+        {
+            <th style = "background-color:lightgray" >
+                @Ajax.ActionLink(item.Replace("_", " "), "GetFilteredRecordsWithSorting", Model.ControllerName, new { area = Model.AreaName, SortOn = item }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('DataUpdated')", OnComplete = "$('#EntityList').hide().fadeIn()" }, new { @class="fa fa-sort" })
+            </th >
+        }
+    }
+
+    <th></th>
+</tr>
+

@@ -11,6 +11,17 @@ namespace DLCMS.Controllers
 {
     public class StaffProfiles_NewWebsiteController : BaseController
     {
+
+        public override void PolulateList()
+        {
+            using (var _subDepartmentProfileStructureService = new SubDepartmentProfileStructureService())
+            {
+                var _subDepartmentProfileStructureList = _subDepartmentProfileStructureService.GetAll().Where(x => x.Enabled == true).Select(x => new SelectListItem() { Text = x.SubDepartment, Value = x.Id.ToString() }).ToList();
+                _subDepartmentProfileStructureList.Add(new SelectListItem() { Text = "All", Value = "0" });
+                ViewBag.SubDepartments = new SelectList(_subDepartmentProfileStructureList, "Value", "Text");
+            }
+        }
+
         //
         // GET: /StaffProfiles/
         public ActionResult Index()
@@ -25,35 +36,50 @@ namespace DLCMS.Controllers
             //    }
             //}
             //ViewBag.listlinks = ls;
+            
             return View();
         }
 
-        public ActionResult CreateStaffProfilesSubDepartments()
+        public ActionResult CreateStaffProfilesSubDepartments(string Category, int SubDepartmentProfileStructureId)
         {
-            AContents NAL;
-            IT_DatabaseEntities dbit = new IT_DatabaseEntities();
-            foreach (var staff in dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile.Length > 20).ToList())
+            if (Category == "Team Pages" || Category == "Both")
             {
-                NAL = new Content_StaffProfileNewWebsite(staff.emp_code, false, staff.SubDepartmentProfileStructure.Department1, staff.SubDepartmentProfileStructure.SubDepartment);
-                CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
+                AContents NAL;
+                IT_DatabaseEntities dbit = new IT_DatabaseEntities();
+                var _approvedProfilesSubDepartments = new List<string>();
+                if (SubDepartmentProfileStructureId == 0)
+                    _approvedProfilesSubDepartments = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile != "" && x.ApprovedProfile.Length > 20).GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
+                else
+                    _approvedProfilesSubDepartments = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile != "" && x.ApprovedProfile.Length > 20 && x.SubDepartmentProfileStructureId == SubDepartmentProfileStructureId).GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
+
+                foreach (var _approvedProfilesSubDepartment in _approvedProfilesSubDepartments)
+                {
+                    var _dept = dbit.SubDepartmentProfileStructures.Where(x => x.SubDepartment == _approvedProfilesSubDepartment).Select(x => x.Department1).FirstOrDefault();
+                    NAL = new Content_TeamPages_NewWebsite(_dept, true, _approvedProfilesSubDepartment);
+                    CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
+                }
+            }
+
+            if (Category == "Profile Pages" || Category == "Both")
+            {
+                AContents NAL;
+                IT_DatabaseEntities dbit = new IT_DatabaseEntities();
+                var _subDepartmentProfiles = new List<SubDepartmentProfile>();
+                if (SubDepartmentProfileStructureId == 0)
+                    _subDepartmentProfiles = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile.Length > 20).ToList();
+                else
+                    _subDepartmentProfiles = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile.Length > 20 && x.SubDepartmentProfileStructureId == SubDepartmentProfileStructureId).ToList();
+
+                foreach (var staff in _subDepartmentProfiles)
+                {
+                    NAL = new Content_StaffProfileNewWebsite(staff.emp_code, false, staff.SubDepartmentProfileStructure.Department1, staff.SubDepartmentProfileStructure.SubDepartment);
+                    CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
+                }
             }
             return View("Index");
         }
 
-        public ActionResult CreateStaffProfilesTeamPages()
-        {
-            AContents NAL;
-            IT_DatabaseEntities dbit = new IT_DatabaseEntities();
-            var _approvedProfilesSubDepartments = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile != "" && x.ApprovedProfile.Length > 20).GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
-            foreach (var _approvedProfilesSubDepartment in _approvedProfilesSubDepartments)
-            {
-                var _dept = dbit.SubDepartmentProfileStructures.Where(x => x.SubDepartment == _approvedProfilesSubDepartment).Select(x => x.Department1).FirstOrDefault();
-                NAL = new Content_TeamPages_NewWebsite(_dept, true, _approvedProfilesSubDepartment);
-                CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
-            }
-            return View("Index");
-        }
-
+        
 
 
         [HttpPost]

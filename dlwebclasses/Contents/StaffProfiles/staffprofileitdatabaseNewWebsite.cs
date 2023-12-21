@@ -30,8 +30,8 @@ namespace dlwebclasses
                 Pro = allStatic.replacelinespacewithbr(Pro);
             }
 
-
-        string department = dbhr.Emp_Details.Where(x => x.emp_code == staffcode).Select(y => y.department_it).FirstOrDefault();
+            var _emp_Details = dbhr.Emp_Details.Where(x => x.emp_code == staffcode);
+        string department = _emp_Details.Select(y => y.department_it).FirstOrDefault();
         string cssclass = "";
         if (dbit.Website_Department_Structure.Where(x => x.Name == department).ToList().Count() > 0)
         {
@@ -48,7 +48,7 @@ namespace dlwebclasses
         if (UP != null)
             staffname = UP.Emp_Name;
         else
-            staffname = dbhr.Emp_Details.Where(x => x.emp_code == staffcode).Select(y => y.forename + " " + y.surname).FirstOrDefault();
+            staffname = _emp_Details.Select(y => y.forename + " " + y.surname).FirstOrDefault();
 
 
         List<Updates_MainWebsites> Articles_Staff = new List<Updates_MainWebsites>();
@@ -224,8 +224,16 @@ namespace dlwebclasses
                 _NewContents.AppendLine("                            </div>");
             }
 
+            var _introVideo = dbit.Website_Videos.Where(x => x.emp_code == staffcode && x.Staff_Profile_Video == true).FirstOrDefault();
+            if (_introVideo != null && _introVideo.VideoString != null)
+            {
+                _NewContents.AppendLine("<h6 font-size=\"14px\">Video Introduction of " + staffname + "</h6><br />");
+                _NewContents.AppendLine(_introVideo.VideoString + "<br /><br />");
+            }
+
             if (UP != null)
             {
+                
                 if ((UP.Profile2 != null && UP.Profile2.Length > 10) || (UP.Profile3 != null && UP.Profile3.Length > 10) || (UP.Profile4 != null && UP.Profile4.Length > 10))
                 {
                     

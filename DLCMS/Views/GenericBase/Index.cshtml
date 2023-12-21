@@ -1,0 +1,237 @@
+﻿@model BaseViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.NotesExist)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 style="margin:0px; display:inline-block">Notes/Instructions</h4>
+                    <i class="fa fa-plus-circle" style="color:#fff; cursor:pointer; float:right" onclick="collapseNotesDiv()"></i>
+                </div>
+                <div class="panel-body collapse" id="notesPanelBody">
+                    @{ Html.RenderPartial("~/Areas/" + Model.AreaName + "/Views/" + Model.ControllerName + "/Notes.cshtml"); }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-4" id="createDivPanel">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 style="margin:0px; display:inline-block">Add or Edit - @Model.EntityName</h4>
+                        <span style="float:right">
+                            @Ajax.ActionLink("Create New", "CreatePartial", Model.ControllerName, new { area = Model.AreaName }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "CreateDiv" }, new { style = "color:#fff !important; font-weight:bold" })
+                        </span>
+                        <i class="fa fa-plus-circle" id="collpseIconA" onclick="collapseListDiv()" style="cursor:pointer; float:right; margin-right:16px;" title="Maximise"></i>
+                    </div>
+                    <div class="panel panel-body">
+                        @if (Model.FileUploadExist == false)
+                        {
+                            using (Ajax.BeginForm("CreateUpdatePartial", Model.ControllerName, new { area = Model.AreaName }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('Create')", OnComplete = "$('#EntityList').hide().fadeIn()" }, new { enctype = "multipart/form-data" }))
+                            {
+                                <div id="CreateDiv">
+                                    @{ Html.RenderAction("CreatePartial", Model.ControllerName, new { area = Model.AreaName }); }
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            using (Html.BeginForm("CreateUpdate", Model.ControllerName, new { area = Model.AreaName }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <div id="CreateDiv">
+                                    @{ Html.RenderAction("CreatePartial", Model.ControllerName, new { area = Model.AreaName }); }
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8" id="listDivPanel">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 style="margin:0px; display:inline">View - @Model.EntityName</h4>
+                        <i class="fa fa-plus-circle" id="collpseIcon" onclick="collapseCreateDiv()" style="cursor:pointer; float:right" title="Maximise"></i>
+                        <i id="btnExport" onclick="fnExcelReport();" class="fa fa-file-alt" style="margin-right:20px; float:right; cursor:pointer" title="Export to Excel"></i>
+                    </div>
+                    <div class="panel panel-body">
+                        <div class="panel panel-default" style="margin-bottom:0px">
+                            @using (Ajax.BeginForm("GetFilteredRecords", Model.ControllerName, new { area = Model.AreaName }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('DataUpdated')", OnComplete = "$('#EntityList').hide().fadeIn()" }))
+                            {
+                                <div id="SearchDiv">
+                                    @{ Html.RenderAction("SearchPartial", Model.ControllerName, new { area = Model.AreaName }); }
+                                    <input type="submit" class="btn btn-primary" value="Search" style="display:inline-block" />
+                                </div>
+
+                            }
+                        </div>
+
+                        <div id="EntityList">
+                            @{Html.RenderAction("GetList", Model.ControllerName, new { area = Model.AreaName }); }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="popupDialog"></div>
+<div id="popupDialogDelete" style="text-align:center !important">
+    @using (Ajax.BeginForm("DeletePartial", Model.ControllerName, new { area = Model.AreaName }, new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", UpdateTargetId = "EntityList", LoadingElementId = "ajax_loading_image", OnSuccess = "confirm('Delete')" }))
+    {
+        <i class="fa fa-exclamation-triangle" style="font-size:72px;"></i>
+        <span>You are about to delete a record. Are you sure.</span><br /><br />
+        <input type="hidden" id="DeleteId" name="DeleteId" />
+        <input type="submit" class="btn btn-primary" value="Delete" style="display:inline-block" />
+    }
+</div>
+
+@section Scripts{
+    <link href="@Url.Content("http://10.0.2.157:1000/ckeditor/samples/css/samples.css")" rel="stylesheet" />
+    <script src="@Url.Content("http://10.0.2.157:1000/ckeditor/ckeditor.js")"></script>
+    <script type="text/javascript">
+        function confirm(action) {
+            if (action == 'Delete') {
+                $("#popupDialogDelete").dialog("close");
+                $("#popupDialog").innerHTML = "You have successfully deleted the record";
+                $("#popupDialog").dialog({
+                    title: "Record Deleted Successfully"
+                });
+                $("#popupDialog").dialog("open");
+            }
+            else if (action == 'Create') {
+                $("#popupDialog").innerHTML = "You have successfully Created/Updated the record";
+                $("#popupDialog").dialog({
+                    title: "Record Created/Updated Successfully"
+                });
+                $("#popupDialog").dialog("open");
+            }
+            else if (action == 'Updated') {
+                $("#popupDialog").innerHTML = "You have successfully updated the record";
+                $("#popupDialog").dialog({
+                    title: "Record Updated Successfully"
+                })
+                $("#popupDialog").dialog("open");
+            }
+            else if (action == 'DataUpdated') {
+                //$("#popupDialog").innerHTML = "Data Updated Successfully";
+                //$("#popupDialog").dialog({
+                //    title: "Record Updated Successfully"
+                //});
+                //$('.toast-header').html("<span>Confirmation</span>");
+                //$('.toast-body').html("<span>Records are updated</span>");
+                //$('.toast').toast({
+                //    animation: false,
+                //    delay: 1000,
+                //    autohide: true
+                //});
+                //$('.toast').toast('show');
+
+            }
+            /*$("#popupDialog").dialog("open");*/
+        }
+
+        function OpenDeleteDialog(Id) {
+            $("#DeleteId").val(Id);
+            $("#popupDialogDelete").dialog("open");
+        };
+
+        $(document).ready(function () {
+
+            $("#popupDialog").dialog({
+                autoOpen: false, modal: true,
+                width: 500,
+                buttons: {
+                    OK: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            $("#popupDialogDelete").dialog({
+                autoOpen: false, modal: true,
+                width: 500,
+                title: "Delete Record",
+                buttons: {
+                    Do_Not_Delete: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+        });
+
+        function collapseListDiv() {
+            if ($("#listDivPanel").css('display') == 'none' || $("#listDivPanel").css("visibility") == "hidden") {
+                $("#createDivPanel").width("3%");
+                $("#listDivPanel").show();
+                $("#collpseIconA").removeClass("fa-minus-circle")
+                $("#collpseIconA").addClass("fa-plus-circle")
+            }
+            else {
+                $("#createDivPanel").width("70%");
+                $("#listDivPanel").hide();
+                $("#collpseIconA").addClass("fa-minus-circle")
+                $("#collpseIconA").removeClass("fa-plus-circle")
+            }
+        };
+
+        function collapseCreateDiv() {
+            if ($("#createDivPanel").css('display') == 'none' || $("#createDivPanel").css("visibility") == "hidden") {
+                $("#listDivPanel").width("36%");
+                $("#createDivPanel").show();
+                $("#collpseIcon").removeClass("fa-minus-circle")
+                $("#collpseIcon").addClass("fa-plus-circle")
+            }
+            else {
+                $("#listDivPanel").width("70%");
+                $("#createDivPanel").hide();
+                $("#collpseIcon").addClass("fa-minus-circle")
+                $("#collpseIcon").removeClass("fa-plus-circle")
+            }
+        };
+
+        function collapseNotesDiv() {
+            if ($("#notesPanelBody").hasClass("in")) {
+                $("#notesPanelBody").removeClass("in");
+            }
+            else {
+                $("#notesPanelBody").addClass("in");
+            }
+        };
+
+
+        function fnExcelReport() {
+            var tab_text = "<table border='2px'><tr bgcolor='#87AFC6'>";
+            var j = 0;
+            var tab = $("#EntityList table");
+
+            for (j = 0; j < tab[0].rows.length; j++) {
+                tab_text = tab_text + tab[0].rows[j].innerHTML + "</tr>";
+                //tab_text=tab_text+"</tr>";
+            }
+
+            tab_text = tab_text + "</table>";
+            //tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+            //tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+            //tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+            sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+            return sa;
+        }
+
+
+    </script>
+}
+
+
+
+
+
+

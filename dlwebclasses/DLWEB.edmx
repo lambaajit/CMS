@@ -45,6 +45,13 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="RoomBooking" Type="bit" />
           <Property Name="Company" Type="varchar(max)" />
           <Property Name="Sequence" Type="int" />
+          <Property Name="BluePrintActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="VideoId" Type="int" />
         </EntityType>
         <EntityType Name="Recruitment_DlWeb">
           <Key>
@@ -121,6 +128,8 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SubDepartment_Switchboard" Type="varchar(max)" />
           <Property Name="email" Type="varchar(max)" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="DelayOpeningToAllOffices" Type="int" />
         </EntityType>
         <EntityType Name="WebsitePagesSubDepartments">
           <Key>
@@ -170,6 +179,13 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="RoomBooking" Type="Boolean" />
           <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Sequence" Type="Int32" />
+          <Property Name="BluePrintActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="VideoId" Type="Int32" />
         </EntityType>
         <EntityContainer Name="DLWEBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="OfficesDLW" EntityType="DLWEBModel.OfficeDLW" />
@@ -270,6 +286,8 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubDepartment_Switchboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="DelayOpeningToAllOffices" Type="Int32" />
         </EntityType>
         <EntityType Name="WebsitePagesSubDepartment">
           <Key>
@@ -289,6 +307,13 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <EntitySetMapping Name="OfficesDLW">
             <EntityTypeMapping TypeName="DLWEBModel.OfficeDLW">
               <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="BluePrintActive" ColumnName="BluePrintActive" />
                 <ScalarProperty Name="Sequence" ColumnName="Sequence" />
                 <ScalarProperty Name="Company" ColumnName="Company" />
                 <ScalarProperty Name="RoomBooking" ColumnName="RoomBooking" />
@@ -398,6 +423,8 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <EntitySetMapping Name="SubDepartments">
             <EntityTypeMapping TypeName="DLWEBModel.SubDepartment">
               <MappingFragment StoreEntitySet="SubDepartments">
+                <ScalarProperty Name="DelayOpeningToAllOffices" ColumnName="DelayOpeningToAllOffices" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="SubDepartment_Switchboard" ColumnName="SubDepartment_Switchboard" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

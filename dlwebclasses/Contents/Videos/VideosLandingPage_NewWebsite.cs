@@ -37,9 +37,9 @@ namespace dlwebclasses
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
             List<Website_Videos> WV = new List<Website_Videos>();
             if (dept != "All")
-                WV = dbit.Website_Videos.Where(x => x.Department == dept && x.Active == true).OrderByDescending(x => x.DateOfVideo).ToList();
+                WV = dbit.Website_Videos.Where(x => x.Department == dept && x.Active == true && x.Staff_Profile_Video == false).OrderByDescending(x => x.DateOfVideo).ToList();
             else
-                WV = dbit.Website_Videos.Where(x => x.Active == true).OrderBy(x => x.Department).ThenByDescending(x => x.DateOfVideo).ToList();
+                WV = dbit.Website_Videos.Where(x => x.Active == true && x.Staff_Profile_Video == false).OrderBy(x => x.Department).ThenByDescending(x => x.DateOfVideo).ToList();
 
             DepartmentNavigationNewWebsite Deptnav = new DepartmentNavigationNewWebsite();
              HRDDLEntities hrd = new HRDDLEntities();
@@ -57,6 +57,13 @@ _NewContent.AppendLine("            <div class=\"col-sm-12 col-md-7 col-xs-12 co
                 _NewContent.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.News1 + "\">News<span class=\"fa fa-newspaper-o\"></span></a>");
                 _NewContent.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.News1.Replace("news", "articles") + "\">Articles<span class=\"fa fa-book\"></span></a>");
                 _NewContent.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/" + DD.Video + "\">Videos<span class=\"fa fa-video-camera\"></span></a>");
+            }
+            else if (DD.Name == "Find Us")
+            {
+                _NewContent.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/findus.html\">All Offices<span class=\"fa fa-building\"></span></a>");
+                _NewContent.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Office_InLondon.html\">Offices In London<span class=\"fa fa-building\"></span></a>");
+                _NewContent.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Office_OutLondon.html\">Offices Outside London<span class=\"fa fa-building\"></span></a>");
+
             }
             else
             {

@@ -15,7 +15,7 @@ using System.Text;
 
 namespace DLCMS.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Removed")]
     public class CURD_WebSitePagesController : BaseController
     {
         private DLCMS_ITDatabase db = new DLCMS_ITDatabase();

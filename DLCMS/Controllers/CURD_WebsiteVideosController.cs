@@ -49,7 +49,7 @@ namespace DLCMS.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include= "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo")] dlwebclasses.Website_Videos website_videos)
+        public ActionResult Create([Bind(Include= "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo,Staff_Profile_Video")] dlwebclasses.Website_Videos website_videos)
         {
             using (var _website_VideosServices = new dlwebclasses.Website_VideosServices())
             {
@@ -85,7 +85,7 @@ namespace DLCMS.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo")] dlwebclasses.Website_Videos website_videos)
+        public ActionResult Edit([Bind(Include = "id,Department,VideoString,emp_code,MetaTitle,MetaKeyword,MetaDescription,Heading,Description,name,website_filename,content,thumbnailpic,DoneBy,Active,DateOfVideo,Staff_Profile_Video")] dlwebclasses.Website_Videos website_videos)
         {
             using (var _website_VideosServices = new dlwebclasses.Website_VideosServices())
             {

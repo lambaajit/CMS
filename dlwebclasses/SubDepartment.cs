@@ -19,5 +19,7 @@ namespace dlwebclasses
         public int ID { get; set; }
         public string SubDepartment_Switchboard { get; set; }
         public string email { get; set; }
+        public Nullable<bool> Active { get; set; }
+        public Nullable<int> DelayOpeningToAllOffices { get; set; }
     }
 }

@@ -1,0 +1,30 @@
+﻿@model DLCMS.Areas.NewsArticles.Controllers.Updates_MainWebsitesSearch
+
+@Html.TextBoxFor(x => x.Title, new { @class = "form-control", style = "display:inline-block", placeholder = "Title" })
+@Html.DropDownListFor(x => x.Department, (List<SelectListItem>)ViewBag.DepartmentList, "Department", new { @class = "form-control", style = "display:inline-block", placeholder = "Title" })
+@Html.TextBoxFor(x => x.Date_Update, new { @class = "form-control date", style = "display:inline-block", placeholder = "Date" })
+@Html.TextBoxFor(x => x.MonthYear, new { @class = "form-control date", style = "display:inline-block", placeholder = "Month" })
+@Html.DropDownListFor(x => x.DLorNonDL, new List<SelectListItem>() { 
+    new SelectListItem() { Text = "All", Value = "All" }, 
+    new SelectListItem() { Text = "DL", Value = "DL" }, 
+    new SelectListItem() { Text = "NonDL", Value = "NonDL" } 
+}, "DLorNonDL", new { @class = "form-control", style = "display:inline-block" })
+
+@{ Html.RenderPartial("~/Views/GenericBase/ColumnsToDisplay.cshtml", new dlwebclasses.AllProperties() { ClassProperties = Model.ClassProperties, NumberOfRecordsPerPages = Model.NumberOfRecordsPerPages }); }
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        CKEDITOR.replace('Contents', {
+            height: 400
+        });
+    });
+
+    var UpdatesMainwebsite = {
+        InitialiseForm: function (data) {
+            CKEDITOR.replace('Contents', {
+                height: 400
+            });
+        }
+    };
+</script>

@@ -121,7 +121,21 @@ _NewContent.AppendLine("                        </div>");
 _NewContent.AppendLine("                    </div>");
 _NewContent.AppendLine("                </div>");
 
-_NewContent.AppendLine("                <div class=\"col-xs-12 panel panel-primary nopadding officedetails dept_default deptbordercolor\">");
+
+            if (office.VideoId != null && office.VideoId > 0)
+            {
+                var WV = dbit.Website_Videos.Where(x => x.id == office.VideoId).FirstOrDefault();
+                _NewContent.AppendLine("                <div class=\"col-xs-12 panel panel-primary nopadding officedetails dept_default deptbordercolor\">");
+                _NewContent.AppendLine("                    <div class=\"panel-heading dept_default kolor deptbordercolor\">Office Video<span class=\"fa fa-pencil-square-o\"></span></div>");
+                _NewContent.AppendLine("                        <div class=\"panel-body\">");
+                _NewContent.AppendLine(WV.VideoString);
+                _NewContent.AppendLine("                        </div>");
+                _NewContent.AppendLine("                        </div>");
+            }
+
+
+
+            _NewContent.AppendLine("                <div class=\"col-xs-12 panel panel-primary nopadding officedetails dept_default deptbordercolor\">");
 _NewContent.AppendLine("                    <div class=\"panel-heading dept_default kolor deptbordercolor\">Contact Details<span class=\"fa fa-pencil-square-o\"></span></div>");
 _NewContent.AppendLine("                        <div class=\"panel-body\">");
 _NewContent.AppendLine("                            <div class=\"row\">");

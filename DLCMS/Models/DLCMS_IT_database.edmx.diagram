@@ -11,6 +11,8 @@
         <EntityTypeShape EntityType="DLCMS_IT.Website_Videos" Width="1.5" PointX="5.375" PointY="5.75" />
         <EntityTypeShape EntityType="DLCMS_IT.website_Office_Direction" Width="2.25" PointX="6.375" PointY="0.75" />
         <EntityTypeShape EntityType="DLCMS_IT.website_awards" Width="1.5" PointX="0.75" PointY="7.75" />
+        <AssociationConnector Association="DLCMS_IT.FK__Website_S__linke__5CB79AF1" />
+        <AssociationConnector Association="DLCMS_IT.FK__Website_S__under__5DABBF2A" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

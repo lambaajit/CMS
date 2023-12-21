@@ -37,7 +37,7 @@ namespace dlwebclasses
 
 
             if (!string.IsNullOrEmpty(WP.Title))
-                Title = WP.Title + (WP.Title.Length < 60 ? WP.Title.Contains("Duncan Lewis") ? "" : " | Duncan Lewis" : "");
+                Title = WP.Title + (WP.Title.Length < 55 ? WP.Title.Contains("Duncan Lewis") ? "" : " | Duncan Lewis" : "");
             else
                 Title = DD.Title1;
 

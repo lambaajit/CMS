@@ -14,6 +14,11 @@ namespace DLCMS.Models
     
     public partial class Website_Structure
     {
+        public Website_Structure()
+        {
+            this.Website_Structure1 = new HashSet<Website_Structure>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
         public Nullable<int> underwhichnode { get; set; }
@@ -30,5 +35,16 @@ namespace DLCMS.Models
         public string NewNameForSubDepartment { get; set; }
         public string SubDepartmentNameForSwitchboard { get; set; }
         public string NewNameForDepartment { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<bool> Enabled { get; set; }
+        public Nullable<int> WarningColorCode { get; set; }
+        public string WarningMessage { get; set; }
+    
+        public virtual Website_Pages Website_Pages { get; set; }
+        public virtual ICollection<Website_Structure> Website_Structure1 { get; set; }
+        public virtual Website_Structure Website_Structure2 { get; set; }
     }
 }

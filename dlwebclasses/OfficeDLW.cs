@@ -32,5 +32,12 @@ namespace dlwebclasses
         public Nullable<bool> RoomBooking { get; set; }
         public string Company { get; set; }
         public Nullable<int> Sequence { get; set; }
+        public Nullable<bool> BluePrintActive { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<bool> Enabled { get; set; }
+        public Nullable<int> VideoId { get; set; }
     }
 }

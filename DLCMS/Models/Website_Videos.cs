@@ -32,5 +32,10 @@ namespace DLCMS.Models
         public string Reason_removal { get; set; }
         public Nullable<System.DateTime> DateOfVideo { get; set; }
         public Nullable<int> Sequence { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public bool Staff_Profile_Video { get; set; }
     }
 }

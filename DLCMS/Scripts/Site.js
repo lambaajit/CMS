@@ -3,6 +3,24 @@ var baseUrl = '@Url.Content("~/")'
 var url = baseUrl + 'Api/AllAPIs';
 //$scope.jobID = 0;
 
+
+function FillSubsequestDropDown(selectedDropDown, dropdownToPopulate, urlToAction) {
+    var selectedValue = $("#" + selectedDropDown).val();
+    $.ajax({
+        type: "GET",
+        url: urlToAction,
+        data: { value: selectedValue },
+        success: function (data) {
+            $("#" + dropdownToPopulate).empty();
+            $("#" + dropdownToPopulate).append('<option value="">Select...</option>');
+            data.forEach(function (item) {
+                $("#" + dropdownToPopulate).append('<option value="' + item.Value + '">' + item.Text + '</option>');
+            });
+        }
+    });
+};
+
+
 app.controller('Jobs', function ($scope, $http) {
 
     $scope.TitleWP = '';

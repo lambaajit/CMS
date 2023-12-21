@@ -45,5 +45,6 @@ namespace dlwebclasses
         public virtual DbSet<Website_Structure> Website_Structure { get; set; }
         public virtual DbSet<SubDepartmentProfileStructure> SubDepartmentProfileStructures { get; set; }
         public virtual DbSet<LogsOfModification> LogsOfModifications { get; set; }
+        public virtual DbSet<Updates_MainWebsite_Departments> Updates_MainWebsite_Departments { get; set; }
     }
 }

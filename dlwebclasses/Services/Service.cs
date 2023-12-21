@@ -28,9 +28,9 @@ namespace dlwebclasses
             return table.Find(id);
         }
 
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            return table.AsEnumerable();
+            return table.AsQueryable();
         }
 
         public virtual void Add(T obj)

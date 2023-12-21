@@ -25,6 +25,12 @@ namespace dlwebclasses
             return _IMainNavigation.getmainnavigation();
         }
 
+        public static string changePascelCaseToSpaces(this string str)
+        {
+            var strarr = str.ToCharArray().Select(x => x.ToString());
+            var result = strarr.Aggregate((x, y) => y == y.ToUpper() ? x + " " + y : x + y);
+            return result;
+        }
 
         public static string filterjobtitle(Emp_Details _Empdetails)
         {
@@ -223,6 +229,10 @@ namespace dlwebclasses
                 fp.WriteLine("</rule>");
             }
 
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
+            fp.WriteLine("<match url=\"/PublicLaw_ourteam/Gemma_Lynch.html.*\" />");
+            fp.WriteLine("<action type=\"Redirect\" url=\"/Gemma-Lynch-Immigration-Solicitor-City-of-London-/\" redirectType=\"Permanent\" />");
+            fp.WriteLine("</rule>");
 
             fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
             fp.WriteLine("<match url=\"mentalhealth.html.*\" />");

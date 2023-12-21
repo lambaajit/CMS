@@ -17,6 +17,10 @@ namespace dlwebclasses
         Nullable<System.DateTime> CreatedDate { get; set; }
         string ModifiedBy { get; set; }
         Nullable<System.DateTime> ModifiedDate { get; set; }
+        Nullable<bool> Enabled { get; set; }
+        Nullable<int> WarningColorCode { get; set; }
+        string WarningMessage { get; set; }
+        string ip_address { get; set; }
 
     }
 

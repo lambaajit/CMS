@@ -28,6 +28,11 @@ namespace DLCMS.Controllers
             categories = dv.categories;
             _months = dv._months;
             webpagesdeptlist = dv.webpagesdeptlist;
+            PolulateList();
+        }
+
+        public virtual void PolulateList()
+        {
 
         }
     }
