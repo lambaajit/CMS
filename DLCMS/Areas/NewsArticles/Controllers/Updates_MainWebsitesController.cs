@@ -36,16 +36,18 @@ namespace DLCMS.Areas.NewsArticles.Controllers
                 record.Image = true;
             else
                 record.Image = false;
- 
+
+
+            record.category = record.DLorNonDL;
+            record.KeywordsToBeUsed = "Yes";
+            record.video = false;
             
-            
+
+
             if (record.ID == 0)
             {
                 record.Date_Added = DateTime.Now;
-                record.category = record.DLorNonDL;
-                record.KeywordsToBeUsed = "Yes";
-                record.video = false;
-                record.Live = true;
+                
                 if (record.Title.ToString().Length > 160)
                     record.filename = record.Title.ToString().Replace("'", "^").Replace("?", "").Replace("-", "").Replace("%", "").Replace("/", "").Replace(" ", "_").Replace("\"", "").Substring(0, 160);
                 else
@@ -62,7 +64,10 @@ namespace DLCMS.Areas.NewsArticles.Controllers
 
             if (record.ID != 0)
             {
-                var _updateMainwesites = db.Updates_MainWebsites.Where(x => x.Duplicate_ID == record.Duplicate_ID).ToList();
+                var _updateMainwesites = db.Updates_MainWebsites.Where(x => x.Duplicate_ID == record.Duplicate_ID && x.Duplicate_ID != null).ToList();
+                if (_updateMainwesites.Count == 0)
+                    _updateMainwesites.Add(db.Updates_MainWebsites.Where(x => x.ID == record.ID).FirstOrDefault());
+
                 var last = _updateMainwesites.Last();
                 foreach (var _updateMainwesite in _updateMainwesites)
                 {
@@ -96,7 +101,7 @@ namespace DLCMS.Areas.NewsArticles.Controllers
 
 
                     if (_updateMainwesite.Equals(last))
-                        return base.CreateUpdate(_updates_MainWebsites, _updates_MainWebsites.ID);
+                        return base.CreateUpdate(_updateMainwesite, _updates_MainWebsites.ID);
                     else
                     {
                         base.CreateUpdateRecord(_updates_MainWebsites, _updates_MainWebsites.ID);
@@ -136,13 +141,16 @@ namespace DLCMS.Areas.NewsArticles.Controllers
             if (Id == 0)
                 Id = db.Updates_MainWebsites.Max(x => x.ID);
             var _updateMainwesites = db.Updates_MainWebsites.Where(x => x.ID == Id).FirstOrDefault();
-            var _allUpdateMainwesites = db.Updates_MainWebsites.Where(x => x.Duplicate_ID == _updateMainwesites.Duplicate_ID).OrderBy(x => x.ID).ToList();
+            var _allUpdateMainwesites = db.Updates_MainWebsites.Where(x => x.Duplicate_ID == _updateMainwesites.Duplicate_ID && x.Duplicate_ID != null).OrderBy(x => x.ID).ToList();
+            if (_allUpdateMainwesites.Count == 0)
+                _allUpdateMainwesites.Add(_updateMainwesites);
+
             if (_allUpdateMainwesites.LastOrDefault().ID == Id)
             {
-                foreach (string str in _allUpdateMainwesites.Select(x => x.Department).ToList())
+                foreach (var _allUpdateMainwesite in _allUpdateMainwesites)
                 {
                     dlwebclasses.Content_NewsArticlesLandingPages_NewWebsite NAL;
-                    NAL = new dlwebclasses.Content_NewsArticlesLandingPages_NewWebsite(str, _updateMainwesites.category, DateTime.Now.Year, DateTime.Now.Month);
+                    NAL = new dlwebclasses.Content_NewsArticlesLandingPages_NewWebsite(_allUpdateMainwesite.Department, _allUpdateMainwesite.DLorNonDL, _allUpdateMainwesite.Date_Update.Value.Year, _allUpdateMainwesite.Date_Update.Value.Month);
                     dlwebclasses.CreateHTMLFIles_NEwWebsite Fl = new dlwebclasses.CreateHTMLFIles_NEwWebsite(NAL);
                 }
 

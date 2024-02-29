@@ -110,7 +110,7 @@ namespace dlwebclasses
                     if (item.Appointment == "Yes")
                     redscript ="<sup class=\"redsuperscript\">*</sup>";
                     _NewContent.AppendLine("                    <div class=\"col-sm-4 col-xs-12 nopadding\">");
-                    _NewContent.AppendLine("                        <div class=\"officelandingpagepanel row nopadding\"><div class=\"col-xs-3\"><span class=\"fa fa-map-marker\"></span></div><div class=\"col-xs-9\"><a href=\"\\offices\\" + item.Name + "_office.html\">" + item.Name + redscript + "</a><p>" + item.County + ", " + item.Postcode + "</p></div></div>");
+                    _NewContent.AppendLine("                        <div class=\"officelandingpagepanel row nopadding\"><div class=\"col-xs-3\"><span class=\"fa fa-map-marker\"></span></div><div class=\"col-xs-9\"><a href=\"\\offices\\" + item.Name + "-Solicitors.html\">" + item.Name + redscript + "</a><p>" + item.County + ", " + item.Postcode + "</p></div></div>");
                     _NewContent.AppendLine("                    </div>");
                 }
                 _NewContent.AppendLine("                </div>");

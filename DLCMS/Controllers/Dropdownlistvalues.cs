@@ -131,7 +131,8 @@ namespace DLCMS.Controllers
             //webpagesdeptlist = db.Database.SqlQuery<string>("select A.* from (select distinct department from Website_pages where company ='Duncan Lewis') A  left join  (select name from Website_Department_Structure) B on A.department = B.name").ToList();
             //webpagesdeptlist = db.Database.SqlQuery<string>("select name from Website_Department_Structure where contactstr1 is not null and contactstr1 > 0").ToList();
 
-            List<SelectListItem> items = db.Website_Structure.Where(x => x.level == "Root").OrderBy(z => z.name).ToList().Select(z => new SelectListItem { Text = z.name, Value = z.id.ToString() }).ToList();
+           //List<SelectListItem> items = db.Website_Structure.Where(x => x.level == "Root").OrderBy(z => z.name).ToList().Select(z => new SelectListItem { Text = z.name, Value = z.id.ToString() }).ToList();
+            List<SelectListItem> items = db.Website_Department_Structure.OrderBy(z => z.Name).ToList().Select(z => new SelectListItem { Text = z.Name, Value = z.ID.ToString() }).ToList();
 
             items.Add(new SelectListItem { Text = "All", Value = "All" });
             items.Add(new SelectListItem { Text = "All Landing pages", Value = "All Landing pages" });

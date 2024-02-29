@@ -66,24 +66,11 @@ namespace dlwebclasses
 
             SB.AppendLine("                        <div class=\"col-sm-2 col-xs-12 footercolumn\">");
             SB.AppendLine("                            <h6 class=\" " + cssclass + "  forecolor\">Our Services</h6>");
-            SB.AppendLine("                            <ul>");
-            foreach (var item in AreasofLaws)
-            {
-                SB.AppendLine(item);
-                //i++;
-                //if (i == 17)
-                //{
-                //    SB.AppendLine("                            </ul>");
-                //    SB.AppendLine("                        </div>");
-
-
-
-                //    SB.AppendLine("                        <div class=\"col-sm-2 col-xs-12 footercolumn\">");
-                //    SB.AppendLine("                            <h6 class=\" " + cssclass + "  forecolor\">Offices Outside London</h6>");
-                //    SB.AppendLine("                            <ul>");
-                //}
-            }
-            SB.AppendLine("                            </ul>");
+            SB.AppendLine("                             <div w3-include-html=\"/OurServices.html\"></div >");
+            //foreach (var item in AreasofLaws)
+            //{
+            //    SB.AppendLine(item);
+            //}
             SB.AppendLine("                        </div>");
 
 

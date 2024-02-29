@@ -26,7 +26,7 @@ namespace dlwebclasses
             StringBuilder Officelist = new StringBuilder();
             foreach (OfficeDLW l1 in li)
             {
-                Officelist.AppendLine("<li><a href=\"/offices/" + l1.Name + "_office.html\">" + department + l1.Name + "</a></li>");
+                Officelist.AppendLine("<li><a href=\"/offices/" + l1.Name + "-Solicitors.html\">" + department + l1.Name + "</a></li>");
             }
             return Officelist;
         }
@@ -38,7 +38,7 @@ namespace dlwebclasses
             StringBuilder Officelist = new StringBuilder();
             foreach (OfficeDLW l1 in li)
             {
-                Officelist.AppendLine("<li><a href=\"/offices/" + l1.Name + "_office.html\">" + department +l1.Name + "</a></li>");
+                Officelist.AppendLine("<li><a href=\"/offices/" + l1.Name + "-Solicitors.html\">" + department +l1.Name + "</a></li>");
             }
             return Officelist;
         }
@@ -50,7 +50,7 @@ namespace dlwebclasses
             List<string> Officelist = new List<string>();
             foreach (OfficeDLW l1 in li)
             {
-                Officelist.Add("<li><a href=\"/offices/" + l1.Name + "_office.html\">" + department + l1.Name + "</a></li>");
+                Officelist.Add("<li><a href=\"/offices/" + l1.Name + "-Solicitors.html\">" + department + l1.Name + "</a></li>");
             }
             return Officelist;
         }
@@ -62,7 +62,7 @@ namespace dlwebclasses
             List<string> Officelist = new List<string>();
             foreach (OfficeDLW l1 in li)
             {
-                Officelist.Add("<li><a href=\"/offices/" + l1.Name + "_office.html\">" + department + l1.Name + "</a></li>");
+                Officelist.Add("<li><a href=\"/offices/" + l1.Name + "-Solicitors.html\">" + department + l1.Name + "</a></li>");
             }
             return Officelist;
         }

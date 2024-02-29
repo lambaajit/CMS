@@ -23,21 +23,16 @@ namespace dlwebclasses
 
         OfficeDLW office = new OfficeDLW();
         office = dbo.OfficesDLW.Where(x => x.ID == id).FirstOrDefault();
-        Title ="Solicitors " + office.Name.ToString() + " | Lawyers " + office.Name.ToString() + " | legal Aid |free advice";
-        Description ="Solicitors " + office.Name.ToString() + ", lawyers, legal aid, Divorce, Domestic violence, child, Immigration, Crime, fraud";
-        string keywords = "Solicitor [Office name], Lawyer [Office name], Solicitors [Office name], Lawyers [Office name], Legal Aid Solicitors [Office name], Legal aid solicitor [Office name], no win no fee solicitor [Office name], Divorce Solicitors, Crime Solicitors, Immigration Solicitors, criminal solicitor, fraud solicitor, serious fraud, vat fraud, white collar fraud, international Child abduction, childcare and social services, benefit fraud solicitor, adoption solicitor, debt and bankruptcy, litigation, mental capacity, court of protection, Childcare Solicitors, Immigration Lawyers, Housing Solicitors, Mental Health, Divorce lawyers, Personal Injury, Domestic Violence Solicitors, prison law solicitor, wardship solicitor, money laundering solicitor, dowry disputes, forced marriage, children taken into care, child custody, professional negligence solicitor, Solicitors in [Office name], Lawyers in [Office name], Solicitor in [Office name], Lawyer in [Office name]";
-            if (office.Name == "Birmingham")
-            {
-                Keywords ="family law solicitor Birmingham, family law solicitors Birmingham city centre, child care solicitors Birmingham, Care Proceedings, Social Services, Child Abduction, divorce solicitors Birmingham, divorce solicitors Birmingham city centre, immigration solicitors in Birmingham, immigration solicitors in Birmingham city centre, Immigration lawyer Birmingham, Immigration Solicitors West Midlands, Immigration Specialists Birmingham / West Midlands, Legal representatives immigration law, Immigration appeals, criminal solicitors Birmingham, criminal defence solicitors Birmingham, criminal defence solicitors in Birmingham, criminal defence, solicitors legal aid, motoring solicitor, speeding solicitor, road traffic offences solicitor, criminal defence solicitors Coventry, criminal defence solicitors Dudley, criminal defence solicitors firm, criminal defence solicitors, fraud solicitors Birmingham, confiscation solicitor, POCA solicitor, criminal defence solicitors west midlands, criminal defence solicitors east midlands, criminal defence solicitors Redditch, criminal defence solicitors Staffordshire, criminal defence solicitors Walsall, criminal defence solicitors Wolverhampton, disciplinary solicitors Birmingham, disciplinary solicitors ,criminal defence solicitors Birmingham UK, criminal defence lawyers, Birmingham, Housing, Eviction proceedings, Possession proceedings, Illegal eviction, Homelessness, Disrepair, Welfare Benefits, overpayment of benefit, refusal of benefit, benefit fraud, challenging benefit decisions, benefit appeal";
-            }
-            else
-            {
-                Keywords =keywords.Replace("[Office name]", office.Name.ToString());
-            }
+        Title = "Solicitors &amp; Lawyers " + office.Name.ToString() + " | Competitive Rates | Legal Aid";
+        Description = "Nationwide, solicitors in " + office.Name.ToString() + " offering Legal Aid, No Win No Fee for some cases & competitive rates/Fixed Fees.  You can call us on: 033 3772 0409.";
+        string keywords = "Solicitors [Office name], Lawyers [Office name], Legal Aid Lawyer [Office name], Divorce Solicitors [Office name], Criminal Defence Solicitor [Office name], Fraud Defence Lawyer [Office name], Immigration Solicitors [Office name], Child & Children Custody Lawyer, Housing Disrepair and Eviction, Homelessness Appeals, Contesting A Will, Child or children taken by social services, Mental Capacity and Court of Protection Solicitor, Probate Solicitor [Office name], Property Litigation Lawyer [Office name], Company Disputes Lawyer, Medical Negligence Lawyer [Office name], Personal Injury Solicitor [Office name], Debt Insolvency & Bankruptcy Solicitor, Domestic Abuse, Violence, Child Abduction Solicitor, Free Legal Advice [Office name], Inquest Solicitors [Office name]";
+ 
+            Keywords =keywords.Replace("[Office name]", office.Name.ToString());
+ 
         
             HeadingH1 ="Solicitors &amp; Lawyers in " + office.Name.ToString();
             Department ="Find Us";
-            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\offices\\" + office.Name.ToString() + "_Office.html";
+            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\offices\\" + office.Name.ToString() + "-Solicitors.html";
 
             DepartmentDetails DD = new DepartmentDetails("Find Us");
 
@@ -136,10 +131,25 @@ _NewContent.AppendLine("                </div>");
 
 
             _NewContent.AppendLine("                <div class=\"col-xs-12 panel panel-primary nopadding officedetails dept_default deptbordercolor\">");
+            _NewContent.AppendLine("                    <div class=\"panel-heading dept_default kolor deptbordercolor\">Our Services<span class=\"fa fa-pencil-square-o\"></span></div>");
+            _NewContent.AppendLine("                        <div class=\"panel-body\">");
+            _NewContent.AppendLine("                            <div class=\"row\">");
+            _NewContent.AppendLine("                                <ul><li>Our solicitors in " + office.Name.ToString() + " can assist in over 25 areas of law such as Criminal Defence, Fraud Defence, Immigration, Medical Negligence & Mental Capacity/Court of Protection matters.</li>");
+            _NewContent.AppendLine("                                <li>Our highly experienced award winning Family lawyers & solicitors in " + office.Name.ToString() + ", can also assist with Divorce, Financial Disputes, Child Custody, Social Services & Child Abduction issues.</li>");
+            _NewContent.AppendLine("                                <li>Our Litigation lawyers are able to assist with Company Disputes, Negligence Claims, Consumer, Debt, Property and Wills & Probate Disputes.</li>");
+            _NewContent.AppendLine("                                <li>Our Housing lawyers in " + office.Name.ToString() + " can guide you through the maze of Landlord & Tenant law issues, including, Disrepair, Eviction & Homelessness Appeals.</li></ul>");
+            _NewContent.AppendLine("                        </div>");
+            _NewContent.AppendLine("                        </div>");
+
+            _NewContent.AppendLine("                    </div>");
+
+
+
+            _NewContent.AppendLine("                <div class=\"col-xs-12 panel panel-primary nopadding officedetails dept_default deptbordercolor\">");
 _NewContent.AppendLine("                    <div class=\"panel-heading dept_default kolor deptbordercolor\">Contact Details<span class=\"fa fa-pencil-square-o\"></span></div>");
 _NewContent.AppendLine("                        <div class=\"panel-body\">");
 _NewContent.AppendLine("                            <div class=\"row\">");
-_NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"tel:0333 772 0409\"><span class=\"fa fa-phone\"></span>Tel: " + office.Dedicated_Numbers.ToString() + "</a></h5></div>");
+_NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"tel:0333 772 0409\"><span class=\"fa fa-phone\"></span>" + office.Dedicated_Numbers.ToString() + "</a></h5></div>");
 _NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"/contactUs.aspx\"><span class=\"fa fa-envelope\"></span>Contact Us</a></h5></div>");
 _NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"mailto:contact@duncanlewis.com\"><span>@</span>Email Us</a></h5></div>");
 _NewContent.AppendLine("                        </div>");

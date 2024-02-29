@@ -40,11 +40,11 @@ namespace dlwebclasses
                 year2 = Year1 - 1;
 
             if (dept != "Legal News" && dept != "Reported Case" && dept != "InThePress")
-                    UM = db.Updates_MainWebsites.Where(x => x.Department == dept && (x.Date_Update.Value.Year == Year1 || x.Date_Update.Value.Year == year2) && x.category == category).OrderByDescending(x => x.Date_Update).ToList();
+                    UM = db.Updates_MainWebsites.Where(x => x.Department == dept && (x.Date_Update.Value.Year == Year1 || x.Date_Update.Value.Year == year2) && x.category == category && x.Live == true).OrderByDescending(x => x.Date_Update).ToList();
             else if (dept == "Reported Case" || dept == "InThePress" || dept == "Campaign")
-                UM = db.Updates_MainWebsites.Where(x => x.Department == dept && (x.Date_Update.Value.Year == Year1 || x.Date_Update.Value.Year == year2)).OrderByDescending(x => x.Date_Update).ToList();
+                UM = db.Updates_MainWebsites.Where(x => x.Department == dept && (x.Date_Update.Value.Year == Year1 || x.Date_Update.Value.Year == year2) && x.Live == true).OrderByDescending(x => x.Date_Update).ToList();
             else
-                UM = db.Updates_MainWebsites.Where(x => (x.Department == dept) && (x.Date_Update.Value.Year == Year1) && (x.Date_Update.Value.Month == month1)).OrderByDescending(x => x.Date_Update).ToList();
+                UM = db.Updates_MainWebsites.Where(x => (x.Department == dept) && (x.Date_Update.Value.Year == Year1) && (x.Date_Update.Value.Month == month1) && x.Live == true).OrderByDescending(x => x.Date_Update).ToList();
 
             DepartmentDetails DD1 = new DepartmentDetails(dept);
             string prefix = "";

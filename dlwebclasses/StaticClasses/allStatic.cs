@@ -176,6 +176,7 @@ namespace dlwebclasses
             //List<Website_Department_Structure> WDS = new List<Website_Department_Structure>();
             IT_DatabaseEntities db = new IT_DatabaseEntities();
             HRDDLEntities dbhr = new HRDDLEntities();
+            DLWEBEntities dbweb = new DLWEBEntities();
             List<string> departments_aol = db.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw").Select(x => x.Name).ToList();
 
             departments_aol.Add("Immigration");
@@ -226,6 +227,14 @@ namespace dlwebclasses
                 fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
                 fp.WriteLine("<match url=\"" + _website_Video.id + "_Videos.html.*\" />");
                 fp.WriteLine("<action type=\"Redirect\" url=\"/Videos/" + allStatic.getVideoURL(_website_Video.Heading, _website_Video.Department) + "\" redirectType=\"Permanent\" />");
+                fp.WriteLine("</rule>");
+            }
+
+            foreach (var _office in dbweb.OfficesDLW.OrderBy(y => y.Name).ToList())
+            {
+                fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\">");
+                fp.WriteLine("<match url=\"" + _office.Name + "_office.html.*\" />");
+                fp.WriteLine("<action type=\"Redirect\" url=\"/Offices/" + _office.Name + "-Solicitors.html" + "\" redirectType=\"Permanent\" />");
                 fp.WriteLine("</rule>");
             }
 
@@ -286,7 +295,12 @@ namespace dlwebclasses
             fp.WriteLine("<match url=\"branchLocator_DL_WithMap.aspx.*\" />");
             fp.WriteLine("<action type=\"Rewrite\" url=\"findus.html\" />");
             fp.WriteLine("</rule>");
-            
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"clinicalnegligence.html.*\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"Clinical-and-medical-negligence.html\" />");
+            fp.WriteLine("</rule>");
+
 
             //fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
             //fp.WriteLine("<match url=\"https://duncanlewis.co.uk/\" />");

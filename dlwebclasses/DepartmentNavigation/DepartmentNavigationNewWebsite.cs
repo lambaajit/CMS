@@ -734,7 +734,7 @@ namespace dlwebclasses
                         if (item.Appointment == "Yes")
                             addstar = " <sup class=\"redsuperscript\">*</sup>";
 
-                        sb.AppendLine("<li class=\"" + level3lastnode2 + "lastnode\"><a " + active + " href=\"/offices/" + item.Name.ToString() + "_Office.html\"><p>" + item.Name + " Office" + addstar + "</p><span></span></a></li>");
+                        sb.AppendLine("<li class=\"" + level3lastnode2 + "lastnode\"><a " + active + " href=\"/offices/" + item.Name.ToString() + "-Solicitors.html\"><p>" + item.Name + " Office" + addstar + "</p><span></span></a></li>");
                     }
                     sb.AppendLine("                                </ul>");
                     sb.AppendLine("                                </li>");

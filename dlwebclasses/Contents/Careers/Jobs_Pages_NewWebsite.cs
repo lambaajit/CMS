@@ -197,14 +197,16 @@ SB.AppendLine("                    <div class=\"row\">");
 SB.AppendLine("                        <div class=\"col-sm-8\">");
 SB.AppendLine("                            <h5>Job Description:</h5>");
             if (recruitment.Job_Type != "Freeleance")
-                SB.AppendLine(recruitment.Job_Description.Replace("***", "</p><h6>").Replace("**", "</h6><p>").Replace("*is*", "<i>").Replace("*ie*", "</i>").Replace("*bis*", "<b><i>").Replace("*bie*", "</b></i>").Replace(Environment.NewLine, "<br />").Replace("*bs*", "<strong>").Replace("*be*", "</strong>").Replace("*bullets*", "<ul>").Replace("*bullete*", "</ul>").Replace("*-s*", "<li>").Replace("*-e*", "</li>"));
+                SB.AppendLine(recruitment.Job_Description.Replace("***", "</p><h6>").Replace("**", "</h6><p>").Replace("*is*", "<i>").Replace("*ie*", "</i>").Replace("*bis*", "<b><i>").Replace("*bie*", "</b></i>").Replace("*bs*", "<strong>").Replace("*be*", "</strong>").Replace("*bullets*", "<ul>").Replace("*bullete*", "</ul>").Replace("*-s*", "<li>").Replace("*-e*", "</li>"));
             else
                 SB.AppendLine(recruitment.Job_Description.ToString().Replace("<h4>","<h5>").Replace("</h4>","</h5>") + "<p>&nbsp;</p><h4><p>For more information on our Consultancy Model, please call Mr David Daud (Director of Operations) in confidence on:-</p><p>&nbsp;</p><p>Direct Telephone Number: 0203 114 1242 </p><p>Mobile Number:	07725 823 000 or</p><p>E-Mail: davidd@duncanlewis.com</p></h4>");
+
+            SB.AppendLine("<br /><br />");
 
             if (!string.IsNullOrEmpty(recruitment.Key_Skills_Required) && recruitment.Key_Skills_Required != "NA" && recruitment.Job_Type != "Freeleance")
             {
                 SB.AppendLine("                            <h5>Key Skills Required:</h5>");
-                SB.AppendLine(recruitment.Key_Skills_Required.Replace("***", "</p><h6>").Replace("**", "</h6><p>").Replace("*is*", "<i>").Replace("*ie*", "</i>").Replace("*bis*", "<b><i>").Replace("*bie*", "</b></i>").Replace(Environment.NewLine, "<br />").Replace("*bs*", "<strong>").Replace("*be*", "</strong>").Replace("*bullets*", "<ul>").Replace("*bullete*", "</ul>").Replace("*-s*", "<li>").Replace("*-e*", "</li>"));
+                SB.AppendLine(recruitment.Key_Skills_Required.Replace("***", "</p><h6>").Replace("**", "</h6><p>").Replace("*is*", "<i>").Replace("*ie*", "</i>").Replace("*bis*", "<b><i>").Replace("*bie*", "</b></i>").Replace("*bs*", "<strong>").Replace("*be*", "</strong>").Replace("*bullets*", "<ul>").Replace("*bullete*", "</ul>").Replace("*-s*", "<li>").Replace("*-e*", "</li>"));
             }
 
 

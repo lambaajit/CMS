@@ -61,7 +61,7 @@ namespace DLCMS.Controllers
             {
                 List<int> ids = new List<int>() { 342, 433, 11, 1699, 1700, 1598, 1599, 1644, 1645, 12, 13, 28 };
                 int Department = int.Parse(dept);
-                string Dept = db.Website_Structure.Where(x => x.id == Department).Select(y => y.name).FirstOrDefault();
+                string Dept = db.Website_Department_Structure.Where(x => x.ID == Department).Select(y => y.Name).FirstOrDefault();
                 WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && x.Department == Dept).ToList();
             }
             //.Take(1)

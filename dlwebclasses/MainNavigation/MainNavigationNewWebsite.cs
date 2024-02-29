@@ -386,7 +386,7 @@ namespace dlwebclasses
                     
                     foreach (var item1 in Off)
                     {
-                        sb.AppendLine("<li><a href=\"/offices/" + item1.Name + "_office.html\">" + item1.Name + "</a></li>");
+                        sb.AppendLine("<li><a href=\"/offices/" + item1.Name + "-Solicitors.html\">" + item1.Name + "</a></li>");
                         i++;
                         if (i % 12 == 0)
                         {

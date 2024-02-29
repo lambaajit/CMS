@@ -30,7 +30,7 @@ namespace DLCMS.Areas.WebsitePages.Controllers
             var _allUpwardsNodes = GetAllNodesUpwards(_list, _website_structure);
             var _allIds = _allUpwardsNodes.Select(x => x.id).ToList();
             var _rootNode = _allUpwardsNodes.Where(x => x.level == "Root").FirstOrDefault();
-            model.DepartmentInt = _rootNode?.id;
+            model.DepartmentInt = db.Website_Department_Structure.Where(x => (x.NameforHomePage == _rootNode.name && x.NameforHomePage != null) || x.Name == _rootNode.name).Select(x => x.ID).FirstOrDefault(); 
             var _subDeptNode = db.Website_Structure.Where(x => x.underwhichnode == _rootNode.id && _allIds.Contains(x.id) && x.level != "ContentNode").FirstOrDefault();
             
             if (_subDeptNode != null)
@@ -72,7 +72,7 @@ namespace DLCMS.Areas.WebsitePages.Controllers
                 linkedid = Convert.ToInt16(record.DepartmentInt);
 
             int? dept = record.DepartmentInt;
-            record.Department = db.Website_Structure.Where(x => x.id == dept).Select(y => y.name).FirstOrDefault();
+            record.Department = db.Website_Department_Structure.Where(x => x.ID == dept).Select(y => y.Name).FirstOrDefault();
             if (record.Sub_DepartmentInt != null)
             {
                 int? deptsub = record.Sub_DepartmentInt;
@@ -84,10 +84,12 @@ namespace DLCMS.Areas.WebsitePages.Controllers
                 record.Sub_Sub_Department = db.Website_Structure.Where(x => x.id == deptsubsub).Select(y => y.name).FirstOrDefault();
             }
 
+            var _result = base.CreateUpdatePartial(record, Id);
+
             if (Id == 0)
             {
 
-                var dup_id = db.Database.SqlQuery<int>("Select Max(ID) from Website_Pages").FirstOrDefault() + 1;
+                var dup_id = db.Database.SqlQuery<int>("Select Max(ID) from Website_Pages").FirstOrDefault();
                 dlwebclasses.Website_Structure ws = new dlwebclasses.Website_Structure();
                 ws.level = "ContentNode";
                 ws.underwhichnode = linkedid;
@@ -96,7 +98,7 @@ namespace DLCMS.Areas.WebsitePages.Controllers
                 db.Website_Structure.Add(ws);
                 db.SaveChanges();
             }
-            return base.CreateUpdatePartial(record, Id);
+            return _result;
         }
 
         public override void CreateWebPages(bool Created, int Id)
@@ -110,7 +112,7 @@ namespace DLCMS.Areas.WebsitePages.Controllers
 
         public override void PolulateList()
         {
-            ViewBag.DepartmentList = db.Website_Structure.Where(x => x.level == "Root").Select(x => new SelectListItem { Text = x.name, Value = x.id.ToString()}).Distinct().ToList();
+            ViewBag.DepartmentList = db.Website_Pages.Select(x => new SelectListItem { Text = x.Department, Value = x.Department }).Distinct().ToList();
             ViewBag.CompanyList = db.Website_Pages.Select(x => new SelectListItem { Text = x.Company, Value = x.Company }).Distinct().ToList();
             ViewBag.VideoList = db.Website_Videos.Where(x => x.Active==true).Select(x => new SelectListItem { Text = x.Heading + " - (" + x.id + ")", Value = x.id.ToString() }).Distinct().ToList();
             ViewBag.SubDepartmentList = new SelectList(Enumerable.Empty<SelectListItem>());
@@ -119,7 +121,7 @@ namespace DLCMS.Areas.WebsitePages.Controllers
 
         public override PartialViewResult GetFilteredRecords(WebsitePagesSearch search)
         {
-            Session["Intranet_Structure_NewSearch"] = search;
+            Session["WebsitePagesSearch"] = search;
             var _result = base.GetFilteredRecords(search);
             var model = (BaseViewModelWithList<dlwebclasses.Website_Pages>)_result.Model;
             
