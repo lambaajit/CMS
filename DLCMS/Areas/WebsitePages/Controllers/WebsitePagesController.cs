@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using DLCMS.Models;
 using dlwebclasses;
+using Newtonsoft.Json.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DLCMS.Areas.WebsitePages.Controllers
 {
@@ -15,8 +17,16 @@ namespace DLCMS.Areas.WebsitePages.Controllers
     {
         private IT_DatabaseEntities db = new IT_DatabaseEntities();
 
-
         public ActionResult GetSubDepartment(int value)
+        {
+        string _dept = db.Website_Department_Structure.Where(x => x.ID == value).Select(x => x.Name).FirstOrDefault();
+            _dept = _dept == "Immigration" ? "Legal Aid: Immigration and Asylum" : _dept;
+            var _underWhichNode = db.Website_Structure.Where(x => x.name == _dept && x.level == "Root").Select(x => x.id).FirstOrDefault();
+        var _websiteStructureRootNodes = db.Website_Structure.Where(x => x.underwhichnode == _underWhichNode && x.level != "ContentNode").OrderBy(x => x.name).Select(x => new SelectListItem() { Text = x.name, Value = x.id.ToString() }).Distinct().ToList();
+            return Json(_websiteStructureRootNodes, JsonRequestBehavior.AllowGet);
+    }
+
+        public ActionResult GetSubSubDepartment(int value)
         {
             return Json(db.Website_Structure.Where(x => x.underwhichnode == value && x.level != "ContentNode").OrderBy(x => x.name).Select(x => new SelectListItem() { Text = x.name, Value = x.id.ToString() }).Distinct().ToList(), JsonRequestBehavior.AllowGet);
         }
@@ -84,20 +94,21 @@ namespace DLCMS.Areas.WebsitePages.Controllers
                 record.Sub_Sub_Department = db.Website_Structure.Where(x => x.id == deptsubsub).Select(y => y.name).FirstOrDefault();
             }
 
-            var _result = base.CreateUpdatePartial(record, Id);
-
             if (Id == 0)
             {
 
-                var dup_id = db.Database.SqlQuery<int>("Select Max(ID) from Website_Pages").FirstOrDefault();
+                var dup_id = db.Database.SqlQuery<int>("Select Max(ID) from Website_Pages").FirstOrDefault() + 1;
                 dlwebclasses.Website_Structure ws = new dlwebclasses.Website_Structure();
                 ws.level = "ContentNode";
                 ws.underwhichnode = linkedid;
                 ws.name = record.Name;
-                ws.linkedid = dup_id;
-                db.Website_Structure.Add(ws);
-                db.SaveChanges();
+                //ws.linkedid = dup_id;
+                record.Website_Structure = new List<dlwebclasses.Website_Structure>() { ws };
             }
+            
+
+            var _result = base.CreateUpdatePartial(record, Id);
+
             return _result;
         }
 
@@ -112,7 +123,7 @@ namespace DLCMS.Areas.WebsitePages.Controllers
 
         public override void PolulateList()
         {
-            ViewBag.DepartmentList = db.Website_Pages.Select(x => new SelectListItem { Text = x.Department, Value = x.Department }).Distinct().ToList();
+            ViewBag.DepartmentList = db.Website_Department_Structure.Select(x => new SelectListItem { Text = x.Name, Value = x.ID.ToString() }).Distinct().ToList();
             ViewBag.CompanyList = db.Website_Pages.Select(x => new SelectListItem { Text = x.Company, Value = x.Company }).Distinct().ToList();
             ViewBag.VideoList = db.Website_Videos.Where(x => x.Active==true).Select(x => new SelectListItem { Text = x.Heading + " - (" + x.id + ")", Value = x.id.ToString() }).Distinct().ToList();
             ViewBag.SubDepartmentList = new SelectList(Enumerable.Empty<SelectListItem>());
@@ -134,7 +145,11 @@ namespace DLCMS.Areas.WebsitePages.Controllers
             if (!string.IsNullOrEmpty(search.Company))
                 model.list = model.list.Where(x => x.Company == search.Company).AsQueryable();
             if (!string.IsNullOrEmpty(search.Department))
-                model.list = model.list.Where(x => x.Department == search.Department).AsQueryable();
+            {
+                var _deptId = int.Parse(search.Department);
+                var _dept = db.Website_Department_Structure.Where(x => x.ID == _deptId).FirstOrDefault().Name;
+                model.list = model.list.Where(x => x.Department == _dept).AsQueryable();
+            }
 
 
             model.NumberOfRecordsPerPage = search.NumberOfRecordsPerPages == 0 ? 50 : search.NumberOfRecordsPerPages;

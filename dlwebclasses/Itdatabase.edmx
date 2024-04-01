@@ -82,6 +82,7 @@
           <Property Name="BuzzWords" Type="varchar(max)" />
           <Property Name="Enabled" Type="bit" />
           <Property Name="Website_Structure_Id" Type="int" />
+          <Property Name="UseMainProfile" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SubDepartmentSwitchboard">
           <Key>
@@ -462,6 +463,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="notesForSwitchboard" Type="varchar(max)" />
           <Property Name="NewNameForSubDepartment" Type="varchar(max)" />
           <Property Name="SubDepartmentNameForSwitchboard" Type="varchar(max)" />
+          <Property Name="NewNameForNavigationLink" Type="varchar(max)" />
           <Property Name="NewNameForDepartment" Type="varchar(max)" />
           <Property Name="CreatedBy" Type="varchar(max)" />
           <Property Name="CreatedDate" Type="datetime" />
@@ -1195,6 +1197,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <NavigationProperty Name="Website_Structure1" Relationship="IT_DatabaseModel.FK__Website_S__under__5DABBF2A" FromRole="Website_Structure" ToRole="Website_Structure1" />
           <NavigationProperty Name="Website_Structure2" Relationship="IT_DatabaseModel.FK__Website_S__under__5DABBF2A" FromRole="Website_Structure1" ToRole="Website_Structure" />
           <Property Name="ip_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewNameForNavigationLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SubDepartmentProfileStructure">
           <Key>
@@ -1208,6 +1211,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="Enabled" Type="Boolean" />
           <NavigationProperty Name="SubDepartmentProfiles" Relationship="IT_DatabaseModel.FK__SubDepart__SubDe__19F5B35B" FromRole="SubDepartmentProfileStructure" ToRole="SubDepartmentProfile" />
           <Property Name="Website_Structure_Id" Type="Int32" />
+          <Property Name="UseMainProfile" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__SubDepart__SubDe__19F5B35B">
           <End Type="IT_DatabaseModel.SubDepartmentProfileStructure" Role="SubDepartmentProfileStructure" Multiplicity="0..1" />
@@ -1725,6 +1729,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="Website_Structure">
             <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Structure">
               <MappingFragment StoreEntitySet="Website_Structure">
+                <ScalarProperty Name="NewNameForNavigationLink" ColumnName="NewNameForNavigationLink" />
                 <ScalarProperty Name="ip_address" ColumnName="ip_address" />
                 <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
                 <ScalarProperty Name="WarningColorCode" ColumnName="WarningColorCode" />
@@ -1755,6 +1760,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="SubDepartmentProfileStructures">
             <EntityTypeMapping TypeName="IT_DatabaseModel.SubDepartmentProfileStructure">
               <MappingFragment StoreEntitySet="SubDepartmentProfileStructure">
+                <ScalarProperty Name="UseMainProfile" ColumnName="UseMainProfile" />
                 <ScalarProperty Name="Website_Structure_Id" ColumnName="Website_Structure_Id" />
                 <ScalarProperty Name="Enabled" ColumnName="Enabled" />
                 <ScalarProperty Name="BuzzWords" ColumnName="BuzzWords" />

@@ -20,7 +20,7 @@
 <div class="form-group">
     @Html.LabelFor(model => model.Sub_Department, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(model => model.Sub_DepartmentInt, (SelectList)ViewBag.SubDepartmentList, "Select" , new { @class = "form-control", @onchange = "FillSubsequestDropDown('Sub_DepartmentInt', 'Sub_Sub_DepartmentInt', '/WebsitePages/WebsitePages/GetSubDepartment')", id = "Sub_DepartmentInt" })
+        @Html.DropDownListFor(model => model.Sub_DepartmentInt, (SelectList)ViewBag.SubDepartmentList, "Select" , new { @class = "form-control", @onchange = "FillSubsequestDropDown('Sub_DepartmentInt', 'Sub_Sub_DepartmentInt', '/WebsitePages/WebsitePages/GetSubSubDepartment')", id = "Sub_DepartmentInt" })
         @Html.ValidationMessageFor(model => model.Sub_Department)
     </div>
 </div>

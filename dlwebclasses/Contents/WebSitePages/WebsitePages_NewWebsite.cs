@@ -32,7 +32,7 @@ namespace dlwebclasses
 
             DepartmentDetails DD = new DepartmentDetails(WP.Department);
 
-            if (DD.Name == "Child Care" || DD.Name == "Family" || DD.Name == "Domestic Abuse and Violence")
+            if (DD.Name == "Child Care" || DD.Name == "Family" || DD.Name == "Domestic Abuse and Violence" || DD.Name == "Immigration")
                 _ourTeamLink = allStatic.GetOurTeamLinkForSubDepartment(WP.ID);
 
 
@@ -61,11 +61,11 @@ namespace dlwebclasses
             List<website_awards> logos = new List<website_awards>();
 
 
-
-            foreach (var item in db.website_awards.Where(x => x.IndividualCompany == "Department" && x.DLDepartment == DD.Name && x.LogosToUse !=null && x.LogosToUse.Contains(".")).GroupBy(y => y.LegalDirectory).Select(z => z.Key).ToList())
+            var _departmentNameForAwards = DD.Name == "Domestic Abuse and Violence" ? "Family" : DD.Name == "Personal Immigration Solicitors" ? "Business Immigration" : DD.Name;
+            foreach (var item in db.website_awards.Where(x => x.IndividualCompany == "Department" && x.DLDepartment == _departmentNameForAwards && x.LogosToUse !=null && x.LogosToUse.Contains(".")).GroupBy(y => y.LegalDirectory).Select(z => z.Key).ToList())
             {
 
-                var wa = db.website_awards.Where(x => x.IndividualCompany == "Department" && x.DLDepartment == DD.Name && x.LegalDirectory == item).OrderByDescending(y =>y.Year).FirstOrDefault();
+                var wa = db.website_awards.Where(x => x.IndividualCompany == "Department" && x.DLDepartment == _departmentNameForAwards && x.LegalDirectory == item).OrderByDescending(y =>y.Year).FirstOrDefault();
                 if (wa != null)
                     logos.Add(wa);
             }
@@ -154,7 +154,7 @@ namespace dlwebclasses
 
             SB.AppendLine("                <div id=\"container\">");
 
-            if (WP.Filename.ToLower() + ".html" == DD.Overview1.ToLower())
+            if (WP.Filename.ToLower() + ".html" == DD.Overview1.ToLower() || WP.Filename == "court-of-protection-and-mental-capacity-solicitors")
             {
                 if (logos != null && logos.Count() > 0)
                 {
@@ -175,7 +175,7 @@ namespace dlwebclasses
                     SB.AppendLine("                                    <div class=\"col-sm-8 nopadding\">");
                     SB.AppendLine("                                        <div class=\"row legaldirectory " + DD.cssclass + " deptbordercolor\">");
                     int i = 0;
-                    foreach (var item in db.website_awards.Where(x => x.IndividualCompany == "Department" && x.DLDepartment == DD.Name).OrderByDescending(y => y.Year).ToList())
+                    foreach (var item in db.website_awards.Where(x => x.IndividualCompany == "Department" && x.DLDepartment == _departmentNameForAwards).OrderByDescending(y => y.Year).ToList())
                     {
                         i++;
                         if (i == 3)
@@ -254,7 +254,7 @@ namespace dlwebclasses
 
             DLWEBEntities dbweb = new DLWEBEntities();
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
-            string dept = "";
+            string dept = WP.Department;
             string subdept = "";
             if (!string.IsNullOrEmpty(WP.CustomSubDepartment))
             {

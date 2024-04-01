@@ -401,7 +401,7 @@ namespace dlwebclasses
 
                 if (item.level == "ContentNode")
                 {
-                    sb.AppendLine("<li class=\"" + level1lastnode + "lastnode\"><a " + active1 + " href=\"/" + getlinkfromwebsitepages(item.linkedid) + ".html\"><p>" + (item.name == DD.Name ? "Overview" : item.name) + "</p><span></span></a></li>");
+                    sb.AppendLine("<li class=\"" + level1lastnode + "lastnode\"><a " + active1 + " href=\"/" + getlinkfromwebsitepages(item.linkedid) + ".html\"><p>" + (item.name == DD.Name ? "Overview" : string.IsNullOrEmpty(item.NewNameForNavigationLink) ? item.name : item.NewNameForNavigationLink) + "</p><span></span></a></li>");
                 }
                 else
                 {
@@ -438,7 +438,7 @@ namespace dlwebclasses
 
                         if (item1.level == "ContentNode")
                             {
-                                sb.AppendLine("<li class=\"" + level2lastnode + "lastnode\"><a " + active2 + " href=\"/" + getlinkfromwebsitepages(item1.linkedid) + ".html\"><p>" + (item1.name == item.name ? "Overview" : item1.name) + "</p><span></span></a></li>");
+                                sb.AppendLine("<li class=\"" + level2lastnode + "lastnode\"><a " + active2 + " href=\"/" + getlinkfromwebsitepages(item1.linkedid) + ".html\"><p>" + (item1.name == item.name ? "Overview" : string.IsNullOrEmpty(item1.NewNameForNavigationLink) ? item1.name : item1.NewNameForNavigationLink) + "</p><span></span></a></li>");
                             }
                             else
                             {
@@ -473,7 +473,7 @@ namespace dlwebclasses
 
                                             if (item2.level == "ContentNode")
                                             {
-                                                sb.AppendLine("<li class=\"" + level3lastnode + "lastnode\"><a " + active3 + " href=\"/" + getlinkfromwebsitepages(item2.linkedid) + ".html\"><p>" + (item2.name == item1.name ? "Overview" : item2.name) + "</p><span></span></a></li>");
+                                                sb.AppendLine("<li class=\"" + level3lastnode + "lastnode\"><a " + active3 + " href=\"/" + getlinkfromwebsitepages(item2.linkedid) + ".html\"><p>" + (item2.name == item1.name ? "Overview" : string.IsNullOrEmpty(item2.NewNameForNavigationLink) ? item2.name : item2.NewNameForNavigationLink) + "</p><span></span></a></li>");
                                             }
                                             else
                                             {
@@ -507,7 +507,7 @@ namespace dlwebclasses
                                                     }
                                                     if (item3.level == "ContentNode")
                                                     {
-                                                        sb.AppendLine("<li class=\"" + level4lastnode + "lastnode\"><a " + active4 + " href=\"/" + getlinkfromwebsitepages(item3.linkedid) + ".html\"><p>" + (item3.name == item2.name ? "Overview" : item3.name) + "</p><span></span></a></li>");
+                                                        sb.AppendLine("<li class=\"" + level4lastnode + "lastnode\"><a " + active4 + " href=\"/" + getlinkfromwebsitepages(item3.linkedid) + ".html\"><p>" + (item3.name == item2.name ? "Overview" : string.IsNullOrEmpty(item3.NewNameForNavigationLink) ? item3.name : item3.NewNameForNavigationLink) + "</p><span></span></a></li>");
                                                     }
                                                     else
                                                     {
@@ -526,7 +526,7 @@ namespace dlwebclasses
                                                             }
                                                             if (item4.level == "ContentNode")
                                                             {
-                                                                sb.AppendLine("<li class=\"" + level5lastnode + "lastnode\"><a " + active5 + " href=\"/" + getlinkfromwebsitepages(item4.linkedid) + ".html\"><p>" + (item4.name == item3.name ? "Overview" : item4.name) + "</p><span></span></a></li>");
+                                                                sb.AppendLine("<li class=\"" + level5lastnode + "lastnode\"><a " + active5 + " href=\"/" + getlinkfromwebsitepages(item4.linkedid) + ".html\"><p>" + (item4.name == item3.name ? "Overview" : string.IsNullOrEmpty(item4.NewNameForNavigationLink) ? item4.name : item4.NewNameForNavigationLink) + "</p><span></span></a></li>");
                                                             }
                                                         }
                                                         if (Level5.Count > 0)

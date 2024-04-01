@@ -46,13 +46,14 @@ namespace DLCMS.Controllers
             {
                 AContents NAL;
                 IT_DatabaseEntities dbit = new IT_DatabaseEntities();
-                var _approvedProfilesSubDepartments = new List<string>();
+                var _approveSubDepartmentProfiles = dbit.SubDepartmentProfiles.Where(x => x.Approve == true && ((x.ApprovedProfile != null && x.ApprovedProfile != "" && x.ApprovedProfile.Length > 20) || x.SubDepartmentProfileStructure.UseMainProfile == true)).AsQueryable();
+                var _approvedProfilesSubDepartmentsNamesList = new List<string>();
                 if (SubDepartmentProfileStructureId == 0)
-                    _approvedProfilesSubDepartments = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile != "" && x.ApprovedProfile.Length > 20).GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
+                    _approvedProfilesSubDepartmentsNamesList = _approveSubDepartmentProfiles.GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
                 else
-                    _approvedProfilesSubDepartments = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile != "" && x.ApprovedProfile.Length > 20 && x.SubDepartmentProfileStructureId == SubDepartmentProfileStructureId).GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
+                    _approvedProfilesSubDepartmentsNamesList = _approveSubDepartmentProfiles.Where(x => x.SubDepartmentProfileStructureId == SubDepartmentProfileStructureId).GroupBy(x => x.SubDepartmentProfileStructure.SubDepartment).Select(x => x.Key).ToList();
 
-                foreach (var _approvedProfilesSubDepartment in _approvedProfilesSubDepartments)
+                foreach (var _approvedProfilesSubDepartment in _approvedProfilesSubDepartmentsNamesList)
                 {
                     var _dept = dbit.SubDepartmentProfileStructures.Where(x => x.SubDepartment == _approvedProfilesSubDepartment).Select(x => x.Department1).FirstOrDefault();
                     NAL = new Content_TeamPages_NewWebsite(_dept, true, _approvedProfilesSubDepartment);
@@ -64,11 +65,12 @@ namespace DLCMS.Controllers
             {
                 AContents NAL;
                 IT_DatabaseEntities dbit = new IT_DatabaseEntities();
+                List<int> _excludedWebsiteStructureIds = dbit.SubDepartmentProfileStructures.Where(x => x.UseMainProfile == true).Select(x => x.Id).ToList();
                 var _subDepartmentProfiles = new List<SubDepartmentProfile>();
                 if (SubDepartmentProfileStructureId == 0)
-                    _subDepartmentProfiles = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile.Length > 20).ToList();
+                    _subDepartmentProfiles = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && !_excludedWebsiteStructureIds.Contains(x.SubDepartmentProfileStructureId ?? 0) && x.ApprovedProfile.Length > 20).ToList();
                 else
-                    _subDepartmentProfiles = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile.Length > 20 && x.SubDepartmentProfileStructureId == SubDepartmentProfileStructureId).ToList();
+                    _subDepartmentProfiles = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && !_excludedWebsiteStructureIds.Contains(x.SubDepartmentProfileStructureId ?? 0) && x.ApprovedProfile.Length > 20 && x.SubDepartmentProfileStructureId == SubDepartmentProfileStructureId).ToList();
 
                 foreach (var staff in _subDepartmentProfiles)
                 {

@@ -434,12 +434,12 @@ namespace dlwebclasses
         {
             List<string> _staffVideos = new List<string>();
             List<Website_Videos> wv = new List<Website_Videos>();
-            wv = db1.Website_Videos.Where(x => x.emp_code == emp_code).ToList();
+            wv = db1.Website_Videos.Where(x => x.emp_code == emp_code && x.Active == true).ToList();
             if (wv.Count > 0)
             {
                 foreach (var item in wv)
                 {
-                    _staffVideos.Add("<a href=\"/Videos/" + item.id + "_Videos.html\"><img src=\"/Video-Images/" + item.id + ".JPG\" class=\"img-responsive\" alt=\"Duncan Lewis Videos\"  /></a>");
+                    _staffVideos.Add("<a href=\"/Videos/" + allStatic.getVideoURL(item.Heading, item.Department) + "\"><img src=\"/Video-Images/" + item.id + ".JPG\" class=\"img-responsive\" alt=\"Duncan Lewis Videos\"  /></a>");
                 }
             }
             return _staffVideos;

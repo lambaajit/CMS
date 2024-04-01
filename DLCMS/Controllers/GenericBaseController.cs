@@ -235,30 +235,31 @@ namespace DLCMS
                 return View("/Views/GenericBase/Index.cshtml", GetModel());
             }
 
-            public void CreateUpdateRecord(T record, int Id = 0)
-            {
-                PolulateList();
-                record.ip_address = (Request.ServerVariables["HTTP_X_FORWARDED_FOR"] ?? Request.ServerVariables["REMOTE_ADDR"]).Split(',')[0].Trim();
+        public void CreateUpdateRecord(T record, int Id = 0)
+        {
+            PolulateList();
+            record.ip_address = (Request.ServerVariables["HTTP_X_FORWARDED_FOR"] ?? Request.ServerVariables["REMOTE_ADDR"]).Split(',')[0].Trim();
+            record.Enabled = record.Enabled == null ? true : record.Enabled;
 
             if (Id == 0)
-                {
-                    record.CreatedDate = DateTime.Now;
-                    record.CreatedBy = User.Identity.Name;
-                    table.Add(record);
-                    db.SaveChanges();
-                    CreateWebPages(true,0);
-                }
-                else
-                {
-                    record.ModifiedDate = DateTime.Now;
-                    record.ModifiedBy = User.Identity.Name;
-                    table.Attach(record);
-                    db.Entry(record).State = EntityState.Modified;
-                    db.SaveChanges();
-                    CreateWebPages(false, Id);
-                }
-            
+            {
+                record.CreatedDate = DateTime.Now;
+                record.CreatedBy = User.Identity.Name;
+                table.Add(record);
+                db.SaveChanges();
+                CreateWebPages(true, 0);
             }
+            else
+            {
+                record.ModifiedDate = DateTime.Now;
+                record.ModifiedBy = User.Identity.Name;
+                table.Attach(record);
+                db.Entry(record).State = EntityState.Modified;
+                db.SaveChanges();
+                CreateWebPages(false, Id);
+            }
+
+        }
 
         public virtual void CreateWebPages(bool Created, int Id)
         {

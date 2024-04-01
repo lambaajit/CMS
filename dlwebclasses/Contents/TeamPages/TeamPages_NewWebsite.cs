@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -48,14 +49,12 @@ namespace dlwebclasses
             Keywords = Dept + " Team, " + Dept + " Solicitors, " + Dept + " Lawyers, Duncan Lewis " + Dept + " Team";
             Department = DD.Name;
             HeadingH1 = Dept + " Solicitors";
-            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + (_subDepartmentTeamPage ? Dept.Replace(" ","-").Replace("&", "and").Replace("/", "") + "_ourTeam.html" : DD.Our_Team1);
+            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + (_subDepartmentTeamPage ? Dept.Replace(" ","-").Replace("&", "and").Replace("/", "-") + "_ourTeam.html" : DD.Our_Team1);
             canonicaltag = "<link rel=\"canonical\" href=\"https://www.duncanlewis.co.uk" + filepath.Replace(ConfigurationManager.AppSettings["RootpathNewWebsite"], "").Replace("\\", "/") + "\">";
 
-            if (DD.Name == "Child Care" || DD.Name == "Family")
-                deptstr = new string[] {"Family","Child Care"};
-            else
-                deptstr = new string[] { DD.Name };
+            deptstr = new string[] { DD.Name };
 
+            bool _mainLinkForSubDepartmentProfile = false;
 
 
             List<Emp_Details> ED = new List<Emp_Details>();
@@ -66,7 +65,9 @@ namespace dlwebclasses
                 ED = ED1.Where(x => ((deptstr.Contains(x.department_it)) || (deptstr.Contains(x.department_covered_2)) || (deptstr.Contains(x.department_covered_3)) || (deptstr.Contains(x.department_covered_4)) || (deptstr.Contains(x.department_covered_5))) && x.surname != "Mouse" && x.surname != "Duck" &&  x.Profile_website == true && x.admin_staff == "0" && (x.reporting_consultant == false || x.reporting_consultant == null)).OrderByDescending(x => x.Picture_website).ThenBy(x => x.forename).ToList(); /*&& x.jobtitle != "Legal Casework Assistant"*/
             else if (_subDepartmentTeamPage)
             {
-                var emp_codes = dbit.SubDepartmentProfiles.Where(x => x.SubDepartmentProfileStructure.SubDepartment == Dept && x.ApprovedProfile != null && x.ApprovedProfile != "").Select(x => x.emp_code).ToList();
+
+                _mainLinkForSubDepartmentProfile = dbit.SubDepartmentProfileStructures.Where(x => x.SubDepartment == Dept).Select(x => x.UseMainProfile).FirstOrDefault();
+                var emp_codes = dbit.SubDepartmentProfiles.Where(x => x.SubDepartmentProfileStructure.SubDepartment == Dept && ((x.ApprovedProfile != null && x.ApprovedProfile != "") || x.SubDepartmentProfileStructure.UseMainProfile == true)).Select(x => x.emp_code).ToList();
                 ED = ED1.Where(x => x.Profile_website == true && x.admin_staff == "0" && emp_codes.Contains(x.emp_code)).OrderBy(x => x.forename).ToList();
             }
             else
@@ -110,7 +111,10 @@ namespace dlwebclasses
                     managementpic = "1";
                 }
                 else if (_subDepartmentTeamPage)
-                    rewriteurllink = "/" + Dept.Replace(" ", "-").Replace("&", "and").Replace("/", "") + "_ourteam/" + _ed.forename + "_" + _ed.surname + ".html";
+                    if (_mainLinkForSubDepartmentProfile)
+                        rewriteurllink = "/" + allStatic.getRewriteUrlLinkForStaff(_ed) + "/#" + Department.Replace(" ", "");
+                    else
+                        rewriteurllink = "/" + Dept.Replace(" ", "-").Replace("&", "and").Replace("/", "-") + "_ourteam/" + _ed.forename + "_" + _ed.surname + ".html";
                 else
                     rewriteurllink = "/" + allStatic.getRewriteUrlLinkForStaff(_ed) + "/#" + Department.Replace(" ", "");
 

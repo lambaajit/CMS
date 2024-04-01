@@ -81,7 +81,7 @@ namespace dlwebclasses
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
 
 
-            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + subDepartment.Replace(" ","-").Replace("&","and").Replace("/", "") + "_ourTeam" + "\\" + Name.ToString().Replace(" ", "_") + ".html";
+            filepath = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\" + subDepartment.Replace(" ","-").Replace("&","and").Replace("/", "-") + "_ourTeam" + "\\" + Name.ToString().Replace(" ", "_") + ".html";
             //canonicaltag = "<link rel=\"canonical\" href=\"https://www.duncanlewis.co.uk/" + allStatic.getRewriteUrlLinkForStaff(_emp_Details) + "/\" />";
             Department = _emp_Details.department_it;
             Emp_Status = _emp_Details.emp_status;

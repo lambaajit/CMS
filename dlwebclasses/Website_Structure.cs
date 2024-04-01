@@ -43,6 +43,7 @@ namespace dlwebclasses
         public Nullable<int> WarningColorCode { get; set; }
         public string WarningMessage { get; set; }
         public string ip_address { get; set; }
+        public string NewNameForNavigationLink { get; set; }
     
         public virtual Website_Pages Website_Pages { get; set; }
         public virtual ICollection<Website_Structure> Website_Structure1 { get; set; }

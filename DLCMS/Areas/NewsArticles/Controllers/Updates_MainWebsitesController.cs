@@ -64,7 +64,7 @@ namespace DLCMS.Areas.NewsArticles.Controllers
 
             if (record.ID != 0)
             {
-                var _updateMainwesites = db.Updates_MainWebsites.Where(x => x.Duplicate_ID == record.Duplicate_ID && x.Duplicate_ID != null).ToList();
+                var _updateMainwesites = db.Updates_MainWebsites.Where(x => x.Duplicate_ID == record.Duplicate_ID && x.Duplicate_ID != null && x.Duplicate_ID != 0).ToList();
                 if (_updateMainwesites.Count == 0)
                     _updateMainwesites.Add(db.Updates_MainWebsites.Where(x => x.ID == record.ID).FirstOrDefault());
 

@@ -612,15 +612,15 @@ namespace dlwebclasses
         {
             IT_DatabaseEntities dbit = new IT_DatabaseEntities();
             var _website_structure  = dbit.Website_Structure.Where(x => x.linkedid == Id).FirstOrDefault();
-            var _subDepartmentProfileStructuresIds = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && x.ApprovedProfile.Length > 20).GroupBy(x => x.SubDepartmentProfileStructureId).Select(x => x.Key).ToList();
+            var _subDepartmentProfileStructuresIds = dbit.SubDepartmentProfiles.Where(x => x.Approve == true && ((x.ApprovedProfile != null && x.ApprovedProfile.Length > 20) || x.SubDepartmentProfileStructure.UseMainProfile == true)).GroupBy(x => x.SubDepartmentProfileStructureId).Select(x => x.Key).ToList();
             var _website_Structure_Ids = dbit.SubDepartmentProfileStructures.Where(x => _subDepartmentProfileStructuresIds.Contains(x.Id)).Select(x => x.Website_Structure_Id).ToList();
             if (_website_Structure_Ids.Contains(_website_structure.id))
-                return (dbit.SubDepartmentProfileStructures.Where(x => x.Website_Structure_Id == _website_structure.id).Select(x => x.SubDepartment).FirstOrDefault()).Replace(" ","-").Replace("&","and").Replace("/","") + "_ourTeam.html";
+                return (dbit.SubDepartmentProfileStructures.Where(x => x.Website_Structure_Id == _website_structure.id).Select(x => x.SubDepartment).FirstOrDefault()).Replace(" ","-").Replace("&","and").Replace("/","-") + "_ourTeam.html";
             else
             {
                 var _underWhichNodeId = dbit.Website_Structure.Where(x => x.id == _website_structure.underwhichnode).Select(x => x.id).FirstOrDefault();
                 if (_website_Structure_Ids.Contains(_underWhichNodeId))
-                    return (dbit.SubDepartmentProfileStructures.Where(x => x.Website_Structure_Id == _underWhichNodeId).Select(x => x.SubDepartment).FirstOrDefault()).Replace(" ", "-").Replace("&", "and").Replace("/", "") + "_ourTeam.html";
+                    return (dbit.SubDepartmentProfileStructures.Where(x => x.Website_Structure_Id == _underWhichNodeId).Select(x => x.SubDepartment).FirstOrDefault()).Replace(" ", "-").Replace("&", "and").Replace("/", "-") + "_ourTeam.html";
                 else
                     return null;
             }

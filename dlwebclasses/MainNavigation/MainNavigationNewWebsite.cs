@@ -120,6 +120,8 @@ namespace dlwebclasses
                     overviewlink = dbit.Website_Department_Structure.Where(x => x.ID == item.ID).Select(y => y.Overview1).FirstOrDefault();
                     if (tab == "Legal Aid" && item.Name == "Housing")
                         sb.AppendLine("<li class=\"" + item.cssclass + " over\"><a href=\"/" + overviewlink + "\" data-target=\"#" + tab.Replace(" ", "") + item.Name.Replace(" ", "-").Replace("&", "").Replace(":", "") + "\" data-hover=\"tab\">Social Housing<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
+                    else if (tab == "Private" && item.Name == "Court of Protection")
+                        sb.AppendLine("<li class=\"" + item.cssclass + " over\"><a href=\"/" + "court-of-protection-and-mental-capacity-solicitors.html" + "\" data-target=\"#" + tab.Replace(" ", "") + item.Name.Replace(" ", "-").Replace("&", "").Replace(":", "") + "\" data-hover=\"tab\">Court of Protection<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
                     else
                         sb.AppendLine("<li class=\"" + item.cssclass + " over\"><a href=\"/" + overviewlink + "\" data-target=\"#" + tab.Replace(" ", "") + item.Name.Replace(" ", "-").Replace("&", "").Replace(":", "") + "\" data-hover=\"tab\">" + item.Name + "<span class=\"fa fa-chevron-right\" aria-hidden=\"true\"></span></a></li>");
                 }
@@ -586,3 +588,4 @@ namespace dlwebclasses
         }
     }
 }
+

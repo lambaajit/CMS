@@ -282,7 +282,7 @@ namespace dlwebclasses
                 _NewContents.AppendLine("<ul>");
                 foreach (var subDepartmentProfile in _subDepartmentProfile)
                 {
-                    _NewContents.AppendLine("<li><a href=\"/" + subDepartmentProfile.SubDepartmentProfileStructure.SubDepartment.Replace(" ", "-").Replace("&", "and").Replace("/", "") + "_ourteam/" + staffname.Replace(" ", "_").Replace("&", "and").Replace(" ", "") + ".html" + "\">View " + staffname + "’s \"" + subDepartmentProfile.SubDepartmentProfileStructure.SubDepartment + "\" profile</a></li>");
+                    _NewContents.AppendLine("<li><a href=\"/" + subDepartmentProfile.SubDepartmentProfileStructure.SubDepartment.Replace(" ", "-").Replace("&", "and").Replace("/", "-") + "_ourteam/" + staffname.Replace(" ", "_").Replace("&", "and").Replace(" ", "") + ".html" + "\">View " + staffname + "’s \"" + subDepartmentProfile.SubDepartmentProfileStructure.SubDepartment + "\" profile</a></li>");
                 }
                 _NewContents.AppendLine("</ul><br /><br />");
             }
