@@ -46,23 +46,23 @@ namespace DLCMS.Controllers
             if (dept == "All Landing pages")
             {
                 List<string> landingfilename = db.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw").Select(y => y.Overview1.Replace(".html", "")).ToList();
-                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && landingfilename.Contains(x.Filename)).ToList();//
+                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && landingfilename.Contains(x.Filename) && x.Enabled == true).ToList();//
             }
             else if (dept == "All pages")
             {
                 List<int> ids = new List<int>() { 62, 63, 81, 82 };
-                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && x.Title.Contains("Duncan Lewis") && x.Title.Length < 60).ToList();
+                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && x.Title.Contains("Duncan Lewis") && x.Title.Length < 60 && x.Enabled == true).ToList();
             }
             else if (dept == "Website Pages with Videos")
             {
-                WP = db.Website_Pages.Where(x => x.VideoId != null && x.VideoId > 0).ToList();
+                WP = db.Website_Pages.Where(x => x.VideoId != null && x.VideoId > 0 && x.Enabled == true).ToList();
             }
             else
             {
                 List<int> ids = new List<int>() { 342, 433, 11, 1699, 1700, 1598, 1599, 1644, 1645, 12, 13, 28 };
                 int Department = int.Parse(dept);
                 string Dept = db.Website_Department_Structure.Where(x => x.ID == Department).Select(y => y.Name).FirstOrDefault();
-                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && x.Department == Dept).ToList();
+                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && x.Department == Dept && x.Enabled == true).ToList();
             }
             //.Take(1)
             foreach (Website_Pages _WP in WP)

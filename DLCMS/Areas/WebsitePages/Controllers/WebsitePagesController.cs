@@ -79,7 +79,10 @@ namespace DLCMS.Areas.WebsitePages.Controllers
             else if (record.Sub_DepartmentInt != null)
                 linkedid = Convert.ToInt16(record.Sub_DepartmentInt);
             else if (record.DepartmentInt != null)
-                linkedid = Convert.ToInt16(record.DepartmentInt);
+            {
+                var _deptName = db.Website_Department_Structure.Where(x => x.ID == record.DepartmentInt).Select(x => x.Name).FirstOrDefault();
+                linkedid = db.Website_Structure.Where(x => x.name == _deptName && x.level == "Root").Select(x => x.id).FirstOrDefault();
+            }
 
             int? dept = record.DepartmentInt;
             record.Department = db.Website_Department_Structure.Where(x => x.ID == dept).Select(y => y.Name).FirstOrDefault();

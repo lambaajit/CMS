@@ -542,7 +542,6 @@ namespace dlwebclasses
                     sb.AppendLine("<li><a href=\"/Jobs_Solicitor.html\">Solicitors Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/JobsConsultancy.html\">Consultant Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Jobs_Admin.html\">Admin/Support Jobs</a></li>");
-                    sb.AppendLine("<li><a href=\"/Apprenticeship.html\">Apprenticeship</a></li>");
                     sb.AppendLine("</ul>");
                     sb.AppendLine("</div>");
                     sb.AppendLine("<div class=\"col-lg-4 megamunulevel2middlebandcolumns\">");
@@ -553,20 +552,20 @@ namespace dlwebclasses
                     sb.AppendLine("<li><a href=\"/Jobs_Employment.html\">Employment Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Jobs_Family.html\">Family Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Jobs_Housing.html\">Housing Jobs</a></li>");
-                    sb.AppendLine("<li><a href=\"/Jobs_Immigration.html\">Immigration Jobs</a></li>");
+                    sb.AppendLine("<li><a href=\"/Jobs_Court-of-Protection.html\">Court of Protection Jobs</a></li>");
                     sb.AppendLine("</ul>");
                     sb.AppendLine("</div>");
 
                     sb.AppendLine("<div class=\"col-lg-4 megamunulevel2middlebandcolumns\">");
                     sb.AppendLine("<ul>");
+                    sb.AppendLine("<li><a href=\"/Jobs_Immigration.html\">Immigration Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Jobs_Civil-Litigation.html\">Litigation Jobs</a></li>");
-                    sb.AppendLine("<li><a href=\"/Jobs_Mental-Health.html\">Mental Health</a></li>");
                     sb.AppendLine("<li><a href=\"/Jobs_Prison-Law.html\">Prison Law Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Jobs_Public-Law.html\">Public Law Jobs</a></li>");
-                    sb.AppendLine("<li><a href=\"/Jobs_Welfare-Benefits.html\">Welfare Benefits Jobs</a></li>");
                     sb.AppendLine("<li><a href=\"/Jobs_Personal-Injury.html\">Personal Injury Jobs</a></li>");
-                
-                    sb.AppendLine("</ul>");
+                sb.AppendLine("<li><a href=\"/Jobs_Welfare-Benefits.html\">Welfare Benefits Jobs</a></li>");
+                sb.AppendLine("<li><a href=\"/Jobs_Wills-and-Probate.html\">Wills and Probate Jobs</a></li>");
+                sb.AppendLine("</ul>");
                     sb.AppendLine("</div>");
 
                     sb.AppendLine("</div>");

@@ -40,7 +40,7 @@ namespace dlwebclasses
                 Keywords = WP.Title;
 
             if (!string.IsNullOrEmpty(WP.Description))
-                Description = WP.Description + DD.Name;
+                Description = WP.Description;
             else
                 Description = WP.Title;
 

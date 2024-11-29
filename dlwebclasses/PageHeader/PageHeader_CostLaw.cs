@@ -46,7 +46,7 @@ namespace dlwebclasses
             SB.AppendLine("                 <div class=\"col-sm-12\">");
             SB.AppendLine("                     <div class=\"row nopadding\">");
             SB.AppendLine("                         <div class=\"col-sm-8 col-sm-offset-2 col-xs-12 applyblock centerdiv\">");
-            SB.AppendLine("                             <nav class=\"navbar\">");
+            SB.AppendLine("                             <nav class=\"navbar\" style=\"z-index:99 !important\">");
             SB.AppendLine("                                 <div class=\"container\">");
             SB.AppendLine("                                     <!-- Brand and toggle get grouped for better mobile display -->");
             SB.AppendLine("                                     <div class=\"navbar-header\">");

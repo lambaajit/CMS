@@ -83,19 +83,19 @@ namespace DLCMS.Controllers
             "(select B.*, A.*,c.*,d.*,e.*,f.* from " +
             "(select name from Website_Department_Structure where DepartmentType = 'AreaOfLaw') B " +
             "left join  " +
-            "(select distinct Department_IT from Dlddbsrv6.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) A  " +
+            "(select distinct Department_IT from DLSDBSRV2NODE1.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) A  " +
             "on A.Department_IT collate DATABASE_DEFAULT = B.name  " +
             "left join " +
-            "(select distinct department_covered_2 from Dlddbsrv6.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) c  " +
+            "(select distinct department_covered_2 from DLSDBSRV2NODE1.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) c  " +
             "on c.department_covered_2 collate DATABASE_DEFAULT = B.name  " +
             "left join " +
-            "(select distinct department_covered_3 from Dlddbsrv6.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) d  " +
+            "(select distinct department_covered_3 from DLSDBSRV2NODE1.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) d  " +
             "on d.department_covered_3 collate DATABASE_DEFAULT = B.name  " +
             "left join " +
-            "(select distinct department_covered_4 from Dlddbsrv6.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) e  " +
+            "(select distinct department_covered_4 from DLSDBSRV2NODE1.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) e  " +
             "on e.department_covered_4 collate DATABASE_DEFAULT = B.name  " +
             "left join " +
-            "(select distinct department_covered_5 from Dlddbsrv6.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) f  " +
+            "(select distinct department_covered_5 from DLSDBSRV2NODE1.hrddl.hrd.emp_details where ([start_date] <= GETDATE()) AND ([end_date] > GETDATE() OR [end_date] IS NULL OR [end_date] = '01/01/1900') AND ([Employed] = '1') and ([Admin_Staff] <> '1')) f  " +
             "on f.department_covered_5 collate DATABASE_DEFAULT = B.name) Main " +
             "where (Main.Department_IT is not null or department_covered_2  is not null or  department_covered_3  is not null or department_covered_4  is not null or  department_covered_5  is not null) order by name").ToList();
 

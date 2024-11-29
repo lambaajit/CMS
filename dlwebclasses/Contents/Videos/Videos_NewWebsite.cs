@@ -109,8 +109,13 @@ namespace dlwebclasses
 
             if (!string.IsNullOrEmpty(DD.contactstr1) && DD.Name != "Mental Health")
             {
-                _NewContent.AppendLine("<br /><div class=\"deptcontactus " + DD.cssclass + " lightkolor\"><span class=\"" + DD.cssclass + " forecolor\">For all " + DD.Name + " related matters contact us online now.</span><a  class=\"deptcontactus " + DD.cssclass + " kolor\" href=\"/Home/Contact?dept=" + DD.Name + "\">Contact Us</a></div><br />");
+                _NewContent.AppendLine("<br /><br /><div class=\"deptcontactus " + DD.cssclass + " lightkolor\"><span class=\"" + DD.cssclass + " forecolor\">For all " + DD.Name + " related matters contact us online now.</span><a  class=\"deptcontactus " + DD.cssclass + " kolor\" href=\"/Home/Contact?dept=" + DD.Name + "\">Contact Us</a></div><br />");
             }
+
+            _NewContent.AppendLine("	<p style=\"font-size: 10px!important; line-height: 12px!important\"><u style=\"font-size : 12px!important\">Disclaimer</u>");
+            _NewContent.AppendLine("	<br /><br />");
+            _NewContent.AppendLine("This video content was created on " + WV.DateOfVideo.Value.ToShortDateString() + " to provide an overview of the legal position and the information was correct at the time this video was created.  This video has been produced for purposes of generic information and marketing purposes only.  While the information on this site is about legal issues, it is not intended as legal advice or as a substitute for the particularised advice of your own legal advisor. Please consult one of our lawyers to provide you with advice and assistance on any matters touched on this video.  Viewing of this video does not create legally binding advice and does not create a retainer with Duncan Lewis Solicitors.");
+            _NewContent.AppendLine("This video is Copyrighted at Duncan Lewis Solicitors " + WV.DateOfVideo.Value.Year + ". Any illegal reproduction of this content is prohibited and will result in immediate legal action.</p>");
 
 
             _NewContent.AppendLine("                </div>");

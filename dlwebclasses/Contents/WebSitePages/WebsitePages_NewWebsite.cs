@@ -81,13 +81,13 @@ namespace dlwebclasses
             if (DD.Name == "Careers")
             {
                 SB.AppendLine("            <div class=\"col-sm-12 col-md-9 col-xs-12 col-md-offset-3 depttabs\">");
-                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Careers.html\">Careers</a>");
-                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Trainees.html\">Trainees<span class=\"fa fa-suitcase\"></span></a>");
+                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Careers.html\">Careers<span class=\"fa fa-home\"></span></a>");
+                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Trainees.html\">Training Contracts<span class=\"fa fa-suitcase\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/JobsConsultancy.html\">Consultancy<span class=\"fa fa-suitcase\"></span></a>");
                 SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/internship.html\">Volunteer<span class=\"fa fa-suitcase\"></span></a>");
-                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Employee-Reward-and-Benefits.html\">Rewards<span class=\"fa fa-suitcase\"></span></a>");
-                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Careers-Video.html\">Videos<span class=\"fa fa-suitcase\"></span></a>");
-                
+                SB.AppendLine("                <a class=\"" + DD.cssclass + " forecolor lightkolor over\" href=\"/Employee-Reward-and-Benefits.html\">Benefits<span class=\"fa fa-suitcase\"></span></a>");
+
+
 
                 SB.AppendLine("        </div>");
             }
@@ -221,7 +221,9 @@ namespace dlwebclasses
                 var _video = db.Website_Videos.Where(x => x.id == WP.VideoId).FirstOrDefault();
                 if (_video != null)
                 {
-                    SB.AppendLine(_video.VideoString);
+                    SB.AppendLine("<br /><br />");
+                    SB.AppendLine(_video.VideoString.Replace("560","100%"));//.Replace("height=\"315\"","")
+                    SB.AppendLine("<br /><br />");
                 }
             }
 
@@ -229,9 +231,9 @@ namespace dlwebclasses
             
             string strsubdept_newreferral = getsubdepartmentforclientreferral.getsubdept(WP);
 
-            if (!string.IsNullOrEmpty(DD.contactstr1) && DD.Name != "Mental Health")
+            if (!string.IsNullOrEmpty(strsubdept_newreferral) && DD.Name != "Mental Health")
             {
-                SB.AppendLine("<br /><div class=\"deptcontactus " + DD.cssclass + " lightkolor\"><span class=\"" + DD.cssclass + " forecolor\">For all " + DD.Name + " related matters contact us online now.</span><a  class=\"deptcontactus " + DD.cssclass + " kolor\" href=\"/Home/Contact/" + strsubdept_newreferral + "\">Contact Us</a></div><br />");
+                SB.AppendLine("<br /><div class=\"deptcontactus " + DD.cssclass + " lightkolor\"><span class=\"" + DD.cssclass + " forecolor\">" + (DD.Name == "Misleneous" ? "For enquiries about legal advice and assistance contact us online now" : "For all " + DD.Name + " related matters contact us online now.") + "</span><a  class=\"deptcontactus " + DD.cssclass + " kolor\" href=\"/Home/Contact/" + strsubdept_newreferral + "\">Contact Us</a></div><br />");
             }
 
             SB.AppendLine("                </div>");

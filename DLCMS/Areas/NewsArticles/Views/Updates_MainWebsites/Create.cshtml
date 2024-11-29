@@ -64,7 +64,7 @@
 <div class="form-group">
     @Html.Label("MetaTitle", htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.TextAreaFor(model => model.Page_Title,  new { @class = "form-control", rows="2", required = "required" })
+        @Html.TextAreaFor(model => model.Page_Title,  new { @class = "form-control", rows="2", required = "required", maxlength = "70" })
         @Html.ValidationMessageFor(model => model.Page_Title, "", new { @class = "text-danger" })
     </div>
 </div>
@@ -72,7 +72,7 @@
 <div class="form-group">
     @Html.Label("Meta Description", htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows="3", required = "required" })
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows="3", required = "required", maxlength = "160" })
         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
     </div>
 </div>

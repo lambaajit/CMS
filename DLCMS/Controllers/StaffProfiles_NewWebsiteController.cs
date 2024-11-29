@@ -65,6 +65,7 @@ namespace DLCMS.Controllers
             {
                 AContents NAL;
                 IT_DatabaseEntities dbit = new IT_DatabaseEntities();
+                HRDDLEntities dbhr = new HRDDLEntities();
                 List<int> _excludedWebsiteStructureIds = dbit.SubDepartmentProfileStructures.Where(x => x.UseMainProfile == true).Select(x => x.Id).ToList();
                 var _subDepartmentProfiles = new List<SubDepartmentProfile>();
                 if (SubDepartmentProfileStructureId == 0)
@@ -72,7 +73,8 @@ namespace DLCMS.Controllers
                 else
                     _subDepartmentProfiles = dbit.SubDepartmentProfiles.Where(x => x.ApprovedProfile != null && !_excludedWebsiteStructureIds.Contains(x.SubDepartmentProfileStructureId ?? 0) && x.ApprovedProfile.Length > 20 && x.SubDepartmentProfileStructureId == SubDepartmentProfileStructureId).ToList();
 
-                foreach (var staff in _subDepartmentProfiles)
+                var _employedStaffEmpCodes = dbhr.Emp_Details.Where(x => x.employed == "1").Select(x => x.emp_code).ToList();
+                foreach (var staff in _subDepartmentProfiles.Where(x => _employedStaffEmpCodes.Contains(x.emp_code)))
                 {
                     NAL = new Content_StaffProfileNewWebsite(staff.emp_code, false, staff.SubDepartmentProfileStructure.Department1, staff.SubDepartmentProfileStructure.SubDepartment);
                     CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
@@ -121,7 +123,7 @@ namespace DLCMS.Controllers
                 if ((cbo_Type == "Team Pages") || (cbo_Type == "Both Pages"))
                 {
                     AContents NAL1;
-                    foreach (string dept in staffdeptlist)
+                    foreach (string dept in staffdeptlist.Where(x => x != "Data Claims"))
                     {
                         NAL1 = new Content_TeamPages_NewWebsite(dept);
                         CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL1);

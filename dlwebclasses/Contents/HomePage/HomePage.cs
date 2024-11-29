@@ -384,7 +384,7 @@ namespace dlwebclasses
                 foreach (var item in videolist)
                 {
                     _NewContent.AppendLine("                            <li>");
-                    _NewContent.AppendLine("                                    <a href=\"/Videos/" + item.id + "_Videos.html\"><img src=\"/Video-Images/" + item.id + ".jpg\" class=\"img-responsive\" alt=\"Duncan Lewis Videos\" /></a>");
+                    _NewContent.AppendLine("                                    <a href=\"/Videos/" + allStatic.getVideoURL(item.Heading, item.Department) + "\"><img src=\"/Video-Images/" + item.id + ".jpg\" class=\"img-responsive\" alt=\"Duncan Lewis Videos\" /></a>");
                     _NewContent.AppendLine("                            </li>");
                 }
                 _NewContent.AppendLine("<a href=\"/video.html\" style=\"padding:10px; float:right; margin-right:20px; display:inline-block\">Read More ...</a>");

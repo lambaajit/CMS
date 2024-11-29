@@ -104,6 +104,7 @@ namespace dlwebclasses
 
                 _NewContent.AppendLine("<div id=\"maincontent\" class=\"col-sm-9 col-xs-12 nopadding\">");
                 _NewContent.AppendLine("                <div class=\"row nopadding\">");
+            _NewContent.AppendLine("<h5>Our Offices " + (id == 2 ? "- In London" : id == 3 ? "- Out London" : "") + " </h5><hr /><p><b>Headquartered in the City, Duncan Lewis has offices nationwide available for client meetings. Where showing <span style=\"color:red\">*</span>, these offices are only available for pre-scheduled appointments only.</b></p>");
                 foreach (var item in office)
                 {
                     string redscript = "";
