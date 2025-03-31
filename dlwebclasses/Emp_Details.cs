@@ -447,6 +447,19 @@ namespace dlwebclasses
         public Nullable<double> Lieu_Days_2023 { get; set; }
         public Nullable<bool> Offerdocuments_Fullaccess { get; set; }
         public bool cilex { get; set; }
+        public Nullable<double> holidays_2024 { get; set; }
+        public Nullable<double> cf_hol_2024 { get; set; }
+        public Nullable<double> Lieu_Days_2024 { get; set; }
+        public Nullable<double> holidays_2025 { get; set; }
+        public Nullable<double> cf_hol_2025 { get; set; }
+        public Nullable<double> Lieu_Days_2025 { get; set; }
+        public Nullable<double> holidays_2026 { get; set; }
+        public Nullable<double> cf_hol_2026 { get; set; }
+        public Nullable<double> Lieu_Days_2026 { get; set; }
+        public string Unpaid_Enable { get; set; }
+        public string Unpaid_Enable_User { get; set; }
+        public Nullable<System.DateTime> Unpaid_Enable_Date { get; set; }
+        public Nullable<bool> IsLPO { get; set; }
     
         public virtual Office Office { get; set; }
     }

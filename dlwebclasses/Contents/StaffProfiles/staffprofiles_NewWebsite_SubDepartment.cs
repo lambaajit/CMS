@@ -134,7 +134,7 @@ namespace dlwebclasses
 
 
 
-            var faxno = db.Database.SqlQuery<string>("select isnull(Users_Fax,'') as FaxNumber from [dlddbsrv4].Indigo.dbo.users where users_FeCode = '" + emp_code + "' and users_FECOde is not null and len(users_FECOde) > 1").FirstOrDefault();
+            var faxno = db.Database.SqlQuery<string>("select isnull(Users_Fax,'') as FaxNumber from [DLSDBSRV1NODE1].Indigo.dbo.users where users_FeCode = '" + emp_code + "' and users_FECOde is not null and len(users_FECOde) > 1").FirstOrDefault();
             FaxNumber = "";
             if (faxno == null)
                 FaxNumber = "";

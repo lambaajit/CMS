@@ -76,11 +76,11 @@ namespace dlwebclasses
             SB = _rightcoloumn.getRightColoumn(dd, _contents);
             return SB;
         }
-        public StringBuilder getfooter()
+        public StringBuilder getfooter(Website_Pages webpage = null)
         {
             StringBuilder SB = new StringBuilder();
             DepartmentDetails dd = new DepartmentDetails(_contents.Department);
-            SB = _footer.getfooter(_contents);
+            SB = _footer.getfooter(_contents, webpage);
             return SB;
         }
 

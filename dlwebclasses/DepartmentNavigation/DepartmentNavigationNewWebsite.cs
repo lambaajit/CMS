@@ -96,7 +96,9 @@ namespace dlwebclasses
                 {
                     if (DD.Name == "InThePress")
                         linktext = "In The Press";
-                    else
+                if (DD.Name == "Legal News")
+                    linktext = "Legal News";
+                else
                         linktext = "News";
                 }
                 
@@ -270,7 +272,7 @@ namespace dlwebclasses
                             level1lastnode12 = " class=\"lastmenuitem\" ";
                         }
 
-                        SB.AppendLine("<li " + level1lastnode12 + "><a data-toggle=\"collapse\"" + collapsein + "\" href=\"#" + DD.Name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";","").Replace("&","") + item.ToString() + "Level1\"><p>" + DD.Name + " News " + item.ToString() + "</p><span></span></a>");
+                        SB.AppendLine("<li " + level1lastnode12 + "><a data-toggle=\"collapse\"" + collapsein + "\" href=\"#" + DD.Name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";","").Replace("&","") + item.ToString() + "Level1\"><p>" + DD.Name + " "  + item.ToString() + "</p><span></span></a>");
 
                         List<int> mths1 = new List<int>();
                         mths1 = dbit.Database.SqlQuery<int>("Select distinct Month(date_Update) from Updates_MainWebsites where Department ='" + DD.Name + "' and Year(Date_Update) = " + item + " order by Month(date_Update) desc").ToList();
@@ -359,7 +361,7 @@ namespace dlwebclasses
             Website_Structure root = new Website_Structure();
             root = dbit.Website_Structure.Where(x => ((x.name == DD.Name || x.name == DD.NameForNavigation) && x.Enabled != false) && x.level == "Root").FirstOrDefault();
             List<Website_Structure> Level1 = new List<Website_Structure>();
-            Level1 = dbit.Website_Structure.Where(x => x.underwhichnode == root.id || x.underwhichnode1 == root.id || x.underwhichnode2 == root.id || x.underwhichnode3 == root.id).OrderBy(y => y.sequence).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
+            Level1 = dbit.Website_Structure.Where(x => x.underwhichnode == root.id || x.underwhichnode1 == root.id || x.underwhichnode2 == root.id || x.underwhichnode3 == root.id).OrderBy(y => y.sequence ?? 100).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
             sb.AppendLine("                        <div id=\"deptnavigationmenu\" class=\"panel-collapse collapse in\">");
             sb.AppendLine("                            <div class=\"panel-body\">");
             sb.AppendLine("                                <ul>");
@@ -407,7 +409,7 @@ namespace dlwebclasses
                 {
                     sb.AppendLine("<li" + level1lastnode1 + "><a data-toggle=\"collapse\"" + collapsein1 + "\" href=\"#" + item.name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";", "").Replace("&", "").Replace("(", "").Replace(")", "").Trim() + "Level1\"><p>" + item.name + "</p><span></span></a>");
                     List<Website_Structure> Level2 = new List<Website_Structure>();
-                    Level2 = dbit.Website_Structure.Where(x => (x.underwhichnode == item.id || x.underwhichnode1 == item.id || x.underwhichnode2 == item.id || x.underwhichnode3 == item.id) && x.Enabled != false).OrderBy(y => y.sequence).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
+                    Level2 = dbit.Website_Structure.Where(x => (x.underwhichnode == item.id || x.underwhichnode1 == item.id || x.underwhichnode2 == item.id || x.underwhichnode3 == item.id) && x.Enabled != false).OrderBy(y => y.sequence??100).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
                     if (Level2.Count>0)
                         sb.AppendLine("<ul class=\"collapse" + addin1 + "\" id=\"" + item.name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";","").Replace("&","").Replace("(", "").Replace(")", "").Trim() + "Level1\">");
 
@@ -444,7 +446,7 @@ namespace dlwebclasses
                             {
                                 sb.AppendLine("<li" + level2lastnode1 + "><a data-toggle=\"collapse\"" + collapsein2 + "\" href=\"#" + item1.name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";","").Replace("&","").Replace("(", "").Replace(")", "") + "Level2\"><p>" + item1.name + "</p><span></span></a>");
                                 List<Website_Structure> Level3 = new List<Website_Structure>();
-                                Level3 = dbit.Website_Structure.Where(x => (x.underwhichnode == item1.id || x.underwhichnode1 == item1.id || x.underwhichnode2 == item1.id || x.underwhichnode3 == item1.id) && x.Enabled != false).OrderBy(y => y.sequence).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
+                                Level3 = dbit.Website_Structure.Where(x => (x.underwhichnode == item1.id || x.underwhichnode1 == item1.id || x.underwhichnode2 == item1.id || x.underwhichnode3 == item1.id) && x.Enabled != false).OrderBy(y => y.sequence??100).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
                                 if (Level3.Count > 0)
                                     sb.AppendLine("<ul class=\"collapse" + addin2 + "\" id=\"" + item1.name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";","").Replace("&","").Replace("(", "").Replace(")", "") + "Level2\">");
                                         foreach (var item2 in Level3)
@@ -479,7 +481,7 @@ namespace dlwebclasses
                                             {
                                                 sb.AppendLine("<li" + level3lastnode1 + "><a data-toggle=\"collapse\"" + collapsein3 + "\" href=\"#" + item2.name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";","").Replace("&","").Replace("(", "").Replace(")", "") + "Level3\"><p>" + item2.name + "</p><span></span></a>");
                                                 List<Website_Structure> Level4 = new List<Website_Structure>();
-                                                Level4 = dbit.Website_Structure.Where(x => (x.underwhichnode == item2.id || x.underwhichnode1 == item2.id || x.underwhichnode2 == item2.id || x.underwhichnode3 == item2.id) && x.Enabled != false).OrderBy(y => y.sequence).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
+                                                Level4 = dbit.Website_Structure.Where(x => (x.underwhichnode == item2.id || x.underwhichnode1 == item2.id || x.underwhichnode2 == item2.id || x.underwhichnode3 == item2.id) && x.Enabled != false).OrderBy(y => y.sequence ?? 100).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
                                                 if (Level4.Count > 0)
                                                     sb.AppendLine("<ul class=\"collapse" + addin3 + "\" id=\"" + item2.name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";","").Replace("&","").Replace("(", "").Replace(")", "") + "Level3\">");
                                                 foreach (var item3 in Level4)
@@ -513,7 +515,7 @@ namespace dlwebclasses
                                                     {
                                                         sb.AppendLine("<li" + level4lastnode1 + "><a data-toggle=\"collapse\"" + collapsein4 + "\" href=\"#" + item3.name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";", "").Replace("&", "").Replace("(", "").Replace(")", "") + "Level4\"><p>" + item3.name + "</p><span></span></a>");
                                                         List<Website_Structure> Level5 = new List<Website_Structure>();
-                                                        Level5 = dbit.Website_Structure.Where(x => (x.underwhichnode == item3.id || x.underwhichnode1 == item3.id || x.underwhichnode2 == item3.id || x.underwhichnode3 == item3.id) && x.Enabled != false).OrderBy(y => y.sequence).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
+                                                        Level5 = dbit.Website_Structure.Where(x => (x.underwhichnode == item3.id || x.underwhichnode1 == item3.id || x.underwhichnode2 == item3.id || x.underwhichnode3 == item3.id) && x.Enabled != false).OrderBy(y => y.sequence??100).ThenBy(s => s.level).ThenBy(x => x.name).ToList();
                                                         if (Level5.Count > 0)
                                                             sb.AppendLine("<ul class=\"collapse" + addin4 + "\" id=\"" + item3.name.Replace(" ", "").Replace("_", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace(";", "").Replace("&", "").Replace("(", "").Replace(")", "") + "Level4\">");
                                                         foreach (var item4 in Level5)

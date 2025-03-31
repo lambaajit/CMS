@@ -50,5 +50,6 @@ namespace dlwebclasses
         public Nullable<int> WarningColorCode { get; set; }
         public string WarningMessage { get; set; }
         public string ip_address { get; set; }
+        public Nullable<bool> IsServicesFooter { get; set; }
     }
 }

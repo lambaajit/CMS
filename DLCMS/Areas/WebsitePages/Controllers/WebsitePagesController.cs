@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DLCMS.Models;
 using dlwebclasses;
 using Newtonsoft.Json.Linq;
 using static System.Net.Mime.MediaTypeNames;
@@ -117,18 +116,22 @@ namespace DLCMS.Areas.WebsitePages.Controllers
 
         public override void CreateWebPages(bool Created, int Id)
         {
-            if (Id == 0)
-                Id = db.Website_Pages.Max(x => x.ID);
+            Website_Pages website_Page;
+            if (Created)
+                website_Page = db.Website_Pages.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+            else
+                website_Page = db.Website_Pages.OrderByDescending(x => x.ModifiedDate).FirstOrDefault();
 
-            dlwebclasses.Content_WebsitePages_NewWebsite NAL = new dlwebclasses.Content_WebsitePages_NewWebsite(Id);
-            dlwebclasses.CreateHTMLFIles_NEwWebsite CF = new dlwebclasses.CreateHTMLFIles_NEwWebsite(NAL);
+
+            dlwebclasses.Content_WebsitePages_NewWebsite NAL = new dlwebclasses.Content_WebsitePages_NewWebsite(website_Page.ID);
+            dlwebclasses.CreateHTMLFIles_NEwWebsite CF = new dlwebclasses.CreateHTMLFIles_NEwWebsite(NAL,null, website_Page);
         }
 
         public override void PolulateList()
         {
             ViewBag.DepartmentList = db.Website_Department_Structure.Select(x => new SelectListItem { Text = x.Name, Value = x.ID.ToString() }).Distinct().ToList();
             ViewBag.CompanyList = db.Website_Pages.Select(x => new SelectListItem { Text = x.Company, Value = x.Company }).Distinct().ToList();
-            ViewBag.VideoList = db.Website_Videos.Where(x => x.Active==true).Select(x => new SelectListItem { Text = x.Heading + " - (" + x.id + ")", Value = x.id.ToString() }).Distinct().ToList();
+            ViewBag.VideoList = db.Website_Videos.Where(x => x.Active==true).OrderBy(x => x.id).Select(x => new SelectListItem { Text = "(" + x.id + ") - " + x.Heading, Value = x.id.ToString() }).Distinct().ToList();
             ViewBag.SubDepartmentList = new SelectList(Enumerable.Empty<SelectListItem>());
             ViewBag.SubSubDepartmentList = new SelectList(Enumerable.Empty<SelectListItem>());
         }

@@ -42,10 +42,11 @@ namespace DLCMS.Controllers
                 Content_HomePage NAL = NAL = new Content_HomePage(htype);
                 CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
                 Fl.Create_MainNavigation();
+                Fl.Create_GeneralFooter();
             }
 
-            
-            
+
+
             return View("Index");
         }
 	}

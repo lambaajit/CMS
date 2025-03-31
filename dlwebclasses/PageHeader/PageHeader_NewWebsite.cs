@@ -49,7 +49,7 @@ namespace dlwebclasses
             SB.AppendLine("                        <div class=\"col-md-3 col-sm-3 col-xs-7 nopadding\">");
             SB.AppendLine("                            <div class=\"headerright\">");
             SB.AppendLine("<form method=\"get\" action=\"https://www.google.co.uk/search\">");
-            SB.AppendLine("                                <p><font class=\"lightcyantext\">Have a question?</font><br /><span class=\"fa fa-phone\"></span>033 3772 0409</p>");
+            SB.AppendLine("                                <p><font class=\"lightcyantext\">Have a question?</font><br /><a href=\"tel:033 3772 0409\"><span class=\"fa fa-phone\"></span>033 3772 0409</a></p>");
             SB.AppendLine("                                <input type=\"text\" name=\"q\" id=\"q\" class=\"form-control hidden-xs\" />");
             SB.AppendLine("                                <button name=\"searchgoogle\" id=\"searchgoogle\" class=\"btn btn-primary hidden-xs\" value=\"search\"><span class=\"fa fa-search\"></span></button>");
             SB.AppendLine("</form>");

@@ -44,6 +44,8 @@ namespace dlwebclasses
         public string WarningMessage { get; set; }
         public string ip_address { get; set; }
         public string NewNameForNavigationLink { get; set; }
+        public bool IsTextUsedOnFooter { get; set; }
+        public string TextUsedOnFooter { get; set; }
     
         public virtual Website_Pages Website_Pages { get; set; }
         public virtual ICollection<Website_Structure> Website_Structure1 { get; set; }

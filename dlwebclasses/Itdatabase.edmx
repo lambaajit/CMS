@@ -70,6 +70,17 @@
           <Property Name="Selected" Type="bit" />
           <Property Name="Approve" Type="bit" Nullable="false" />
           <Property Name="ApprovedProfile" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="WarningColorCode" Type="int" />
+          <Property Name="WarningMessage" Type="varchar(max)" />
+          <Property Name="ip_address" Type="varchar(max)" />
+          <Property Name="FurtherActionRequired" Type="bit" />
+          <Property Name="FurtherActionRequiredMessage" Type="varchar(max)" />
+          <Property Name="FurtherActionRequiredDate" Type="datetime" />
         </EntityType>
         <EntityType Name="SubDepartmentProfileStructure">
           <Key>
@@ -153,7 +164,7 @@
           <Property Name="ip_address" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'IT_Database.dbo.User_Profile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'IT_DATABASE.dbo.User_Profile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="User_Profile">
           <Key>
             <PropertyRef Name="Id" />
@@ -216,7 +227,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile' does not have a prim
           <Property Name="Page_Keywords" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'IT_DATABASE.dbo.User_Profile_FinalDraft' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="User_Profile_FinalDraft">
           <Key>
             <PropertyRef Name="Id" />
@@ -352,6 +363,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="WarningColorCode" Type="int" />
           <Property Name="WarningMessage" Type="varchar(max)" />
           <Property Name="ip_address" Type="varchar(max)" />
+          <Property Name="IsServicesFooter" Type="bit" />
         </EntityType>
         <EntityType Name="website_Header_Pictures">
           <Key>
@@ -375,9 +387,9 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
         </EntityType>
         <EntityType Name="website_Office_Direction">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Direction_From_Site" Type="varchar(max)" />
           <Property Name="Category_Of_Site" Type="varchar(max)" />
           <Property Name="AddressandDescription_of_Site" Type="varchar(max)" />
@@ -389,6 +401,13 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="varchar(max)" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="Heading" Type="varchar(max)" />
+          <Property Name="Text" Type="varchar(max)" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="WarningColorCode" Type="int" />
+          <Property Name="WarningMessage" Type="varchar(max)" />
+          <Property Name="ip_address" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Website_Pages">
           <Key>
@@ -465,6 +484,8 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="SubDepartmentNameForSwitchboard" Type="varchar(max)" />
           <Property Name="NewNameForNavigationLink" Type="varchar(max)" />
           <Property Name="NewNameForDepartment" Type="varchar(max)" />
+          <Property Name="IsTextUsedOnFooter" Type="bit" Nullable="false" />
+          <Property Name="TextUsedOnFooter" Type="varchar(max)" />
           <Property Name="CreatedBy" Type="varchar(max)" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="varchar(max)" />
@@ -707,7 +728,6 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySet Name="Website_Pages_SubDepartments" EntityType="IT_DatabaseModel.Website_Pages_SubDepartments" />
           <EntitySet Name="website_awards" EntityType="IT_DatabaseModel.website_awards" />
           <EntitySet Name="website_Header_Pictures" EntityType="IT_DatabaseModel.website_Header_Pictures" />
-          <EntitySet Name="website_Office_Direction" EntityType="IT_DatabaseModel.website_Office_Direction" />
           <EntitySet Name="User_Profile_FinalDraft" EntityType="IT_DatabaseModel.User_Profile_FinalDraft" />
           <EntitySet Name="Website_Custom_SubDepartments" EntityType="IT_DatabaseModel.Website_Custom_SubDepartments" />
           <EntitySet Name="SubDepartmentSwitchboards" EntityType="IT_DatabaseModel.SubDepartmentSwitchboard" />
@@ -733,6 +753,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
             <End Role="Website_Structure1" EntitySet="Website_Structure" />
           </AssociationSet>
           <EntitySet Name="Updates_MainWebsite_Departments" EntityType="IT_DatabaseModel.Updates_MainWebsite_Departments" />
+          <EntitySet Name="website_Office_Direction" EntityType="IT_DatabaseModel.website_Office_Direction" />
         </EntityContainer>
         <EntityType Name="Updates_MainWebsites">
           <Key>
@@ -878,6 +899,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="WarningColorCode" Type="Int32" />
           <Property Name="WarningMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ip_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsServicesFooter" Type="Boolean" />
         </EntityType>
         <EntityType Name="Website_Pages">
           <Key>
@@ -977,23 +999,6 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="WarningColorCode" Type="Int32" />
           <Property Name="WarningMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ip_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="website_Office_Direction">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Direction_From_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Category_Of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddressandDescription_of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Map_Of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DirectionByWalk" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DirectionByBus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="officeid" Type="Int32" />
-          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="User_Profile_FinalDraft">
           <Key>
@@ -1125,6 +1130,17 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="Approve" Type="Boolean" Nullable="false" />
           <Property Name="ApprovedProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SubDepartmentProfileStructure" Relationship="IT_DatabaseModel.FK__SubDepart__SubDe__19F5B35B" FromRole="SubDepartmentProfile" ToRole="SubDepartmentProfileStructure" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="WarningColorCode" Type="Int32" />
+          <Property Name="WarningMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ip_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FurtherActionRequired" Type="Boolean" />
+          <Property Name="FurtherActionRequiredMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FurtherActionRequiredDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Website_Videos">
           <Key>
@@ -1198,6 +1214,8 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <NavigationProperty Name="Website_Structure2" Relationship="IT_DatabaseModel.FK__Website_S__under__5DABBF2A" FromRole="Website_Structure1" ToRole="Website_Structure" />
           <Property Name="ip_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NewNameForNavigationLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsTextUsedOnFooter" Type="Boolean" Nullable="false" />
+          <Property Name="TextUsedOnFooter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SubDepartmentProfileStructure">
           <Key>
@@ -1272,6 +1290,30 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <Property Name="Enabled" Type="Boolean" />
           <Property Name="WarningColorCode" Type="Int32" />
           <Property Name="WarningMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="website_Office_Direction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Direction_From_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Category_Of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddressandDescription_of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Map_Of_Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DirectionByWalk" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DirectionByBus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="officeid" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="Heading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="WarningColorCode" Type="Int32" />
+          <Property Name="WarningMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ip_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1388,6 +1430,7 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="Website_Department_Structure">
             <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Department_Structure">
               <MappingFragment StoreEntitySet="Website_Department_Structure">
+                <ScalarProperty Name="IsServicesFooter" ColumnName="IsServicesFooter" />
                 <ScalarProperty Name="ip_address" ColumnName="ip_address" />
                 <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
                 <ScalarProperty Name="WarningColorCode" ColumnName="WarningColorCode" />
@@ -1529,24 +1572,6 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="website_Office_Direction">
-            <EntityTypeMapping TypeName="IT_DatabaseModel.website_Office_Direction">
-              <MappingFragment StoreEntitySet="website_Office_Direction">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="officeid" ColumnName="officeid" />
-                <ScalarProperty Name="DirectionByBus" ColumnName="DirectionByBus" />
-                <ScalarProperty Name="DirectionByWalk" ColumnName="DirectionByWalk" />
-                <ScalarProperty Name="Map_Of_Site" ColumnName="Map_Of_Site" />
-                <ScalarProperty Name="AddressandDescription_of_Site" ColumnName="AddressandDescription_of_Site" />
-                <ScalarProperty Name="Category_Of_Site" ColumnName="Category_Of_Site" />
-                <ScalarProperty Name="Direction_From_Site" ColumnName="Direction_From_Site" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="User_Profile_FinalDraft">
             <EntityTypeMapping TypeName="IT_DatabaseModel.User_Profile_FinalDraft">
               <MappingFragment StoreEntitySet="User_Profile_FinalDraft">
@@ -1672,6 +1697,17 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="SubDepartmentProfiles">
             <EntityTypeMapping TypeName="IT_DatabaseModel.SubDepartmentProfile">
               <MappingFragment StoreEntitySet="SubDepartmentProfiles">
+                <ScalarProperty Name="FurtherActionRequiredDate" ColumnName="FurtherActionRequiredDate" />
+                <ScalarProperty Name="FurtherActionRequiredMessage" ColumnName="FurtherActionRequiredMessage" />
+                <ScalarProperty Name="FurtherActionRequired" ColumnName="FurtherActionRequired" />
+                <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+                <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
+                <ScalarProperty Name="WarningColorCode" ColumnName="WarningColorCode" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ApprovedProfile" ColumnName="ApprovedProfile" />
                 <ScalarProperty Name="Approve" ColumnName="Approve" />
                 <ScalarProperty Name="Selected" ColumnName="Selected" />
@@ -1729,6 +1765,8 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
           <EntitySetMapping Name="Website_Structure">
             <EntityTypeMapping TypeName="IT_DatabaseModel.Website_Structure">
               <MappingFragment StoreEntitySet="Website_Structure">
+                <ScalarProperty Name="TextUsedOnFooter" ColumnName="TextUsedOnFooter" />
+                <ScalarProperty Name="IsTextUsedOnFooter" ColumnName="IsTextUsedOnFooter" />
                 <ScalarProperty Name="NewNameForNavigationLink" ColumnName="NewNameForNavigationLink" />
                 <ScalarProperty Name="ip_address" ColumnName="ip_address" />
                 <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
@@ -1794,6 +1832,31 @@ warning 6002: The table/view 'IT_Database.dbo.User_Profile_FinalDraft' does not 
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="website_Office_Direction">
+            <EntityTypeMapping TypeName="IT_DatabaseModel.website_Office_Direction">
+              <MappingFragment StoreEntitySet="website_Office_Direction">
+                <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+                <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
+                <ScalarProperty Name="WarningColorCode" ColumnName="WarningColorCode" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="officeid" ColumnName="officeid" />
+                <ScalarProperty Name="DirectionByBus" ColumnName="DirectionByBus" />
+                <ScalarProperty Name="DirectionByWalk" ColumnName="DirectionByWalk" />
+                <ScalarProperty Name="Map_Of_Site" ColumnName="Map_Of_Site" />
+                <ScalarProperty Name="AddressandDescription_of_Site" ColumnName="AddressandDescription_of_Site" />
+                <ScalarProperty Name="Category_Of_Site" ColumnName="Category_Of_Site" />
+                <ScalarProperty Name="Direction_From_Site" ColumnName="Direction_From_Site" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -104,7 +104,7 @@ namespace dlwebclasses
                         _NewContent.AppendLine("                                    <div class=\"" + colwid + " col-xs-4 boxpadding\">");
                         _NewContent.AppendLine("                                        <div class=\"deptbox " + item.cssclass + " kolor\">");
                         if (s == 2 && namefordisplay == "Landlord & Tenant Disputes")
-                            _NewContent.AppendLine("                                            <h3>Social Housing</h3>");
+                            _NewContent.AppendLine("                                            <h3>Social Housing &amp; Disrepair Claims</h3>");
                         else
                             _NewContent.AppendLine("                                            <h3>" + namefordisplay + "</h3>");
                         _NewContent.AppendLine("                                            <a href=\"" + item.Overview1 + "\"><span class=\"fa fa-arrow-circle-right\" aria-hidden=\"true\"></span></a>");
@@ -459,7 +459,7 @@ namespace dlwebclasses
                         _NewContent.AppendLine("                                        <div class=\"deptbox " + item.cssclass + " kolor\">");
 
                         if (htype == HomePagetype.LegalAid && namefordisplay == "Landlord & Tenant Disputes")
-                            _NewContent.AppendLine("                                            <h3>Social Housing</h3>");
+                            _NewContent.AppendLine("                                            <h3>Social Housing &amp; Disrepair Claims</h3>");
                         else
                             _NewContent.AppendLine("                                            <h3>" + namefordisplay + "</h3>");
 

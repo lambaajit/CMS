@@ -179,6 +179,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\NewsArticles\Controllers\Updates_MainWebsitesController.cs" />
     <Compile Include="Areas\NewsArticles\NewsArticlesAreaRegistration.cs" />
+    <Compile Include="Areas\WebsiteOfficeDirection\Controllers\website_Office_DirectionController.cs" />
+    <Compile Include="Areas\WebsiteOfficeDirection\WebsiteOfficeDirectionAreaRegistration.cs" />
     <Compile Include="Areas\WebsitePages\Controllers\WebsitePagesController.cs" />
     <Compile Include="Areas\WebsitePages\WebsitePagesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -353,6 +355,10 @@
     <Content Include="Areas\NewsArticles\Views\Updates_MainWebsites\Create.cshtml" />
     <Content Include="Areas\NewsArticles\Views\Updates_MainWebsites\Index.cshtml" />
     <Content Include="Areas\NewsArticles\Views\Updates_MainWebsites\Search.cshtml" />
+    <Content Include="Areas\WebsiteOfficeDirection\Views\web.config" />
+    <Content Include="Areas\WebsiteOfficeDirection\Views\website_Office_Direction\Create.cshtml" />
+    <Content Include="Areas\WebsiteOfficeDirection\Views\website_Office_Direction\Index.cshtml" />
+    <Content Include="Areas\WebsiteOfficeDirection\Views\website_Office_Direction\Search.cshtml" />
     <None Include="Properties\PublishProfiles\DLCMS.pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
@@ -463,6 +469,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\NewsArticles\Data\" />
     <Folder Include="Areas\NewsArticles\Views\Shared\" />
+    <Folder Include="Areas\WebsiteOfficeDirection\Data\" />
+    <Folder Include="Areas\WebsiteOfficeDirection\Views\Shared\" />
     <Folder Include="Areas\WebsitePages\Data\" />
     <Folder Include="Areas\WebsitePages\Views\Shared\" />
     <Folder Include="Views\BaseApi\" />

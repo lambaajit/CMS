@@ -6,19 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DLCMS.Models;
 using System.Configuration;
 using Newtonsoft.Json;
 using System.Web.Script.Serialization;
 using System.Collections;
 using System.Text;
+using dlwebclasses;
 
 namespace DLCMS.Controllers
 {
     [Authorize(Roles ="Removed")]
     public class CURD_WebSitePagesController : BaseController
     {
-        private DLCMS_ITDatabase db = new DLCMS_ITDatabase();
+        private IT_DatabaseEntities db = new IT_DatabaseEntities();
 
         // GET: /CURD_WebSitePages/
         public ActionResult Index()
@@ -100,7 +100,7 @@ namespace DLCMS.Controllers
                     createpreviewpage_NewWebsite(dup_id);
                     createpreviewpage(dup_id);
                     dlwebclasses.Content_WebsitePages_NewWebsite NAL = new dlwebclasses.Content_WebsitePages_NewWebsite(dup_id);
-                    dlwebclasses.CreateHTMLFIles_NEwWebsite CF = new dlwebclasses.CreateHTMLFIles_NEwWebsite(NAL);
+                    dlwebclasses.CreateHTMLFIles_NEwWebsite CF = new dlwebclasses.CreateHTMLFIles_NEwWebsite(NAL, null ,website_pages);
                     return RedirectToAction("Edit", "CURD_WebSitePages", new { id = dup_id });
                 }
 
@@ -164,7 +164,7 @@ namespace DLCMS.Controllers
                     createpreviewpage(ID);
                     createpreviewpage_NewWebsite(ID);
                     dlwebclasses.Content_WebsitePages_NewWebsite NAL = new dlwebclasses.Content_WebsitePages_NewWebsite(ID);
-                    dlwebclasses.CreateHTMLFIles_NEwWebsite CF = new dlwebclasses.CreateHTMLFIles_NEwWebsite(NAL);
+                    dlwebclasses.CreateHTMLFIles_NEwWebsite CF = new dlwebclasses.CreateHTMLFIles_NEwWebsite(NAL, null, WP);
                     ViewBag.filepath = ConfigurationManager.AppSettings["Rootpath"].ToString() + "\\WebSite_Preview.html";
                     ViewBag.filepath_NewWebsite = ConfigurationManager.AppSettings["RootpathNewWebsite"].ToString() + "\\WebSite_Preview.html";
                 }
@@ -240,7 +240,7 @@ namespace DLCMS.Controllers
 
         public ActionResult getlistofwebpages(string id = null)
         {
-            List<DLCMS.Models.Website_Pages> wp = new List<DLCMS.Models.Website_Pages>();
+            List<Website_Pages> wp = new List<Website_Pages>();
             if (id == null)
             {
                 wp = db.Website_Pages.Where(x => x.Company == "Duncan Lewis").ToList();
@@ -254,14 +254,14 @@ namespace DLCMS.Controllers
 
         public ActionResult getlistofwebpages247()
         {
-            List<DLCMS.Models.Website_Pages> wp = new List<DLCMS.Models.Website_Pages>();
+            List<Website_Pages> wp = new List<Website_Pages>();
             wp = db.Website_Pages.Where(x => x.Company == "24-7languageServices").OrderBy(y => y.Name).ToList();
             return View(wp);
         }
 
         public ActionResult getlistofwebpagesCostLaw()
         {
-            List<DLCMS.Models.Website_Pages> wp = new List<DLCMS.Models.Website_Pages>();
+            List<Website_Pages> wp = new List<Website_Pages>();
             wp = db.Website_Pages.Where(x => x.Company == "Cost Law").OrderBy(y => y.Name).ToList();
             return View("~/Views/CURD_WebSitePages/getlistofwebpages.cshtml",wp);
         }

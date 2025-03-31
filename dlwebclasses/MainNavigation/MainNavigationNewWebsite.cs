@@ -20,6 +20,7 @@ namespace dlwebclasses
             teamnames.Add("Teams by Department");
             teamnames.Add("Alphabetic Team Listing");
 
+            officelocation.Add("All Offices");
             officelocation.Add("Offices in London");
             officelocation.Add("Offices outside London");
 
@@ -364,10 +365,17 @@ namespace dlwebclasses
                     if (j == 1)
                         activeon = " active ";
                     j++;
-                    string officeinout = "In";
+                    List<string> officeinout = new List<string>();
                     if (item == "Offices outside London")
-                        officeinout = "Out";
-                    
+                        officeinout.Add("Out");
+                    else if (item == "Offices in London")
+                        officeinout.Add("In");
+                    else if (item == "All Offices")
+                    {
+                        officeinout.Add("In");
+                        officeinout.Add("Out");
+                    }
+
                     sb.AppendLine("<div class=\"tab-pane megamunulevel2 " + activeon + "\" id=\"" + item.Replace(" ", "-").Replace("&","").Replace(":", "") + "\">");
                     sb.AppendLine("<div class=\"row nopadding dept_default\">");
                     sb.AppendLine("<div class=\"col-lg-12 megamunulevel2topband dept_default kolor\">" + item);
@@ -376,10 +384,15 @@ namespace dlwebclasses
                     sb.AppendLine("<div class=\"col-lg-12 megamunulevel2middleband deptbordercolor dept_default lightkolor\">");
                     DLWEBEntities dbweb = new DLWEBEntities();
                     List<OfficeDLW> Off = new List<OfficeDLW>();
-                    Off = dbweb.OfficesDLW.Where(x => x.In_Out_London == officeinout && x.Active == true && (x.Company == "Duncan Lewis" || x.Company == "Both")).OrderBy(x => x.Sequence).ThenBy(x => x.Name).ToList();
+                    Off = dbweb.OfficesDLW.Where(x => officeinout.Contains(x.In_Out_London) && x.Active == true && (x.Company == "Duncan Lewis" || x.Company == "Both")).OrderBy(x => x.Name == "City of London" ? 1 : 2).ThenBy(x => x.In_Out_London).ThenBy(x => x.Sequence).ThenBy(x => x.Name).ToList();
                     string cols = "col-lg-4";
                     if (Off.Count() > 27)
-                        cols = "col-lg-3";
+                    {
+                        if (item == "All Offices")
+                            cols = "col-lg-2";
+                        else 
+                            cols = "col-lg-3";
+                    }
 
                     sb.AppendLine("<div class=\"row\">");
                     sb.AppendLine("<div class=\"" + cols + " megamunulevel2middlebandcolumns\">");

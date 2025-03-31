@@ -39,5 +39,15 @@ namespace dlwebclasses
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<bool> Enabled { get; set; }
         public Nullable<int> VideoId { get; set; }
+        public Nullable<int> WarningColorCode { get; set; }
+        public string WarningMessage { get; set; }
+        public string ip_address { get; set; }
+        public string GoogleReviewLink { get; set; }
+        public string ReviewSolicitorsFirmID { get; set; }
+        public string ReviewSolicitorsOfficeLinks { get; set; }
+        public bool PriorityForClientReviews { get; set; }
+        public string PageTitle { get; set; }
+        public string MetaDescription { get; set; }
+        public string MetaKeywords { get; set; }
     }
 }

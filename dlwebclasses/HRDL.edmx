@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="HRDDLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HRDDLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'HRDDL.dbo.Emp_ITInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Emp_ITInfo">
@@ -591,6 +591,19 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <Property Name="Lieu_Days_2023" Type="float" />
           <Property Name="Offerdocuments_Fullaccess" Type="bit" />
           <Property Name="cilex" Type="bit" Nullable="false" />
+          <Property Name="holidays_2024" Type="float" />
+          <Property Name="cf_hol_2024" Type="float" />
+          <Property Name="Lieu_Days_2024" Type="float" />
+          <Property Name="holidays_2025" Type="float" />
+          <Property Name="cf_hol_2025" Type="float" />
+          <Property Name="Lieu_Days_2025" Type="float" />
+          <Property Name="holidays_2026" Type="float" />
+          <Property Name="cf_hol_2026" Type="float" />
+          <Property Name="Lieu_Days_2026" Type="float" />
+          <Property Name="Unpaid_Enable" Type="char" MaxLength="1" />
+          <Property Name="Unpaid_Enable_User" Type="varchar" MaxLength="20" />
+          <Property Name="Unpaid_Enable_Date" Type="datetime" />
+          <Property Name="IsLPO" Type="bit" />
         </EntityType>
         <EntityContainer Name="HRDDLModelStoreContainer">
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
@@ -1190,6 +1203,19 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <Property Name="Lieu_Days_2023" Type="Double" />
           <Property Name="Offerdocuments_Fullaccess" Type="Boolean" />
           <Property Name="cilex" Type="Boolean" Nullable="false" />
+          <Property Name="holidays_2024" Type="Double" />
+          <Property Name="cf_hol_2024" Type="Double" />
+          <Property Name="Lieu_Days_2024" Type="Double" />
+          <Property Name="holidays_2025" Type="Double" />
+          <Property Name="cf_hol_2025" Type="Double" />
+          <Property Name="Lieu_Days_2025" Type="Double" />
+          <Property Name="holidays_2026" Type="Double" />
+          <Property Name="cf_hol_2026" Type="Double" />
+          <Property Name="Lieu_Days_2026" Type="Double" />
+          <Property Name="Unpaid_Enable" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Unpaid_Enable_User" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Unpaid_Enable_Date" Type="DateTime" Precision="3" />
+          <Property Name="IsLPO" Type="Boolean" />
         </EntityType>
         <Association Name="FK__Emp_Detai__offic__7D8391DF">
           <End Type="HRDDLModel.Office" Role="Office" Multiplicity="0..1" />
@@ -1358,6 +1384,19 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <EntitySetMapping Name="Emp_Details">
             <EntityTypeMapping TypeName="HRDDLModel.Emp_Details">
               <MappingFragment StoreEntitySet="Emp_Details">
+                <ScalarProperty Name="IsLPO" ColumnName="IsLPO" />
+                <ScalarProperty Name="Unpaid_Enable_Date" ColumnName="Unpaid_Enable_Date" />
+                <ScalarProperty Name="Unpaid_Enable_User" ColumnName="Unpaid_Enable_User" />
+                <ScalarProperty Name="Unpaid_Enable" ColumnName="Unpaid_Enable" />
+                <ScalarProperty Name="Lieu_Days_2026" ColumnName="Lieu_Days_2026" />
+                <ScalarProperty Name="cf_hol_2026" ColumnName="cf_hol_2026" />
+                <ScalarProperty Name="holidays_2026" ColumnName="holidays_2026" />
+                <ScalarProperty Name="Lieu_Days_2025" ColumnName="Lieu_Days_2025" />
+                <ScalarProperty Name="cf_hol_2025" ColumnName="cf_hol_2025" />
+                <ScalarProperty Name="holidays_2025" ColumnName="holidays_2025" />
+                <ScalarProperty Name="Lieu_Days_2024" ColumnName="Lieu_Days_2024" />
+                <ScalarProperty Name="cf_hol_2024" ColumnName="cf_hol_2024" />
+                <ScalarProperty Name="holidays_2024" ColumnName="holidays_2024" />
                 <ScalarProperty Name="cilex" ColumnName="cilex" />
                 <ScalarProperty Name="Offerdocuments_Fullaccess" ColumnName="Offerdocuments_Fullaccess" />
                 <ScalarProperty Name="Lieu_Days_2023" ColumnName="Lieu_Days_2023" />

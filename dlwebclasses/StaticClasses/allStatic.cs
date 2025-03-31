@@ -166,7 +166,7 @@ namespace dlwebclasses
         {
             HRDDLEntities db = new HRDDLEntities();
             List<Emp_Details> ED = new List<Emp_Details>();
-            ED = db.Emp_Details.Where(x => (x.employed == "1") && x.emp_status != "Vertico Secondment" && (x.start_date <= DateTime.Now) && (x.end_date > DateTime.Now || x.end_date == null || x.end_date == new DateTime(1900, 1, 1))).OrderBy(x => x.forename).ToList();
+            ED = db.Emp_Details.Where(x => (x.employed == "1") && x.IsLPO != true && (x.start_date <= DateTime.Now) && (x.end_date > DateTime.Now || x.end_date == null || x.end_date == new DateTime(1900, 1, 1))).OrderBy(x => x.forename).ToList();
             return ED;
         }
 
@@ -305,6 +305,27 @@ namespace dlwebclasses
             fp.WriteLine("<match url=\"Immigration-Detention-Pending-Removal-to-Rwanda.html\" />");
             fp.WriteLine("<action type=\"Rewrite\" url=\"Challenging-Removal-to-Rwanda.html\" />");
             fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"Housing.html\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"housing-solicitors.html\" />");
+            fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"branchLocator_DL_WithMap.aspx\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"findus.html\" />");
+            fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"offices/Islington_office.html\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"offices/Islington-London-Solicitors.html\" />");
+            fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"Offices/London-W1-Solicitors.html\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"offices/City%20of%20London-Solicitors.html\" />");
+            fp.WriteLine("</rule>");
+
 
 
             //fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
@@ -637,6 +658,12 @@ namespace dlwebclasses
         }
     }
 
+
+    public class WebsiteNodes
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
     public class SubDepartmentListModel{
         public string SubDepartment { get; set; }
         public string Department { get; set; }

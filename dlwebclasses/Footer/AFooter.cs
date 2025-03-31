@@ -8,6 +8,6 @@ namespace dlwebclasses
 {
     public abstract class AFooter
     {
-        public abstract StringBuilder getfooter(AContents _contents);
+        public abstract StringBuilder getfooter(AContents _contents, Website_Pages webPage = null);
     }
 }

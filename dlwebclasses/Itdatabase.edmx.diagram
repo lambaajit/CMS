@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="IT_DatabaseModel.Website_Pages_SubDepartments" Width="2.125" PointX="5.875" PointY="6.875" />
         <EntityTypeShape EntityType="IT_DatabaseModel.website_awards" Width="1.5" PointX="5.375" PointY="9.75" />
         <EntityTypeShape EntityType="IT_DatabaseModel.website_Header_Pictures" Width="1.5" PointX="10.375" PointY="7.75" />
-        <EntityTypeShape EntityType="IT_DatabaseModel.website_Office_Direction" Width="1.5" PointX="10.375" PointY="10.75" />
         <EntityTypeShape EntityType="IT_DatabaseModel.User_Profile_FinalDraft" Width="1.5" PointX="7.375" PointY="11.75" />
         <EntityTypeShape EntityType="IT_DatabaseModel.Website_Custom_SubDepartments" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="IT_DatabaseModel.SubDepartmentSwitchboard" Width="1.5" PointX="11.375" PointY="3.75" />
@@ -29,6 +28,7 @@
         <AssociationConnector Association="IT_DatabaseModel.FK__Website_S__linke__5CB79AF1" />
         <AssociationConnector Association="IT_DatabaseModel.FK__Website_S__under__5DABBF2A" />
         <EntityTypeShape EntityType="IT_DatabaseModel.Updates_MainWebsite_Departments" Width="1.5" PointX="14.375" PointY="9.75" />
+        <EntityTypeShape EntityType="IT_DatabaseModel.website_Office_Direction" Width="1.5" PointX="14.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

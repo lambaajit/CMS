@@ -9,7 +9,7 @@ namespace dlwebclasses
     public class GenerateWebPages_NewWebsite
     {
         public StringBuilder PageContent { get; set; }
-        public GenerateWebPages_NewWebsite(AContents _content)
+        public GenerateWebPages_NewWebsite(AContents _content, Website_Pages webPage = null)
         {
             AWebPage WP = new WebPage_NewWebsite();
             client_WebPage cwp = new client_WebPage(WP, _content);
@@ -55,7 +55,7 @@ namespace dlwebclasses
 
             SB.AppendLine(cwp.getcontents().ToString());
 
-            SB.AppendLine(cwp.getfooter().ToString());
+            SB.AppendLine(cwp.getfooter(webPage).ToString());
             SB.AppendLine("</div>");
             SB.AppendLine("</div>");
              SB.AppendLine("</body>");

@@ -8,7 +8,7 @@ namespace dlwebclasses
 {
     public class Footer_CostLaw:AFooter
     {
-        public override StringBuilder getfooter(AContents _contents)
+        public override StringBuilder getfooter(AContents _contents, Website_Pages webpage)
         {
             StringBuilder SB = new StringBuilder();
             SB.AppendLine("<div class=\"row nopadding blueback footertopbar\">");

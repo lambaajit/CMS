@@ -10,8 +10,8 @@ namespace dlwebclasses
     {
         public abstract StringBuilder getofficesInLondon();
         public abstract StringBuilder getofficesOutLondon();
-        public abstract List<string> getofficesInLondonList();
+        public abstract List<string> getofficesInLondonList(Website_Pages webpage = null);
 
-        public abstract List<string> getofficesOutLondonList();
+        public abstract List<string> getofficesOutLondonList(Website_Pages webpage = null);
     }
 }

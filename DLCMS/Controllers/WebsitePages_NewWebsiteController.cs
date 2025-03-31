@@ -51,7 +51,7 @@ namespace DLCMS.Controllers
             else if (dept == "All pages")
             {
                 List<int> ids = new List<int>() { 62, 63, 81, 82 };
-                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && x.Title.Contains("Duncan Lewis") && x.Title.Length < 60 && x.Enabled == true).ToList();
+                WP = db.Website_Pages.Where(x => x.Company == "Duncan Lewis" && x.Enabled == true).ToList();
             }
             else if (dept == "Website Pages with Videos")
             {
@@ -70,7 +70,7 @@ namespace DLCMS.Controllers
                 try
                 {
                     NAL = new Content_WebsitePages_NewWebsite(_WP.ID);
-                    CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
+                    CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL, null, _WP);
                 }
                 catch
                 {

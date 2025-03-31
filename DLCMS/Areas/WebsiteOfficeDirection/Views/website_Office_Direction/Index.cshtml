@@ -1,0 +1,41 @@
+﻿@model BaseViewModelWithList<dlwebclasses.website_Office_Direction>
+@using System.Reflection;
+
+@{
+
+    var _search = (dlwebclasses.AbstractSearch<dlwebclasses.website_Office_Direction>)Session["WebsiteOfficeDirectionSearch"];
+    var _baseViewModelWithColumnHeaders = converttoModel<dlwebclasses.website_Office_Direction>.converToBaseViewModelWithColumnHeaders(Model);
+    _baseViewModelWithColumnHeaders.ColumnHeaders = _search.ClassProperties.Select(x => x.Name).OrderBy(x => x == "Title" ? 0 : x == "Department" ? 1 : 2).ToList();
+    _baseViewModelWithColumnHeaders.ClassProperties = _search.ClassProperties;
+    List<PropertyInfo> properties = new List<PropertyInfo>();
+    _baseViewModelWithColumnHeaders.ColumnHeaders.ToList().ForEach(x => properties.Add(typeof(dlwebclasses.website_Office_Direction).GetProperty(x)));
+    Html.RenderPartial("~/Views/GenericBase/Pagination.cshtml", _baseViewModelWithColumnHeaders);
+}
+
+<table class="table">
+    @{Html.RenderPartial("~/Views/GenericBase/ColumnHeaders.cshtml", _baseViewModelWithColumnHeaders); }
+    @foreach (var item in Model.list.ToList())
+    {
+        <tr>
+            @foreach (var property in properties)
+            {
+                if (_search.ClassProperties.Where(x => x.Name == property.Name && x.IsSelected == true).FirstOrDefault() != null)
+                {
+                        <td>
+                            <span>@property.GetValue(item, null)</span>
+                        </td>
+                }
+            }
+            <td>
+                @if (Model.CanBeDeleted)
+                {
+                    <i class="fa fa-times" onclick="OpenDeleteDialog('@item.ID')" style="cursor:pointer"></i>
+                }
+                @if (Model.CanBeEdited)
+                {
+                    @Ajax.ActionLink(" ", "EditPartial", Model.ControllerName, new { area = Model.AreaName, id = item.ID }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "CreateDiv", OnSuccess = "UpdatesMainwebsite.InitialiseForm(data)" }, new { @class = "fa fa-pencil-alt" })
+                }
+            </td>
+        </tr>
+    }
+</table>

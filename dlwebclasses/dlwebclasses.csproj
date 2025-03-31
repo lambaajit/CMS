@@ -284,6 +284,7 @@
     <Compile Include="Services\Updates_MainWebsitesServices.cs" />
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\TrackedEntity.cs" />
+    <Compile Include="Services\Website_Office_Directions.cs" />
     <Compile Include="Services\Website_PagesServices.cs" />
     <Compile Include="Services\SubDepartmentProfileStructureServices.cs" />
     <Compile Include="Services\Website_VideosServices.cs" />

@@ -1,0 +1,93 @@
+﻿@model dlwebclasses.website_Office_Direction
+
+@Html.HiddenFor(x => x.ID)
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="form-group">
+    @Html.LabelFor(model => model.officeid, htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.DropDownListFor(x => x.officeid, (SelectList)ViewBag.OfficeList, "Office", new { @class = "form-control", style = "display:inline-block", placeholder = "Title", required="required" })
+        @Html.ValidationMessageFor(model => model.officeid, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Heading, htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.EditorFor(model => model.Heading, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Direction_From_Site, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.TextAreaFor(model => model.Text, new { @class = "form-control", rows="5" } )
+        @Html.ValidationMessageFor(model => model.Direction_From_Site, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Sequence, htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.EditorFor(model => model.Sequence, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Direction_From_Site, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Direction_From_Site, htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.EditorFor(model => model.Direction_From_Site, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Direction_From_Site, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Category_Of_Site, htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.DropDownListFor(x => x.Category_Of_Site, new List<SelectListItem> { new SelectListItem { Text = "Custom Text and Heading", Value = "Custom Text and Heading" }, new SelectListItem { Text = "Car Park", Value = "Car Park" }, new SelectListItem { Text = "Train Station", Value = "Train Station" }, new SelectListItem { Text = "Underground Station", Value = "Underground Station" }, new SelectListItem { Text = "Overground Station", Value = "Overground Station" }, new SelectListItem { Text = "Bus Stop", Value = "Bus Stop" }, new SelectListItem { Text = "Bus Station", Value = "Bus Station" }, new SelectListItem { Text = "Details", Value = "Details" }, new SelectListItem { Text = "Street View", Value = "Street View" } }, "Select Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Category_Of_Site, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.Label("Address", htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.EditorFor(model => model.AddressandDescription_of_Site, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.AddressandDescription_of_Site, "", new { @class = "text-danger" })
+    </div>
+</div>
+<br />
+<br />
+<div class="form-group">
+    @Html.LabelFor(model => model.Map_Of_Site, htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.EditorFor(model => model.Map_Of_Site, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Map_Of_Site, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DirectionByWalk, htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.EditorFor(model => model.DirectionByWalk, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.DirectionByWalk, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DirectionByBus, htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="col-md-8">
+        @Html.EditorFor(model => model.DirectionByBus, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.DirectionByBus, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-8">
+        <input type="submit" value="@(Model == null ? "Create" : "Update")" class="btn btn-default" />
+    </div>
+</div>

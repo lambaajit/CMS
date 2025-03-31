@@ -52,6 +52,16 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="Enabled" Type="bit" />
           <Property Name="VideoId" Type="int" />
+          <Property Name="WarningColorCode" Type="int" />
+          <Property Name="WarningMessage" Type="varchar(max)" />
+          <Property Name="ip_address" Type="varchar(max)" />
+          <Property Name="GoogleReviewLink" Type="varchar(max)" />
+          <Property Name="ReviewSolicitorsFirmID" Type="varchar(max)" />
+          <Property Name="ReviewSolicitorsOfficeLinks" Type="varchar(max)" />
+          <Property Name="PriorityForClientReviews" Type="bit" Nullable="false" />
+          <Property Name="PageTitle" Type="varchar(max)" />
+          <Property Name="MetaDescription" Type="varchar(max)" />
+          <Property Name="MetaKeywords" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Recruitment_DlWeb">
           <Key>
@@ -118,6 +128,14 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="Equal_Opportunities" Type="varchar(max)" />
           <Property Name="Recruit_Job_ID" Type="varchar(max)" />
           <Property Name="FIlename" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="WarningColorCode" Type="int" />
+          <Property Name="WarningMessage" Type="varchar(max)" />
+          <Property Name="ip_address" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="SubDepartments">
           <Key>
@@ -186,6 +204,16 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="Enabled" Type="Boolean" />
           <Property Name="VideoId" Type="Int32" />
+          <Property Name="WarningColorCode" Type="Int32" />
+          <Property Name="WarningMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ip_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GoogleReviewLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewSolicitorsFirmID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewSolicitorsOfficeLinks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityForClientReviews" Type="Boolean" Nullable="false" />
+          <Property Name="PageTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="DLWEBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="OfficesDLW" EntityType="DLWEBModel.OfficeDLW" />
@@ -260,6 +288,14 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <Property Name="Equal_Opportunities" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Recruit_Job_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FIlename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="WarningColorCode" Type="Int32" />
+          <Property Name="WarningMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ip_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Area">
           <Key>
@@ -307,6 +343,16 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <EntitySetMapping Name="OfficesDLW">
             <EntityTypeMapping TypeName="DLWEBModel.OfficeDLW">
               <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="PriorityForClientReviews" ColumnName="PriorityForClientReviews" />
+                <ScalarProperty Name="ReviewSolicitorsOfficeLinks" ColumnName="ReviewSolicitorsOfficeLinks" />
+                <ScalarProperty Name="ReviewSolicitorsFirmID" ColumnName="ReviewSolicitorsFirmID" />
+                <ScalarProperty Name="GoogleReviewLink" ColumnName="GoogleReviewLink" />
+                <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+                <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
+                <ScalarProperty Name="WarningColorCode" ColumnName="WarningColorCode" />
                 <ScalarProperty Name="VideoId" ColumnName="VideoId" />
                 <ScalarProperty Name="Enabled" ColumnName="Enabled" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
@@ -338,6 +384,14 @@ warning 6002: The table/view 'WEBDL.dbo.Areas' does not have a primary key defin
           <EntitySetMapping Name="Recruitment_DlWeb">
             <EntityTypeMapping TypeName="DLWEBModel.Recruitment_DlWeb">
               <MappingFragment StoreEntitySet="Recruitment_DlWeb">
+                <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+                <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
+                <ScalarProperty Name="WarningColorCode" ColumnName="WarningColorCode" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="FIlename" ColumnName="FIlename" />
                 <ScalarProperty Name="Recruit_Job_ID" ColumnName="Recruit_Job_ID" />
                 <ScalarProperty Name="Equal_Opportunities" ColumnName="Equal_Opportunities" />

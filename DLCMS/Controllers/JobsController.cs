@@ -41,9 +41,13 @@ namespace DLCMS.Controllers
         {
             List<SelectListItem> departments = new List<SelectListItem>();
             if (category == "AreaOfLaw")
-            departments = dbit.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw").Select(y => new SelectListItem { Text = y.Name, Value = y.Name }).ToList();
+            {
+                departments = dbit.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw").Select(y => new SelectListItem { Text = y.Name, Value = y.Name }).ToList();
+                departments.Add(new SelectListItem() { Text = "Data Claims", Value = "Data Claims" });
+                departments.Add(new SelectListItem() { Text = "Personal-Immigration-Solicitors", Value = "Personal-Immigration-Solicitors" });
+            }
             else
-            departments = new List<SelectListItem> {  new SelectListItem { Text = "Caseworker", Value = "Caseworker"},
+                departments = new List<SelectListItem> {  new SelectListItem { Text = "Caseworker", Value = "Caseworker"},
                                                         new SelectListItem { Text = "Trainee", Value = "Trainee"},
                                                         new SelectListItem { Text = "Solicitor", Value = "Solicitor"},
                                                         new SelectListItem { Text = "Consultant", Value = "Consultant"},

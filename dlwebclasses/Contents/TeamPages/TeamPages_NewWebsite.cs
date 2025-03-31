@@ -114,7 +114,7 @@ namespace dlwebclasses
                     if (_mainLinkForSubDepartmentProfile)
                         rewriteurllink = "/" + allStatic.getRewriteUrlLinkForStaff(_ed) + "/#" + Department.Replace(" ", "");
                     else
-                        rewriteurllink = "/" + Dept.Replace(" ", "-").Replace("&", "and").Replace("/", "-") + "_ourteam/" + _ed.forename + "_" + _ed.surname + ".html";
+                        rewriteurllink = "/" + Dept.Replace(" ", "-").Replace("&", "and").Replace("/", "-") + "_ourteam/" + _ed.forename.Replace(" ","_") + "_" + _ed.surname.Replace(" ", "_") + ".html";
                 else
                     rewriteurllink = "/" + allStatic.getRewriteUrlLinkForStaff(_ed) + "/#" + Department.Replace(" ", "");
 

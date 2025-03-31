@@ -1,0 +1,22 @@
+﻿@model DLCMS.Areas.WebsiteOfficeDirection.Controllers.WebsiteOfficeDirectionSearch
+
+
+@Html.DropDownListFor(x => x.OfficeId, (SelectList)ViewBag.OfficeList, "Office", new { @class = "form-control", style = "display:inline-block", placeholder = "Title" })
+@{ Html.RenderPartial("~/Views/GenericBase/ColumnsToDisplay.cshtml", new dlwebclasses.AllProperties() { ClassProperties = Model.ClassProperties, NumberOfRecordsPerPages = Model.NumberOfRecordsPerPages }); }
+
+@*<script type="text/javascript">
+
+    $(document).ready(function () {
+        CKEDITOR.replace('Contents', {
+            height: 400
+        });
+    });
+
+    var UpdatesMainwebsite = {
+        InitialiseForm: function (data) {
+            CKEDITOR.replace('Contents', {
+                height: 400
+            });
+        }
+    };
+</script>*@

@@ -218,7 +218,7 @@ namespace dlwebclasses
 
             if (WP.VideoId != null && WP.VideoId > 0)
             {
-                var _video = db.Website_Videos.Where(x => x.id == WP.VideoId).FirstOrDefault();
+                var _video = db.Website_Videos.Where(x => x.id == WP.VideoId && x.Active != false).FirstOrDefault();
                 if (_video != null)
                 {
                     SB.AppendLine("<br /><br />");

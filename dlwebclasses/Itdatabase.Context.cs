@@ -32,7 +32,6 @@ namespace dlwebclasses
         public virtual DbSet<Website_Pages_SubDepartments> Website_Pages_SubDepartments { get; set; }
         public virtual DbSet<website_awards> website_awards { get; set; }
         public virtual DbSet<website_Header_Pictures> website_Header_Pictures { get; set; }
-        public virtual DbSet<website_Office_Direction> website_Office_Direction { get; set; }
         public virtual DbSet<User_Profile_FinalDraft> User_Profile_FinalDraft { get; set; }
         public virtual DbSet<Website_Custom_SubDepartments> Website_Custom_SubDepartments { get; set; }
         public virtual DbSet<SubDepartmentSwitchboard> SubDepartmentSwitchboards { get; set; }
@@ -46,5 +45,6 @@ namespace dlwebclasses
         public virtual DbSet<SubDepartmentProfileStructure> SubDepartmentProfileStructures { get; set; }
         public virtual DbSet<LogsOfModification> LogsOfModifications { get; set; }
         public virtual DbSet<Updates_MainWebsite_Departments> Updates_MainWebsite_Departments { get; set; }
+        public virtual DbSet<website_Office_Direction> website_Office_Direction { get; set; }
     }
 }

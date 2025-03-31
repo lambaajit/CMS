@@ -23,6 +23,17 @@ namespace dlwebclasses
         public Nullable<bool> Selected { get; set; }
         public bool Approve { get; set; }
         public string ApprovedProfile { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<bool> Enabled { get; set; }
+        public Nullable<int> WarningColorCode { get; set; }
+        public string WarningMessage { get; set; }
+        public string ip_address { get; set; }
+        public Nullable<bool> FurtherActionRequired { get; set; }
+        public string FurtherActionRequiredMessage { get; set; }
+        public Nullable<System.DateTime> FurtherActionRequiredDate { get; set; }
     
         public virtual SubDepartmentProfileStructure SubDepartmentProfileStructure { get; set; }
     }
