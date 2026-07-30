@@ -45,7 +45,7 @@ namespace dlwebclasses
             string jtitle2 = "";
             string heading = "";
 
-            List<string> excludednames = new List<string>() {"Ajit Lamba", "Lubna Chauhan", "Ritu Sharma", "Robert Poulter", "Sangita Shah","Sonal Ruparelia", "Nina Joshi"  };
+            List<string> excludednames = new List<string>() {"Ajit Lamba", "Lubna Chauhan", "Ritu Sharma", "Robert Poulter", "Sangita Shah","Sonal Ruparelia", "Nina Joshi", "Bhavneet Gupta" };
             for (int j = 1; j <= 7; j++)
             {
                 if (j == 1)
@@ -97,7 +97,7 @@ namespace dlwebclasses
                 DateTime emptydate = Convert.ToDateTime("01/01/1900");
 
                 if (j == 1)
-                    employeelist = dbhr.Emp_Details.Where(x => x.forename +  " " + x.surname == "Yllka Olly Sufi" || x.forename + " " + x.surname == "Arvin Bharj" && excludednames.Contains(x.forename + " " + x.surname) == false && x.Profile_website == true).ToList();
+                    employeelist = dbhr.Emp_Details.Where(x => x.forename + " " + x.surname == "Arvin Bharj" && excludednames.Contains(x.forename + " " + x.surname) == false && x.Profile_website == true).ToList();
                 else if (j == 2)
                     employeelist = dbhr.Emp_Details.Where(x => x.employed == "1" && x.Profile_website == true && x.start_date < DateTime.Now && excludednames.Contains(x.forename + " " + x.surname) == false && (x.end_date == null || x.end_date > DateTime.Now || x.end_date.Value.ToString().Contains("1900")) && (x.jobtitle.Contains(jtitle) || x.jobtitle.Contains(jtitle1) || x.jobtitle.Contains(jtitle2)) && (x.company_name == "Cost Law Services Limited" || x.company_name == "Cost Law Limited" || x.cls_intranet_access == true)).OrderBy(y => y.forename).ToList();
                 else if (j == 3)

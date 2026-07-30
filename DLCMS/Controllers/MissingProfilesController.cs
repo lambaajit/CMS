@@ -44,7 +44,7 @@ namespace DLCMS.Controllers
             //if (id != "Photos")
             //    return View(ed.OrderBy(x => x.office_name).ThenBy(x => x.staffname));
             //else
-                return View(ed.OrderBy(x => x.StartDate).ThenBy(x => x.staffname));
+                return View(ed.OrderBy(x => x.office_name).ThenBy(x => x.staffname));
         }
 
 

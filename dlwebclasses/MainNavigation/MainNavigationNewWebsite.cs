@@ -62,7 +62,10 @@ namespace dlwebclasses
             //sb.AppendLine("<a class=\"navbar-brand\" style=\"z-index:999\" href=\"/index.html\"><span class=\"fa fa-home\"></span></a>");
             sb.AppendLine("</div>");
             sb.AppendLine("<div class=\"navbar-collapse collapse mainnav\">");
-            sb.AppendLine("<ul class=\"nav nav-pills\">");
+
+
+
+            sb.AppendLine("<ul class=\"nav nav-pills hidden-xs\">");
             sb.AppendLine("<li><a href=\"/index.html\"><span style=\"font-size:26px !Important; color: #d7f3ff;\" class=\"fa fa-home\"></span></a></li>");
             int linki = 0;
             foreach (var item in Tabs)
@@ -73,6 +76,22 @@ namespace dlwebclasses
             sb.AppendLine("<li><a href=\"/Home/contact\">Contact<span class=\"fa fa-chevron-down\" aria-hidden=\"true\"></span></a></li>");
             sb.AppendLine("<li style=\"display:none\" class=\"hiddennavigationtab\"><a href=\"#\" data-target=\"#tab-9\" data-hover=\"tab\">Text Size<span class=\"fa fa-chevron-down\" aria-hidden=\"true\"></span></a></li>");
             sb.AppendLine("</ul>");
+
+
+            sb.AppendLine("<ul class=\"nav nav-pills hidden-sm hidden-md hidden-lg\">");
+            sb.AppendLine("<li><a href=\"/index.html\"><span style=\"font-size:26px !Important; color: #d7f3ff;\" class=\"fa fa-home\"></span></a></li>");
+            linki = 0;
+            foreach (var item in Tabs)
+            {
+                sb.AppendLine("<li><a href=\"" + tabslinks[linki].ToString() + "\">" + item + "<span class=\"fa fa-chevron-down\" aria-hidden=\"true\"></span></a></li>");
+                linki++;
+            }
+            sb.AppendLine("<li><a href=\"/Home/contact\">Contact<span class=\"fa fa-chevron-down\" aria-hidden=\"true\"></span></a></li>");
+            sb.AppendLine("<li style=\"display:none\" class=\"hiddennavigationtab\"><a href=\"#\" data-target=\"#tab-9\" data-hover=\"tab\">Text Size<span class=\"fa fa-chevron-down\" aria-hidden=\"true\"></span></a></li>");
+            sb.AppendLine("</ul>");
+
+
+
             sb.AppendLine("<div class=\"tab-content nopadding\">");
 
             foreach (var item1 in Tabs)

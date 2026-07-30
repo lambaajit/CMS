@@ -122,6 +122,44 @@ namespace dlwebclasses
             _NewContent.AppendLine("                </div>");
 
 
+
+
+            _NewContent.AppendLine("                <div class=\"col-xs-12 panel panel-primary nopadding officedetails dept_default deptbordercolor\">");
+            _NewContent.AppendLine("                    <div class=\"panel-heading dept_default kolor deptbordercolor\">Contact Details<span class=\"fa fa-pencil-square-o\"></span></div>");
+            _NewContent.AppendLine("                        <div class=\"panel-body\">");
+            _NewContent.AppendLine("                            <div class=\"row\">");
+            _NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"tel:0333 772 0409\"><span class=\"fa fa-phone\"></span>" + office.Dedicated_Numbers.ToString() + "</a></h5></div>");
+            _NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"/contactUs.aspx\"><span class=\"fa fa-envelope\"></span>Contact Us</a></h5></div>");
+            _NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"mailto:contact@duncanlewis.com\"><span>@</span>Email Us</a></h5></div>");
+            _NewContent.AppendLine("                        </div>");
+            _NewContent.AppendLine("                        </div>");
+
+            _NewContent.AppendLine("                    </div>");
+
+            _NewContent.AppendLine("                <div class=\"col-xs-12 panel panel-primary nopadding officedetails dept_default deptbordercolor\">");
+            _NewContent.AppendLine("                    <div class=\"panel-heading dept_default kolor deptbordercolor\">Working Hours<span class=\"fa fa-clock-o\"></span></div>");
+            _NewContent.AppendLine("                    <div class=\"panel-body\">");
+
+            if (office.Appointment == "Yes")
+                _NewContent.AppendLine("                        <div class=\"col-xs-12 officescheduleblurb\">This office is for scheduled appointments only</div>");
+            else
+                _NewContent.AppendLine("                        <div class=\"col-xs-12 officescheduleblurb\">This office is open for public</div>");
+
+            _NewContent.AppendLine("                        <div class=\"col-sm-4 col-xs-12\">");
+            _NewContent.AppendLine("                            <p>Monday-Friday: 9:30 - 5:30</p>");
+            _NewContent.AppendLine("                        </div>");
+            _NewContent.AppendLine("                        <div class=\"col-sm-4 col-xs-12\">");
+            _NewContent.AppendLine("                            <p>Saturday-Sunday: Closed</p>");
+            _NewContent.AppendLine("                        </div>");
+            _NewContent.AppendLine("                        <div class=\"col-sm-4 col-xs-12\">");
+            _NewContent.AppendLine("                            <p>Bank Holidays: Closed</p>");
+            _NewContent.AppendLine("                        </div>");
+            _NewContent.AppendLine("                    </div>");
+
+
+            _NewContent.AppendLine("                </div>");
+
+
             if (office.VideoId != null && office.VideoId > 0)
             {
                 var WV = dbit.Website_Videos.Where(x => x.id == office.VideoId && x.Active == true).FirstOrDefault();
@@ -167,40 +205,6 @@ namespace dlwebclasses
                 }
             }
 
-            _NewContent.AppendLine("                <div class=\"col-xs-12 panel panel-primary nopadding officedetails dept_default deptbordercolor\">");
-            _NewContent.AppendLine("                    <div class=\"panel-heading dept_default kolor deptbordercolor\">Contact Details<span class=\"fa fa-pencil-square-o\"></span></div>");
-            _NewContent.AppendLine("                        <div class=\"panel-body\">");
-            _NewContent.AppendLine("                            <div class=\"row\">");
-            _NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"tel:0333 772 0409\"><span class=\"fa fa-phone\"></span>" + office.Dedicated_Numbers.ToString() + "</a></h5></div>");
-            _NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"/contactUs.aspx\"><span class=\"fa fa-envelope\"></span>Contact Us</a></h5></div>");
-            _NewContent.AppendLine("                                <div class=\"col-xs-12 col-sm-4\"><h5><a href=\"mailto:contact@duncanlewis.com\"><span>@</span>Email Us</a></h5></div>");
-            _NewContent.AppendLine("                        </div>");
-            _NewContent.AppendLine("                        </div>");
-
-            _NewContent.AppendLine("                    </div>");
-
-            _NewContent.AppendLine("                <div class=\"col-xs-12 panel panel-primary nopadding officedetails dept_default deptbordercolor\">");
-            _NewContent.AppendLine("                    <div class=\"panel-heading dept_default kolor deptbordercolor\">Working Hours<span class=\"fa fa-clock-o\"></span></div>");
-            _NewContent.AppendLine("                    <div class=\"panel-body\">");
-
-            if (office.Appointment == "Yes")
-                _NewContent.AppendLine("                        <div class=\"col-xs-12 officescheduleblurb\">This office is for scheduled appointments only</div>");
-            else
-                _NewContent.AppendLine("                        <div class=\"col-xs-12 officescheduleblurb\">This office is open for public</div>");
-
-            _NewContent.AppendLine("                        <div class=\"col-sm-4 col-xs-12\">");
-            _NewContent.AppendLine("                            <p>Monday-Friday: 9:30 - 5:30</p>");
-            _NewContent.AppendLine("                        </div>");
-            _NewContent.AppendLine("                        <div class=\"col-sm-4 col-xs-12\">");
-            _NewContent.AppendLine("                            <p>Saturday-Sunday: Closed</p>");
-            _NewContent.AppendLine("                        </div>");
-            _NewContent.AppendLine("                        <div class=\"col-sm-4 col-xs-12\">");
-            _NewContent.AppendLine("                            <p>Bank Holidays: Closed</p>");
-            _NewContent.AppendLine("                        </div>");
-            _NewContent.AppendLine("                    </div>");
-
-
-            _NewContent.AppendLine("                </div>");
 
             if (_customContents.Count > 0)
             { 

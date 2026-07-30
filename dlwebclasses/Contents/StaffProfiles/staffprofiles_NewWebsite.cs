@@ -278,11 +278,13 @@ namespace dlwebclasses
 
             if (mangementstaffjobtitle != "")
             {
+                if (emp_code != "KaniosM")
                     _NewContents.AppendLine("                            <li><span class=\"fa fa-building\"></span><a href=\"/offices/City of London_Office.html\">City of London</a></li>");
             }
             else
             {
-                _NewContents.AppendLine("                            <li><span class=\"fa fa-building\"></span><a href=\"/offices/" + Office.Replace("Dalston","Hackney") + "_Office.html\">" + Office + "</a></li>");
+                if (emp_code != "MKN")
+                    _NewContents.AppendLine("                            <li><span class=\"fa fa-building\"></span><a href=\"/offices/" + Office.Replace("Dalston","Hackney") + "_Office.html\">" + Office + "</a></li>");
                 if ((Emp_Status != "Freelance Consultant" || Name == "Aina Khan") && Name != "Sabeela Malik" && ddi != null)
                 {
                     if (ddi.Length > 5)

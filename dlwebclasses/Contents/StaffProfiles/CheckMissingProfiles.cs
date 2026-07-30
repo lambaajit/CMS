@@ -104,9 +104,9 @@ namespace dlwebclasses
             DateTime dt = DateTime.Now;
             _ed = dbhr.Emp_Details.Where(x => x.employed == "1" && !x.forename.StartsWith("Donald") && !excludenames.Contains(x.forename + " " + x.surname)).OrderBy(x => x.office_code).ThenBy(x => x.forename).ToList();
             if (company == null)
-                _ed = _ed.Where(x => x.start_date < dt && x.Profile_website == true && x.Picture_website == true && x.admin_staff == "0" && (x.reporting_consultant == false || x.reporting_consultant == null)).ToList();
+                _ed = _ed.Where(x => x.start_date < dt && x.Profile_website == true && x.Picture_website == true && x.admin_staff == "0" && x.IsLPO != true && (x.reporting_consultant == false || x.reporting_consultant == null)).OrderBy(x => x.office_code).ToList();
             else
-                _ed = _ed.Where(x => x.start_date < dt && x.company_name.Contains(company) && x.Profile_website == true && x.Picture_website == true).ToList();
+                _ed = _ed.Where(x => x.start_date < dt && x.company_name.Contains(company) && x.Profile_website == true && x.IsLPO != true && x.Picture_website == true).OrderBy(x => x.office_code).ToList();
 
             List<Emp_Details> missinglist = new List<Emp_Details>();
             foreach (Emp_Details ed in _ed)

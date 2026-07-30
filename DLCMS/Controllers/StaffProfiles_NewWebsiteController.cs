@@ -123,7 +123,7 @@ namespace DLCMS.Controllers
                 if ((cbo_Type == "Team Pages") || (cbo_Type == "Both Pages"))
                 {
                     AContents NAL1;
-                    foreach (string dept in staffdeptlist.Where(x => x != "Data Claims"))
+                    foreach (string dept in staffdeptlist)
                     {
                         NAL1 = new Content_TeamPages_NewWebsite(dept);
                         CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL1);

@@ -221,18 +221,19 @@ SB.AppendLine("                                <tr><td><span class=\"fa fa-money
 SB.AppendLine("                                <tr><td><span class=\"fa fa-user-circle\"></span>Job Type:</td><td> <b>" + (recruitment.Job_Type == "Freeleance" ? "Consultancy" : "Permanent") + "</b></td></tr>");
 SB.AppendLine("                                <tr><td><span class=\"fa fa-calendar\"></span>Date Posted:</td><td> <b>" + recruitment.Date_Posted.Date.ToShortDateString() + "</b></td></tr>");
 SB.AppendLine("                                <tr><td><span class=\"fa fa-calendar\"></span>Last Date for Application:</td><td> <b>" + recruitment.Date_Posted.AddDays(21).Date.ToShortDateString() + "</b></td></tr>");
-            if (!string.IsNullOrEmpty(recruitment.FIlename) && recruitment.FIlename.Contains("."))
-            {
-                SB.AppendLine("                                <tr><td colspan=\"2\"><a style=\"margin:0px !important\" class=\"btn btn-primary\" href=\"/JobDescriptionDocuments/" + recruitment.Job_Ref_Code + ".pdf\" target=\"_blank\"><i class=\"fa fa-file\" style=\"margin-right:10px\"></i>View Job Description</td></tr>");
-            }
-            SB.AppendLine("                                <tr><td colspan=\"2\">");
+if (!string.IsNullOrEmpty(recruitment.FIlename) && recruitment.FIlename.Contains("."))
+{
+    SB.AppendLine("                                <tr><td colspan=\"2\"><a style=\"margin:0px !important\" class=\"btn btn-primary\" href=\"/JobDescriptionDocuments/" + recruitment.Job_Ref_Code + ".pdf\" target=\"_blank\"><i class=\"fa fa-file\" style=\"margin-right:10px\"></i>View Job Description</td></tr>");
+}
+SB.AppendLine("                                <tr><td colspan=\"2\">");
 SB.AppendLine("                                    <b>Disclaimer</b><br /><br />");
-SB.AppendLine("                                    <p>We are the fastest growing firm of Solicitors, with offices across London and the UK. We deal in a wide range of legal services that caters for clients on a public funding or private fee basis. Duncan Lewis is privileged to have several franchises from the Legal Aid Agency.");
+SB.AppendLine("                                    <p><b>Duncan Lewis Solicitors is an award-winning, nationally recognised law firm, ranked as a top-tier firm in current edition of The Legal 500 UK. With offices across London and the regions, we offer clear, practical and high-quality advice across a broad range of specialist areas. We act for clients on both a legal aid and private-fee basis, supporting individuals, families and businesses with everything from everyday matters to complex and high-profile litigation. Our continued growth, particularly in private client and complex dispute work, is driven by our reputation for professionalism, integrity and exceptional client care.</b>");
 SB.AppendLine("                                    <br /><br />");
-SB.AppendLine("                                    We look to recruit dedicated and talented employees in both legal and non-legal capacities, and we are always interested to receive applications from quality candidates, whether experienced or novice. If you can demonstrate a strong commitment to the areas of law provided by the firm, and you are keen to build a career with us, please click here to apply online with your details and CV.");
+SB.AppendLine("                                    We are always keen to hear from committed and capable people, in both legal and non-legal roles. Whether you are an experienced practitioner or looking to begin your career, we welcome applications from individuals who want to contribute to the work we do.");
 SB.AppendLine("                                    <br /><br />");
-SB.AppendLine("                                    Duncan Lewis is committed to Equal Opportunities and embraces diversity of its staff. The Company strives to ensure that our staff reflects the diversity of the communities we serve, which is reflective at all levels within our workforce.");
-SB.AppendLine("                                    We guarantee an interview for candidates that disclose a disability and meet the essential requirements for the post. Please provide additional details in your covering letter, if this applies.</p></td></tr>");
+SB.AppendLine("                                    Our recruitment and interview process is designed to understand how you think, how you work and what you can bring to the firm, and to assess your skills, knowledge and experience in a fair and consistent way. To support this, candidates must not use AI-based tools (such as ChatGPT, Gemini or similar) to write or edit any part of their interview responses or written communication during the process. We want to hear your own experience, insight and perspective.");
+SB.AppendLine("                                    <br /><br />");
+SB.AppendLine("                                   Duncan Lewis is committed to Equal Opportunities and values the diversity of its staff. We work to ensure that our workforce reflects the communities we serve at every level of the organisation. We offer a guaranteed interview to applicants who disclose a disability and meet the essential requirements for the role — please highlight this in your covering letter if it applies.</p></td></tr>");
 SB.AppendLine("                            </table>");
 SB.AppendLine("                        </div>");
 

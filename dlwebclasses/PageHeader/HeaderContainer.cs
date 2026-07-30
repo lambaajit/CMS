@@ -15,7 +15,14 @@ namespace dlwebclasses
             SB.AppendLine("        <div class=\"row\">      ");
             SB.AppendLine("              <div class=\"col-lg-12 col-md-12\">");
             SB.AppendLine("                    <div id=\"" + DD.container1 + "\" class=\"col-lg-12 col-md-12\">");
-            SB.AppendLine("    <h1>" + _content.HeadingH1 + "</h1>");
+            if (_content.GetType() != typeof(Content_NewsArticles_NewWebsite))
+            {
+                SB.AppendLine("    <h2 class=\"NewsArticleH2\">" + _content.HeadingH1 + "</h2>");
+            }
+            else
+            {
+                SB.AppendLine("    <h1>" + _content.HeadingH1 + "</h1>");
+            }
             SB.AppendLine("                    </div>");
             SB.AppendLine("                </div>      ");
             SB.AppendLine("        </div>");

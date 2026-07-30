@@ -57,6 +57,7 @@ namespace dlwebclasses
 
             
             HeadingH1 = dept.Replace("Main","") + " " + prefix;
+            HeadingH1 = dept.Replace("News", "") + " " + prefix;
             Department = dept;
 
              DepartmentNavigationNewWebsite Deptnav = new DepartmentNavigationNewWebsite();

@@ -82,7 +82,7 @@ namespace dlwebclasses
             SB.AppendLine("<meta name=\"keywords\" content=\"" + _Contents.keywords + "\"/>");
             SB.AppendLine("<meta name=\"ROBOTS\" content=\"INDEX, FOLLOW\"/> <meta name=\"YahooSeeker\" content=\"INDEX, FOLLOW\"/> <meta name=\"msnbot\" content=\"INDEX, FOLLOW\"/> <meta name=\"googlebot\" content=\"INDEX, FOLLOW\"/>");
             SB.AppendLine("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">");
-            SB.AppendLine("<link href=\"/Content/site.min.css?v=17052024\" rel=\"stylesheet\"/>");
+            SB.AppendLine("<link href=\"/Content/site.min.css?v=21112025\" rel=\"stylesheet\"/>");
             //SB.AppendLine("<link rel=\"stylesheet\" href=\"../css/text.css\" type=\"text/css\" title=\"A\" />");
             //SB.AppendLine("<link rel=\"alternate stylesheet\" href=\"../css/text-A+.css\" type=\"text/css\" title=\"A+\" />");
             //SB.AppendLine("<link rel=\"alternate stylesheet\" href=\"../css/text-A++.css\" type=\"text/css\" title=\"A++\" />");
@@ -105,22 +105,24 @@ namespace dlwebclasses
 
 
             //Review Solicitor Code
-            SB.AppendLine("<script src=\"https://www.reviewsolicitors.co.uk/widget/rs.js\"></script>");
-            SB.AppendLine("<div id=\"rswidget_ad53j\" style=\"position: relative; \"></div>");
+             SB.AppendLine("<script src=\"https://www.reviewsolicitors.co.uk/widget/rs.js\"></script>");
+            SB.AppendLine("<div id=\"rswidget_mdfy4\" style=\"position: relative; \"></div>");
             SB.AppendLine("<script type=\"text/javascript\">");
             SB.AppendLine("var props = {");
-            SB.AppendLine(" defaultposition: true,");
-            SB.AppendLine(" isClick: false,");
-            SB.AppendLine(" stats: [ 'satisfaction', 'wouldRecommend', 'valueForMoney' ],");
-            SB.AppendLine(" widgetStyle: 1,");
-            SB.AppendLine(" mr: 4,");
+            SB.AppendLine("google: true,");
+            SB.AppendLine("defaultposition: true,");
+            SB.AppendLine("isClick: true,");
+            SB.AppendLine("stats: [ 'satisfaction', 'wouldRecommend', 'valueForMoney' ],");
+            SB.AppendLine("widgetStyle: 1,");
+            SB.AppendLine("mr: 4,");
             SB.AppendLine("};");
-            SB.AppendLine("rs.loadWidget('rswidget_ad53j', 'side', 16899, props);");
+            SB.AppendLine("rs.loadWidget('rswidget_mdfy4', 'side', 16899, props);");
             SB.AppendLine("</script>");
+
             //End of review solicitor Code
 
 
-            SB.AppendLine("    <script src=\"/Scripts/Custom.min.js?v=01052019\"></script>");            
+            SB.AppendLine("    <script src=\"/Scripts/Custom.min.js?v=01052025\"></script>");            
             SB.AppendLine("<link href=\"https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i\" rel=\"stylesheet\">");
             SB.AppendLine("<link href=\"https://fonts.googleapis.com/css?family=Dosis\" rel=\"stylesheet\">");
             SB.AppendLine("    <link href=\"/Content/font-awesome-4.7.0/css/font-awesome.min.css\" rel=\"stylesheet\" />");

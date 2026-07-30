@@ -489,10 +489,10 @@ namespace dlwebclasses
 
             }
             if (string.IsNullOrEmpty(Title))
-                Title = "Duncan Lewis Solicitors";
+                Title = "Duncan Lewis Solicitors | National Law Firm for Legal Advice";
 
             if (string.IsNullOrEmpty(Description))
-                Description = "When you come to Duncan Lewis you come to a prominent and reputable national law firm with over 500 qualified solicitors and consultants";
+                Description = "Duncan Lewis Solicitors is an award-winning national law firm providing expert legal advice across 25 areas of law. Contact our experienced lawyers today.";
 
             Keywords = "legal aid, free legal advice, legal aid lawyers, legal aid services, legal aid family, legal aid lawyer, legal aid solicitor, legal aid funding, solicitors, free legal advice, solicitor, legal custody, domestic violence solicitor, Children solicitor, child and social services involvement, legal aid immigration solicitors, immigration lawyers professional negligence lawyers, personal injury solicitors, crime solicitors, criminal lawyers, criminal solicitor specialist fraud solicitor, benefit fraud solicitor, personal injury solicitor, solicitors negligence, Birmingham solicitors, Solicitors Cardiff, solicitors Leicester, solicitors London, Solicitors East London, Solicitors south east London, solicitors south London, solicitors west London, no win no fee, Divorce solicitor, divorce lawyer, child abduction solicitor, wardship solicitor, mental capacity solicitor, mental health solicitor, solicitor, mortgage repossession, housing disrepair solicitor";
             HeadingH1 = "Duncan Lewis Solicitors";

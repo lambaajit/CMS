@@ -15,7 +15,7 @@ using dlwebclasses;
 
 namespace DLCMS.Controllers
 {
-    [Authorize(Roles ="Removed")]
+    //[Authorize(Roles ="Removed")]
     public class CURD_WebSitePagesController : BaseController
     {
         private IT_DatabaseEntities db = new IT_DatabaseEntities();

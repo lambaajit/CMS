@@ -47,8 +47,17 @@ namespace DLCMS.Controllers
                         Content_NewsArticles_NewWebsite NAL;
                         foreach (int ID in IDs)
                         {
-                            NAL = new Content_NewsArticles_NewWebsite(ID);
+                            try
+                            {
+                                NAL = new Content_NewsArticles_NewWebsite(ID);
                             CreateHTMLFIles_NEwWebsite Fl = new CreateHTMLFIles_NEwWebsite(NAL);
+                            }
+                            catch (Exception ex)
+                            {
+                                var _updates_MainWebsites = db.Updates_MainWebsites.Where(x => x.ID == ID).FirstOrDefault();
+                                _updates_MainWebsites.WarningMessage = ex.Message;
+                                db.SaveChanges();
+                            }
                         }
                     }
                 }

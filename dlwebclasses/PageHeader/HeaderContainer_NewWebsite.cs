@@ -78,7 +78,11 @@ namespace dlwebclasses
                 SB.AppendLine("    <div class=\"parentrowoffixedrow\">");
                 SB.AppendLine("        <div class=\"row nopadding " + cssclass + " kolor deptheading\" data-spy=\"affix\" data-offset-top=\"500\">");
                 SB.AppendLine("            <div class=\"col-sm-8 col-xs-12 col-lg-offset-2 nopadding applyblock centerdiv\">");
-                SB.AppendLine("                <h1 class=\"" + cssclass + "\">" + _content.HeadingH1.Replace("<br />", " ").Replace("InThePress", "In The Press") + "</h1>");
+                if (_content.GetType() == typeof(Content_NewsArticles_NewWebsite))
+                    SB.AppendLine("                <h2 class=\"" + cssclass + " NewsArticleH2\">" + _content.HeadingH1.Replace("<br />", " ").Replace("InThePress", "In The Press") + "</h2>");
+                else
+                    SB.AppendLine("                <h1 class=\"" + cssclass + " NewsArticleH2\">" + _content.HeadingH1.Replace("<br />", " ").Replace("InThePress", "In The Press") + "</h1>");
+
                 SB.AppendLine("            </div>");
                 SB.AppendLine("        </div>");
                 SB.AppendLine("    </div>");

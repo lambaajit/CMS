@@ -92,7 +92,7 @@ namespace dlwebclasses
             else if (WP.Image != true)
                 imgstr = "<img class=\"newsarticlesmainimage\" src=\"/ArticlesImages/DLStandardNewsImage.JPG\" alt=\"Duncan Lewis, " + WP.Department.ToString().Replace("'", "^") + " Solicitors, " + WP.Title + "\" />";
 
-            contents = "<div class=\"newarticleheading dept_Family deptbordercolor\"><h4 class=\"dept_Family forecolor\">" + Linktext + "</h4><span>Date: <strong>" + ((DateTime)WP.Date_Update).ToString().Substring(0, 10) + "</strong></span></div>" +
+            contents = "<div class=\"newarticleheading dept_Family deptbordercolor\"><h1 class=\"dept_Family forecolor\">" + Linktext + "</h1><span>Date: <strong>" + ((DateTime)WP.Date_Update).ToString().Substring(0, 10) + "</strong></span></div>" +
             "<div id=\"newsarticlescontents\">" + imgstr + "<p>" + contentstext + "</p></h5>" + baililink + "</div>";
 
 
