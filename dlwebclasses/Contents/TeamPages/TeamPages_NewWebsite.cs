@@ -146,12 +146,12 @@ namespace dlwebclasses
                     hodstring = "Head Of Department";
                 else if (name1 == "Neil Sargeant")
                     hodstring = "Motoring Law Specialist";
-                else if (_ed.jobtitle.Contains("Chartered"))
-                    hodstring = "Chartered Legal Executive";
+                else if (_ed.jobtitle_to_show_on_web == true)
+                    hodstring = _ed.jobtitle;
                 else 
                     hodstring = "Solicitor";
 
-                if ((Jobtitle == "Solicitor" || Jobtitle == "Freelance Consultant") && (DD.Name != "Management Board"))
+                if ((Jobtitle == "Solicitor" || (Jobtitle == "Freelance Consultant" && (_ed.consultant_nonadmitted??false) == false)) && (DD.Name != "Management Board"))
                 {
                     if (picmiss == true)
                         Solicitormisspic.AppendLine("<div class=\"col-sm-4 col-xs-6 nopadding\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + " " + DD.cssclass + " lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + _ed.forename + " " + _ed.surname + "\" /></a><p  class=\"" + DD.cssclass + " lightkolor\">" + name1 + "<span>" + hodstring + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a></span></p></div></div>");
@@ -165,7 +165,7 @@ namespace dlwebclasses
                     else
                         Trainee.AppendLine("<div class=\"col-sm-4 col-xs-6 nopadding\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + " " + DD.cssclass + " lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + _ed.forename + " " + _ed.surname + "\" /></a><p class=\"" + DD.cssclass + " lightkolor\">" + name1 + "<span>" + Jobtitle + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a></span></p></div></div>");
                 }
-                else if (Jobtitle == "Caseworker")
+                else if (Jobtitle == "Caseworker" || (Jobtitle == "Freelance Consultant" && (_ed.consultant_nonadmitted ?? false) == true))
                 {
                     if (picmiss == true)
                         Caseworkermisspic.AppendLine("<div class=\"col-sm-4 col-xs-6 nopadding\"><div class=\"teampagepanel teampagepanelM" + backimgloop.ToString() + " " + DD.cssclass + " lightkolor deptbordercolor forecolor\"><a href=\"" + rewriteurllink + "\"><img src=\"" + photostr + "\" class=\"img-responsive\" alt=\"" + _ed.forename + " " + _ed.surname + "\" /></a><p class=\"" + DD.cssclass + " lightkolor\">" + name1 + "<span>" + Jobtitle + "<br />Office: " + Office + "<br /><br /><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"" + rewriteurllink + "\"><span class=\"fa fa-user\"></span>View Details</a><a class=\"btm btn-primary " + DD.cssclass + " kolor overlight deptbordercolor\" href=\"mailto:" + _ed.email + "\"><span>@</span>Send Email</a><a class=\"btm btn-primary " + DD.cssclass + "y kolor overlight deptbordercolor\" href=\"tel:" + _ed.direct_dial_tel_number + "\"><span class=\"fa fa-phone\"></span>Call</a></span></p></div></div>");

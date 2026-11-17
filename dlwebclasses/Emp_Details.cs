@@ -460,6 +460,11 @@ namespace dlwebclasses
         public string Unpaid_Enable_User { get; set; }
         public Nullable<System.DateTime> Unpaid_Enable_Date { get; set; }
         public Nullable<bool> IsLPO { get; set; }
+        public Nullable<double> holidays_2027 { get; set; }
+        public Nullable<double> cf_hol_2027 { get; set; }
+        public Nullable<double> Lieu_Days_2027 { get; set; }
+        public Nullable<bool> consultant_nonadmitted { get; set; }
+        public bool jobtitle_to_show_on_web { get; set; }
     
         public virtual Office Office { get; set; }
     }

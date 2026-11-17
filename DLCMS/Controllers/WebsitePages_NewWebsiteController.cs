@@ -267,7 +267,7 @@ namespace DLCMS.Controllers
                 fp.WriteLine("<link rel=\"icon\" href=\"/images/favicon.ico\" type=\"image/x-icon\" /> ");
                 fp.WriteLine("<link rel=\"shortcut icon\" href=\"/images/favicon.ico\" type=\"image/x-icon\" />");
                 fp.WriteLine("<link href=\"/Content/bootstrap.min.css\" rel=\"stylesheet\"/>");
-                fp.WriteLine("<link href=\"/Content/site.min.css\" rel=\"stylesheet\"/>");
+                fp.WriteLine("<link href=\"/Content/site.css?V=192026\" rel=\"stylesheet\"/>");
                 fp.WriteLine("<link href=\"/Content/font-awesome.min.css\" rel=\"stylesheet\"/>");
                 fp.WriteLine("<script src=\"/Scripts/modernizr-2.8.3.min.js\"></script>");
                 
@@ -357,11 +357,11 @@ fp.WriteLine("        <div class=\"col-sm-12 col-md-12 col-sm-12 col-xs-12 nopad
                 fp.WriteLine("                                                    <li><a href=\"/translation-of-documents.html\">Translation of documents</a></li>");
                 fp.WriteLine("                                                </ul>");
                 fp.WriteLine("                                            </li>");
+                fp.WriteLine("                                            <li><a href=\"https://interpreters.24-7languageservices.com/AddBooking/Addbooking/Create\"><span>BOOKINGS</span><br /><i class=\"fa fa-sort-down\"></i></a></li>");
                 fp.WriteLine("                                            <li><a href=\"https://interpreters.24-7languageservices.com/AddBooking/Addbooking/Create?actiontoperform=Quote\"><span>QUOTATION</span><br /><i class=\"fa fa-sort-down\"></i></a></li>");
                 fp.WriteLine("                                            <li><a href=\"/Languages.html\"><span>LANGUAGES</span><br /><i class=\"fa fa-sort-down\"></i></a></li>");
                 fp.WriteLine("                                            <li><a href=\"/Jobs.html\"><span>JOBS</span><br /><i class=\"fa fa-sort-down\"></i></a></li>");
                 fp.WriteLine("                                            <li><a href=\"/ContactUs.html\"><span>CONTACT</span><br /><i class=\"fa fa-sort-down\"></i></a></li>");
-                fp.WriteLine("                                            <li class=\"hidden-sm hidden-md hidden-lg\"><a href=\"https://interpreters.24-7languageservices.com/AddBooking/Addbooking/Create\"><span>BOOK AN INTERPRETER</span><br /><i class=\"fa fa-sort-down\"></i></a></li>");
                 fp.WriteLine("                                            <li class=\"hidden-sm hidden-md hidden-lg\"><a href=\"/Quote.html\"><span>GET A FREE QUOTE</span><br /><i class=\"fa fa-sort-down\"></i></a></li>");
                 fp.WriteLine("                                            <li class=\"hidden-sm hidden-md hidden-lg\"><a href=\"/24-7_TimeSheet.pdf\"><span>DOWNLOAD TIMESHEET</span><br /><i class=\"fa fa-sort-down\"></i></a></li>");
                 fp.WriteLine("                                            <li class=\"hidden-sm hidden-md hidden-lg\"><a href=\"https://interpreters.24-7languageservices.com/Interpreters_Login.aspx\"><span>INTERPRETER LOGIN</span><br /><i class=\"fa fa-sort-down\"></i></a></li>");

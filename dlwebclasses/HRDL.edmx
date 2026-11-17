@@ -604,6 +604,11 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <Property Name="Unpaid_Enable_User" Type="varchar" MaxLength="20" />
           <Property Name="Unpaid_Enable_Date" Type="datetime" />
           <Property Name="IsLPO" Type="bit" />
+          <Property Name="holidays_2027" Type="float" />
+          <Property Name="cf_hol_2027" Type="float" />
+          <Property Name="Lieu_Days_2027" Type="float" />
+          <Property Name="consultant_nonadmitted" Type="bit" />
+          <Property Name="jobtitle_to_show_on_web" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="HRDDLModelStoreContainer">
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
@@ -1216,6 +1221,11 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <Property Name="Unpaid_Enable_User" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Unpaid_Enable_Date" Type="DateTime" Precision="3" />
           <Property Name="IsLPO" Type="Boolean" />
+          <Property Name="holidays_2027" Type="Double" />
+          <Property Name="cf_hol_2027" Type="Double" />
+          <Property Name="Lieu_Days_2027" Type="Double" />
+          <Property Name="consultant_nonadmitted" Type="Boolean" />
+          <Property Name="jobtitle_to_show_on_web" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Emp_Detai__offic__7D8391DF">
           <End Type="HRDDLModel.Office" Role="Office" Multiplicity="0..1" />
@@ -1384,6 +1394,11 @@ warning 6002: The table/view 'HRDDL.dbo.Emp_Profile' does not have a primary key
           <EntitySetMapping Name="Emp_Details">
             <EntityTypeMapping TypeName="HRDDLModel.Emp_Details">
               <MappingFragment StoreEntitySet="Emp_Details">
+                <ScalarProperty Name="jobtitle_to_show_on_web" ColumnName="jobtitle_to_show_on_web" />
+                <ScalarProperty Name="consultant_nonadmitted" ColumnName="consultant_nonadmitted" />
+                <ScalarProperty Name="Lieu_Days_2027" ColumnName="Lieu_Days_2027" />
+                <ScalarProperty Name="cf_hol_2027" ColumnName="cf_hol_2027" />
+                <ScalarProperty Name="holidays_2027" ColumnName="holidays_2027" />
                 <ScalarProperty Name="IsLPO" ColumnName="IsLPO" />
                 <ScalarProperty Name="Unpaid_Enable_Date" ColumnName="Unpaid_Enable_Date" />
                 <ScalarProperty Name="Unpaid_Enable_User" ColumnName="Unpaid_Enable_User" />

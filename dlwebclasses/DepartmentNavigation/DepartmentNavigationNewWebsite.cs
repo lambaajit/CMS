@@ -813,7 +813,7 @@ namespace dlwebclasses
                 if (i == 2)
                 {
                     List<string> depts = new List<string>();
-                    depts = dbit.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw").Select(y => y.Name).ToList();
+                    depts = dbit.Website_Department_Structure.Where(x => x.departmenttype == "AreaOfLaw").Select(y => y.Name).OrderBy(x => x).ToList();
                     foreach (var item in depts)
                     {
                         string level3lastnode2 = "";

@@ -189,6 +189,18 @@ namespace dlwebclasses
             fp = File.CreateText(path);
 
             int i = 1;
+            
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"Amritpal-Singh-Immigration-Lawyer-Birmingham-West-Midlands/\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"BusinessImmigration_ourteam/Amritpal_Singh.html\" />");
+            fp.WriteLine("</rule>");
+
+            fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
+            fp.WriteLine("<match url=\"Amrit-Raindi-Business-Immigration-Solicitor-Birmingham-/\" />");
+            fp.WriteLine("<action type=\"Rewrite\" url=\"BusinessImmigration_ourteam/Amritpal_Singh.html\" />");
+            fp.WriteLine("</rule>");
+
+
             foreach (Emp_Details ed2 in ed1)
             {
                 string Name = ed2.forename + " " + ed2.surname;
@@ -328,6 +340,9 @@ namespace dlwebclasses
 
 
 
+
+
+
             //fp.WriteLine("<rule name=\"Imported Rule " + i++.ToString() + "\" stopProcessing=\"true\" patternSyntax=\"ExactMatch\">");
             //fp.WriteLine("<match url=\"https://duncanlewis.co.uk/\" />");
             //fp.WriteLine("<action type=\"Rewrite\" url=\"https://www.duncanlewis.co.uk/\" />");
@@ -390,9 +405,9 @@ namespace dlwebclasses
             string Jobtitle = filterjobtitle(_Empdetails);
             string jobtitle1 = "";
 
-            if (Jobtitle == "High Court Advocate" || Jobtitle == "Freelance Consultant" || Jobtitle == "Partner" || Jobtitle == "Supervisor" || Jobtitle == "Solicitor")
+            if (Jobtitle == "High Court Advocate" || (Jobtitle == "Freelance Consultant" && (_Empdetails.consultant_nonadmitted??false) == false) || Jobtitle == "Partner" || Jobtitle == "Supervisor" || Jobtitle == "Solicitor")
                 jobtitle1 = "Solicitor";
-            else if (Jobtitle == "Caseworker" || Jobtitle == "Trainee Solicitor")
+            else if (Jobtitle == "Caseworker" || Jobtitle == "Trainee Solicitor" || (Jobtitle == "Freelance Consultant" && (_Empdetails.consultant_nonadmitted ?? false) == true))
                 jobtitle1 = "Lawyer";
             else
                 jobtitle1 = Jobtitle;
@@ -411,9 +426,9 @@ namespace dlwebclasses
             string Jobtitle = filterjobtitle(_Empdetails);
             string jobtitle1 = "";
 
-            if (Jobtitle == "High Court Advocate" || Jobtitle == "Freelance Consultant" || Jobtitle == "Partner" || Jobtitle == "Supervisor" || Jobtitle == "Solicitor")
+            if (Jobtitle == "High Court Advocate" || (Jobtitle == "Freelance Consultant" && (_Empdetails.consultant_nonadmitted ?? false) == false) || Jobtitle == "Partner" || Jobtitle == "Supervisor" || Jobtitle == "Solicitor")
                 jobtitle1 = "Solicitor";
-            else if (Jobtitle == "Caseworker" || Jobtitle == "Trainee Solicitor")
+            else if (Jobtitle == "Caseworker" || Jobtitle == "Trainee Solicitor" || (Jobtitle == "Freelance Consultant" && _Empdetails.nonadmitted_staff == "1"))
                 jobtitle1 = "Lawyer";
             else
                 jobtitle1 = Jobtitle;

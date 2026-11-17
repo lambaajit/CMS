@@ -137,6 +137,31 @@ namespace dlwebclasses
                 SB.AppendLine("<meta name=\"google-site-verification\" content=\"1j0zc-GqW-QwN61Ajih1HvUzE3WyKJkDoAJlSOCyOF4\" />");
             }
 
+
+            if (_Contents.Department == "Wills and Probate")
+            {
+                SB.AppendLine("<!-- Facebook Pixel Code -->");
+                SB.AppendLine("<script>");
+                SB.AppendLine("!function(f,b,e,v,n,t,s)");
+                SB.AppendLine("{if(f.fbq)return;n=f.fbq=function(){n.callMethod?");
+                SB.AppendLine("n.callMethod.apply(n,arguments):n.queue.push(arguments)};");
+                SB.AppendLine("if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';");
+                SB.AppendLine("n.queue=[];t=b.createElement(e);t.async=!0;");
+                SB.AppendLine("t.src=v;s=b.getElementsByTagName(e)[0];");
+                SB.AppendLine("s.parentNode.insertBefore(t,s)}(window,document,'script',");
+                SB.AppendLine("'https://connect.facebook.net/en_US/fbevents.js');");
+                SB.AppendLine("fbq('init', '8167307076711156'); ");
+                SB.AppendLine("fbq('track', 'PageView');");
+                SB.AppendLine("</script>");
+                SB.AppendLine("<noscript>");
+                SB.AppendLine("<img height=\"1\" width=\"1\" ");
+                SB.AppendLine("src=\"https://www.facebook.com/tr?id=8167307076711156&ev=PageView");
+                SB.AppendLine("&noscript=1\"/>");
+                SB.AppendLine("</noscript>");
+                SB.AppendLine("<!-- End Facebook Pixel Code -->");
+
+            }
+
             if (_Contents.GetType() == typeof(Content_OfficesLanding_NewWebsite) || _Contents.GetType() == typeof(Content_HomePage))
             {
                 SB.AppendLine("<link href=\"/Content/jquery-ui.min.css\" rel=\"stylesheet\" />");

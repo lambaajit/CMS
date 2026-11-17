@@ -132,6 +132,8 @@ namespace dlwebclasses
                 else
                     JobTitle = "Crime Duty Solicitor";
             }
+            else if (_emp_Details.jobtitle_to_show_on_web == true)
+                JobTitle = _emp_Details.jobtitle;
             else
             {
                 if (Emp_Status == "Freelance Consultant" || Emp_Status == "Limited Company")

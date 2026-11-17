@@ -163,6 +163,23 @@ namespace dlwebclasses
             _NewContents.AppendLine("                        <h3 class=\"" + cssclass + " lightkolor\">Profile / Experience<span class=\"fa fa-user-circle\"></span></h3>");
             _NewContents.AppendLine("                        <div class=\"sectionbody\">");
 
+            if (staffname == "Amritpal Singh")
+            {
+
+                _NewContents.AppendLine("                            <div class=\"legaldirectorypanel " + cssclass + " lightkolor deptbordercolor\">");
+                _NewContents.AppendLine("                                <div class=\"row nopadding\">");
+                _NewContents.AppendLine("                                <div style=\"padding:10px !important; font-size: 12px; font-style: italic\">");
+                _NewContents.AppendLine("<b style=\"font-size: 18px; font-style:normal\">Important Fraud / Impersonation Warning</b><br /><br />Duncan Lewis Solicitors is aware that third parties have been impersonating Amritpal Singh and falsely purporting to act in his name.<br /><br />Amritpal Singh will only communicate professionally using his official Duncan Lewis email address ending @duncanlewis.com.<br /><br />If you receive any communication purporting to be from Amritpal Singh of Duncan Lewis from another email address or are otherwise unsure whether it is genuine, please do not respond, make any payment or provide personal information until you have verified it directly with Duncan Lewis Solicitors, using the official contact details on this profile.<br /><br />This impersonation activity has been reported to the Solicitors Regulation Authority (SRA) and is the subject of an SRA Scam Alert.");
+
+                _NewContents.AppendLine("                                </div>");
+                _NewContents.AppendLine("                                </div>");
+                _NewContents.AppendLine("                            </div>");
+            }
+
+
+
+
+
             if (wa != null && wa.Count() > 0)
             {
 
